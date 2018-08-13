@@ -154,10 +154,11 @@ extension CheckoutViewController: AMCheckoutDelegate {
     }
 }
 ```
+
 | Function  | Response Parameter | Possible Values |
-| ------------- |-------------|
-| `paymentCanceled` | `referenceId` | `referenceId`: Reference ID that was provided when the payment object was created. |
-| `paymentFailed` | `referenceId` & `errorCode` | `referenceId`: Reference ID that was provided when the payment object was created. `errorCode`: `UserHaveNoActiveCards`, `BusinessUnavailable`, `TimeOut`.  |
+| ------------- | ------------- | ------------- |
+| `paymentCanceled` | `referenceId` | `referenceId`: Reference ID that was provided when the payment object was created.|
+| `paymentFailed` | `referenceId` & `errorCode` | `referenceId`: Reference ID that was provided when the payment object was created. `errorCode`: `UserHaveNoActiveCards`, `BusinessUnavailable`, `TimeOut`. |
 | `paymentSuccess` | `referenceId`, `transactionReference` & `dailyTransactionId` | `referenceId`: Reference ID that was provided when the payment object was created. `transactionReference`: ATH Móvil’s reference number. Required to verify or refund a payment. `dailyTransactionId`: ATH Móvil Business daily transaction ID. |
 
 ## Testing
