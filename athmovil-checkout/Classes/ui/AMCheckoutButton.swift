@@ -64,7 +64,7 @@ import Foundation
         tintColor = style.textColor
     }
     
-    func fitToSuperview() {
+    @objc public func fitToSuperview() {
         guard let superview = self.superview else {
             print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
             return
