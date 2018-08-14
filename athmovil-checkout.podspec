@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'athmovil-checkout'
   s.version          = '1.0.0'
-  s.summary          = 'A short description of athmovil-checkout.'
+  s.summary          = 'Provides a simple, secure and fast checkout experience to customers using your iOS application.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
