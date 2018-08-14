@@ -20,10 +20,10 @@ If you need help signing up, adding a card or have any other question please ref
 ## Installation
 Before we get started, let’s configure your project:
 
-* Add the `athmovil-ios-sdk` pod requirement to your Podfile.
+* Add the `athmovil-checkout` pod requirement to your Podfile.
 ```swift
 target 'MyProject' do
-pod 'athmovil-ios-sdk'
+pod 'athmovil-checkout'
 end
 ```
 
