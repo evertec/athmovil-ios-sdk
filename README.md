@@ -23,7 +23,7 @@ Before we get started, let’s configure your project:
 * Add the `athmovil-ios-sdk` pod requirement to your Podfile.
 ```swift
 target 'MyProject' do
-	pod 'athmovil-ios-sdk'
+pod 'athmovil-ios-sdk'
 end
 ```
 
@@ -35,7 +35,7 @@ To implement ATH Móvil’s checkout process on your iOS application you will ne
 ### Configure the SDK.
 ```swift
 AMCheckout.shared.configure(
-    for: .production, with: apiToken, and: callbackURL)
+for: .production, with: apiToken, and: callbackURL)
 ```
 
 | Field  | Values |
@@ -47,31 +47,31 @@ AMCheckout.shared.configure(
 ### Handle the callback of the URL scheme.
 ```swift
 func application(_ app: UIApplication, open url: URL, options:
-        [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+[UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 
-        do {
-            try AMCheckout.shared.handleIncomingURL(url: url)
-        } catch let error {
-            print(error)
-        }
+do {
+try AMCheckout.shared.handleIncomingURL(url: url)
+} catch let error {
+print(error)
+}
 
-        return true
-    }
+return true
+}
 ```
 
 ### Get the "Pay with ATH Móvil" button.
 ```swift
 let checkoutButton = AMCheckout.shared.getCheckoutButton(
-    withTarget: self, action: #selector(payWithATHMButtonPressed))
+withTarget: self, action: #selector(payWithATHMButtonPressed))
 ```
 #### Customize the button theme.
 By default, the "Pay with ATH Móvil" button is displayed in orange. The style can be modified to an optional light or dark theme.
 
 ```swift
 let checkoutButton = AMCheckout.shared.getCheckoutButton(
-    withTarget: self,
-    action: #selector(payWithATHMButtonPressed),
-    and style: .dark)
+withTarget: self,
+action: #selector(payWithATHMButtonPressed),
+and style: .dark)
 ```
 
 | Styles  | Example |
@@ -97,19 +97,19 @@ AMCheckout.shared.lang = .es
 var items: [AMPaymentItem] = []
 
 let newItem = AMPaymentItem(
-    desc: “Item Description”,
-    name:”Item Name”,
-    price: 4.99,
-    quantity: 1)
+desc: “Item Description”,
+name:”Item Name”,
+price: 4.99,
+quantity: 1)
 
 items.append(newItem)
 
 let payment = AMPayment(
-    referenceId: 12345,
-    subTotal: 3.45,
-    tax: 0.45,
-    total: 5.99,
-    items: items)
+referenceId: 12345,
+subTotal: 3.45,
+tax: 0.45,
+total: 5.99,
+items: items)
 
 ```
 | Variable  | Data Type | Required | Description |
@@ -130,28 +130,28 @@ AMCheckout.shared.timeout = 60
 ### Handle the checkout button action.
 ```swift
 do {
-    try AMCheckout.shared.checkout(with: payment)
+try AMCheckout.shared.checkout(with: payment)
 } catch let error {
-    print(error)
+print(error)
 }
 ```
 
 ### Implement the response delegate on your controller.
 ```swift
 extension CheckoutViewController: AMCheckoutDelegate {
-    func paymentCanceled(with referenceId: String) {
-        //Handle Canceled response
-    }
+func paymentCanceled(with referenceId: String) {
+//Handle Canceled response
+}
 
-    func paymentFailed(with referenceId: String, errorCode:
-        //Handle Failed response
-    }
+func paymentFailed(with referenceId: String, errorCode:
+//Handle Failed response
+}
 
-    func paymentSuccess(with referenceId: String,
-                        transactionReference: String,
-                        dailyTransactionId: String) {
-        //Handle Completed response
-    }
+func paymentSuccess(with referenceId: String,
+transactionReference: String,
+dailyTransactionId: String) {
+//Handle Completed response
+}
 }
 ```
 
