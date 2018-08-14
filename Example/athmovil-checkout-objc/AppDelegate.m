@@ -23,7 +23,7 @@
 //    BITHockeyManager.shared().start()
 //    BITHockeyManager.shared().authenticator.authenticateInstallation()
     
-    NSString *apiToken = @"VI36CPRERY5SSJVKC6XKFK8X8RMHZ5BKKXHORQP0";
+    NSString *apiToken = @"PUT-HERE-YOUR-API-TOKEN";
     NSString *callbackURL = @"athm-checkout";
     
     [AMCheckout.shared configureFor:AMEnvironmentProduction with:apiToken and:callbackURL];

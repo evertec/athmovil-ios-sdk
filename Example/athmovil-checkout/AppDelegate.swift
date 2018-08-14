@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let apiToken = "VI36CPRERY5SSJVKC6XKFK8X8RMHZ5BKKXHORQP0"
+        let apiToken = "PUT-HERE-YOUR-API-TOKEN"
         let callbackURL = "athm-checkout"
         
         AMCheckout.shared.configure(
