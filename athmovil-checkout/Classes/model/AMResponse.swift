@@ -8,20 +8,6 @@
 
 import Foundation
 
-//struct AMResponse: Codable {
-//    let success: Bool
-//    let error: String
-//    let referenceId: String
-//    let errorDescription: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case success = "success"
-//        case referenceId = "reference_id"
-//        case error = "error"
-//        case errorDescription = "error_description"
-//    }
-//}
-
 enum AMStatus: String, Codable {
     case success
     case unavailable
