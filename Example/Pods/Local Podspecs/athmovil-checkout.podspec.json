@@ -1,9 +1,9 @@
 {
   "name": "athmovil-checkout",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "A short description of athmovil-checkout.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Evertec/athmovil-sdk-ios",
+  "homepage": "https://github.com/evertec/athmovil-ios-sdk",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,15 +12,16 @@
     "Evertec": "christopher.bautista@evertecinc.com"
   },
   "source": {
-    "git": "https://github.com/Evertec/athmovil-checkout.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/evertec/athmovil-ios-sdk.git",
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "10.0"
   },
+  "swift_version": "3.0",
   "source_files": "athmovil-checkout/Classes/**/*",
   "resource_bundles": {
-    "athmovil-checkout": "athmovil-ios-sdk/ATHMAssets.xcassets"
+    "athmovil-checkout": "athmovil-checkout/ATHMAssets.xcassets"
   },
   "resources": "athmovil-checkout/ATHMAssets.xcassets"
 }

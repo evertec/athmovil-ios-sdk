@@ -18,6 +18,7 @@
 		8A3B3584B4287FB45A1C6E3930A136F2 /* Pods-athmovil-checkout_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 777B503354B3964BA760DA39D32C09A7 /* Pods-athmovil-checkout_Example-dummy.m */; };
 		8BC2CB59247D03E4E2A53AC265F712B8 /* athmovil-checkout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD91B4C004B91F8988E2618233ED94C /* athmovil-checkout-dummy.m */; };
 		90A24178AF1A54A9243729B578397905 /* URLComponents+ItemNamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68119BE9330AA1B14E87696F8946CEE0 /* URLComponents+ItemNamed.swift */; };
+		A75223EC9484DB3838BDD1485253B3E8 /* ATHMAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3F32A8B6729D657D8D65BB070A1ED17 /* ATHMAssets.xcassets */; };
 		A8DE894E9595BD55303D97C1FB03894D /* AMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BCB9C0DF562D0319F54CD8436B250 /* AMResponse.swift */; };
 		B6E21E856EED3FD1832D78B5331591FE /* AMPaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2774001E03003EF6FD98CA6B97CD8B /* AMPaymentItem.swift */; };
 		B95E6A1EB1874F97D52E85E040E28F71 /* Dictionary+JSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC27CE9EB74862DF6223CD696BE6BE3 /* Dictionary+JSONString.swift */; };
@@ -401,7 +402,7 @@
 			buildPhases = (
 				7F2FC3DEE3F7202E51960843AC901BFD /* Sources */,
 				953DC412EFF519B281FF609BE5B1F1A9 /* Frameworks */,
-				F2ED1DE63621A367FA3E2378E5C5483C /* Resources */,
+				5CD1D7B23EFE4C2EE3EDD37C81AF8447 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -525,10 +526,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F2ED1DE63621A367FA3E2378E5C5483C /* Resources */ = {
+		5CD1D7B23EFE4C2EE3EDD37C81AF8447 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75223EC9484DB3838BDD1485253B3E8 /* ATHMAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

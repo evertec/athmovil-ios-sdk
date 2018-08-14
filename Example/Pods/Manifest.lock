@@ -1,5 +1,5 @@
 PODS:
-  - athmovil-checkout (0.1.0)
+  - athmovil-checkout (1.0.0)
 
 DEPENDENCIES:
   - athmovil-checkout (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  athmovil-checkout: ef3e150708a4090ed921a078d6958790c7e6fb6d
+  athmovil-checkout: c23cd9cd0381945691751132f03e8a11035543ab
 
 PODFILE CHECKSUM: 588f317724d6333fba9809c75e2a7648823c5b69
 
