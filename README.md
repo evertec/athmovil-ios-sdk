@@ -44,6 +44,9 @@ for: .production, with: apiToken, and: callbackURL)
 | `with` | Provide your ATH Móvil Business API Key. Required for security purposes. |
 | `callbackURL` | Set to the URL scheme of your application. |
 
+For instructions on how to define a custom URL scheme for your application
+<a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>.
+
 ### Handle the callback of the URL scheme.
 ```swift
 func application(_ app: UIApplication, open url: URL, options:
