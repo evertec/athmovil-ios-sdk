@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:checkout-demo-swift/checkout-demo-swift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:athm-checkout/../checkout-demo-objc/checkout-demo-objc.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:athm-simulator/athm-simulator.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:athm-checkout/athm-checkout.xcodeproj">
+   </FileRef>
+</Workspace>

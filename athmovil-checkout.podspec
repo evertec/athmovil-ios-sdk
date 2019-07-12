@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'athmovil-checkout'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'Provides a simple, secure and fast checkout experience to customers using your iOS application.'
 
 # This description is used to generate tags and improve search results.
@@ -27,16 +27,11 @@ TODO: Add long description of the pod here.
   s.author           = { 'Evertec' => 'christopher.bautista@evertecinc.com' }
   s.source           = { :git => 'https://github.com/evertec/athmovil-ios-sdk.git', :tag => s.version.to_s }
 
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
   s.ios.deployment_target = '10.0'
   s.swift_version = '3.0'
-  s.source_files = 'athmovil-checkout/Classes/**/*'
+  s.source_files = 'athmovil-checkout/athmovil-checkout/Source/**/*'
   
-  s.resource_bundles = {'athmovil-checkout' => 'athmovil-checkout/ATHMAssets.xcassets'}
-  s.resource = 'athmovil-checkout/ATHMAssets.xcassets'
+  s.resource_bundles = {'athmovil-checkout' => 'athmovil-checkout/athmovil-checkout/Source/ATHMAssets.xcassets'}
+  s.resource = 'athmovil-checkout/athmovil-checkout/Source/ATHMAssets.xcassets'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KfG-MG-dw8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Checkout View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CheckoutViewController" customModule="checkout_demo_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xMB-Ua-PWt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="526"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DNh-Va-eh4">
+                                <rect key="frame" x="16" y="542" width="343" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOq-fJ-VaD">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Z1e-RP-zUn"/>
+                                        </constraints>
+                                        <state key="normal" title="Checkout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xMB-Ua-PWt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UXQ-AZ-Ica"/>
+                            <constraint firstItem="DNh-Va-eh4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Utu-Oi-Rwf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DNh-Va-eh4" secondAttribute="trailing" constant="16" id="Z8D-K5-OgH"/>
+                            <constraint firstItem="DNh-Va-eh4" firstAttribute="top" secondItem="xMB-Ua-PWt" secondAttribute="bottom" constant="16" id="aL3-xy-kkt"/>
+                            <constraint firstItem="xMB-Ua-PWt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fNa-z0-GxB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DNh-Va-eh4" secondAttribute="bottom" constant="16" id="sOD-QZ-ptP"/>
+                            <constraint firstItem="xMB-Ua-PWt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sdN-ap-WBU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dDF-gH-ZVd"/>
+                    <connections>
+                        <outlet property="buttonStack" destination="DNh-Va-eh4" id="xDS-cP-gYG"/>
+                        <outlet property="checkoutButton" destination="MOq-fJ-VaD" id="lmv-kQ-Uvb"/>
+                        <outlet property="tableView" destination="xMB-Ua-PWt" id="z4c-v8-O0U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="134"/>
+        </scene>
+        <!--Items View Controller-->
+        <scene sceneID="99c-DZ-dH4">
+            <objects>
+                <viewController id="qcH-7P-h40" customClass="ItemsViewController" customModule="checkout_demo_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u2S-f2-NLj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7jn-3A-1UC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KxR-n5-urC">
+                                <rect key="frame" x="16" y="542" width="343" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Py2-LI-fOb"/>
+                                </constraints>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="IB9-Uw-mIf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KxR-n5-urC" firstAttribute="leading" secondItem="mG0-z7-Lw4" secondAttribute="leading" constant="16" id="6Jy-wq-iKC"/>
+                            <constraint firstItem="mG0-z7-Lw4" firstAttribute="trailing" secondItem="7jn-3A-1UC" secondAttribute="trailing" id="An6-Xt-sVD"/>
+                            <constraint firstItem="7jn-3A-1UC" firstAttribute="top" secondItem="mG0-z7-Lw4" secondAttribute="top" id="DWE-5K-q53"/>
+                            <constraint firstItem="KxR-n5-urC" firstAttribute="top" secondItem="7jn-3A-1UC" secondAttribute="bottom" constant="32" id="I6M-bu-4fR"/>
+                            <constraint firstItem="7jn-3A-1UC" firstAttribute="leading" secondItem="mG0-z7-Lw4" secondAttribute="leading" id="L1x-rB-fda"/>
+                            <constraint firstItem="mG0-z7-Lw4" firstAttribute="bottom" secondItem="KxR-n5-urC" secondAttribute="bottom" constant="16" id="URu-tg-usb"/>
+                            <constraint firstItem="mG0-z7-Lw4" firstAttribute="trailing" secondItem="KxR-n5-urC" secondAttribute="trailing" constant="16" id="nD0-eO-Z44"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mG0-z7-Lw4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QF1-sb-yJL"/>
+                    <connections>
+                        <outlet property="checkoutButton" destination="KxR-n5-urC" id="zab-Sx-FRq"/>
+                        <outlet property="tableView" destination="7jn-3A-1UC" id="L7U-31-89s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zeu-8t-8Nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2I5-he-5vH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KfG-MG-dw8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Gda-sj-2tE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qcH-7P-h40" kind="relationship" relationship="rootViewController" id="Aos-Bz-kBm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2F2-fS-xlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="287" y="134"/>
+        </scene>
+    </scenes>
+</document>
