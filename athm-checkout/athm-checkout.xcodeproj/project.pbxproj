@@ -10,22 +10,25 @@
 		0719A8AE221DFEE1003C8689 /* athm_checkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0719A8A4221DFEE1003C8689 /* athm_checkout.framework */; };
 		0719A8B3221DFEE1003C8689 /* ATHMCheckoutUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8B2221DFEE1003C8689 /* ATHMCheckoutUTests.swift */; };
 		0719A8B5221DFEE1003C8689 /* athm_checkout.h in Headers */ = {isa = PBXBuildFile; fileRef = 0719A8A7221DFEE1003C8689 /* athm_checkout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0719A8E9221E00FD003C8689 /* ATHMCheckoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8DC221E00FD003C8689 /* ATHMCheckoutButton.swift */; };
-		0719A8EA221E00FD003C8689 /* Dictionary+JSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8DE221E00FD003C8689 /* Dictionary+JSONString.swift */; };
-		0719A8EB221E00FD003C8689 /* URLComponents+ItemNamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8DF221E00FD003C8689 /* URLComponents+ItemNamed.swift */; };
-		0719A8EC221E00FD003C8689 /* String+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E0221E00FD003C8689 /* String+JSON.swift */; };
-		0719A8ED221E00FD003C8689 /* String+UTF8Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E1221E00FD003C8689 /* String+UTF8Data.swift */; };
-		0719A8EE221E00FD003C8689 /* Double+NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E2221E00FD003C8689 /* Double+NSNumber.swift */; };
 		0719A8EF221E00FD003C8689 /* ATHMAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0719A8E3221E00FD003C8689 /* ATHMAssets.xcassets */; };
-		0719A8F0221E00FD003C8689 /* ATHMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E5221E00FD003C8689 /* ATHMResponse.swift */; };
-		0719A8F1221E00FD003C8689 /* ATHMPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E6221E00FD003C8689 /* ATHMPayment.swift */; };
-		0719A8F2221E00FD003C8689 /* ATHMPaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E7221E00FD003C8689 /* ATHMPaymentItem.swift */; };
 		0719A8F3221E00FD003C8689 /* ATHMCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8E8221E00FD003C8689 /* ATHMCheckout.swift */; };
 		0719A8F5221F4A0A003C8689 /* AMCheckoutDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8F4221F4A0A003C8689 /* AMCheckoutDelegateSpy.swift */; };
 		0719A8F7222027C1003C8689 /* URLOpenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8F6222027C1003C8689 /* URLOpenerProtocol.swift */; };
 		0719A8F922202898003C8689 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8F822202898003C8689 /* URLOpener.swift */; };
 		0719A8FB22202E65003C8689 /* MockUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0719A8FA22202E65003C8689 /* MockUIApplication.swift */; };
-		07851A8422774CD200D9D6DD /* NSRegularExpression+Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07851A8322774CD200D9D6DD /* NSRegularExpression+Wrapper.swift */; };
+		1BE9ECB023352840001D153D /* ATHMPaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA323352840001D153D /* ATHMPaymentItem.swift */; };
+		1BE9ECB123352840001D153D /* Double+NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA423352840001D153D /* Double+NSNumber.swift */; };
+		1BE9ECB223352840001D153D /* URLComponents+ItemNamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA523352840001D153D /* URLComponents+ItemNamed.swift */; };
+		1BE9ECB323352840001D153D /* ATHMPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA623352840001D153D /* ATHMPayment.swift */; };
+		1BE9ECB423352840001D153D /* String+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA723352840001D153D /* String+JSON.swift */; };
+		1BE9ECB523352840001D153D /* String+UTF8Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA823352840001D153D /* String+UTF8Data.swift */; };
+		1BE9ECB623352840001D153D /* NSRegularExpression+Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECA923352840001D153D /* NSRegularExpression+Wrapper.swift */; };
+		1BE9ECB723352840001D153D /* ATHMCheckoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECAA23352840001D153D /* ATHMCheckoutButton.swift */; };
+		1BE9ECB823352840001D153D /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECAB23352840001D153D /* URLOpener.swift */; };
+		1BE9ECB923352840001D153D /* Dictionary+JSONString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECAC23352840001D153D /* Dictionary+JSONString.swift */; };
+		1BE9ECBA23352840001D153D /* URLOpenerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECAD23352840001D153D /* URLOpenerProtocol.swift */; };
+		1BE9ECBB23352840001D153D /* ATHMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECAE23352840001D153D /* ATHMResponse.swift */; };
+		1BE9ECBC23352840001D153D /* ATHMCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ECAF23352840001D153D /* ATHMCheckout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,22 +48,25 @@
 		0719A8AD221DFEE1003C8689 /* athm-checkoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "athm-checkoutTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0719A8B2221DFEE1003C8689 /* ATHMCheckoutUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHMCheckoutUTests.swift; sourceTree = "<group>"; };
 		0719A8B4221DFEE1003C8689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0719A8DC221E00FD003C8689 /* ATHMCheckoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMCheckoutButton.swift; sourceTree = "<group>"; };
-		0719A8DE221E00FD003C8689 /* Dictionary+JSONString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSONString.swift"; sourceTree = "<group>"; };
-		0719A8DF221E00FD003C8689 /* URLComponents+ItemNamed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLComponents+ItemNamed.swift"; sourceTree = "<group>"; };
-		0719A8E0221E00FD003C8689 /* String+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+JSON.swift"; sourceTree = "<group>"; };
-		0719A8E1221E00FD003C8689 /* String+UTF8Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UTF8Data.swift"; sourceTree = "<group>"; };
-		0719A8E2221E00FD003C8689 /* Double+NSNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+NSNumber.swift"; sourceTree = "<group>"; };
 		0719A8E3221E00FD003C8689 /* ATHMAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ATHMAssets.xcassets; sourceTree = "<group>"; };
-		0719A8E5221E00FD003C8689 /* ATHMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMResponse.swift; sourceTree = "<group>"; };
-		0719A8E6221E00FD003C8689 /* ATHMPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMPayment.swift; sourceTree = "<group>"; };
-		0719A8E7221E00FD003C8689 /* ATHMPaymentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMPaymentItem.swift; sourceTree = "<group>"; };
 		0719A8E8221E00FD003C8689 /* ATHMCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMCheckout.swift; sourceTree = "<group>"; };
 		0719A8F4221F4A0A003C8689 /* AMCheckoutDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMCheckoutDelegateSpy.swift; sourceTree = "<group>"; };
 		0719A8F6222027C1003C8689 /* URLOpenerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerProtocol.swift; sourceTree = "<group>"; };
 		0719A8F822202898003C8689 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		0719A8FA22202E65003C8689 /* MockUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUIApplication.swift; sourceTree = "<group>"; };
-		07851A8322774CD200D9D6DD /* NSRegularExpression+Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Wrapper.swift"; sourceTree = "<group>"; };
+		1BE9ECA323352840001D153D /* ATHMPaymentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMPaymentItem.swift; sourceTree = "<group>"; };
+		1BE9ECA423352840001D153D /* Double+NSNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+NSNumber.swift"; sourceTree = "<group>"; };
+		1BE9ECA523352840001D153D /* URLComponents+ItemNamed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLComponents+ItemNamed.swift"; sourceTree = "<group>"; };
+		1BE9ECA623352840001D153D /* ATHMPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMPayment.swift; sourceTree = "<group>"; };
+		1BE9ECA723352840001D153D /* String+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+JSON.swift"; sourceTree = "<group>"; };
+		1BE9ECA823352840001D153D /* String+UTF8Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UTF8Data.swift"; sourceTree = "<group>"; };
+		1BE9ECA923352840001D153D /* NSRegularExpression+Wrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Wrapper.swift"; sourceTree = "<group>"; };
+		1BE9ECAA23352840001D153D /* ATHMCheckoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMCheckoutButton.swift; sourceTree = "<group>"; };
+		1BE9ECAB23352840001D153D /* URLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
+		1BE9ECAC23352840001D153D /* Dictionary+JSONString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSONString.swift"; sourceTree = "<group>"; };
+		1BE9ECAD23352840001D153D /* URLOpenerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLOpenerProtocol.swift; sourceTree = "<group>"; };
+		1BE9ECAE23352840001D153D /* ATHMResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMResponse.swift; sourceTree = "<group>"; };
+		1BE9ECAF23352840001D153D /* ATHMCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATHMCheckout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 		0719A8A6221DFEE1003C8689 /* athm-checkout */ = {
 			isa = PBXGroup;
 			children = (
+				0719A8E3221E00FD003C8689 /* ATHMAssets.xcassets */,
 				0719A8DA221E00FD003C8689 /* Source */,
 				0719A8A7221DFEE1003C8689 /* athm_checkout.h */,
 				0719A8A8221DFEE1003C8689 /* Info.plist */,
@@ -124,46 +131,24 @@
 		0719A8DA221E00FD003C8689 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0719A8DB221E00FD003C8689 /* ui */,
-				0719A8DD221E00FD003C8689 /* extension */,
-				0719A8E3221E00FD003C8689 /* ATHMAssets.xcassets */,
-				0719A8E4221E00FD003C8689 /* model */,
+				1BE9ECAF23352840001D153D /* ATHMCheckout.swift */,
+				1BE9ECAA23352840001D153D /* ATHMCheckoutButton.swift */,
+				1BE9ECA623352840001D153D /* ATHMPayment.swift */,
+				1BE9ECA323352840001D153D /* ATHMPaymentItem.swift */,
+				1BE9ECAE23352840001D153D /* ATHMResponse.swift */,
+				1BE9ECAC23352840001D153D /* Dictionary+JSONString.swift */,
+				1BE9ECA423352840001D153D /* Double+NSNumber.swift */,
+				1BE9ECA923352840001D153D /* NSRegularExpression+Wrapper.swift */,
+				1BE9ECA723352840001D153D /* String+JSON.swift */,
+				1BE9ECA823352840001D153D /* String+UTF8Data.swift */,
+				1BE9ECA523352840001D153D /* URLComponents+ItemNamed.swift */,
+				1BE9ECAB23352840001D153D /* URLOpener.swift */,
+				1BE9ECAD23352840001D153D /* URLOpenerProtocol.swift */,
 				0719A8E8221E00FD003C8689 /* ATHMCheckout.swift */,
 				0719A8F6222027C1003C8689 /* URLOpenerProtocol.swift */,
 				0719A8F822202898003C8689 /* URLOpener.swift */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		0719A8DB221E00FD003C8689 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				0719A8DC221E00FD003C8689 /* ATHMCheckoutButton.swift */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
-		0719A8DD221E00FD003C8689 /* extension */ = {
-			isa = PBXGroup;
-			children = (
-				0719A8DE221E00FD003C8689 /* Dictionary+JSONString.swift */,
-				0719A8DF221E00FD003C8689 /* URLComponents+ItemNamed.swift */,
-				0719A8E0221E00FD003C8689 /* String+JSON.swift */,
-				0719A8E1221E00FD003C8689 /* String+UTF8Data.swift */,
-				0719A8E2221E00FD003C8689 /* Double+NSNumber.swift */,
-				07851A8322774CD200D9D6DD /* NSRegularExpression+Wrapper.swift */,
-			);
-			path = extension;
-			sourceTree = "<group>";
-		};
-		0719A8E4221E00FD003C8689 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				0719A8E5221E00FD003C8689 /* ATHMResponse.swift */,
-				0719A8E6221E00FD003C8689 /* ATHMPayment.swift */,
-				0719A8E7221E00FD003C8689 /* ATHMPaymentItem.swift */,
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,19 +260,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BE9ECB423352840001D153D /* String+JSON.swift in Sources */,
+				1BE9ECB623352840001D153D /* NSRegularExpression+Wrapper.swift in Sources */,
+				1BE9ECB323352840001D153D /* ATHMPayment.swift in Sources */,
+				1BE9ECB923352840001D153D /* Dictionary+JSONString.swift in Sources */,
+				1BE9ECB223352840001D153D /* URLComponents+ItemNamed.swift in Sources */,
+				1BE9ECB123352840001D153D /* Double+NSNumber.swift in Sources */,
 				0719A8F7222027C1003C8689 /* URLOpenerProtocol.swift in Sources */,
-				07851A8422774CD200D9D6DD /* NSRegularExpression+Wrapper.swift in Sources */,
-				0719A8ED221E00FD003C8689 /* String+UTF8Data.swift in Sources */,
+				1BE9ECBB23352840001D153D /* ATHMResponse.swift in Sources */,
+				1BE9ECB723352840001D153D /* ATHMCheckoutButton.swift in Sources */,
 				0719A8F3221E00FD003C8689 /* ATHMCheckout.swift in Sources */,
-				0719A8EC221E00FD003C8689 /* String+JSON.swift in Sources */,
-				0719A8EB221E00FD003C8689 /* URLComponents+ItemNamed.swift in Sources */,
-				0719A8EA221E00FD003C8689 /* Dictionary+JSONString.swift in Sources */,
-				0719A8F1221E00FD003C8689 /* ATHMPayment.swift in Sources */,
-				0719A8F2221E00FD003C8689 /* ATHMPaymentItem.swift in Sources */,
-				0719A8F0221E00FD003C8689 /* ATHMResponse.swift in Sources */,
-				0719A8EE221E00FD003C8689 /* Double+NSNumber.swift in Sources */,
 				0719A8F922202898003C8689 /* URLOpener.swift in Sources */,
-				0719A8E9221E00FD003C8689 /* ATHMCheckoutButton.swift in Sources */,
+				1BE9ECB023352840001D153D /* ATHMPaymentItem.swift in Sources */,
+				1BE9ECB823352840001D153D /* URLOpener.swift in Sources */,
+				1BE9ECBC23352840001D153D /* ATHMCheckout.swift in Sources */,
+				1BE9ECBA23352840001D153D /* URLOpenerProtocol.swift in Sources */,
+				1BE9ECB523352840001D153D /* String+UTF8Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
