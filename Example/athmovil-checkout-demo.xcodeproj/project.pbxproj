@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B92D12A2335655300D505E1 /* CheckoutDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B92D1272335655200D505E1 /* CheckoutDefaultTableViewCell.xib */; };
+		1B92D12B2335655300D505E1 /* CheckoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B92D1282335655300D505E1 /* CheckoutViewController.storyboard */; };
+		1B92D12C2335655300D505E1 /* CheckoutSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B92D1292335655300D505E1 /* CheckoutSummaryTableViewCell.xib */; };
+		1B92D12F2335656700D505E1 /* TransactionConfirmationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B92D12D2335656700D505E1 /* TransactionConfirmationViewController.storyboard */; };
+		1B92D1302335656700D505E1 /* ShippingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B92D12E2335656700D505E1 /* ShippingTableViewCell.xib */; };
+		1BE9ED9723355A05001D153D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9ED9623355A05001D153D /* AppDelegate.swift */; };
+		1BE9ED9E23355A05001D153D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BE9ED9D23355A05001D153D /* Assets.xcassets */; };
+		1BE9EDA123355A05001D153D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BE9ED9F23355A05001D153D /* LaunchScreen.storyboard */; };
+		1BE9EDE423356371001D153D /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDC623356371001D153D /* CheckoutViewController.swift */; };
+		1BE9EDE823356371001D153D /* ItemsResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDCD23356371001D153D /* ItemsResponseViewController.swift */; };
+		1BE9EDE923356371001D153D /* SelectThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDCF23356371001D153D /* SelectThemeViewController.swift */; };
+		1BE9EDEA23356371001D153D /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDD023356371001D153D /* UserPreferences.swift */; };
+		1BE9EDEB23356371001D153D /* CheckoutEditFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDD123356371001D153D /* CheckoutEditFooterTableViewCell.swift */; };
+		1BE9EDEC23356371001D153D /* CheckoutEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDD223356371001D153D /* CheckoutEditViewController.swift */; };
+		1BE9EDF023356371001D153D /* CheckoutEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDD923356371001D153D /* CheckoutEditCell.swift */; };
+		1BE9EDF123356371001D153D /* ShippingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDDA23356371001D153D /* ShippingTableViewCell.swift */; };
+		1BE9EDF223356371001D153D /* CheckoutSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDDB23356371001D153D /* CheckoutSummaryTableViewCell.swift */; };
+		1BE9EDF323356371001D153D /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDDC23356371001D153D /* ItemsViewController.swift */; };
+		1BE9EDF523356371001D153D /* TransactionConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDDE23356371001D153D /* TransactionConfirmationViewController.swift */; };
+		1BE9EDF623356371001D153D /* CheckoutDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDDF23356371001D153D /* CheckoutDefaultTableViewCell.swift */; };
+		1BE9EDF723356371001D153D /* TransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDE123356371001D153D /* TransactionItem.swift */; };
+		1BE9EDF823356371001D153D /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDE223356371001D153D /* Transaction.swift */; };
+		21D0927D672C2F03BE3394F5 /* Pods_athmovil_checkout_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D01C08088F6C7E8227C1B /* Pods_athmovil_checkout_demo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B92D1272335655200D505E1 /* CheckoutDefaultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckoutDefaultTableViewCell.xib; sourceTree = "<group>"; };
+		1B92D1282335655300D505E1 /* CheckoutViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckoutViewController.storyboard; sourceTree = "<group>"; };
+		1B92D1292335655300D505E1 /* CheckoutSummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckoutSummaryTableViewCell.xib; sourceTree = "<group>"; };
+		1B92D12D2335656700D505E1 /* TransactionConfirmationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TransactionConfirmationViewController.storyboard; sourceTree = "<group>"; };
+		1B92D12E2335656700D505E1 /* ShippingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShippingTableViewCell.xib; sourceTree = "<group>"; };
+		1BE9ED9323355A05001D153D /* athmovil-checkout-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "athmovil-checkout-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BE9ED9623355A05001D153D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1BE9ED9D23355A05001D153D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1BE9EDA023355A05001D153D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1BE9EDA223355A05001D153D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BE9EDC623356371001D153D /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		1BE9EDCD23356371001D153D /* ItemsResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsResponseViewController.swift; sourceTree = "<group>"; };
+		1BE9EDCF23356371001D153D /* SelectThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectThemeViewController.swift; sourceTree = "<group>"; };
+		1BE9EDD023356371001D153D /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		1BE9EDD123356371001D153D /* CheckoutEditFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutEditFooterTableViewCell.swift; sourceTree = "<group>"; };
+		1BE9EDD223356371001D153D /* CheckoutEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutEditViewController.swift; sourceTree = "<group>"; };
+		1BE9EDD923356371001D153D /* CheckoutEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutEditCell.swift; sourceTree = "<group>"; };
+		1BE9EDDA23356371001D153D /* ShippingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingTableViewCell.swift; sourceTree = "<group>"; };
+		1BE9EDDB23356371001D153D /* CheckoutSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		1BE9EDDC23356371001D153D /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		1BE9EDDE23356371001D153D /* TransactionConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionConfirmationViewController.swift; sourceTree = "<group>"; };
+		1BE9EDDF23356371001D153D /* CheckoutDefaultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutDefaultTableViewCell.swift; sourceTree = "<group>"; };
+		1BE9EDE123356371001D153D /* TransactionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
+		1BE9EDE223356371001D153D /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		5A26A36F835623255AC717C2 /* Pods-athmovil-checkout-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demoTests.release.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demoTests/Pods-athmovil-checkout-demoTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E4A50D7AB8F9B8EEA17CC75 /* Pods-athmovil-checkout-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demo.debug.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		657F6389C30D4AA0D7FED334 /* Pods-athmovil-checkout-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demo.release.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo.release.xcconfig"; sourceTree = "<group>"; };
+		6D721564F1662431F95011C3 /* Pods_athmovil_checkout_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_athmovil_checkout_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A6CFD08F952C9052174569B /* Pods_athmovil_checkout_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_athmovil_checkout_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D9F5221B7CE50E49CD76EA6 /* Pods-athmovil-checkout-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demoTests.debug.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demoTests/Pods-athmovil-checkout-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA21CD5A724BF0E9C81C91E4 /* Pods-athmovil-checkout-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demoUITests.debug.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demoUITests/Pods-athmovil-checkout-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BF82FB6C9CAF1FE1E30EE821 /* Pods-athmovil-checkout-demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demoUITests.release.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demoUITests/Pods-athmovil-checkout-demoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E34D01C08088F6C7E8227C1B /* Pods_athmovil_checkout_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_athmovil_checkout_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BE9ED9023355A05001D153D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21D0927D672C2F03BE3394F5 /* Pods_athmovil_checkout_demo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E7CDEAA0C2519536ECFC955 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E34D01C08088F6C7E8227C1B /* Pods_athmovil_checkout_demo.framework */,
+				6D721564F1662431F95011C3 /* Pods_athmovil_checkout_demoTests.framework */,
+				7A6CFD08F952C9052174569B /* Pods_athmovil_checkout_demoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BE9ED8A23355A05001D153D = {
+			isa = PBXGroup;
+			children = (
+				1BE9ED9523355A05001D153D /* athmovil-checkout-demo */,
+				1BE9ED9423355A05001D153D /* Products */,
+				65A08E03FD3C764208B2E911 /* Pods */,
+				0E7CDEAA0C2519536ECFC955 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1BE9ED9423355A05001D153D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BE9ED9323355A05001D153D /* athmovil-checkout-demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BE9ED9523355A05001D153D /* athmovil-checkout-demo */ = {
+			isa = PBXGroup;
+			children = (
+				1BE9EDC423356371001D153D /* Checkout */,
+				1BE9EDE023356371001D153D /* Model */,
+				1BE9ED9623355A05001D153D /* AppDelegate.swift */,
+				1BE9ED9D23355A05001D153D /* Assets.xcassets */,
+				1BE9ED9F23355A05001D153D /* LaunchScreen.storyboard */,
+				1BE9EDA223355A05001D153D /* Info.plist */,
+			);
+			path = "athmovil-checkout-demo";
+			sourceTree = "<group>";
+		};
+		1BE9EDC423356371001D153D /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				1B92D1272335655200D505E1 /* CheckoutDefaultTableViewCell.xib */,
+				1B92D1292335655300D505E1 /* CheckoutSummaryTableViewCell.xib */,
+				1B92D1282335655300D505E1 /* CheckoutViewController.storyboard */,
+				1BE9EDC623356371001D153D /* CheckoutViewController.swift */,
+				1BE9EDCD23356371001D153D /* ItemsResponseViewController.swift */,
+				1BE9EDCE23356371001D153D /* Edit */,
+				1BE9EDDA23356371001D153D /* ShippingTableViewCell.swift */,
+				1BE9EDDB23356371001D153D /* CheckoutSummaryTableViewCell.swift */,
+				1BE9EDDC23356371001D153D /* ItemsViewController.swift */,
+				1BE9EDDE23356371001D153D /* TransactionConfirmationViewController.swift */,
+				1BE9EDDF23356371001D153D /* CheckoutDefaultTableViewCell.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		1BE9EDCE23356371001D153D /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				1B92D12E2335656700D505E1 /* ShippingTableViewCell.xib */,
+				1B92D12D2335656700D505E1 /* TransactionConfirmationViewController.storyboard */,
+				1BE9EDCF23356371001D153D /* SelectThemeViewController.swift */,
+				1BE9EDD023356371001D153D /* UserPreferences.swift */,
+				1BE9EDD123356371001D153D /* CheckoutEditFooterTableViewCell.swift */,
+				1BE9EDD223356371001D153D /* CheckoutEditViewController.swift */,
+				1BE9EDD923356371001D153D /* CheckoutEditCell.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		1BE9EDE023356371001D153D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BE9EDE123356371001D153D /* TransactionItem.swift */,
+				1BE9EDE223356371001D153D /* Transaction.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		65A08E03FD3C764208B2E911 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A50D7AB8F9B8EEA17CC75 /* Pods-athmovil-checkout-demo.debug.xcconfig */,
+				657F6389C30D4AA0D7FED334 /* Pods-athmovil-checkout-demo.release.xcconfig */,
+				9D9F5221B7CE50E49CD76EA6 /* Pods-athmovil-checkout-demoTests.debug.xcconfig */,
+				5A26A36F835623255AC717C2 /* Pods-athmovil-checkout-demoTests.release.xcconfig */,
+				AA21CD5A724BF0E9C81C91E4 /* Pods-athmovil-checkout-demoUITests.debug.xcconfig */,
+				BF82FB6C9CAF1FE1E30EE821 /* Pods-athmovil-checkout-demoUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BE9ED9223355A05001D153D /* athmovil-checkout-demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BE9EDBB23355A06001D153D /* Build configuration list for PBXNativeTarget "athmovil-checkout-demo" */;
+			buildPhases = (
+				9F8A435DB66D72C803FC4516 /* [CP] Check Pods Manifest.lock */,
+				1BE9ED8F23355A05001D153D /* Sources */,
+				1BE9ED9023355A05001D153D /* Frameworks */,
+				1BE9ED9123355A05001D153D /* Resources */,
+				E82A634C5684BBAE925DEDD4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "athmovil-checkout-demo";
+			productName = "athmovil-checkout-demo";
+			productReference = 1BE9ED9323355A05001D153D /* athmovil-checkout-demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BE9ED8B23355A05001D153D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Evertec;
+				TargetAttributes = {
+					1BE9ED9223355A05001D153D = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 1BE9ED8E23355A05001D153D /* Build configuration list for PBXProject "athmovil-checkout-demo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BE9ED8A23355A05001D153D;
+			productRefGroup = 1BE9ED9423355A05001D153D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BE9ED9223355A05001D153D /* athmovil-checkout-demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BE9ED9123355A05001D153D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE9EDA123355A05001D153D /* LaunchScreen.storyboard in Resources */,
+				1BE9ED9E23355A05001D153D /* Assets.xcassets in Resources */,
+				1B92D12C2335655300D505E1 /* CheckoutSummaryTableViewCell.xib in Resources */,
+				1B92D12F2335656700D505E1 /* TransactionConfirmationViewController.storyboard in Resources */,
+				1B92D12A2335655300D505E1 /* CheckoutDefaultTableViewCell.xib in Resources */,
+				1B92D12B2335655300D505E1 /* CheckoutViewController.storyboard in Resources */,
+				1B92D1302335656700D505E1 /* ShippingTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9F8A435DB66D72C803FC4516 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-athmovil-checkout-demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E82A634C5684BBAE925DEDD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BE9ED8F23355A05001D153D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE9EDE823356371001D153D /* ItemsResponseViewController.swift in Sources */,
+				1BE9EDF623356371001D153D /* CheckoutDefaultTableViewCell.swift in Sources */,
+				1BE9EDF823356371001D153D /* Transaction.swift in Sources */,
+				1BE9EDF323356371001D153D /* ItemsViewController.swift in Sources */,
+				1BE9EDF123356371001D153D /* ShippingTableViewCell.swift in Sources */,
+				1BE9EDF023356371001D153D /* CheckoutEditCell.swift in Sources */,
+				1BE9EDEA23356371001D153D /* UserPreferences.swift in Sources */,
+				1BE9EDE923356371001D153D /* SelectThemeViewController.swift in Sources */,
+				1BE9EDEC23356371001D153D /* CheckoutEditViewController.swift in Sources */,
+				1BE9EDEB23356371001D153D /* CheckoutEditFooterTableViewCell.swift in Sources */,
+				1BE9EDF523356371001D153D /* TransactionConfirmationViewController.swift in Sources */,
+				1BE9EDE423356371001D153D /* CheckoutViewController.swift in Sources */,
+				1BE9ED9723355A05001D153D /* AppDelegate.swift in Sources */,
+				1BE9EDF723356371001D153D /* TransactionItem.swift in Sources */,
+				1BE9EDF223356371001D153D /* CheckoutSummaryTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1BE9ED9F23355A05001D153D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BE9EDA023355A05001D153D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BE9EDB923355A06001D153D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1BE9EDBA23355A06001D153D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BE9EDBC23355A06001D153D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E4A50D7AB8F9B8EEA17CC75 /* Pods-athmovil-checkout-demo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X2E839N4PW;
+				INFOPLIST_FILE = "athmovil-checkout-demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evertecinc.athmovil-checkout-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BE9EDBD23355A06001D153D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 657F6389C30D4AA0D7FED334 /* Pods-athmovil-checkout-demo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X2E839N4PW;
+				INFOPLIST_FILE = "athmovil-checkout-demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evertecinc.athmovil-checkout-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BE9ED8E23355A05001D153D /* Build configuration list for PBXProject "athmovil-checkout-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE9EDB923355A06001D153D /* Debug */,
+				1BE9EDBA23355A06001D153D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BE9EDBB23355A06001D153D /* Build configuration list for PBXNativeTarget "athmovil-checkout-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BE9EDBC23355A06001D153D /* Debug */,
+				1BE9EDBD23355A06001D153D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BE9ED8B23355A05001D153D /* Project object */;
+}

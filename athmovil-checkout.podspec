@@ -1,32 +1,37 @@
 #
-# Be sure to run `pod lib lint athmovil-checkout.podspec' to ensure this is a
-# valid spec before submitting.
+#  Be sure to run `pod spec lint athmovil-checkout.podspec' to ensure this is a
+#  valid spec and to remove all comments including this before submitting the spec.
 #
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
+#  To learn more about Podspec attributes see https://guides.cocoapods.org/syntax/podspec.html
+#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
 #
 
-Pod::Spec.new do |s|
-  s.name             = 'athmovil-checkout'
-  s.version          = '2.0.0'
-  s.summary          = 'Provides a simple, secure and fast checkout experience to customers using your iOS application.'
+Pod::Spec.new do |spec|
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  spec.name         = "athmovil-checkout"
+  spec.version      = "2.0.0"
+  spec.summary      = "Provides a simple, secure and fast checkout experience to customers using your iOS application."
 
-  s.homepage         = 'https://github.com/evertec/athmovil-ios-sdk'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Evertec' => 'christopher.bautista@evertecinc.com' }
-  s.source           = { :git => 'https://github.com/evertec/athmovil-ios-sdk.git', :tag => s.version }
+  spec.description  = <<-DESC
+Provides a simple, secure and fast checkout experience to customers paying on your iOS application. After integrating our Payment Button on your app you will be able to receive instant payments from more than a million ATH Movil users.
+                   DESC
 
-  s.ios.deployment_target = '10.0'
-  s.swift_version = '4.2'
-  s.source_files = 'athmovil-checkout/athm-checkout/Source/*.{swift}'
+  spec.homepage     = "https://github.com/evertec/athmovil-ios-sdk"
+
+
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
+
+
+  spec.author             = { "Evertec" => "christopher.bautista@evertecinc.com" }
+
+  spec.platform     = :ios
+  spec.ios.deployment_target = "10.0"
+  spec.source       = { :git => "https://github.com/evertec/athmovil-ios-sdk.git", :tag => "#{spec.version}" }
+
+
+  spec.source_files  = "athmovil-checkout/Source/*.{swift}"
+
+  spec.resources = 'athmovil-checkout/*.{pdf,png,jpeg,jpg,storyboard,xib,xcassets}'
+  spec.resource_bundles = { 'athmovil-checkout' => ['athmovil-checkout/ATHMAssets.xcassets'] }
   
-  s.resource_bundles = {'athmovil-checkout' => 'athmovil-checkout/athm-checkout/ATHMAssets.xcassets'}
-  s.resource = 'athmovil-checkout/athm-checkout/*.{png,jpeg,jpg,storyboard,xib,xcassets}'
-
 end

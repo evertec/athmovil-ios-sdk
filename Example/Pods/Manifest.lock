@@ -1,0 +1,16 @@
+PODS:
+  - athmovil-checkout (2.0.0)
+
+DEPENDENCIES:
+  - athmovil-checkout (from `../`)
+
+EXTERNAL SOURCES:
+  athmovil-checkout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  athmovil-checkout: 33a4d228ec02cde5ed905bcca67685906492119b
+
+PODFILE CHECKSUM: 6a37ac172d0733235fa038fb8a886242de157204
+
+COCOAPODS: 1.7.5
