@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
   s.swift_version = '4.2'
-  s.source_files = 'athmovil-checkout/Source/*.swift'
+  s.source_files = 'athmovil-checkout/Source/**/*'
   
   s.resource_bundles = {'athmovil-checkout' => 'athmovil-checkout/ATHMAssets.xcassets'}
   s.resource = 'athmovil-checkout/ATHMAssets.xcassets'
