@@ -23,6 +23,7 @@ Before we get started, let’s configure your project:
 * Add the `athmovil-checkout` pod requirement to your Podfile.
 ```swift
 target 'MyProject' do
+use_frameworks!
 pod 'athmovil-checkout', :git => 'https://github.com/evertec/athmovil-ios-sdk.git'
 end
 ```
