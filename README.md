@@ -166,7 +166,7 @@ extension CheckoutViewController: ATHMCheckoutDelegate {
 Install athm-simulator and set the configuration of the SDK to `.development`. A simulator that responds transaction requests is included in the SDK.
 
 ## User experience
-![alt text](https://preview.ibb.co/cU7xiz/API_Flow.png)
+![paymentux](paymentux.png)
 
 ## Legal
 ### Terms for the use of the API
