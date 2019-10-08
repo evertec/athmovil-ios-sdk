@@ -29,6 +29,8 @@
 		1BE9EDF623356371001D153D /* CheckoutDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDDF23356371001D153D /* CheckoutDefaultTableViewCell.swift */; };
 		1BE9EDF723356371001D153D /* TransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDE123356371001D153D /* TransactionItem.swift */; };
 		1BE9EDF823356371001D153D /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9EDE223356371001D153D /* Transaction.swift */; };
+		1BF4ABEB234D343E00BA67D6 /* CheckoutEditFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF4ABE9234D343E00BA67D6 /* CheckoutEditFooterTableViewCell.xib */; };
+		1BF4ABEC234D343E00BA67D6 /* CheckoutEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF4ABEA234D343E00BA67D6 /* CheckoutEditViewController.storyboard */; };
 		21D0927D672C2F03BE3394F5 /* Pods_athmovil_checkout_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D01C08088F6C7E8227C1B /* Pods_athmovil_checkout_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		1BE9EDDF23356371001D153D /* CheckoutDefaultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		1BE9EDE123356371001D153D /* TransactionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
 		1BE9EDE223356371001D153D /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		1BF4ABE9234D343E00BA67D6 /* CheckoutEditFooterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckoutEditFooterTableViewCell.xib; sourceTree = "<group>"; };
+		1BF4ABEA234D343E00BA67D6 /* CheckoutEditViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckoutEditViewController.storyboard; sourceTree = "<group>"; };
 		5A26A36F835623255AC717C2 /* Pods-athmovil-checkout-demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demoTests.release.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demoTests/Pods-athmovil-checkout-demoTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E4A50D7AB8F9B8EEA17CC75 /* Pods-athmovil-checkout-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demo.debug.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		657F6389C30D4AA0D7FED334 /* Pods-athmovil-checkout-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demo.release.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 		1BE9EDCE23356371001D153D /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				1BF4ABE9234D343E00BA67D6 /* CheckoutEditFooterTableViewCell.xib */,
+				1BF4ABEA234D343E00BA67D6 /* CheckoutEditViewController.storyboard */,
 				1B92D12E2335656700D505E1 /* ShippingTableViewCell.xib */,
 				1B92D12D2335656700D505E1 /* TransactionConfirmationViewController.storyboard */,
 				1BE9EDCF23356371001D153D /* SelectThemeViewController.swift */,
@@ -235,8 +241,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF4ABEC234D343E00BA67D6 /* CheckoutEditViewController.storyboard in Resources */,
 				1BE9EDA123355A05001D153D /* LaunchScreen.storyboard in Resources */,
 				1BE9ED9E23355A05001D153D /* Assets.xcassets in Resources */,
+				1BF4ABEB234D343E00BA67D6 /* CheckoutEditFooterTableViewCell.xib in Resources */,
 				1B92D12C2335655300D505E1 /* CheckoutSummaryTableViewCell.xib in Resources */,
 				1B92D12F2335656700D505E1 /* TransactionConfirmationViewController.storyboard in Resources */,
 				1B92D12A2335655300D505E1 /* CheckoutDefaultTableViewCell.xib in Resources */,
