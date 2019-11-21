@@ -15,4 +15,5 @@ struct TransactionItem {
     let name: String
     let price: String
     var quantity: String
+    let metadata: String
 }

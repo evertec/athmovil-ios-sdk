@@ -27,19 +27,22 @@ extension Transaction {
                 desc: "Black and Gray",
                 name: "Shirt",
                 price: "20.00",
-                quantity: "1"),
+                quantity: "1",
+                metadata: "metadata-p1"),
             TransactionItem(
                 image: UIImage(named: "p3")!,
                 desc: "Black",
                 name: "Pants",
                 price: "50.00",
-                quantity: "1"),
+                quantity: "1",
+                metadata: "metadata1-p3"),
             TransactionItem(
                 image: UIImage(named: "p2")!,
                 desc: "Tan bots",
                 name: "Shoes",
                 price: "30.00",
-                quantity: "1")
+                quantity: "1",
+                metadata: "metadata1-p2")
         ]
     }
     

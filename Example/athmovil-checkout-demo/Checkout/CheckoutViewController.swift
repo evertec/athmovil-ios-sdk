@@ -104,7 +104,7 @@ class CheckoutViewController: UIViewController {
                 name: item.name,
                 priceNumber: price,
                 quantity: Int(item.quantity)!,
-                metadata: nil) {
+                metadata: item.metadata) {
 
             items.append(newElement)
             }
