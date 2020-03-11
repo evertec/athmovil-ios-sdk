@@ -14,7 +14,7 @@ Before you begin, please review the following prerequisites:
 
 * Have the API key of your Business account at hand. You can view your API key on the settings section of the ATH Móvil Business application for iOS or Android.
 
-If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466.
+If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form: https://forms.gle/ZSeL8DtxVNP2K2iDA.
 
 
 ## Installation
