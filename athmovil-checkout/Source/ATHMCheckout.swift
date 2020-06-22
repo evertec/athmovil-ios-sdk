@@ -255,6 +255,8 @@ public enum AMErrorType: String, Error {
             "?transaction_data=\(jsonString)") else { throw AMErrorType.malformedURLException }
 
         let urlOpener = URLOpener(application: UIApplication.shared)
-        urlOpener.openWebsite(url: backURL, alternateURL: appStoreURL, completion: nil)
+        DispatchQueue.main.async {
+          urlOpener.openWebsite(url: backURL, alternateURL: appStoreURL, completion: nil)
+        }
     }
 }
