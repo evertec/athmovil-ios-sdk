@@ -24,6 +24,8 @@ If you need help signing up, adding a card or have any other question please ref
 ## Installation
 Before we get started, let’s configure your project:
 
+* Install CocoaPods, <a href="https://cocoapods.org">click here</a> for Instrucction.
+* Use `pod init` to Initiate Podfile
 * Add the `athmovil-checkout` pod requirement to your Podfile.
 ```swift
 target 'MyProject' do
@@ -31,7 +33,6 @@ use_frameworks!
 pod 'athmovil-checkout', :git => 'https://github.com/evertec/athmovil-ios-sdk.git'
 end
 ```
-
 * Execute `pod install` to complete the installation of the SDK pod.
 
 ## Usage
@@ -57,7 +58,7 @@ Notes:
 * For instructions on how to define a custom URL scheme for your application
 <a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>.
 
-### Handle the callback of the URL scheme.
+### Handle the callback of the URL scheme with AppDelegate.
 ```swift
 func application(_ app: UIApplication, open url: URL, options:
 [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -70,6 +71,17 @@ do {
 
 return true
 }
+```
+### Handle the callback of the URL scheme with SceneDelegate.
+```swift
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
+    {
+        do {
+            try ATHMCheckout.shared.handleIncomingURL(url: URLContexts.first!.url)
+        } catch let error {
+            print(error)
+        }
+    }
 ```
 ### Get the "Pay with ATH Móvil" button.
 ```swift
@@ -150,10 +162,10 @@ try ATHMCheckout.shared.checkout(with: payment)
 print(error)
 }
 ```
-
 ### Implement the response delegate on your controller.
+Remember to change 'CheckoutViewController' to your UIViewController name.
 ```swift
-extension CheckoutViewController: ATHMCheckoutDelegate {
+extension CheckoutViewController: AMCheckoutDelegate {
     func onCompletedPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
         //Handle response
     }
