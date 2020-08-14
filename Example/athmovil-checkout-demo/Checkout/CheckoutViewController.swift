@@ -59,7 +59,7 @@ class CheckoutViewController: UIViewController {
 
     @objc func payWithATHMButtonPressed(_ sender: Any) {
 
-        guard let payment = getPayment(with: transaction)
+        guard let payment = try? getPayment(with: transaction)
             else { return }
         
         ATHMCheckout.shared.publicToken = userPref.publicToken
@@ -93,21 +93,20 @@ class CheckoutViewController: UIViewController {
         ])
     }
 
-    fileprivate func getPayment(with transaction: Transaction) -> ATHMPayment? {
+    fileprivate func getPayment(with transaction: Transaction) throws -> ATHMPayment? {
 
         var items: [ATHMPaymentItem] = []
-
-        for item in transaction.itemList {
+        var list = transaction.itemList
+        if list.isEmpty { list = Transaction.dummyTransactionItemList }
+        for item in list {
             let price = NSNumber(value: Double(item.price)!)
-            if let newElement = try? ATHMPaymentItem(
+            let newElement = try ATHMPaymentItem(
                 desc: item.desc,
                 name: item.name,
                 priceNumber: price,
                 quantity: Int(item.quantity)!,
-                metadata: item.metadata) {
-
+                metadata: item.metadata)
             items.append(newElement)
-            }
         }
         
         let totalNumber = NSNumber(value: Double(transaction.total)!)

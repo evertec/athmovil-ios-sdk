@@ -13,7 +13,7 @@ import athmovil_checkout
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let callbackURL = "athm-checkout"
+    let callbackURL = "athm-internal-demo"
     var version = "1.0.0"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -25,7 +25,7 @@ Provides a simple, secure and fast checkout experience to customers paying on yo
   spec.author             = { "Evertec" => "christopher.bautista@evertecinc.com" }
 
   spec.platform     = :ios
-  spec.ios.deployment_target = "10.0"
+  spec.ios.deployment_target = "11.0"
   spec.source       = { :git => "https://github.com/evertec/athmovil-ios-sdk.git", :tag => "#{spec.version}" }
 
 
@@ -33,5 +33,6 @@ Provides a simple, secure and fast checkout experience to customers paying on yo
 
   spec.resources = 'athmovil-checkout/*.{pdf,png,jpeg,jpg,storyboard,xib,xcassets}'
   spec.resource_bundles = { 'athmovil-checkout' => ['athmovil-checkout/ATHMAssets.xcassets'] }
+  spec.swift_versions = ['5.1', '5.2']
   
 end
