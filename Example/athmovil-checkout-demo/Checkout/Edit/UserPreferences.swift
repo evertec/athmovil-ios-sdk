@@ -13,14 +13,14 @@ class UserPreferences: NSObject, NSCoding {
     // CONFIGURATION
     var publicToken = "fb1f7ae2849a07da1545a89d997d8a435a5f21ac"
     var timeOut = 600.0
-    var paymentAmount = 111.5
+    var paymentAmount = 1.0
     var theme = 0
+    
     // OPTIONAL PARAMETERS
-    var subTotalIsOn = true
-    var taxIsOn = true
-    var metadata1IsOn = true
-    var metadata2IsOn = true
-    var itemsIsOn = true
+    var subTotal = 0.0
+    var tax = 0.0
+    var metadata1 = ""
+    var metadata2 = ""
     
     fileprivate override init() {
         super.init()
@@ -33,11 +33,10 @@ class UserPreferences: NSObject, NSCoding {
         aCoder.encode(paymentAmount, forKey: "paymentAmount")
         aCoder.encode(theme, forKey: "themeIndex")
         
-        aCoder.encode(subTotalIsOn, forKey: "subTotalIsOn")
-        aCoder.encode(taxIsOn, forKey: "taxIsOn")
-        aCoder.encode(metadata1IsOn, forKey: "metadata1IsOn")
-        aCoder.encode(metadata2IsOn, forKey: "metadata2IsOn")
-        aCoder.encode(itemsIsOn, forKey: "itemsIsOn")
+        aCoder.encode(subTotal, forKey: "subTotal")
+        aCoder.encode(tax, forKey: "tax")
+        aCoder.encode(metadata1, forKey: "metadata1")
+        aCoder.encode(metadata2, forKey: "metadata2")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,11 +45,10 @@ class UserPreferences: NSObject, NSCoding {
         paymentAmount = aDecoder.decodeDouble(forKey: "paymentAmount")
         theme = aDecoder.decodeInteger(forKey: "themeIndex")
         
-        subTotalIsOn = aDecoder.decodeBool(forKey: "subTotalIsOn")
-        taxIsOn = aDecoder.decodeBool(forKey: "taxIsOn")
-        metadata1IsOn = aDecoder.decodeBool(forKey: "metadata1IsOn")
-        metadata2IsOn = aDecoder.decodeBool(forKey: "metadata2IsOn")
-        itemsIsOn = aDecoder.decodeBool(forKey: "itemsIsOn")
+        subTotal = aDecoder.decodeDouble(forKey: "subTotal")
+        tax = aDecoder.decodeDouble(forKey: "tax")
+        metadata1 = aDecoder.decodeObject(forKey: "metadata1") as? String ?? ""
+        metadata2 = aDecoder.decodeObject(forKey: "metadata2") as? String ?? ""
     }
 }
 
@@ -73,4 +71,26 @@ extension UserPreferences {
         }
         return UserPreferences()
     }
+}
+
+
+extension UserPreferences{
+    
+    public var nameTheme: String{
+        return self.getName(index: self.theme)
+    }
+    
+    func getName(index: Int) -> String{
+        switch index {
+            case 0:
+            return "Original"
+            case 1:
+            return "Light"
+            case 2:
+            return "Dark"
+            default:
+            return ""
+        }
+    }
+    
 }

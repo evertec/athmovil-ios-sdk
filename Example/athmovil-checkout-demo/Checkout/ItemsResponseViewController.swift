@@ -24,15 +24,18 @@ class ItemsResponseViewController: UIViewController {
     fileprivate func setupNavigationBar() {
         title = "Items"
         let chevronIcon = UIImage(named: "ic_chevron")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: chevronIcon , style: .plain, target:
-            self, action: #selector(chevronIconPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: chevronIcon ,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(chevronIconPressed))
         self.navigationController?.navigationBar.tintColor = .black
     }
     
     @objc func chevronIconPressed() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
 }
 
 extension ItemsResponseViewController: UITableViewDelegate {

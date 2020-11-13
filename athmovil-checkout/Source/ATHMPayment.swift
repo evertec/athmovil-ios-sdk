@@ -1,91 +1,70 @@
 //
-//  AMPayment.swift
-//  athm-checkout
+//  ATHMPurchase.swift
+//  athmovil-checkout
 //
-//  Created by Leonardo Maldonado on 5/17/18.
-//  Copyright © 2018 Evertec, Inc. All rights reserved.
+//  Created by Hansy Enrique on 7/17/20.
+//  Copyright © 2020 Evertec. All rights reserved.
 //
 
 import Foundation
 
-@objcMembers
-public class ATHMPayment: NSObject {
-    public var total: NSNumber
-    public var subtotal: NSNumber?
-    public var tax: NSNumber?
-    public var metadata1: String?
-    public var metadata2: String?
-    public var items: [ATHMPaymentItem]?
+
+@objc(ATHMPayment)
+public class ATHMPayment: NSObject{
     
-    @objc public init(
-        total: NSNumber,
-        subtotal: NSNumber? = nil,
-        tax: NSNumber? = nil,
-        metadata1: String? = nil,
-        metadata2: String? = nil,
-        items: [ATHMPaymentItem]? = nil) throws {
+    ///Total of the transaction, it is not calculated in the items
+    @objc public let total: NSNumber
+    
+    ///Purchase subtotal in case the client would not need the subtotal can send as null
+    @objc public var subtotal: NSNumber = NSNumber(value: 0.0)
+    
+    ///Purchase Tax it could be null and the tax would no send to ATH Movil
+    @objc public var tax: NSNumber = NSNumber(value: 0.0)
+    
+    ///Fee amount of the payment
+    @objc public var fee: NSNumber = NSNumber(value: 0.0)
+    
+    ///Net amount of the payment it means total - fee
+    @objc public var netAmount: NSNumber = NSNumber(value: 0.0)
+    
+    ///Purchase items the client could send the list empty and ATH Movil personal will response with the items
+    @objc public var items: [ATHMPaymentItem] = [ATHMPaymentItem]()
+    
+    ///Purchase additional information one it could be null, if the client will send something ATH Movil Personal is going to return the information
+    @objc public var metadata1: String = ""
+    
+    ///Purchase additional information two it could be null, if the client will send something ATH Movil Personal is going to return the information
+    @objc public var metadata2: String = ""
+    
+    @objc public override var description: String{
+        """
+        Payment:
+            - total: \(total.doubleValue)
+            - subtotal: \(subtotal.doubleValue)
+            - tax: \(tax.doubleValue)
+            - fee: \(fee.doubleValue)
+            - netAmount: \(netAmount.doubleValue)
+            - metadata1: \(metadata1)
+            - metadata2: \(metadata1)
+            \(items.description)
+        """
+    }
+    
+    /**
+     Creates an instance of the representation of the purchase, it is needed the total and the business account and the appclient from comes the request
+        - Parameters:
+         - total: Purchases total it has to be greater than zero
+         - account: Business account, it is needed the token
+         - appClient: Third app client
+     */
+    @objc required public init(total: NSNumber){
         
         self.total = total
-        self.subtotal = subtotal
-        self.tax = tax
-        self.metadata1 = metadata1
-        self.metadata2 = metadata2
-        self.items = items
-        
+
         super.init()
-        try self.validateForSpecialChars()
-    }
-}
-
-@objc extension ATHMPayment {
-    public var toDictionary: [String: Any]? {
         
-        guard let publicToken = ATHMCheckout.shared.publicToken else { return nil }
+    }
         
-        guard let callbackURL = ATHMCheckout.shared.callbackURL else { return nil }
-        
-        let expiresIn = ATHMCheckout.shared.timeout
-        
-        return [
-            "publicToken": publicToken,
-            "scheme": callbackURL,
-            "expiresIn": expiresIn,
-            "total": total,
-            "subtotal": subtotal ?? "",
-            "tax": tax ?? "",
-            "metadata1": metadata1 ?? "",
-            "metadata2": metadata2 ?? "",
-            "items": items?.map({ $0.toDictionary }) ?? ""
-        ]
-    }
-}
-
-extension ATHMPayment {
-    var metadata1HasSpecialChars: Bool {
-        return metadata1 != nil && metadata1!.containsSpecialChars
-    }
-    
-    var metadata2HasSpecialChars: Bool {
-        return metadata2 != nil && metadata2!.containsSpecialChars
-    }
-    
-    private func validateForSpecialChars() throws {
-        if metadata1HasSpecialChars {
-            throw AMErrorType.specialCharactersNotAllowed
-        }
-        
-        if metadata2HasSpecialChars {
-            throw AMErrorType.specialCharactersNotAllowed
-        }
-    }
-}
-
-extension String {
-    var containsSpecialChars: Bool {
-        let pattern = ".*[^\\sA-Za-z0-9].*"
-        let regex = NSRegularExpression(pattern)
-        return regex.matches(self)
-    }
 }
 
 

@@ -10,6 +10,10 @@ import UIKit
 import athmovil_checkout
 
 class SelectThemeViewController: UITableViewController {
+    
+    let availableThemes = [ATHMThemeClassic(),
+                           ATHMThemeLight(),
+                           ATHMThemeNight()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,29 +47,28 @@ class SelectThemeViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return availableThemes.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        if let theme = AMCheckoutButtonStyle(rawValue: indexPath.row) {
-            cell.textLabel?.text = theme.name
-            if UserPreferences.shared.theme == indexPath.row {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+        
+        if UserPreferences.shared.theme == indexPath.row {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
+        
+        cell.textLabel?.text = UserPreferences.shared.getName(index: indexPath.row)
+    
         return cell
     }
     
 
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let theme = AMCheckoutButtonStyle(rawValue: indexPath.row) {
-            UserPreferences.shared.theme = theme.rawValue
-            tableView.reloadData()
-        }
+        UserPreferences.shared.theme = indexPath.row
+        tableView.reloadData()
     }
 }

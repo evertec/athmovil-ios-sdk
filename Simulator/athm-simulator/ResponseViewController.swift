@@ -8,83 +8,113 @@
 
 import UIKit
 
-enum ResponseType: Int {
-    case timeout
-    case canceled
-    case success
-    
-    var txt: String {
-        switch self {
-        case .timeout:
-            return "TimeOut"
-        case .canceled:
-            return "Canceled"
-        case .success:
-            return "Success"
-        }
-    }
+enum ResponseType: String {
+    case expired = "expired"
+    case cancelled = "cancelled"
+    case completed = "completed"
 }
 
 class ResponseViewController: UIViewController {
     
-    var transaction: Transaction!
+    var request: TransactionRequest!
     
-    @IBAction func responsePressed(_ sender: UIButton) {
-        var dictionary: [String: Any?] = [:]
-        let responseType = ResponseType(rawValue: sender.tag)
-        switch responseType {
-        case .timeout?:
-            dictionary = [
-                "completed": false,
-                "status": ResponseType.timeout.txt,
-                "referenceNumber": "1000000001",
-                "total": transaction.total,
-                "subtotal": transaction.subtotal ?? nil,
-                "tax": transaction.tax ?? nil,
-                "metadata1": transaction.metadata1 ?? nil,
-                "metadata2": transaction.metadata2 ?? nil,
-                "items": transaction.items?.map({ $0.toDictionary }) ?? nil
-            ]
-        case .canceled?:
-            dictionary = [
-                "completed": false,
-                "status": ResponseType.canceled.txt,
-                "referenceNumber": "1000000001",
-                "total": transaction.total,
-                "subtotal": transaction.subtotal ?? nil,
-                "tax": transaction.tax ?? nil,
-                "metadata1": transaction.metadata1 ?? nil,
-                "metadata2": transaction.metadata2 ?? nil,
-                "items": transaction.items?.map({ $0.toDictionary }) ?? nil
-            ]
-        case .success?:
-            dictionary = [
-                "completed": true,
-                "status": ResponseType.success.txt,
-                "referenceNumber": "1000000001",
-                "total": transaction.total,
-                "subtotal": transaction.subtotal ?? nil,
-                "tax": transaction.tax ?? nil,
-                "metadata1": transaction.metadata1 ?? nil,
-                "metadata2": transaction.metadata2 ?? nil,
-                "items": transaction.items?.map({ $0.toDictionary }) ?? nil
-            ]
-        default:
-            return
-        }
+    @IBAction func responseCompletedPressed(_ sender: UIButton) {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
         
-        sendResponse(with: dictionary)
+    
+        let response = TransactionResponse(status: "completed",
+                                          date: dateFormatter.string(from: Date()),
+                                          referenceNumber: "1000000001",
+                                          dailyTransactionID: 1,
+                                          subtotal: request.subtotal,
+                                          tax: request.tax,
+                                          total: request.total,
+                                          fee: 1,
+                                          netAmount: 1,
+                                          name: "Completed Test",
+                                          email: "testCompleted@email.com",
+                                          phoneNumber: "(787) 111-1111",
+                                          metadata1: request.metadata1,
+                                          metadata2: request.metadata2,
+                                          items: request.items,
+                                          version: "3.0")
+        
+        sendResponse(with: response)
     }
     
-    func sendResponse(with dictionary: [String: Any?]) {
+    @IBAction func responseExpiredPressed(_ sender: UIButton) {
         
-        guard let jsonString = dictionary.toJSONString?.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed) else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
         
-        guard let scheme = transaction.scheme else { return }
+    
+        let response = TransactionResponse(status: "expired",
+                                           date: dateFormatter.string(from: Date()),
+                                           referenceNumber: "",
+                                           dailyTransactionID: 0,
+                                           subtotal: request.subtotal,
+                                           tax: request.tax,
+                                           total: request.total,
+                                           fee: 0,
+                                           netAmount: 0,
+                                           name: "Expired Test",
+                                           email: "testExpired@email.com",
+                                           phoneNumber: "(787) 222-2222",
+                                           metadata1: request.metadata1,
+                                           metadata2: request.metadata2,
+                                           items: request.items,
+                                           version: "3.0")
         
-        guard let url = URL(string: "\(scheme)://?athm_payment_data=\(jsonString)") else { return }
+        sendResponse(with: response)
+    }
+    
+    @IBAction func responseCancelledPressed(_ sender: UIButton) {
         
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
+        
+        let response = TransactionResponse(status: "cancelled",
+                                           date: dateFormatter.string(from: Date()),
+                                           referenceNumber: "",
+                                           dailyTransactionID: 0,
+                                           subtotal: request.subtotal,
+                                           tax: request.tax,
+                                           total: request.total,
+                                           fee: 0,
+                                           netAmount: 0,
+                                           name: "Cancelled Test",
+                                           email: "testCancelled@email.com",
+                                           phoneNumber: "(787) 333-3333",
+                                           metadata1: request.metadata1,
+                                           metadata2: request.metadata2,
+                                           items: request.items,
+                                           version: "3.0")
+        
+        sendResponse(with: response)
+    }
+    
+    func sendResponse(with response: TransactionResponse) {
+        
+        do {
+            let decoder = JSONEncoder()
+            let dataResponse = try decoder.encode(response)
+            let stringData = String(data: dataResponse, encoding: String.Encoding.utf8)
+            
+            guard let jsonString = stringData?.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed) else {
+                return
+            }
+            
+            guard let url = URL(string: "\(request.scheme)://?athm_payment_data=\(jsonString)") else {
+                return
+            }
+            
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            
+        } catch {
+            debugPrint("Error sending response to dummy")
+        }
     }
 }
 

@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    fileprivate func handleIncomingURL(url: URL, completion: (Bool, Transaction?, ErrorType?) -> Void) {
+    fileprivate func handleIncomingURL(url: URL, completion: (Bool, TransactionRequest?, ErrorType?) -> Void) {
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
             else { completion(false, nil, .malformedURLException); return }
@@ -53,16 +53,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let query = components.getQueryItem(named: "transaction_data")
             else { completion(false, nil, .requiredURLQueryNotFound); return }
         
-        guard let json = query.value?.toJSON else {
+        guard let jsonData = query.value, let dataRequest = jsonData.data(using: String.Encoding.utf8) else {
             completion(false, nil, .decodingJSONException); return }
-        
-        guard let transaction = Transaction(json: json) else {
-            completion(false, nil, .requiredJSONPropertiesNotFound); return }
-        
-        completion(true, transaction, nil)
+
+        do {
+            let decoder = JSONDecoder()
+            let request = try decoder.decode(TransactionRequest.self, from: dataRequest)
+
+            completion(true, request, nil)
+            
+        } catch {
+            completion(false, nil, .requiredJSONPropertiesNotFound)
+        }
     }
     
-    fileprivate func presentResponseScreen(with transaction: Transaction) {
+    fileprivate func presentResponseScreen(with transaction: TransactionRequest) {
         let storyboard = UIStoryboard.init(
             name: "ResponseViewController", bundle: nil)
         
@@ -70,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .instantiateInitialViewController()
             as! ResponseViewController
         
-        responseViewController.transaction = transaction
+        responseViewController.request = transaction
         
         window?.rootViewController = responseViewController
     }
@@ -100,10 +105,11 @@ extension String {
         
         guard let data = query.data(using: .utf8) else { return nil }
         
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            as? [String: Any] else { return nil }
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
+            return nil
+        }
         
-        return json
+        return json as? [String: Any]
     }
 }
 

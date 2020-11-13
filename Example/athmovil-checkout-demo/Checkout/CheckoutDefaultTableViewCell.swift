@@ -7,10 +7,8 @@
 //
 
 import UIKit
+import athmovil_checkout
 
-protocol CheckoutDefaultCellDelegate: class {
-    func didUpdateQuantity(at index: UITableViewCell, with value: String)
-}
 
 class CheckoutDefaultTableViewCell: UITableViewCell {
     
@@ -20,19 +18,17 @@ class CheckoutDefaultTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var quantity: UILabel!
+    @IBOutlet weak var metadata: UILabel!
     
-    weak var delegate: CheckoutDefaultCellDelegate?
-    
-    var transactionItem: TransactionItem! {
+    var transactionItem: ATHMPaymentItem! {
         didSet {
-            productImageView.image = transactionItem?.image
-            nameLabel.text = transactionItem?.name
-            if let price = transactionItem?.price {
-                priceLabel.text = "$\(price)"
-            } else {
-                priceLabel.text = "N/A"
-            }
-            descLabel.text = transactionItem?.desc
+
+            nameLabel.text = transactionItem.name
+            priceLabel.text = "$\(transactionItem.price)"
+            descLabel.text = transactionItem.desc
+            quantity.text = "x \(transactionItem.quantity)"
+            metadata.text = "\(transactionItem.metadata)"
         }
     }
 
@@ -41,13 +37,7 @@ class CheckoutDefaultTableViewCell: UITableViewCell {
         
         productImageView.layer.cornerRadius = 4
         productImageView.layer.masksToBounds = true
+        self.selectionStyle = .none
     }
     
-    @IBAction func stepperViewValueChanged(_ sender: UIStepper) {
-        let value = Int(sender.value)
-        let stringValue = String(value)
-        transactionItem?.quantity = stringValue
-        delegate?.didUpdateQuantity(at:
-            self, with: stringValue)
-    }
 }

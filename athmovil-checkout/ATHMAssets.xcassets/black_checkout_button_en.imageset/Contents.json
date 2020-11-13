@@ -1,21 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "pay-button-image-black.png",
       "idiom" : "universal",
-      "filename" : "pay-button-image-black.pdf",
       "scale" : "1x"
     },
     {
+      "filename" : "pay-button-image-black@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "pay-button-image-black@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

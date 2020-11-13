@@ -27,7 +27,7 @@ TransactionConfirmationViewModelType, TransactionConfirmationOutputs {
     
     var tableData: [[String: String]] = []
     
-    var items: [ATHMPaymentItem]?
+    var responsePayment: ATHMPaymentResponse?
     
     var done: (() -> Void)!
     
@@ -42,6 +42,20 @@ TransactionConfirmationViewModelType, TransactionConfirmationOutputs {
         self.navigationController?.navigationBar.barTintColor = .white
         self.tableView.tableFooterView = UIView()
         doneButton.roundedWithShadow()
+        
+        if let responsePayment = responsePayment{
+            tableData.append(contentsOf: build(responsePayment))
+            tableData.append(["items": "total \(responsePayment.payment.items.count)"])
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIndex = self.tableView.indexPathForSelectedRow{
+            tableView.deselectRow(at: selectedIndex, animated: false)
+        }
     }
     
     @IBAction func doneButtonPressed(){
@@ -50,8 +64,40 @@ TransactionConfirmationViewModelType, TransactionConfirmationOutputs {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ItemsResponseViewController {
-            controller.items = items
+            controller.items = self.responsePayment?.payment.items ?? [ATHMPaymentItem]()
         }
+    }
+    
+    /**
+     Creates the dicctionary to show in the result table view
+     - Parameters:
+         - payment: information of the payment
+         - status: Current status of the payment
+     */
+    fileprivate func build(_ payment: ATHMPaymentResponse) -> [[String: String]]{
+        
+        let formatDate = DateFormatter()
+        formatDate.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
+        
+        let dateTrasaction = formatDate.string(from: payment.status.date)
+        
+        let response: [[String: String]] =
+                        [["status": payment.status.statusPayment],
+                        ["date": dateTrasaction],
+                        ["referenceNumber": payment.status.referenceNumber],
+                        ["dailyTransactionID": "\(payment.status.dailyTransactionID)"],
+                        ["name": payment.customer.name],
+                        ["phoneNumber": "\(payment.customer.phoneNumber)"],
+                        ["email": payment.customer.email],
+                        ["total": String(format: "$ %.2f", payment.payment.total.doubleValue)],
+                        ["tax": String(format: "$ %.2f", payment.payment.tax.doubleValue)],
+                        ["subtotal": String(format: "$ %.2f", payment.payment.subtotal.doubleValue)],
+                        ["fee": String(format: "$ %.2f", payment.payment.fee.doubleValue)],
+                        ["netAmount": String(format: "$ %.2f", payment.payment.netAmount.doubleValue)],
+                        ["metadata1": payment.payment.metadata1],
+                        ["metadata2": payment.payment.metadata2]]
+        
+        return response
     }
 }
 
@@ -69,13 +115,16 @@ extension TransactionConfirmationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "value1")
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
         cell.backgroundColor = .white
         let key = tableData[indexPath.row].keys.first
         let value = tableData[indexPath.row].values.first
         cell.textLabel?.text = key
         cell.detailTextLabel?.text = value
-        if key == "items" {
+        
+        if key == "items", let totalItems = responsePayment?.payment.items.count, totalItems > 0  {
             cell.accessoryType = .disclosureIndicator
         } else {
             cell.accessoryType = .none

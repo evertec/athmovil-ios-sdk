@@ -19,19 +19,6 @@ class CheckoutSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var taxValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
     
-    var transaction: Transaction? {
-        didSet {
-            subTotalLabel.text = "Subtotal"
-            taxLabel.text = "Tax(11.5%)"
-            totalLabel.text = "TOTAL"
-            guard let t = transaction else {
-                return
-            }
-            subTotalValueLabel.text = "$\(t.subTotal)"
-            taxValueLabel.text = "$\(t.tax)"
-            totalValueLabel.text = "$\(t.total)"
-        }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

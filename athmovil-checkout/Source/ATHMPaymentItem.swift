@@ -1,84 +1,61 @@
 //
-//  AMPaymentItem.swift
-//  athm-checkout
+//  ATHMPurchaseItem.swift
+//  athmovil-checkout
 //
-//  Created by Leonardo Maldonado on 5/17/18.
-//  Copyright © 2018 Evertec, Inc. All rights reserved.
+//  Created by Hansy Enrique on 7/17/20.
+//  Copyright © 2020 Evertec. All rights reserved.
 //
 
 import Foundation
 
-@objcMembers
-public class ATHMPaymentItem: NSObject, Codable {
-    public let desc: String
-    public let name: String
-    private var priceValue: Double!
-    public var quantity: Int
-    public var metadata: String?
+@objc(ATHMPaymentItem)
+final public class ATHMPaymentItem: NSObject{
     
-    @objc public init(desc: String, name: String, priceNumber: NSNumber, quantity: Int, metadata: String? = nil) throws {
-        self.desc = desc
-        self.name = name
-        self.priceValue = priceNumber.doubleValue
+    ///Item name as the client request
+    @objc public let name: String
+
+    ///Item quantity as the client request, it must be greater than zero
+    @objc public let quantity: Int
+    
+    ///Item price, it must be greater than zero
+    @objc public let price: NSNumber
+    
+    ///Description of the item
+    @objc public var desc: String = ""
+    
+    ///Additional information of the item if the client would send some information ATH Móvil Personal will return this information
+    @objc public var metadata: String  = ""
+    
+    
+    @objc override public var description: String{
+        """
+        Payment Item:
+            - price: \(price.doubleValue)
+            - name: \(name)
+            - quantity: \(quantity)
+            - desc: \(desc)
+            - metadata: \(metadata)
+        """
+    }
+    
+
+    /**
+        Creates a representation of the item, this object does not calculate the price, it means it is not setting price * quantity, price is defined by client
+         - Parameters:
+             - name: Item name there is not contraint about the content
+             - price: Item price must be greater than zero, the price total of the item
+             - quantity: quantity of the
+             - desc: Item description, can not be empty
+     */
+    @objc required public init(name: String, price: NSNumber, quantity: Int) {
+        self.name = name.trimmingCharacters(in: .whitespaces)
+        self.price = price
         self.quantity = quantity
-        self.metadata = metadata
         
         super.init()
-        try self.validateForSpecialChars()
     }
     
-    private enum CodingKeys : String, CodingKey {
-        case desc, name, priceValue = "price", quantity, metadata
-    }
 }
 
-extension ATHMPaymentItem {
-    var toDictionary: [String: Any] {
-        return [
-            "desc": desc,
-            "name": name,
-            "price": priceValue ?? 0,
-            "quantity": quantity,
-            "metadata": metadata ?? ""
-        ]
-    }
-}
 
-extension ATHMPaymentItem {
-    public var price: NSNumber {
-        get {
-            return NSNumber(value: self.priceValue)
-        }
-        set {
-            self.priceValue = newValue.doubleValue
-        }
-    }
-}
 
-extension ATHMPaymentItem {
-    var metadataHasSpecialChars: Bool {
-        return metadata != nil && metadata!.containsSpecialChars
-    }
-    
-    var descHasSpecialChars: Bool {
-        return desc.containsSpecialChars
-    }
-    
-    var nameHasSpecialChars: Bool {
-        return name.containsSpecialChars
-    }
-    
-    private func validateForSpecialChars() throws {
-        if metadataHasSpecialChars {
-            throw AMErrorType.specialCharactersNotAllowed
-        }
-        
-        if descHasSpecialChars {
-            throw AMErrorType.specialCharactersNotAllowed
-        }
-        
-        if nameHasSpecialChars {
-            throw AMErrorType.specialCharactersNotAllowed
-        }
-    }
-}

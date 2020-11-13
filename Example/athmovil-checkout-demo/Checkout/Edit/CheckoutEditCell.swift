@@ -18,7 +18,6 @@ enum DefaultSectionCellType: Int {
     case tax
     case metadata1
     case metadata2
-    case items
 }
 
 extension DefaultSectionCellType {
@@ -33,8 +32,6 @@ extension DefaultSectionCellType {
             return "Tax"
         case .subTotal:
             return "Subtotal"
-        case .items:
-            return "Items"
         case .timeOut:
             return "Timeout"
         case .paymentAmount:
@@ -54,6 +51,14 @@ extension DefaultSectionCellType {
             return "Change Timeout"
         case .paymentAmount:
             return "Change Payment Amount"
+        case .subTotal:
+            return "Change Payment SubTotal"
+        case .tax:
+            return "Change Payment Tax"
+        case .metadata1:
+            return "Change Payment Metdata1"
+        case .metadata2:
+            return "Change Payment Metdata2"
         default:
             return ""
         }
@@ -68,28 +73,27 @@ extension DefaultSectionCellType {
             return "Provide a timeout value for the payment process in seconds."
         case .paymentAmount:
             return "Provide the amount to process the payment for."
+        case .subTotal:
+            return "Provide the subtotal to process the payment for."
+        case .tax:
+            return "Provide the tax to process the payment for."
+        case .metadata1:
+            return "Provide the metadata1 to process the payment for."
+        case .metadata2:
+            return "Provide the metadata2 to process the payment for."
         default:
             return ""
         }
     }
-    
-    var messageContentError: String {
-        switch self {
-        case .timeOut:
-            return "The value must be between 60 and 600 seconds."
-        default:
-            return ""
-        }
-    }
-    
+
     var keyBoard: UIKeyboardType {
         switch self {
         case .timeOut:
-            return UIKeyboardType.numberPad
-        case .paymentAmount:
-            return UIKeyboardType.decimalPad
+            return .numberPad
+        case .paymentAmount, .tax, .subTotal:
+            return .numbersAndPunctuation
         default:
-            return UIKeyboardType.default
+            return .default
         }
     }
 }

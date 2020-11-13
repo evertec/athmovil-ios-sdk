@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iCt-BU-9v4">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iCt-BU-9v4">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +11,7 @@
         <!--Response View Controller-->
         <scene sceneID="W9i-mJ-QgI">
             <objects>
-                <viewController storyboardIdentifier="ResponseViewController" id="iCt-BU-9v4" customClass="ResponseViewController" customModule="athmovil_checkout_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResponseViewController" id="iCt-BU-9v4" customClass="ResponseViewController" customModule="athm_simulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r6o-vi-c0R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,23 +21,23 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YI-3Z-e5i">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="30"/>
-                                        <state key="normal" title="Timeout"/>
+                                        <state key="normal" title="Expired"/>
                                         <connections>
-                                            <action selector="responsePressed:" destination="iCt-BU-9v4" eventType="touchUpInside" id="iv3-ou-BYY"/>
+                                            <action selector="responseExpiredPressed:" destination="iCt-BU-9v4" eventType="touchUpInside" id="ILV-1w-3K9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNS-Qi-ObJ">
                                         <rect key="frame" x="0.0" y="62" width="311" height="30"/>
-                                        <state key="normal" title="Canceled"/>
+                                        <state key="normal" title="Cancelled"/>
                                         <connections>
-                                            <action selector="responsePressed:" destination="iCt-BU-9v4" eventType="touchUpInside" id="ntc-gz-ryF"/>
+                                            <action selector="responseCancelledPressed:" destination="iCt-BU-9v4" eventType="touchUpInside" id="ZrD-TY-ZPv"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JM-A8-2Zv">
                                         <rect key="frame" x="0.0" y="124" width="311" height="30"/>
-                                        <state key="normal" title="Success"/>
+                                        <state key="normal" title="Completed"/>
                                         <connections>
-                                            <action selector="responsePressed:" destination="iCt-BU-9v4" eventType="touchUpInside" id="2OM-Do-ZaD"/>
+                                            <action selector="responseCompletedPressed:" destination="iCt-BU-9v4" eventType="touchUpInside" id="phF-YT-NdS"/>
                                         </connections>
                                     </button>
                                 </subviews>

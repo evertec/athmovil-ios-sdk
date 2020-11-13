@@ -14,7 +14,7 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBOutlet weak var tableView: UITableView!
     
     var cellRows: [[DefaultSectionCellType]] =  [[.publicToken,.timeOut,.paymentAmount,.theme],
-                                                 [.subTotal,.tax,.metadata1,.metadata2,.items]]
+                                                 [.subTotal,.tax,.metadata1,.metadata2]]
     
     var titleSection = ["CONFIGURATION","OPTIONAL PARAMETERS"]
     
@@ -74,26 +74,6 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
         }
     }
     
-    @objc fileprivate func accesoryViewChanged(_ sender: UISwitch) {
-        guard let cellType = DefaultSectionCellType(rawValue: sender.tag) else {
-            return
-        }
-        switch cellType {
-        case .subTotal:
-            UserPreferences.shared.subTotalIsOn = sender.isOn
-        case .tax:
-            UserPreferences.shared.taxIsOn = sender.isOn
-        case .metadata1:
-            UserPreferences.shared.metadata1IsOn = sender.isOn
-        case .metadata2:
-            UserPreferences.shared.metadata2IsOn = sender.isOn
-        case .items:
-            UserPreferences.shared.itemsIsOn = sender.isOn
-        default:
-            return
-        }
-    }
-    
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if(event?.subtype == UIEvent.EventSubtype.motionShake) {
             alertPresetConfig()
@@ -126,11 +106,6 @@ extension CheckoutEditViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "SettingsCell")
-        let switchView = UISwitch()
-        switchView.addTarget(self, action: #selector(accesoryViewChanged(_:)), for: .valueChanged)
-        switchView.tintColor = .black
-        switchView.onTintColor = .black
-        cell.accessoryView = switchView
         cell.selectionStyle = .none
         cell.accessoryView?.tag = indexPath.row
         let row = cellRows[indexPath.section][indexPath.row]
@@ -149,25 +124,17 @@ extension CheckoutEditViewController: UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.text = row.title
             cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
-            if let theme = athmovil_checkout.AMCheckoutButtonStyle(rawValue: UserPreferences.shared.theme) {
-                cell.detailTextLabel?.text = theme.name
-            }
+            cell.detailTextLabel?.text = UserPreferences.shared.nameTheme
+
         // OPTIONAL PARAMETERS
         case .subTotal:
-            switchView.isOn = UserPreferences.shared.subTotalIsOn
-            switchView.tag = row.rawValue
+            inputCell(cell, title: row.title, value: "$\(UserPreferences.shared.subTotal)")
         case .tax:
-            switchView.isOn = UserPreferences.shared.taxIsOn
-            switchView.tag = row.rawValue
+            inputCell(cell, title: row.title, value: "$\(UserPreferences.shared.tax)")
         case .metadata1:
-            switchView.isOn = UserPreferences.shared.metadata1IsOn
-            switchView.tag = row.rawValue
+            inputCell(cell, title: row.title, value: UserPreferences.shared.metadata1)
         case .metadata2:
-            switchView.isOn = UserPreferences.shared.metadata2IsOn
-            switchView.tag = row.rawValue
-        case .items:
-            switchView.isOn = UserPreferences.shared.itemsIsOn
-            switchView.tag = row.rawValue
+            inputCell(cell, title: row.title, value: UserPreferences.shared.metadata2)
         }
         
         return cell
@@ -198,17 +165,15 @@ extension CheckoutEditViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0,
-            let row = DefaultSectionCellType(rawValue: indexPath.row) {
-            switch row {
-            case .publicToken, .timeOut, .paymentAmount:
-                changeValue(cellType: row)
-            case .theme:
-                performSegue(withIdentifier: "changeColor", sender: nil)
-            default:
-                break
-            }
+        
+        let type = cellRows[indexPath.section][indexPath.row]
+        
+        if type == .theme{
+            performSegue(withIdentifier: "changeColor", sender: nil)
+            return
         }
+        
+        changeValue(cellType: type)
     }
     
     func changeValue(cellType: DefaultSectionCellType) {
@@ -219,20 +184,22 @@ extension CheckoutEditViewController: UITableViewDelegate {
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            if let text = textField.text, !text.isEmpty {
+            if let text = textField.text {
                 switch cellType{
                 case .publicToken:
                     UserPreferences.shared.publicToken = text
                 case .timeOut:
-                    if let seconds = ATHMCheckout.Seconds(text), seconds >= 60, seconds <= 600 {
-                        UserPreferences.shared.timeOut =  seconds
-                    } else {
-                        self.invalidValueAlert(cellType)
-                    }
+                    UserPreferences.shared.timeOut =  Double(text) ?? 0.0
                 case .paymentAmount:
-                    if let paymentAmount = Double(text) {
-                        UserPreferences.shared.paymentAmount = paymentAmount
-                    }
+                    UserPreferences.shared.paymentAmount = Double(text) ?? 0
+                case .subTotal:
+                    UserPreferences.shared.subTotal = Double(text) ?? 0
+                case .tax:
+                    UserPreferences.shared.tax = Double(text) ?? 0
+                case .metadata1:
+                    UserPreferences.shared.metadata1 = text
+                case .metadata2:
+                    UserPreferences.shared.metadata2 = text
                 default:
                     return
                 }
@@ -242,13 +209,7 @@ extension CheckoutEditViewController: UITableViewDelegate {
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
-    func invalidValueAlert(_ cellType: DefaultSectionCellType){
-        let alertController = UIAlertController(title: cellType.messageTitle,
-                                                message: cellType.messageContentError, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
 }

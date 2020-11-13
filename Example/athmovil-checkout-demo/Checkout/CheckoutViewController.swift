@@ -16,109 +16,96 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var buttonStack: UIStackView!
     fileprivate var userPref = UserPreferences.shared
     
-    lazy var athButton: ATHMCheckoutButton = {
-        return ATHMCheckout.shared.getCheckoutButton(withTarget: self, action: #selector(payWithATHMButtonPressed))
-    }()
-
+    @IBOutlet weak var athmPaymentButton: ATHMButton!
+    
+    var itemsList = [ATHMPaymentItem]()
+    
     @IBOutlet weak var checkoutButton: UIButton! {
         didSet {
             setCheckoutButtonStyle()
         }
     }
 
-    var transaction: Transaction!
     var shipping = Shipping()
-    var descTextCell = ["Contact", "Shipping", "Subtotal", "Tax", "Total"]
+    var descTextCell = ["Contact", "Shipping", "Subtotal", "Tax", "Total", "Metadata1", "Metadata2", "items"]
 
-    /// This index is used to interpolate between the two different types
-    /// of items when the user adds a new item pressing the add button in
-    /// the navigation bar.
-    var interpolationIndex: Int = 0
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        transaction = Transaction.dummyTransaction
-        ATHMCheckout.shared.delegate = self
         
         setupTableView()
         setupNavigationBar()
-        setupCheckoutButton()
+    
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let theme = athmovil_checkout.AMCheckoutButtonStyle(rawValue: UserPreferences.shared.theme) {
-            athButton.style = theme
+        
+        switch UserPreferences.shared.theme {
+            case 1:
+                athmPaymentButton.theme = ATHMThemeLight()
+            case 2:
+                athmPaymentButton.theme = ATHMThemeNight()
+            default:
+                athmPaymentButton.theme = ATHMThemeClassic()
         }
     }
 
     // MARK: Helper Methods
 
-    @objc func payWithATHMButtonPressed(_ sender: Any) {
-
-        guard let payment = try? getPayment(with: transaction)
-            else { return }
+    @IBAction func payWithATHMovil(_ sender: Any) {
         
-        ATHMCheckout.shared.publicToken = userPref.publicToken
-        ATHMCheckout.shared.timeout = userPref.timeOut
-        payment.total = NSNumber(value: userPref.paymentAmount)
+        ///This must be your url scheme, this scheme is going to be the url that ATH Movil will call after the payment
+        let appClient = ATHMClientApp(urlScheme: "athm-checkout")
         
-        if !userPref.subTotalIsOn { payment.subtotal = nil }
-        if !userPref.taxIsOn { payment.tax = nil }
-        if !userPref.metadata1IsOn { payment.metadata1 = nil }
-        if !userPref.metadata2IsOn { payment.metadata2 = nil }
-        if !userPref.itemsIsOn { payment.items = nil }
-
-        do {
-            try ATHMCheckout.shared.checkout(with: payment)
-        } catch let error {
-            print(error)
-        }
-    }
-
-    fileprivate func setupCheckoutButton() {
-
-        buttonStack.insertArrangedSubview(athButton, at: 0)
-
-        NSLayoutConstraint.activate([
-            athButton.leftAnchor.constraint(equalTo:
-                view.leftAnchor, constant: 16),
-            athButton.rightAnchor.constraint(equalTo:
-                view.rightAnchor, constant: -16),
-            athButton.heightAnchor.constraint(
-                equalToConstant: 48)
-        ])
-    }
-
-    fileprivate func getPayment(with transaction: Transaction) throws -> ATHMPayment? {
-
-        var items: [ATHMPaymentItem] = []
-        var list = transaction.itemList
-        if list.isEmpty { list = Transaction.dummyTransactionItemList }
-        for item in list {
-            let price = NSNumber(value: Double(item.price)!)
-            let newElement = try ATHMPaymentItem(
-                desc: item.desc,
-                name: item.name,
-                priceNumber: price,
-                quantity: Int(item.quantity)!,
-                metadata: item.metadata)
-            items.append(newElement)
+        ///Your business token
+        let businessAccount = ATHMBusinessAccount(token: userPref.publicToken)
+        
+        ///Payment object
+        let payment = ATHMPayment(total: NSNumber(value: userPref.paymentAmount))
+        payment.subtotal = NSNumber(value: userPref.subTotal)
+        payment.tax = NSNumber(value: userPref.tax)
+        payment.metadata1 = userPref.metadata1
+        payment.metadata2 = userPref.metadata2
+        payment.items = itemsList
+        
+        let handler = ATHMPaymentHandler(onCompleted: { [weak self] (payment) in
+            
+            DispatchQueue.main.async {
+                self?.presentTransactionResult(payment: payment)
+            }
+            
+        }, onExpired: { [weak self] (payment) in
+            
+            DispatchQueue.main.async {
+                self?.presentTransactionResult(payment: payment)
+            }
+        }, onCancelled: { [weak self] (payment) in
+            
+            DispatchQueue.main.async {
+                self?.presentTransactionResult(payment: payment)
+            }
+            
+        }) { [weak self] (error: ATHMPaymentError) in
+            
+            DispatchQueue.main.async {
+                self?.presen(messageFailure: error.failureReason, messageTitle: error.errorDescription)
+            }
         }
         
-        let totalNumber = NSNumber(value: Double(transaction.total)!)
-        let subTotalNumber = NSNumber(value: Double(transaction.subTotal)!)
-        let taxNumber = NSNumber(value: Double(transaction.tax)!)
-        if let payment = try? ATHMPayment(
-            total: totalNumber, subtotal: subTotalNumber, tax: taxNumber, metadata1: "metadata1", metadata2: "metadata2", items: items) {
-
-            return payment
-        }
-        return nil
+        ///Payment Manager
+        let request = ATHMPaymentRequest(account: businessAccount, appClient: appClient, payment: payment)
+        request.timeout = userPref.timeOut
+        request.pay(handler: handler)
+        
+//        ///Payment Manager Simulated Payment
+//        let request = ATHMPaymentRequestSimulated(account: businessAccount, appClient: appClient, payment: payment)
+//        request.paySimulated(handler: handler)
+        
     }
+
 
     fileprivate func setupTableView() {
         tableView.delegate = self
@@ -129,15 +116,12 @@ class CheckoutViewController: UIViewController {
         
         let shippingNibName = "ShippingTableViewCell"
         let checkoutSummaryNibName = "CheckoutSummaryTableViewCell"
-        let shippingNib = UINib(
-            nibName: shippingNibName, bundle: nil)
-        let checkoutSummaryNib = UINib(
-            nibName: checkoutSummaryNibName, bundle: nil)
+        
+        let shippingNib = UINib(nibName: shippingNibName, bundle: nil)
+        let checkoutSummaryNib = UINib( nibName: checkoutSummaryNibName, bundle: nil)
 
-        tableView.register(shippingNib, forCellReuseIdentifier:
-            ShippingTableViewCell.reuseIdentifier)
-        tableView.register(checkoutSummaryNib, forCellReuseIdentifier:
-            CheckoutSummaryTableViewCell.reuseIdentifier)
+        tableView.register(shippingNib, forCellReuseIdentifier: ShippingTableViewCell.reuseIdentifier)
+        tableView.register(checkoutSummaryNib, forCellReuseIdentifier: CheckoutSummaryTableViewCell.reuseIdentifier)
     }
 
     fileprivate func setCheckoutButtonStyle() {
@@ -151,66 +135,46 @@ class CheckoutViewController: UIViewController {
     fileprivate func setupNavigationBar() {
         title = "Cart"
         let chevronIcon = UIImage(named: "ic_chevron")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: chevronIcon , style: .plain, target:
-            self, action: #selector(chevronIconPressed))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: chevronIcon ,
+                                                           style: .plain,
+                                                           target:self,
+                                                           action: #selector(chevronIconPressed))
     }
     
     @objc func chevronIconPressed() {
         self.navigationController?.popViewController(animated: true)
     }
 
-    func scrollToBottom() {
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(row: self.transaction
-                .itemList.count - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at:
-                .bottom, animated: true)
-        }
+
+    func presen(messageFailure: String, messageTitle: String){
+        let alertController = UIAlertController(title: messageTitle,
+                                                message: messageFailure,
+                                                preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alertController, animated: true)
     }
 
-    fileprivate func presentTransactionResult(status: ATHMStatus, referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
+    fileprivate func presentTransactionResult(payment: ATHMPaymentResponse) {
+    
+        let storyboard = UIStoryboard(name: "TransactionConfirmationViewController", bundle: nil)
 
-        let storyboard = UIStoryboard(name:
-            "TransactionConfirmationViewController", bundle: nil)
-
-        if let navController = storyboard
-            .instantiateInitialViewController() as? UINavigationController {
+        if let navController = storyboard.instantiateInitialViewController() as? UINavigationController {
+            
             
             if let confirmationViewController = navController.topViewController as? TransactionConfirmationViewController {
-                confirmationViewController.tableData.append(["status": status.rawValue])
-                if let referenceNumber = referenceNumber {
-                    confirmationViewController.tableData.append(["referenceNumber": referenceNumber])
-                }
                 
-                confirmationViewController.tableData.append(["total": String(format: "$ %.2f", total.doubleValue)])
-                
-                if tax != nil {
-                    confirmationViewController.tableData.append(["tax": String(format: "$ %.2f", tax!.doubleValue)])
-                }
-                if subtotal != nil {
-                    confirmationViewController.tableData.append(["subtotal": String(format: "$ %.2f", subtotal!.doubleValue)])
-                }
-                if let metadata1 = metadata1 {
-                    confirmationViewController.tableData.append(["metadata1": metadata1])
-                }
-                if let metadata2 = metadata2 {
-                    confirmationViewController.tableData.append(["metadata2": metadata2])
-                }
-                if let items = items {
-                    confirmationViewController.tableData.append(["items": ""])
-                    confirmationViewController.items = items
-                }
-                
+                confirmationViewController.responsePayment = payment
+
                 confirmationViewController.outputs.done = { [weak self] in
                     self?.dismiss(animated: true, completion: nil)
                 }
             }
             
-            navigationController?.present(
-                navController, animated: true, completion: nil)
+            navController.modalPresentationStyle = .fullScreen
+            navigationController?.present(navController, animated: true, completion: nil)
         }
     }
+    
 }
 
 // MARK: UITableViewDelegate
@@ -225,9 +189,8 @@ extension CheckoutViewController: UITableViewDelegate {
 // MARK: UITableViewDataSource
 
 extension CheckoutViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return descTextCell.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -253,6 +216,7 @@ extension CheckoutViewController: UITableViewDataSource {
             cell.backgroundColor = .clear
             cell.backgroundView?.backgroundColor = .clear
             cell.contentView.backgroundColor = .clear
+            cell.selectionStyle = .none
             var descriptor = UIFontDescriptor(name: UIFont.systemFontSize.description, size: 18.0)
             descriptor = descriptor.addingAttributes([UIFontDescriptor.AttributeName.traits : [UIFontDescriptor.TraitKey.weight : UIFont.Weight.medium]])
             let font = UIFont(descriptor: descriptor, size: 18.0)
@@ -260,40 +224,26 @@ extension CheckoutViewController: UITableViewDataSource {
             cell.detailTextLabel?.textColor = .black
             switch indexPath.row {
             case 2:
-                cell.detailTextLabel?.text = "$\(transaction.subTotal)"
+                cell.detailTextLabel?.text = "$\(UserPreferences.shared.subTotal)"
             case 3:
-                cell.detailTextLabel?.text = "$\(transaction.tax)"
+                cell.detailTextLabel?.text = "$\(UserPreferences.shared.tax)"
             case 4:
                 cell.detailTextLabel?.text = String(format: "$ %.2f", UserPreferences.shared.paymentAmount)
+            case 5:
+                cell.detailTextLabel?.text = UserPreferences.shared.metadata1
+            case 6:
+                cell.detailTextLabel?.text = UserPreferences.shared.metadata2
+            case 7:
+                cell.detailTextLabel?.text = "Items \(self.itemsList.count)"
             default:
                 cell.detailTextLabel?.text = "-"
             }
             return cell
         }
-    }
-}
-
-// MARK: CheckoutDefaultCellDelegate
-
-extension CheckoutViewController: CheckoutDefaultCellDelegate { 
-    func didUpdateQuantity(at cell: UITableViewCell, with value: String) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        transaction.itemList[indexPath.row].quantity = value
-    }
-}
-
-// MARK: AMCheckoutDelegate
-
-extension CheckoutViewController: AMCheckoutDelegate {
-    func onCompletedPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
-        presentTransactionResult(status: .success, referenceNumber: referenceNumber, total: total, tax: tax, subtotal: subtotal, metadata1: metadata1, metadata2: metadata2, items: items)
+        
+        
+       
     }
     
-    func onCancelledPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
-        presentTransactionResult(status: .canceled, referenceNumber: referenceNumber, total: total, tax: tax, subtotal: subtotal, metadata1: metadata1, metadata2: metadata2, items: items)
-    }
-    
-    func onExpiredPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
-        presentTransactionResult(status: .timeout, referenceNumber: referenceNumber, total: total, tax: tax, subtotal: subtotal, metadata1: metadata1, metadata2: metadata2, items: items)
-    }
 }
+

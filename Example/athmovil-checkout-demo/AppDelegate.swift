@@ -13,26 +13,17 @@ import athmovil_checkout
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let callbackURL = "athm-internal-demo"
-    var version = "1.0.0"
+    let callbackURL = "athm-checkout"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let publicToken = UserPreferences.shared.publicToken
-        do {
-            try ATHMCheckout.shared.configure(for: .production, with: publicToken, and: callbackURL)
-        } catch {
-            print(error.localizedDescription)
-        }
+        
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        do {
-            try ATHMCheckout.shared.handleIncomingURL(url: url)
-        } catch let error {
-            print(error)
-        }
+        ATHMPaymentSession.shared.url = url
+
         
         return true
     }
