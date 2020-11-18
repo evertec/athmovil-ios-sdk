@@ -299,7 +299,7 @@ requestPayment.pay(handler: handler)
 * *Note: `ATHMPaymentSession` is required for the response of the payment.*
 
 ## User experience
-![paymentux](ReadmeImages/paymentux.png)
+![paymentux](paymentux.png)
 
 ## Legal
 The use of this API and any related documentation is governed by and must be used in accordance with the Terms and Conditions of Use of ATH Móvi Business ®, which may be found at: https://athmovilbusiness.com/terminos.
