@@ -53,7 +53,7 @@ The text of the "Pay with ATH Móvil" button will be automatically displayed on 
   1. Open the interface builder of your view and add a `UIButton` to it.
   2. Change the following properties of the new `UIButton`:
 
-    ![changeProperties](ReadmeImages/ATHMButtonChangeProperties.png)
+    ![changeProperties](ATHMButtonChangeProperties.png)
   3. Create the @IBOutlet in your view controller or add the @IBaction event to your view controller. `ATHMButton` is set to classic style by default but you can change the theme using the property `theme`.
 
 #### Converting a UIKit `UIButton` to the "Pay with ATH Móvil" button style
