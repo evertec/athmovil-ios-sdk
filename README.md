@@ -1,178 +1,305 @@
-# ATH Móvil iOS SDK
+# ATH Móvil Payment Button - iOS SDK
 
 
 ## Introduction
-The ATH Móvil SDK provides a simple, secure and fast checkout experience to customers paying on your iOS application. After integrating our Payment Button on your app you will be able to receive instant payments from more than a million ATH Móvil users.
+ATH Móvil's Payment Button SDK provides a simple, secure and fast checkout experience to customers paying on your iOS application. After integrating our Payment Button on your app you will be able to receive real time payments from more than 1.5 million ATH Móvil users.
 
 
 ## Prerequisites
 Before you begin, please review the following prerequisites:
-
-1. An active ATH Móvil Business account is required to continue.
- * Note: *To sign up, download "ATH Móvil Business" on the App Store if you have an iOS device or on the Play Store if you have an Android device.*
-
-
+1. An active ATH Móvil Business account is required to continue. To sign up, download "ATH Móvil Business" on the App Store or Play Store of your iOS or Android device.
 2. Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
+3. Have the public and private API keys of your Business account at hand. **You can view your API keys on the settings section of ATH Móvil Business for iOS or Android.**
 
-3. Have the public and private API keys of your Business account at hand.
- * Note: ***You can view your API keys on the settings section of the ATH Móvil Business application for iOS or Android.***
 
 ## Support
 If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form:  https://forms.gle/ZSeL8DtxVNP2K2iDA.
 
 
 ## Installation
-Before we get started, let’s configure your project:
+Before we get started, let's configure your project:
 
 * Add the `athmovil-checkout` pod requirement to your Podfile.
 ```swift
 target 'MyProject' do
 use_frameworks!
-pod 'athmovil-checkout', :git => 'https://github.com/evertec/athmovil-ios-sdk.git'
+pod 'athmovil-checkout'
 end
 ```
-
 * Execute `pod install` to complete the installation of the SDK pod.
+* Open the Cocoapods workspace and make sure your project still compiles.
+* You can now start using the ATH Móvil Payment Button.
 
 ## Usage
-To implement ATH Móvil’s checkout process on your iOS application you will need to open the CocoaPods workspace and complete the step by step guide below.
+To implement ATH Móvil’s Payment Button on your iOS application you will need to complete the step by step guide below. By following this guide you will be able to:
+* Present the "Pay with ATH Móvil" button on the interface of your application.
+* Send payment requests to ATH Móvil.
+* Manage the response of payment requests sent by ATH Móvil.
 
-### Configure the SDK.
-```swift
-do {
-            try ATHMCheckout.shared.configure(for: .production, with: publicToken, and: callbackURL)
-        } catch {
-            print(error.localizedDescription)
-        }
-```
+### Present the "Pay with ATH Móvil" button on the interface of your application.
+ATH Móvil's Payment Button defines a class named `ATHMButton` for user interfaces. You can create instances of `ATHMButton` in three different ways:
+* Using the "Pay with ATH Móvil" button in Storyboard or Xib.
+* Converting a UIKit `UIButton` to the "Pay with ATH Móvil" button style.
+* Adding the "Pay with ATH Móvil" button by code.
 
-| Property  | Values |
-| ------------- |-------------|
-| `for` |  `.production` or  `.development` |
-| `with` | Provide your ATH Móvil Business Public API Key. This determines the Business account where the payment will be sent to. |
-| `and` | Set to the URL scheme of your application. |
-
-Notes:
-* You need to define and configure your own callbackURL variable in your project's URL Types. **Do not** copy the callbackURL provided on this demo.
-* For instructions on how to define a custom URL scheme for your application
-<a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>.
-
-### Handle the callback of the URL scheme.
-```swift
-func application(_ app: UIApplication, open url: URL, options:
-[UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-
-do {
-    try ATHMCheckout.shared.handleIncomingURL(url: url)
-} catch let error {
-    print(error)
-}
-
-return true
-}
-```
-### Get the "Pay with ATH Móvil" button.
-```swift
-let checkoutButton = ATHMCheckout.shared.getCheckoutButton(
-withTarget: self, action: #selector(payWithATHMButtonPressed))
-```
-#### Customize the button theme.
-By default, the Payment Button is displayed in orange. The style can be modified to an optional light or dark theme.
-
-```swift
-let checkoutButton = ATHMCheckout.shared.getCheckoutButton(
-withTarget: self,
-action: #selector(payWithATHMButtonPressed),
-and style: .dark)
-```
-
-| Styles  | Example |
-| ------------- |-------------|
-| default | ![alt text](https://image.ibb.co/e7883o/Default.png) |
-| `.light` | ![alt text](https://image.ibb.co/jAOaio/Light.png) |
-| `.dark` | ![alt text](https://image.ibb.co/kSmvio/Dark.png) |
-
-#### Customize the button language.
-By default, the Payment Button is displayed in the configured primary language of the device. You can force the button to the language of your choice if necessary.
-
-```swift
-ATHMCheckout.shared.lang = .es
-```
+The text of the "Pay with ATH Móvil" button will be automatically displayed on the configured language of devices.  
 
 | Languages  | Example |
 | ------------- |-------------|
-| `.en` | ![alt text](https://image.ibb.co/e7883o/Default.png) |
-| `.es` | ![alt text](https://image.ibb.co/mLyVG8/Default.png) |
+| English | ![alt text](https://image.ibb.co/e7883o/Default.png) |
+| Spanish | ![alt text](https://image.ibb.co/mLyVG8/Default.png) |
 
-### Create a payment object with the details of the payment.
+#### Using the "Pay with ATH Móvil" button in Storyboard or Xib
+  1. Open the interface builder of your view and add a `UIButton` to it.
+  2. Change the following properties of the new `UIButton`:
+
+    ![changeProperties](ReadmeImages/ATHMButtonChangeProperties.png)
+  3. Create the @IBOutlet in your view controller or add the @IBaction event to your view controller. `ATHMButton` is set to classic style by default but you can change the theme using the property `theme`.
+
+#### Converting a UIKit `UIButton` to the "Pay with ATH Móvil" button style
+If you have an instance of a UIKit `UIButton`, you can convert it to a "Pay with ATH Móvil" using the following methods:
+
+| Theme  | Example |
+| ------------- |-------------|
+| .toggleATHMClassic() | ![alt text](https://image.ibb.co/e7883o/Default.png) |
+| .toggleATHMLight() | ![alt text](https://image.ibb.co/jAOaio/Light.png) |
+| .toggleATHMNight() | ![alt text](https://image.ibb.co/kSmvio/Dark.png) |
+
+Your button will be an instance of `UIButton`, but it will have ATH Móvil's Payment Button style.
+
+#### Adding the "Pay with ATH Móvil" button by code
+You can create an instance of the "Pay with ATH Móvil" button using the following sample code:
 ```swift
-var items: [ATHMPaymentItem] = []
-
-let newItem = try? ATHMPaymentItem(
-name: “Item”,
-description: ”This is a description”,
-quantity: 1,
-price: 1.00,
-metadata: "metadata test")
-
-items.append(newItem)
-
-let payment = try? ATHMPayment(
-total: 1.00,
-subtotal: 1.00,
-tax: 1.00,
-metadata1: ”metadata1 test”,
-metadata2: "metadata2 test",
-items: items)
-
+let athMovilButton = ATHMButton(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+self.view.addSubview(athMovilButton)
+athMovilButton.addTarget(self, action:#selector(payWithATHMovil(_:)), for: UIControl.Event.touchUpInside)
 ```
-| Variable  | Data Type | Required | Description |
-| ------------- |:-------------:|:-----:| ------------- |
-| `total` | NSNumber | Yes | Total amount to be paid by the end user. |
-| `subtotal` | NSNumber | No | Optional  variable to display the payment subtotal (if applicable) |
-| `tax` | NSNumber | No | Optional variable to display the payment tax (if applicable). |
-| `metadata1` | String | No | Optional variable to attach key-value data to the payment object. |
-| `metadata2` | String | No | Optional variable to attach key-value data to the payment object. |
-| `items` | Array | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment screen. ||
+* `ATHMButton` inherits from `UIButton`. This means you can use UIKit functionalities such as `frame`, `addsubview` and `addtarget` methods.
+* You can change the theme of the `ATHMButton` instance by modifying the `theme` property. The theme can me modified safely in a thread muiltiple times.
 
-#### Set an optional payment timeout.
-This optional payment timeout expires the payment process if the payment hasn't been completed by the user after the provided amount of time (in seconds). Countdown starts immediately after the user presses the Payment Button. Default value is set to 600 seconds (10 mins).
+| Theme  | Example |
+| ------------- |-------------|
+| athMovilButton.theme = ATHMThemeClassic() | ![alt text](https://image.ibb.co/e7883o/Default.png) |
+| athMovilButton.theme = ATHMThemeLight() | ![alt text](https://image.ibb.co/jAOaio/Light.png) |
+| .athMovilButton.theme = ATHMThemeNight() | ![alt text](https://image.ibb.co/kSmvio/Dark.png) |
+
+
+### Send payment requests to ATH Móvil
+The Payment Button SDK provides some simple classes that allow you to send payment requests to ATH Móvil as in the following sample code:
 
 ```swift
-AMCheckout.shared.timeout = 60
+func payWithATHMovil(){
+
+    let businessAccount = ATHMBusinessAccount(token: "Public Token of your ATH Móvil business account")
+    let appClient = ATHMClientApp(urlScheme: "URL Scheme of your application")
+    let payment = ATHMPayment(total: 20.00)
+
+    /// The object below will tell you the status of the payment after the end user has completed the payment process.
+    /// Make sure that the code inside onCompleted, onExpired, onCancelled or onException is called in the main thread.
+
+    let hander = ATHMPaymentHandler(onCompleted: { [weak self] (payment: ATHMPaymentResponse) in
+        ///Handle the response when the payment is completed here.
+
+    }, onExpired: { [weak self] (payment: ATHMPaymentResponse) in
+        ///Handle the response when the payment is expired here.
+
+    }, onCancelled: { [weak self] (payment: ATHMPaymentResponse) in
+        ///Handle the response when the payment is cancelled here.
+
+    }) { [weak self] (error: ATHMPaymentError) in
+        ///Handle any exception regarding a request or response here. See error section for more details.
+    }
+
+    let request = ATHMPaymentRequest(account: businessAccount, appClient: appClient, payment: payment)
+    request.pay(handler: hander)
+
+    ///At this point your app will open ATH Móvil and the payment process will start.
+    ///If ATH Móvil is not installed on the end user's device the App Store will be automatically opened on ATH Móvil's listing.
+}
 ```
+* For instructions on how to define a custom URL scheme for your application <a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>.
+* The payment process is decoupled from the user interface, this means you can use those classes to make payment requests no matter if your are using a `UIButton` or the `ATHMButton`.
+* The following optional properties can be used to add additional information to the payment:
+  ```swift
+      payment.subtotal = 1.00  ///Set to 0 by default
+      payment.tax = 2.00       ///Set to 0 by default
+      payment.metadata1 = "Attach data to the payment object" ///Empty String by default
+      payment.metadata2 = "Attach data to the payment object" ///Empty String by default
+      payment.items = [ATHMPaymentItem(name: "Test Item", price: 1, quantity: 1 )] ///Empty String by default
+      request.timeout = 120 ///Amount of time that the user has to complete the payment process.
+  ```
+  | Variable  | Data Type | Required | Description |
+  | ------------- |:-------------:|:-----:| ------------- |
+  | `total` | NSNumber | Yes | Total amount to be paid by the end user. |
+  | `subtotal` | NSNumber | No | Optional  variable to display the payment subtotal (if applicable) |
+  | `tax` | NSNumber | No | Optional variable to display the payment tax (if applicable). |
+  | `metadata1` | String | No | Optional variable to attach data to the payment object. |
+  | `metadata2` | String | No | Optional variable to attach data to the payment object. |
+  | `items` | Array | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
+  | `token` | ATHMBusinessAccount | Yes | Public token of ATH Móvil Business account. |
+  | `urlScheme` | ATHMClientApp | Yes | URL scheme defined in your project.|
+  | `timeout` | String | Yes | This optional timeout expires the payment process if the payment hasn't been completed by the user after the provided amount of time (in seconds). Countdown starts immediately after the user presses the "Pay with ATH Móvil Button". Default value is set to 600 seconds (10 mins). |
+  | `handler` | ATHMPaymentHandler | Yes | Object that handles the response of the payment. Code inside onCompleted, onExpired, onCancelled or onException should be on main thread 👁❗️|
 
-### Handle the Payment Button action.
+  **Items Array**
+
+  | Variable  | Data Type | Required | Description |
+  | ------------- |:-------------:|:-----:| ------------- |
+  | `name` | String | Yes | Name of item. |
+  | `price` | NSNumber | Yes | Price of individual item. |
+  | `quantity` | Int | Tes | Quantity of individual item. |
+  | `metadata` | String | No | Optional variable to attach data to the item object. |
+
+
+### Manage the response of payment requests sent by ATH Móvil
+After users complete a payment, ATH Móvil is going to automatically open your application to send the payment response. Your application needs to be properly configured to receive these responses. To prepare your application add the following lines to your AppDelegate or the main Scene:
+
 ```swift
-do {
-try ATHMCheckout.shared.checkout(with: payment)
-} catch let error {
-print(error)
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    ATHMPaymentSession.shared.url = url
+    return true
 }
 ```
 
-### Implement the response delegate on your controller.
+* You will now receive the payment response on the object handler that you previously defined in the request.
+* It is not necesary to keep a reference of the handler, the SDK will do automatically do it. After the SDK procceses the URL it will call the correct request through `ATHMHandler` and use the classes `onCompleted`, `onExpired`, `onCancelled` or `onException` depending on the outcome of the payment.
+* If your application has other deep links or other third party apps open your application using the method `application(app:open:options:)`, the ATH Móvil SDK will automatically discard the URL so you don't need to implement additional validations for `ATHMPaymentSession.shared.url = url`.
+
+`ATHMPaymentHandler` will now receive an object with the type `ATHMPaymentResponse`. Depending on the outcome of the transaction the closures `onCompleted`, `onExpired` or `onCancelled` will be automatically called. You will receive an object with the payment information as follows:
+
 ```swift
-extension CheckoutViewController: ATHMCheckoutDelegate {
-    func onCompletedPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
-        //Handle response
-    }
+///Payment data initially configured on the request.
+response.payment.total
+response.payment.subtotal
+response.payment.tax
+response.payment.fee
+response.payment.netAmount
+response.payment.metadata1
+response.payment.metadata2
 
-    func onCancelledPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
-        //Handle response
-    }
+///Items data initially configured on the request.
+let paymentItem = response.payment.items.first
+paymentItem?.name
+paymentItem?.price
+paymentItem?.quantity
+paymentItem?.metadata
 
-    func onExpiredPayment(referenceNumber: String?, total: NSNumber, tax: NSNumber?, subtotal: NSNumber?, metadata1: String?, metadata2: String?, items: [ATHMPaymentItem]?) {
-        //Handle response
-      }
+///Transaction information.
+response.status.dailyTransactionID ///Consecutive of the transaction
+response.status.referenceNumber ///Unique idenfier of the transaction
+response.status.date ///Date of the transaction
+
+///ATH Móvil user information.
+response.customer.name ///Customer name
+response.customer.phoneNumber ///Customer telephone number in format (xxx) xxx-xxxx
+response.customer.email ///Customer email
+
+```
+| Variable  | Data Type | Description |
+| ------------- |:-------------:|------------- |
+| `dailyTransactionID` | Int | Daily ID of the transaction. If the transaction was cancelled o expired value will be 0. |
+| `referenceNumber` | String | Unique transaction identifier. If the transaction was cancelled o expired value will be 0. |
+| `date` | Date | Transaction's date. |
+| `customer.name` | String | Name registered on ATH Móvil of user that paid for the transaction. |
+| `customer.phoneNumber` | String | Phone number registered on ATH Móvil of user that paid for the transaction. |
+| `customer.email` | String | Email address registered on ATH Móvil of user that paid for the transaction. |
+
+* *Note: `response.payment` and `payment.items` are the same objects that were received on the request. Values and data types will be identical.*
+
+
+If unexpected data is sent on the request of the payment the SDK will call the closure `onException` and you will receive an object with the type `ATHMPaymentError`. Your application must be able to handle these exceptions. You can view the cause of the exception using the following sample code:
+
+```swift
+...
+}) { [weak self] (error: ATHMPaymentError) in
+
+            error.failureReason ///Description of the error.
+            error.errorDescription ///"Error in request" or "Error in response".
+            error.isRequestError ///True if the error is in the request.
+            ///Here you will receive any exception related to a request or response.
 }
 ```
+
+* In the request, make sure that you comply with these requirements for `ATHMPayment`, `ATHMBusinessAccount` and the `ATHMClientAPP` objects, otherwise you will receive an exception on the callback.
+
+  | Variable  | Expected Value |
+  | ------------- |:-------------:|
+  | `total` | Positive value |
+  | `subtotal` | Positive value or zero |
+  | `tax` | Positive value or zero |
+  | `metadata1` | A string with characters, digits or spaces  |
+  | `metadata2` | A string with characters, digits or spaces |
+  | `token` | A string with characters |
+  | `urlScheme` | A string with characters. **Do not use the urlscheme in the example❗️** |
+  | `timeout` | Integer between 60 and 600 |
+
+* If you provide items in the request make sure you comply with these requirements for the `ATHMPaymentItem` object:
+
+  | Variable  | Expected Value |
+  | ------------- |:-------------:|
+  | `name` | A string with characters |
+  | `price` | Positive value greater than zero |
+  | `quantity` | Positive value greater than zero |
+  | `metadata` | A string with characters, digits or spaces |
 
 ## Testing
-Install athm-simulator and set the configuration of the SDK to `.development`. A simulator that responds transaction requests is included in the SDK.
+The SDK includes a simulator named `athm-simulator` that can be used to test the integration. A sample project is also included in the SDK. To send simulated payments you must change the request type as follows:
+
+```swift
+...
+let simulated = ATHMPaymentRequestSimulated(account: businessAccount,
+                                                    appClient: appClient,
+                                                    payment: payment)
+simulated.paySimulated(handler: handler)
+```
+* Only modify `ATHMPaymentRequestSimulated` not `ATHMPaymentRequest`. For production use the `ATHMPaymentRequest` object.
+
+
+## Hybrid Apps
+If your application is built with Flutter or Ionic, you might need to send a dictionary to our SDK. The SDK has a two clases named `ATHMPaymentDictionaryRequest` and `ATHMPaymentHandlerDictionary` that can be used to convert your dictionary to objects in our SDK. These can be used for both requests and responses as in the example below:
+
+```swift
+...
+
+let request = NSDictionary(dictionary: ["scheme": "URL Scheme of your application",
+                                        "publicToken": "Public Token of your ATH Móvil business account",
+                                        "total": 20.00,
+                                        "subtotal": 1.00,
+                                        "tax": "2.00",
+                                        "metadata1": "This is metadata1",
+                                        "metadata2": "This is metadata2",
+                                        "items":[
+                                            ["name": "ItemTest",
+                                            "price": 2.0,
+                                            "quantity": 1,
+                                            "desc": "Description",
+                                            "metadata": "Metadata"]]
+                                        ])
+
+let requestPayment = ATHMPaymentDictionaryRequest(dictionary: request)
+
+let handler = ATHMPaymentHandlerDictionary(onCompleted: {
+    (response: NSDictionary) in
+        /**
+        response["total"]
+        response["items"]
+        response["name"]
+        response["email"]
+        ...
+        */
+    }, onExpired: { (response: NSDictionary) in
+    }, onCancelled: { (response: NSDictionary) in
+    }) { (error: ATHMPaymentError) in
+    }
+
+requestPayment.pay(handler: handler)
+```
+* This dictionary has all the required properties. Some of these properties are optional, as indicated in the "Manage the response of payment requests sent by ATH Móvil" section above.
+* The response of payments is also a dictionary, which means you can view the response data using the keys mentioned in the "Manage the response of payment requests sent by ATH Móvil" section above.
+* *Note: `ATHMPaymentSession` is required for the response of the payment.*
 
 ## User experience
-![paymentux](paymentux.png)
+![paymentux](ReadmeImages/paymentux.png)
 
 ## Legal
 The use of this API and any related documentation is governed by and must be used in accordance with the Terms and Conditions of Use of ATH Móvi Business ®, which may be found at: https://athmovilbusiness.com/terminos.
