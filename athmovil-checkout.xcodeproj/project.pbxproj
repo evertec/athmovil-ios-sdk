@@ -85,6 +85,7 @@
 		20FED4B224C66E72001715E3 /* ATHMBusinessAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FED4AE24C66E71001715E3 /* ATHMBusinessAccount.swift */; };
 		20FED4B424C66EFA001715E3 /* ATHMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FED4B324C66EFA001715E3 /* ATHMButton.swift */; };
 		20FED4B624C66F19001715E3 /* ATHMPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FED4B524C66F19001715E3 /* ATHMPaymentRequest.swift */; };
+		2D9E4FC025A3E7F500E7DEF9 /* ATHMPaymentDictionaryRequestSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E4FBF25A3E7F500E7DEF9 /* ATHMPaymentDictionaryRequestSimulated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		20FED4AE24C66E71001715E3 /* ATHMBusinessAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATHMBusinessAccount.swift; path = Source/ATHMBusinessAccount.swift; sourceTree = "<group>"; };
 		20FED4B324C66EFA001715E3 /* ATHMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATHMButton.swift; path = Source/ATHMButton.swift; sourceTree = "<group>"; };
 		20FED4B524C66F19001715E3 /* ATHMPaymentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATHMPaymentRequest.swift; path = Source/ATHMPaymentRequest.swift; sourceTree = "<group>"; };
+		2D9E4FBF25A3E7F500E7DEF9 /* ATHMPaymentDictionaryRequestSimulated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATHMPaymentDictionaryRequestSimulated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,8 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				20765DD82503091100FE0243 /* ATHMPaymentDictionaryRequest.swift */,
-				20FED49924C66E44001715E3 /* ATHMPaymentRequestSimulated.swift */,
+				2D9E4FBF25A3E7F500E7DEF9 /* ATHMPaymentDictionaryRequestSimulated.swift */,
 				20FED4B524C66F19001715E3 /* ATHMPaymentRequest.swift */,
+				20FED49924C66E44001715E3 /* ATHMPaymentRequestSimulated.swift */,
 				2074849024D326940074FA47 /* URLOpener.swift */,
 				20FED49B24C66E44001715E3 /* ATHMClientApp.swift */,
 				20FED49A24C66E44001715E3 /* ATHMPayment.swift */,
@@ -588,6 +591,7 @@
 				209A49E924D8A61500882C85 /* PaymentResponseCodable.swift in Sources */,
 				20637A01249A8C240077D816 /* KeyedDecodingContainerProtocolExtension.swift in Sources */,
 				20FED4A524C66E44001715E3 /* ATHMPayment.swift in Sources */,
+				2D9E4FC025A3E7F500E7DEF9 /* ATHMPaymentDictionaryRequestSimulated.swift in Sources */,
 				20FED4A624C66E44001715E3 /* ATHMClientApp.swift in Sources */,
 				209EA23324D0A638001E18B7 /* LocaleExtension.swift in Sources */,
 				20FED4A024C66E44001715E3 /* ATHMCustomer.swift in Sources */,
