@@ -7,7 +7,8 @@ echo "🛠 Compiling for simulator 💻 \n"
 xcodebuild -sdk iphonesimulator${SDK_VERSION} \
 			-project "athmovil-checkout.xcodeproj" \
 			-configuration Release \
-			-enable_bitcode=NO
+			-enable_bitcode=NO \
+			-excluded_archs="arm64"
 
 echo "🛠 Compiling for iphone 📱 \n"
 xcodebuild -sdk iphoneos${SDK_VERSION} \
