@@ -8,20 +8,19 @@
 
 import Foundation
 
-
 @objc(ATHMCustomer)
-public class ATHMCustomer: NSObject{
+final public class ATHMCustomer: NSObject {
     
-    ///Customer name it means the name  + lastName, it always has a value not matter the payment result
+    /// Customer name it means the name  + lastName, it always has a value not matter the payment result
     @objc public let name: String
     
-    ///Customer telephone Number, it always has a value not matter the payment result
+    /// Customer telephone Number, it always has a value not matter the payment result
     @objc public let phoneNumber: String
     
-    ///Customer email, it always has a value not matter the payment result
+    /// Customer email, it always has a value not matter the payment result
     @objc public let email: String
     
-    @objc override public var description: String{
+    @objc override public var description: String {
         """
         Customer:
             - name: \(name)
@@ -35,8 +34,13 @@ public class ATHMCustomer: NSObject{
         self.phoneNumber = phoneNumber
         self.email = email
     }
-    
-    
 }
 
-
+extension ATHMCustomer: ExpressibleByStringLiteral {
+    
+    /// You can use to create a ATHMCustomer like this let instance: ATHMCustomer = "test"
+    /// - Parameter value: string to create a customer empty
+    public convenience init(stringLiteral value: String) {
+        self.init(name: value, phoneNumber: value, email: value)
+    }
+}

@@ -10,16 +10,19 @@ import Foundation
 import XCTest
 @testable import athmovil_checkout
 
-extension XCTestCase{
+extension XCTestCase {
     
     
     func XCTAssertDecode<D>(codable: D.Type, from dictionary: [String: Any?],
                               assert: (_ response: D?) -> Void) throws where D : Decodable{
         
-        let responseData = dictionary.toJSONString?.toData
+        guard let responseData = dictionary.toJSONString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.toData else {
+            assert(nil)
+            return
+        }
         
         do {
-            let decodableResponse = try JSONDecoder().decode(D.self, from: responseData!)
+            let decodableResponse = try JSONDecoder().decode(D.self, from: responseData)
             assert(decodableResponse)
             
         } catch let exc {
@@ -31,7 +34,7 @@ extension XCTestCase{
             
         do {
             let encodableData = try JSONEncoder().encode(encode.self)
-            let objectDic = String(data: encodableData, encoding: String.Encoding.utf8)?.toJSON
+            let objectDic = String(data: encodableData, encoding: .utf8)?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.toJSON
             
             assert(objectDic ?? ["":""])
             

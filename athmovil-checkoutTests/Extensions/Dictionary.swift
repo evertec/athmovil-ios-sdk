@@ -15,7 +15,7 @@ extension Dictionary {
         guard let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
             else { return nil }
 
-        let jsonString = String(data: data, encoding: String.Encoding.utf8)
+        let jsonString = String(data: data, encoding: .utf8)
 
         return jsonString
     }

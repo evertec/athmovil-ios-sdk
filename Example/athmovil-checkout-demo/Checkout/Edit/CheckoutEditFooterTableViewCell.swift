@@ -25,7 +25,10 @@ class CheckoutEditFooterTableViewCell: UITableViewCell {
         descLabel.numberOfLines = 0
         descLabel.textColor = .gray
         descLabel.font = UIFont.systemFont(ofSize: 12)
-        descLabel.text = "Payment will be sent to the account of the provided\n" +
-        "Public Token for the provided Payment Amount."
+        descLabel.text = """
+                            Payment will be sent to the account of the provided.
+                            Public Token for the provided Payment Amount.
+                            Enter "dummy" for token to simulate payment.
+                         """
     }
 }

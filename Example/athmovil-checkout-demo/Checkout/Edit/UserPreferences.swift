@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import athmovil_checkout
 
 class UserPreferences: NSObject, NSCoding {
     static var shared = UserPreferences.read()
     // CONFIGURATION
-    var publicToken = "fb1f7ae2849a07da1545a89d997d8a435a5f21ac"
+    var publicToken = "e7d8056974085111e695b5f7a99d27c206a73089"
     var timeOut = 600.0
     var paymentAmount = 1.0
     var theme = 0
@@ -21,6 +22,7 @@ class UserPreferences: NSObject, NSCoding {
     var tax = 0.0
     var metadata1 = ""
     var metadata2 = ""
+    var items: [ATHMPaymentItem] = []
     
     fileprivate override init() {
         super.init()
@@ -37,6 +39,7 @@ class UserPreferences: NSObject, NSCoding {
         aCoder.encode(tax, forKey: "tax")
         aCoder.encode(metadata1, forKey: "metadata1")
         aCoder.encode(metadata2, forKey: "metadata2")
+        aCoder.encode(items, forKey: "items")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,6 +52,7 @@ class UserPreferences: NSObject, NSCoding {
         tax = aDecoder.decodeDouble(forKey: "tax")
         metadata1 = aDecoder.decodeObject(forKey: "metadata1") as? String ?? ""
         metadata2 = aDecoder.decodeObject(forKey: "metadata2") as? String ?? ""
+        items = aDecoder.decodeObject(forKey: "items") as? [ATHMPaymentItem] ?? []
     }
 }
 
@@ -93,4 +97,28 @@ extension UserPreferences{
         }
     }
     
+}
+
+
+extension ATHMPaymentItem: NSCoding {
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(price.doubleValue, forKey: "price")
+        coder.encode(quantity, forKey: "quantity")
+        coder.encode(desc, forKey: "desc")
+        coder.encode(metadata, forKey: "metadata")
+    }
+    
+    public convenience init(coder: NSCoder) {
+        let name = coder.decodeObject(forKey: "name") as? String
+        let price = coder.decodeDouble(forKey: "price")
+        let quantity = coder.decodeInteger(forKey: "quantity")
+        let metadata = coder.decodeObject(forKey: "metadata") as? String
+        let desc = coder.decodeObject(forKey: "desc") as? String
+        
+        self.init(name: name ?? "", price: NSNumber(value: price), quantity: quantity)
+        self.desc = desc ?? ""
+        self.metadata = metadata ?? ""
+    }
 }

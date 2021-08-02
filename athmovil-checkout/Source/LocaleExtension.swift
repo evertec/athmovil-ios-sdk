@@ -8,10 +8,9 @@
 
 import Foundation
 
-
-extension Locale{
+extension Locale {
     
-    var supportedCodeLang: String{
+    var supportedCodeLang: String {
         
         let currentCode = languageCode?.lowercased() ?? "en"
         

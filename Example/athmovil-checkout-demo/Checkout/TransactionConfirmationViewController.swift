@@ -12,7 +12,7 @@ import athmovil_checkout
 protocol TransactionConfirmationOutputs {
     
     /// Emits when the the done button is pressed.
-    var done: (() -> Void)! { set get }
+    var done: (() -> Void)? { set get }
 }
 
 protocol TransactionConfirmationViewModelType {
@@ -29,7 +29,7 @@ TransactionConfirmationViewModelType, TransactionConfirmationOutputs {
     
     var responsePayment: ATHMPaymentResponse?
     
-    var done: (() -> Void)!
+    var done: (() -> Void)?
     
     var outputs: TransactionConfirmationOutputs {
         set { /* Required **/ } get { return self }
@@ -59,7 +59,7 @@ TransactionConfirmationViewModelType, TransactionConfirmationOutputs {
     }
     
     @IBAction func doneButtonPressed(){
-        done()
+        done?()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

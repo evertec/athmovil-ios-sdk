@@ -8,39 +8,30 @@
 
 import Foundation
 
-
-protocol BusinessAccountCodable: Encodable {
-
-}
-
-
-fileprivate enum CodingKeys: String, CodingKey{
-    case publicToken
-}
-
-struct BusinessAccountCoder: BusinessAccountCodable{
+protocol BusinessAccountCodable: Encodable { }
     
-    ///Identifier of the current business in the application
-    var business: ATHMBusinessAccount
-
+extension ATHMBusinessAccount: BusinessAccountCodable {
+    enum CodingKeys: String, CodingKey {
+        case publicToken
+    }
 }
 
-extension BusinessAccountCoder{
+extension ATHMBusinessAccount {
 
-    func encode(to encoder: Encoder) throws{
+    public func encode(to encoder: Encoder) throws {
         
-        do{
+        do {
         
             try hasExceptionableProperties()
             
             var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(business.token, forKey: .publicToken)
+            try container.encode(token, forKey: .publicToken)
             
-        }catch let exceptionPayment as ATHMPaymentError{
+        } catch let exceptionPayment as ATHMPaymentError {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        }catch let exception{
+        } catch let exception {
             
             let genericException = exception as NSError
             let messageError = "There was an error while encode business account. Detail: \(genericException.debugDescription)"
@@ -51,16 +42,13 @@ extension BusinessAccountCoder{
     
 }
 
-
-extension BusinessAccountCoder: Exceptionable{
-    /**
-    Check it the current object has valid properties, it should return a exception if the object is not valid
-    */
-    func hasExceptionableProperties() throws{
+extension ATHMBusinessAccount: Exceptionable {
+    /// Check it the current object has valid properties, it should return a exception if the object is not valid
+    /// - Throws: an ATHMPaymentError if the business token is empty
+    func hasExceptionableProperties() throws {
      
-        if business.token.isEmpty{
+        if token.isEmpty {
             throw ATHMPaymentError(message: "The business's token is required", source: .request)
         }
     }
 }
-

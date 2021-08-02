@@ -8,49 +8,39 @@
 
 import Foundation
 
-protocol PaymentResponseCodable: Decodable {
-    
-    associatedtype Payment: PaymentCodable
-    associatedtype Status: PaymentStatusCodable
-    associatedtype Customer: CustomerCodable
-    
-    var paymentResponse: Payment { get }
-    var statusResponse: Status { get }
-    var customerResponse: Customer { get }
-}
+protocol PaymentResponseCodable: Model { }
 
-
-struct PaymentResponseCoder: PaymentResponseCodable{
-    
-    /// Current payment, it is the same object that the client have been sent in the request
-    let paymentResponse: PaymentCoder
-
-    /// Status of the payment completed, expired o cancelled and other purchase's properties
-    let statusResponse: PaymentStatusCoder
-
-    ///Customer owner
-    let customerResponse: CustomerCoder
+struct PaymentResponseCoder: PaymentResponseCodable {
     
     let status: ATHMPaymentStatus
     let payment: ATHMPayment
     let customer: ATHMCustomer
     
+    init(payment: ATHMPayment, customer: ATHMCustomer, status: ATHMPaymentStatus) {
+        self.status = status
+        self.payment = payment
+        self.customer = customer
+    }
+    
     init(from decoder: Decoder) throws {
         do {
             
-            self.customerResponse = try CustomerCoder(from: decoder)
-            self.customer = customerResponse.customer
+            self.customer = try ATHMCustomer(from: decoder)
+            self.payment = try ATHMPayment(from: decoder)
+            self.status = try ATHMPaymentStatus(from: decoder)
 
-            self.paymentResponse = try PaymentCoder(from: decoder)
-            self.payment = paymentResponse.payment
-            
-            self.statusResponse = try PaymentStatusCoder(from: decoder)
-            self.status = statusResponse.statusPayment
-            
-        }catch let exception{
+        } catch let exception {
+            throw exception
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        do {
+            try customer.encode(to: encoder)
+            try payment.encode(to: encoder)
+            try status.encode(to: encoder)
+        } catch let exception {
             throw exception
         }
     }
 }
-
-

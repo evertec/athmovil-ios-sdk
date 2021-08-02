@@ -37,7 +37,6 @@ class CheckoutDefaultTableViewCell: UITableViewCell {
         
         productImageView.layer.cornerRadius = 4
         productImageView.layer.masksToBounds = true
-        self.selectionStyle = .none
     }
     
 }

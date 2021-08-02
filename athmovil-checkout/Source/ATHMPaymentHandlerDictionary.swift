@@ -8,41 +8,35 @@
 
 import Foundation
 
-
 @objc(ATHMPaymentHandlerDictionary)
-public class ATHMPaymentHandlerDictionary: NSObject{
+public class ATHMPaymentHandlerDictionary: NSObject {
 
+    /// Closure the completed transaction, it is going to call when ath movil returns a completed transaction
+    var onCompleted: (NSDictionary) -> Void
     
-    ///Closure the completed transaction, it is going to call when ath movil returns a completed transaction
-    var onCompleted: (_ response: NSDictionary) -> ()
+    /// Closure the completed transaction, it is going to call when ath movil returns a expired transaction
+    var onExpired: (NSDictionary) -> Void
     
-    ///Closure the completed transaction, it is going to call when ath movil returns a expired transaction
-    var onExpired: (_ response: NSDictionary) -> ()
+    /// Closure the completed transaction, it is going to call when ath movil returns a canceled transaction
+    var onCancelled: (NSDictionary) -> Void
     
-    ///Closure the completed transaction, it is going to call when ath movil returns a canceled transaction
-    var onCancelled: (_ response: NSDictionary) -> ()
-    
-    ///it is going to call when the there is error in the request or in the response from ATH Movil
-    var onException: (_ response: ATHMPaymentError) -> ()
-    
-    static var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.S"
+    /// it is going to call when the there is error in the request or in the response from ATH Movil
+    var onException: (ATHMPaymentError) -> Void
         
-        return dateFormatter
-    }()
+    /// Unique identifier for each request
+    internal let traceId: UUID = UUID()
     
-    /**
-     Creates an instance of the handler payment
-     - Parameters:
-         - completed: Closure to call after ATH Movil completed the payment
-         - expired: Closure to call after ATH Movil expire the payment
-         - cancelled: Closure to call after ATH Movil cancelled the payment
-     */
-    @objc public init(onCompleted: @escaping ((_ response:NSDictionary) -> ()),
-                      onExpired: @escaping (_ response: NSDictionary) -> (),
-                      onCancelled: @escaping (_ response: NSDictionary) -> (),
-                      onException: @escaping (_ response: ATHMPaymentError) -> ()){
+    /// Creates an instance of the handler payment
+    /// - Parameters:
+    ///   - onCompleted: Closure to call after ATH Movil completed the payment
+    ///   - onExpired: Closure to call after ATH Movil expire the payment
+    ///   - onCancelled: Closure to call after ATH Movil cancelled the payment
+    ///   - onException: Closure to call when there is an error in the request or response
+    ///   - Returns: Returns an instance of handler
+    @objc public init(onCompleted: @escaping ((NSDictionary) -> Void),
+                      onExpired: @escaping (NSDictionary) -> Void,
+                      onCancelled: @escaping (NSDictionary) -> Void,
+                      onException: @escaping (ATHMPaymentError) -> Void) {
         
         self.onCompleted = onCompleted
         self.onExpired = onExpired
@@ -52,34 +46,26 @@ public class ATHMPaymentHandlerDictionary: NSObject{
         super.init()
     }
     
-    
-    /**
-     Method to confirm the payment to ATH Movil
-     - Parameters:
-         - from data form the url
-     */
-    func confirm(from athMovilData: Data){
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(ATHMPaymentHandlerDictionary.dateFormatter)
-        
-        do{
+    /// Method to confirm the payment to ATH Movil when the response becomes from url scheme
+    /// - Parameter data: data from the URL, it must containts the required properties otherwise will call onexception closure
+    func completeFrom(data: Data) {
+
+        do {
             
-            let dictionaryResponse = try JSONSerialization.jsonObject(with: athMovilData,
+            let dictionaryResponse = try JSONSerialization.jsonObject(with: data,
                                                                       options: .mutableContainers) as? NSDictionary
-            let responseDecodable = try decoder.decode(PaymentResponseCoder.self, from: athMovilData)
+            let responseDecodable = try Data.decoder.decode(PaymentResponseCoder.self, from: data)
             let response = ATHMPaymentResponse(payment: responseDecodable.payment,
                                                status: responseDecodable.status,
                                                customer: responseDecodable.customer)
             
-
             complete(paymentStatus: response.status.status, response: dictionaryResponse)
             
-        }catch let exceptionPayment as ATHMPaymentError{
+        } catch let exceptionPayment as ATHMPaymentError {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             onException(paymentException)
             
-        }catch let exception{
+        } catch let exception {
             
             let genericException = exception as NSError
             let messageError = "There was an error while decode response. Detail: \(genericException.debugDescription)"
@@ -89,14 +75,11 @@ public class ATHMPaymentHandlerDictionary: NSObject{
         
     }
     
-    
-    /**
-     Complete the payment base on the paymentStatus that could be completed, expired or cancelled
-     - Parameters:
-         - paymentStatus current status of the payment it could be completed, cancelled or expired
-         - response dictionary which containts the keys-values of the response
-     */
-    private func complete(paymentStatus: ATHMStatus, response: NSDictionary?){
+    /// Complete the payment base on the paymentStatus that could be completed, expired or cancelled
+    /// - Parameters:
+    ///   - paymentStatus: current status of the payment it could be completed, cancelled or expired
+    ///   - response: dictionary which containts the keys-values of the response
+    private func complete(paymentStatus: ATHMStatus, response: NSDictionary?) {
         
         switch paymentStatus {
             case .completed:
@@ -111,4 +94,27 @@ public class ATHMPaymentHandlerDictionary: NSObject{
     }
 }
 
-extension ATHMPaymentHandlerDictionary: PaymentHandleable{}
+extension ATHMPaymentHandlerDictionary: PaymentHandleable {
+    
+    /// Method to complete the transaction after the web service response with a transaction
+    /// - Parameter serverPayment: current response of the web service
+    func completeFrom(serverPayment: ATHMPaymentResponse) {
+        let paymentCodable = PaymentResponseCoder(payment: serverPayment.payment,
+                                                  customer: serverPayment.customer,
+                                                  status: serverPayment.status)
+        
+        do {
+            let dataPayment = try PaymentResponseCoder.encoder.encode(paymentCodable)
+            let jsonResult = try JSONSerialization.jsonObject(with: dataPayment, options: .mutableContainers)
+            let jsonDictionary = jsonResult as? NSDictionary
+            
+            complete(paymentStatus: serverPayment.status.status,
+                     response: jsonDictionary)
+        } catch {
+            let paymentError = ATHMPaymentError(message: "Error getting response dictionary from server",
+                                                source: .response)
+            onException(paymentError)
+        }
+    }
+    
+}

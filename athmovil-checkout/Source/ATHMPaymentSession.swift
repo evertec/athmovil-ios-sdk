@@ -8,60 +8,78 @@
 
 import Foundation
 
-
 @objc(ATHMPaymentSession)
 public class ATHMPaymentSession: NSObject {
     
-    /// Parameter :
-    /// shared:  Singleton instance
-    @objc public static let shared = ATHMPaymentSession()
+    @objc
+    public static let shared = ATHMPaymentSession()
     
-    ///Queue to store the request of the payment button, it
-    private(set) var handlerQueue = Array<PaymentHandleable>()
+    /// Payment API for getting the payment status in the server
+    let paymentAPI = APIPayments.api
+    var observerBecomeActive: NSObjectProtocol?
+
+    /// Queue for processing the responses of ATH Movil
+    private let queueResponse = DispatchQueue(label: "com.evertecinc.ATHMovil.SDK",
+                                              qos: .background)
     
-    ///Set this property after the client app had been recevied the response from ATH Movil, after that the application is going to recieve  the response
-    @objc public var url: URL?{
-        willSet{
-            guard let newURL = newValue else{
-                return
-            }
-            
-            DispatchQueue.global().async { [unowned self] in
-                self.dispatch(url: newURL)
-            }
+    /// This property avoid to make other request while the web service is getting the payment status.
+    private var _isWaitingForService: Bool = false
+    var isWaiting: Bool {
+        get {
+            queueResponse.sync { return _isWaitingForService }
+        }
+        set(newValue) {
+            queueResponse.sync { _isWaitingForService = newValue }
         }
     }
     
-    /**
-     Dispatch the url from ATH Movil, it there are not request in the requestQueue the method will abort furthermore if the data's url is no from ath movil the method
-        is going to discard the request
-     - Parameters:
-     - url: ATHM movil response
-     */
-    private func dispatch(url: URL){
-                
-        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+    /// Property to save the current, this object only allow one request at once
+    var currentPayment: AnyPaymentReceiver? {
         
-        guard let dataFromATHM = urlComponents?.isATHMovil(),
-              let currentHandler = handlerQueue.popLast() else{
+        didSet {
+            addObserverForBecomeActive()
+        }
+    }
+    
+    /// When the ATHMPaymentSession has pending payment this class add a observer for UIApplication.didBecomeActiveNotification in case when the user or
+    /// ATH Movil Application does not completed the payment so the SDK will call a web service to get the payment status after that will response the business application
+    /// as usual
+    /// - Parameter notification: Notification center to use by default is default
+    func addObserverForBecomeActive(notification: NotificationCenter = .default) {
+        
+        guard currentPayment != nil else {
             return
         }
         
-        currentHandler.confirm(from: dataFromATHM)
-    }
-    
-    /**
-     Add the new handler to the array and remove the old requests
-     - Parameters:
-     - handler object to handle the payment response
-     */
-    func register(handler: PaymentHandleable){
-        
-        if self.handlerQueue.count >= 1{
-            self.handlerQueue.removeAll()
+        observerBecomeActive = notification.addObserver(forName: UIApplication.didBecomeActiveNotification,
+                                                        object: nil,
+                                                        queue: nil) { _ in
+            if let observer = self.observerBecomeActive {
+                notification.removeObserver(observer)
+                self.observerBecomeActive = nil
+            }
+            
+            let anyResponsePayment = self.currentPayment
+            self.currentPayment = nil
+            
+            anyResponsePayment?.completed(by: .becomeActive)
         }
         
-        self.handlerQueue.append(handler)
     }
+    
+    /// Set this property after the client app had been recevied the response from ATH Movil, after that the client's application is going to recieve  the response by the
+    /// ATHMPaymentHandler or dictionary Handler
+    @objc
+    public var url: URL? {
+        willSet {
+            guard let dataFromATHMovil = newValue?.responseFromATHM else {
+                return
+            }
 
+            let anyResponsePayment = currentPayment
+            currentPayment = nil
+
+            anyResponsePayment?.completed(by: .deepLink(dataFromATHMovil))
+        }
+    }
 }

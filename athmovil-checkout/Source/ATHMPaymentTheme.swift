@@ -11,32 +11,30 @@ import Foundation
 @objc(ATHMPaymentTheme)
 public protocol ATHMPaymentTheme {
 
-    ///Color for the control
+    /// Color for the control
     @objc var background: UIColor { get }
     
-    ///Color for the label
+    /// Color for the label
     @objc var tintColor: UIColor { get }
     
-    ///Image for the control
+    /// Image for the control
     @objc var image: UIImage? { get }
 }
 
 @objc(ATHThemeClassic)
-public final class ATHMThemeClassic: NSObject, ATHMPaymentTheme{
+public final class ATHMThemeClassic: NSObject, ATHMPaymentTheme {
     
-    ///Color for the control, orange
+    /// Color for the control, orange
     public var background: UIColor { .orange }
     
-    ///Color for the label, white
+    /// Color for the label, white
     public var tintColor: UIColor { .white }
     
-    ///Image for the control by default white_checkout_button_en
+    /// Image for the control by default white_checkout_button_en
     public private(set) var image: UIImage?
     
-    /**
-     init by default to create the image requested
-     */
-    required public override init(){
+    /// Init by default to create the image requested
+    required public override init() {
         super.init()
         
         let bundle = Bundle(for: self.classForCoder)
@@ -44,26 +42,22 @@ public final class ATHMThemeClassic: NSObject, ATHMPaymentTheme{
         
         self.image = UIImage(named: "white_checkout_button_\(codeLanguage)", in: bundle, compatibleWith: nil)
     }
-    
-    
 }
 
 @objc(ATHThemeLight)
-public final class ATHMThemeLight: NSObject, ATHMPaymentTheme{
+public final class ATHMThemeLight: NSObject, ATHMPaymentTheme {
     
-    ///Color for the control, white
+    /// Color for the control, white
     public var background: UIColor { .white }
     
-    ///Color for the label, black
+    /// Color for the label, black
     public var tintColor: UIColor { .black }
     
-    ///Image for the control by default black_checkout_button_en
+    /// Image for the control by default black_checkout_button_en
     public private(set) var image: UIImage?
     
-    /**
-     init by default to create the image requested
-     */
-    required override public init(){
+    /// Init by default to create the image requested
+    required override public init() {
         super.init()
         
         let bundle = Bundle(for: self.classForCoder)
@@ -75,23 +69,19 @@ public final class ATHMThemeLight: NSObject, ATHMPaymentTheme{
 }
 
 @objc(ATHThemeNight)
-public class ATHMThemeNight: NSObject, ATHMPaymentTheme{
+public class ATHMThemeNight: NSObject, ATHMPaymentTheme {
     
-    ///Color for the control, darkGray
+    /// Color for the control, darkGray
     public var background: UIColor { .darkGray }
     
-    ///Color for the label, white
+    /// Color for the label, white
     public var tintColor: UIColor { .white }
     
-    ///Image for the control by default black_checkout_button_en
+    /// Image for the control by default black_checkout_button_en
     public private(set) var image: UIImage?
     
-    /**
-     Contructor by default to create the image requested
-     - Parameters:
-     - languaje: Languaje ISO only allow es-ESP if it is not valid will use black_checkout_button_en
-     */
-    required override public init(){
+    /// Contructor by default to create the image requested
+    required override public init() {
         super.init()
         
         let bundle = Bundle(for: self.classForCoder)
@@ -99,6 +89,4 @@ public class ATHMThemeNight: NSObject, ATHMPaymentTheme{
         
         self.image = UIImage(named: "white_checkout_button_\(codeLanguage)", in: bundle, compatibleWith: nil)
     }
-    
-    
 }

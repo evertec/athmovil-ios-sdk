@@ -22,25 +22,23 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
         super.viewDidLoad()
         setupNavigationBar()
         setupTableView()
-        self.title = "Payment Configuration"
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-    
+
     fileprivate func setupNavigationBar() {
         self.navigationController?.navigationBar.tintColor = .black
         let closeIcon = UIImage(named: "close")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: closeIcon , style: .plain, target:
-            self, action: #selector(closeIconPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: closeIcon ,
+                                                            style: .plain,
+                                                            target:self,
+                                                            action: #selector(closeIconPressed))
     }
     
     fileprivate func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
         tableView.sectionFooterHeight = UITableView.automaticDimension;
         tableView.estimatedSectionFooterHeight = 96;
         let checkoutEditFooterNibName = "CheckoutEditFooterTableViewCell"
@@ -51,7 +49,8 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     func setupLongPressGesture(subView: UIView) {
-        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self,
+                                                                                         action: #selector(self.handleLongPress))
         longPressGesture.minimumPressDuration = 1.5
         longPressGesture.delegate = self
         subView.addGestureRecognizer(longPressGesture)
@@ -59,7 +58,7 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
     
     @objc func closeIconPressed(){
         UserPreferences.shared.save()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
@@ -168,12 +167,13 @@ extension CheckoutEditViewController: UITableViewDelegate {
         
         let type = cellRows[indexPath.section][indexPath.row]
         
-        if type == .theme{
-            performSegue(withIdentifier: "changeColor", sender: nil)
-            return
+        switch type {
+            case .theme:
+                performSegue(withIdentifier: "changeColor", sender: nil)
+            
+            default:
+                changeValue(cellType: type)
         }
-        
-        changeValue(cellType: type)
     }
     
     func changeValue(cellType: DefaultSectionCellType) {
