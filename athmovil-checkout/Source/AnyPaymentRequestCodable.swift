@@ -8,83 +8,62 @@
 
 import Foundation
 
+protocol PaymentRequestCodable: Encodable {
+    
+    associatedtype URLScheme: URLSchemeCodable
+    associatedtype Business: BusinessAccountCodable
+    associatedtype Payment: PaymentCodable
 
-protocol PaymentRequestCodable: Encodable{
-    
-    associatedtype Client
-    associatedtype Business
-    associatedtype Payment
-    
-    var business: Business { get set }
-    var client: Client { get set }
-    var payment: Payment { get set }
-    var timeout: TimeInterval { get set }
-    
+    var businessAccount: Business { get }
+    var scheme: URLScheme { get }
+    var payment: Payment { get }
+    var timeout: TimeInterval { get }
+    var version: ATHMVersion { get }
 }
 
+struct AnyPaymentRequestCoder<P>: Encodable where P: PaymentRequestCodable {
 
-struct AnyPaymentRequestCoder<B, C, P>: PaymentRequestCodable, Encodable where B: BusinessAccountCodable,
-C: ClientAppCodable, P: PaymentCodable{
-
-    ///Business account if the token account it is empty you will received an exception
-    var business: B
-    
-    ///Current application that will send the request to ATH Móvil Personal
-    var client: C
-    
-    ///Purchase representation to send to ATH Movil
-    var payment: P
-        
-    ///Purchase Timeout in ath movil personal
-    var timeout: TimeInterval = 60.0
-    
-    ///Version of the current request
-    var version: ATHMVersion
-    
-    init(business: B, client: C, payment: P, timeout: TimeInterval, version: ATHMVersion = .three) {
-        self.business = business
-        self.client = client
-        self.payment = payment
-        self.timeout = timeout
-        self.version = version
-    }
+    let paymentRequest: P
+    let traceId: String
     
     private enum PaymentRequestCodingKeys: String, CodingKey {
         case timeout = "expiresIn",
-             version = "version"
+             version = "version",
+             traceId = "traceId"
     }
     
-    public func encode(to encoder: Encoder) throws{
+    /// Encode the paymentRequest object with all payment attributes
+    /// - Parameter encoder: json encoder for the payment
+    /// - Throws: ATHMPaymentError if some property is invalid
+    func encode(to encoder: Encoder) throws {
         
-        do{
+        do {
             
             try hasExceptionableProperties()
             
-            var container = encoder.container(keyedBy: PaymentRequestCodingKeys.self)
+            var containerRequest = encoder.container(keyedBy: PaymentRequestCodingKeys.self)
+            try containerRequest.encodeIfPresent(paymentRequest.timeout, forKey: .timeout)
+            try containerRequest.encodeIfPresent(traceId, forKey: .traceId)
+            try containerRequest.encodeIfPresent(paymentRequest.version, forKey: .version)
             
-            try self.business.encode(to: encoder)
+            try paymentRequest.businessAccount.encode(to: encoder)
             
-            try self.client.encode(to: encoder)
+            try paymentRequest.scheme.encode(to: encoder)
             
-            try self.payment.encode(to: encoder)
-            
-            try container.encodeIfPresent(abs(timeout), forKey: .timeout)
-            
-            try container.encodeIfPresent(version, forKey: .version)
-            
-        }catch let exception{
+            try paymentRequest.payment.encode(to: encoder)
+                        
+        } catch let exception {
             throw exception
         }
     }
 }
 
-
-extension AnyPaymentRequestCoder: Exceptionable{
+extension AnyPaymentRequestCoder: Exceptionable {
     func hasExceptionableProperties() throws {
         
-        let isNormalTimeout = 60...600 ~= timeout
+        let isNormalTimeout = 60...600 ~= paymentRequest.timeout
         
-        if !isNormalTimeout{
+        if !isNormalTimeout {
             throw ATHMPaymentError(message: "Timeout data type value is invalid", source: .request)
         }
     }

@@ -9,17 +9,16 @@
 import Foundation
 
 @IBDesignable @objc(ATHMButton)
-public class ATHMButton: UIButton{
+public class ATHMButton: UIButton {
 
-    ///Update the theme of the button change theme night, light or classic furthermore set the backgound, tint color, corner radious and image
-     public var theme: ATHMPaymentTheme = ATHMThemeClassic()
-     {
-        didSet{
+    /// Update the theme of the button change theme night, light or classic furthermore set the backgound, tint color, corner radious and image
+     public var theme: ATHMPaymentTheme = ATHMThemeClassic() {
+        didSet {
             toggle(theme: self.theme)
         }
-    }
+     }
     
-    init(){
+    init() {
         super.init(frame: .zero)
     }
 
@@ -37,54 +36,51 @@ public class ATHMButton: UIButton{
 
         theme = ATHMThemeClassic()
     }
-    
-
 }
 
-
-extension UIButton{
+extension UIButton {
     
-    func toggle<T:ATHMPaymentTheme>(theme: T){
+    func toggle<T:ATHMPaymentTheme>(theme: T) {
         
-        self.setImage(theme.image, for: .normal)
-        self.backgroundColor = theme.background
-        self.tintColor = theme.tintColor
+        setImage(theme.image, for: .normal)
+        backgroundColor = theme.background
+        tintColor = theme.tintColor
         
         adjustImage()
         
         setShadowAndRadious()
     }
     
-    func adjustImage(){
-        self.imageView?.contentMode = .scaleAspectFit
-        let separator = (self.frame.width * 0.50) / 2.0
-        self.imageEdgeInsets = UIEdgeInsets(top: 8, left: separator, bottom: 8, right: separator)
+    func adjustImage() {
+        imageView?.contentMode = .scaleAspectFit
+        let separator = (frame.width * 0.50) / 2.0
+        imageEdgeInsets = UIEdgeInsets(top: 8, left: separator, bottom: 8, right: separator)
     }
     
     func setShadowAndRadious() {
         
-        self.layer.shadowColor = UIColor(red: 0, green: 0, blue:0, alpha: 0.25).cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 2.0
-        self.layer.masksToBounds = false
-        self.layer.cornerRadius = 4.0
+        layer.shadowColor = UIColor(red: 0, green: 0, blue:0, alpha: 0.25).cgColor
+        layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 2.0
+        layer.masksToBounds = false
+        layer.cornerRadius = 4.0
     }
 }
 
 @objc(ATHMovilButtonTheme)
-public extension UIButton{
+public extension UIButton {
     
-    @objc func toggleATHMNight(){
-        self.toggle(theme: ATHMThemeNight())
+    @objc func toggleATHMNight() {
+        toggle(theme: ATHMThemeNight())
     }
 
-    @objc func toggleATHMLight(){
-        self.toggle(theme: ATHMThemeLight())
+    @objc func toggleATHMLight() {
+        toggle(theme: ATHMThemeLight())
     }
 
-    @objc func toggleATHMClassic(){
-        self.toggle(theme: ATHMThemeClassic())
+    @objc func toggleATHMClassic() {
+        toggle(theme: ATHMThemeClassic())
     }
     
 }

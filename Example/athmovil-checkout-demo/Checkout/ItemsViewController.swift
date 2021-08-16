@@ -12,174 +12,127 @@ import athmovil_checkout
 class ItemsViewController: UIViewController {
     
     // MARK: Properties
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var checkoutButton: UIButton! {
         didSet {
-            setCheckoutButtonStyle()
+            checkoutButton.roundedWithShadow()
         }
     }
     
-    var itemsList = [ATHMPaymentItem]()
+    var itemsList = UserPreferences.shared.items
     
-    /// This index is used to interpolate between the two different types
-    /// of items when the user adds a new item pressing the add button in
-    /// the navigation bar.
-    var interpolationIndex: Int = 0
-    
+    var itemDefault: ATHMPaymentItem {
+        let itemDefault = ATHMPaymentItem(name: "Item", price: 1, quantity: 1)
+        itemDefault.desc = "Description"
+        itemDefault.metadata = "Metadata"
+        return itemDefault
+    }
+        
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        setupNavigationBar()
+
+        tableView.backgroundIfNeeded()
+    }
         
-        setBackGround()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     fileprivate func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 120
         tableView.tableFooterView = UIView()
         
         let checkoutDefaultNibName = "CheckoutDefaultTableViewCell"
-        let checkoutSummaryNibName = "CheckoutSummaryTableViewCell"
-        let checkoutDefaultNib = UINib(
-            nibName: checkoutDefaultNibName, bundle: nil)
-        let checkoutSummaryNib = UINib(
-            nibName: checkoutSummaryNibName, bundle: nil)
+        let checkoutDefaultNib = UINib(nibName: checkoutDefaultNibName, bundle: nil)
         
-        tableView.register(checkoutDefaultNib, forCellReuseIdentifier:
-            CheckoutDefaultTableViewCell.reuseIdentifier)
-        tableView.register(checkoutSummaryNib, forCellReuseIdentifier:
-            CheckoutSummaryTableViewCell.reuseIdentifier)
+        tableView.register(checkoutDefaultNib,
+                           forCellReuseIdentifier: CheckoutDefaultTableViewCell.reuseIdentifier)
     }
     
-    fileprivate func setCheckoutButtonStyle() {
-        checkoutButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        checkoutButton.setTitle("GO TO CART", for: .normal)
-        checkoutButton.tintColor = .white
-        checkoutButton.backgroundColor = .black
-        checkoutButton.roundedWithShadow()
+    @IBAction func addItem(_ sender: Any) {
+        addItem()
+    }
+}
+
+// MARK: Items
+
+extension ItemsViewController {
+    
+    private func addItem() {
+        tableView.performBatchUpdates {
+            itemsList.append(itemDefault)
+            let indexPath = IndexPath(item: self.itemsList.count-1, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .bottom)
+            self.save(items: itemsList)
+        } completion: { [unowned self] _ in
+            self.tableView.backgroundIfNeeded()
+        }
     }
     
-    fileprivate func setupNavigationBar() {
-        title = "Items"
+    func showItem(at indexPath: IndexPath, tableView: UITableView) {
         
-        let chevronIcon = UIImage(named: "settings")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: chevronIcon ,
-                                                            style: .plain,
-                                                            target:self,
-                                                            action: #selector(settingsIconPressed))
+        let storyboard = UIStoryboard.init(name: "CheckoutViewController",
+                                           bundle: .main)
         
-        self.navigationController?.navigationBar.tintColor = .black
-    }
-    
-    @objc fileprivate func settingsIconPressed() {
-        let storyboard = UIStoryboard.init(name: "CheckoutEditViewController", bundle: nil)
         
-        guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController,
-            let _ = navController.visibleViewController
-                as? CheckoutEditViewController else { return }
-        
-        navController.modalPresentationStyle = .fullScreen
-        navigationController?.present(navController, animated: true, completion: nil)
-    }
-    
-    
-    @objc fileprivate func editIconPressed() {
-        let storyboard = UIStoryboard.init(name: "CheckoutEditViewController", bundle: nil)
-        
-        guard let editViewController = storyboard.instantiateInitialViewController() as? CheckoutEditViewController else
-        {
+        guard let navigation = storyboard.instantiateViewController(withIdentifier: "EditItemNavigationController") as? UINavigationController,
+              let itemsViewController = navigation.viewControllers.first as? CheckoutAddItemViewController else {
             return
         }
         
-        navigationController?.pushViewController(editViewController, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        itemsViewController.item = itemsList[indexPath.row]
         
-        if segue.identifier == "showAddItem", let navController = segue.destination as? UINavigationController,
-           let itemController = navController.viewControllers.first as? CheckoutAddItemViewController {
-            
-            itemController.onCompleted = { [unowned self]  item in
-                self.itemsList.append(item)
-                
-                self.dismiss(animated: true) {
-                    self.tableView.performBatchUpdates({
-                        let indexPath = IndexPath(item: self.itemsList.count-1, section: 0)
-                        self.tableView.insertRows(at: [indexPath], with: .top)
-                    }) { [unowned self] _ in
-                        self.removeBackGround()
-                    }
-                    
-                }
+        itemsViewController.onCompleted = { item in
+            navigation.dismiss(animated: true) {
+                self.itemsList[indexPath.row] = item
+                tableView.reloadRows(at: [indexPath], with: .fade)
+                self.save(items: self.itemsList)
             }
         }
         
-        if let checkoutViewController = segue.destination as? CheckoutViewController{
-            checkoutViewController.itemsList = self.itemsList
-        }
-    }
-    
-    func setBackGround(){
+        navigation.modalPresentationStyle = .fullScreen
+        navigationController?.present(navigation,
+                                      animated: true,
+                                      completion: {
+                                        tableView.deselectRow(at: indexPath, animated: false)
+                                      })
         
-        if self.itemsList.isEmpty{
-            self.tableView.backgroundView = UIView(frame: self.tableView.frame)
-            let label = UILabel(frame: self.tableView.frame)
-            label.text = "There are not items"
-            label.textAlignment = .center
-            label.textColor = UIColor.lightGray
-            self.tableView.backgroundView?.addSubview(label)
-        }
     }
     
-    func removeBackGround(){
+    private func remove(_ indexPath: IndexPath, _ tableView: UITableView) {
+        itemsList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        save(items: itemsList)
         
-        if !self.itemsList.isEmpty{
-            let view = self.tableView.backgroundView
-             
-            UIView.animate(withDuration: 0.2, animations: {
-                view?.alpha = 0
-            }) { _ in
-                self.tableView.backgroundView = nil
-            }
-
+        OperationQueue.main.addOperation {
+            self.tableView.backgroundIfNeeded()
         }
     }
     
+    private func save(items: [ATHMPaymentItem]) {
+        UserPreferences.shared.items = items
+        UserPreferences.shared.save()
+    }
 }
 
 // MARK: UITableViewDelegate
 
 extension ItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        showItem(at: indexPath, tableView: tableView)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            self.itemsList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            OperationQueue.main.addOperation {
-                self.setBackGround()
-            }
+            remove(indexPath, tableView)
         }
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath:
-        IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+    func tableView(_ tableView: UITableView,
+                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+         .delete
     }
 }
 
@@ -188,22 +141,21 @@ extension ItemsViewController: UITableViewDelegate {
 extension ItemsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.itemsList.count
+        return itemsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let reuseIdentifier = CheckoutDefaultTableViewCell.reuseIdentifier
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! CheckoutDefaultTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                                 for: indexPath) as! CheckoutDefaultTableViewCell
         
-        let item = self.itemsList[indexPath.row]
+        let item = itemsList[indexPath.row]
         cell.transactionItem = item
         
         return cell
     }
 }
-
-
 
 // MARK: UIColor+DefaultColor
 
@@ -215,5 +167,41 @@ extension UIButton {
         self.layer.shadowRadius = 2.0
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 4.0
+    }
+}
+
+
+extension UITableView {
+    
+    var isEmpty: Bool { numberOfSections <= 0 || numberOfRows(inSection: 0) <= 0 }
+    
+    func backgroundIfNeeded() {
+        
+        switch isEmpty {
+            case true:
+                addBackGround()
+            default:
+                removeBackGround()
+        }
+    }
+    
+    private func addBackGround() {
+    
+        backgroundView = UIView(frame: frame)
+        let label = UILabel(frame: frame)
+        label.text = "There are not items"
+        label.textAlignment = .center
+        label.textColor = UIColor.lightGray
+        backgroundView?.addSubview(label)
+    }
+    
+    private func removeBackGround() {
+        let view = backgroundView
+        
+        UIView.animate(withDuration: 0.2) {
+            view?.alpha = 0
+        } completion: { _ in
+            self.backgroundView = nil
+        }
     }
 }

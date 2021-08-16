@@ -8,34 +8,29 @@
 
 import Foundation
 
-protocol CustomerCodable: Decodable {
+protocol CustomerCodable: Codable { }
 
-}
-
-
-struct CustomerCoder: CustomerCodable {
+extension ATHMCustomer: CustomerCodable {
     
-    let customer: ATHMCustomer
+    fileprivate enum CodingKeys: String, CodingKey {
+        case name, phoneNumber, email
+    }
 }
 
-fileprivate enum CodingKeys: String, CodingKey{
-    case name, phoneNumber, email
-}
+extension ATHMCustomer: Decodable {
 
-extension CustomerCoder: Decodable{
-    
-    init(from decoder: Decoder) throws{
-        
+    convenience public init(from decoder: Decoder) throws {
+
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            
+
             let name: String = container.decodeValueDefault(forKey: .name)
-            let phoneNumber: String =  container.decodeValueDefault(forKey: .phoneNumber)
+            let phoneNumber: String = container.decodeValueDefault(forKey: .phoneNumber)
             let email: String = container.decodeValueDefault(forKey: .email)
-            
-            customer = ATHMCustomer(name: name, phoneNumber: phoneNumber, email: email)
-            
-        }catch let exception as NSError{
+
+            self.init(name: name, phoneNumber: phoneNumber, email: email)
+
+        } catch let exception as NSError {
             let message = exception.debugDescription
             let castException = ATHMPaymentError(message: "There was an error while decode Customer. Detail: \(message)",
                                                  source: .response)
@@ -44,4 +39,12 @@ extension CustomerCoder: Decodable{
     }
 }
 
+extension ATHMCustomer: Encodable {
 
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encodeIfPresent(email, forKey: .email)
+        try? container.encodeIfPresent(name, forKey: .name)
+        try? container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
+    }
+}

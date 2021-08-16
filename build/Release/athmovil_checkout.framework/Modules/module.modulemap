@@ -1,0 +1,11 @@
+framework module athmovil_checkout {
+  umbrella header "athmovil_checkout.h"
+
+  export *
+  module * { export * }
+}
+
+module athmovil_checkout.Swift {
+    header "athmovil_checkout-Swift.h"
+    requires objc
+}

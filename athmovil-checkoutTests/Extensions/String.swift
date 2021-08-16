@@ -13,16 +13,16 @@ extension String{
     
     var toData: Data? {
 
-        guard let query = self.removingPercentEncoding else { return nil }
+        guard let query = removingPercentEncoding else { return nil }
 
-        guard let data = query.data(using: .utf8) else { return nil }
+        guard let data = query.data(using: .utf8,allowLossyConversion: false) else { return nil }
 
         return data
     }
 
     var toJSON: [String: Any]? {
 
-        guard let query = self.removingPercentEncoding else { return nil }
+        guard let query = removingPercentEncoding else { return nil }
 
         guard let data = query.data(using: .utf8) else { return nil }
 

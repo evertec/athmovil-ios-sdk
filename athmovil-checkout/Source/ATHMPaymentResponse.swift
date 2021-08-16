@@ -8,10 +8,8 @@
 
 import Foundation
 
-
-
 @objc(ATHMPaymentResponse)
-public class ATHMPaymentResponse: NSObject{
+final public class ATHMPaymentResponse: NSObject {
         
     /// Current payment, it is the same object that the client have been sent in the request
     @objc public let payment: ATHMPayment
@@ -19,19 +17,20 @@ public class ATHMPaymentResponse: NSObject{
     /// Status of the payment completed, expired o cancelled and other purchase's properties
     @objc public let status: ATHMPaymentStatus
 
-    ///Customer owner
+    /// ATH Móvil's customer
     @objc public let customer: ATHMCustomer
 
-    
-    @objc public override var description: String{
+    @objc public override var description: String {
         """
         Response:
-        \(payment.description)
-        \(customer.description)
-        \(status.description)
+            \n
+            \(payment.description)
+            \n
+            \(customer.description)
+            \n
+            \(status.description)
         """
     }
-    
     
     required init(payment: ATHMPayment, status: ATHMPaymentStatus, customer: ATHMCustomer) {
         self.payment = payment
@@ -39,4 +38,3 @@ public class ATHMPaymentResponse: NSObject{
         self.status = status
     }
 }
-

@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "athmovil-checkout"
-  spec.version      = "3.0.0"
+  spec.version      = "4.0"
   spec.summary      = "Provides a simple, secure and fast checkout experience to customers using your iOS application."
 
   spec.description  = <<-DESC

@@ -9,19 +9,17 @@
 import Foundation
 
 enum ATHMStatus: String, Codable {
-    case completed = "completed",
-    cancelled = "cancelled",
-    expired = "expired"
+    case completed,
+    cancelled,
+    expired
 }
 
 enum ATHMVersion: String, Codable {
     case three = "3.0"
 }
 
-
-
 @objc(ATHMPaymentStatus)
-public class ATHMPaymentStatus: NSObject {
+final public class ATHMPaymentStatus: NSObject {
         
     ///Status of the transacion
     let status: ATHMStatus
@@ -30,9 +28,7 @@ public class ATHMPaymentStatus: NSObject {
     var version: ATHMVersion?
     
     ///State of the payment it could be completed, expired or cancelled
-    @objc public var statusPayment: String{
-        return status.rawValue
-    }
+    @objc public var statusPayment: String { status.rawValue.uppercased() }
     
     ///Date of the the transaction, it means the date and time of the application of the transaction
     @objc public let date: Date
@@ -43,8 +39,7 @@ public class ATHMPaymentStatus: NSObject {
     ///Consecutive number of the trasaction, if the transaction is completed has a value otherwise nil
     @objc public let dailyTransactionID: Int
             
-    
-    @objc override public var description: String{
+    @objc override public var description: String {
         """
         Status:
             - status: \(statusPayment)
@@ -60,6 +55,11 @@ public class ATHMPaymentStatus: NSObject {
         self.date = date
         self.status = status
     }
-             
+        
+    init(status: ATHMStatus) {
+        self.status = status
+        self.referenceNumber = ""
+        self.dailyTransactionID = 0
+        self.date = Date()
+    }
 }
-

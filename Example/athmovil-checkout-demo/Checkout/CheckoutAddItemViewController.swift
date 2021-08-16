@@ -10,11 +10,39 @@ import Foundation
 import UIKit
 import athmovil_checkout
 
-class CheckoutAddItemViewController: UITableViewController{
+class CheckoutAddItemViewController: UITableViewController {
     
     @IBOutlet var textFieds: [UITextField]!
     
-    var onCompleted: ((ATHMPaymentItem)->())?
+    var onCompleted: ((ATHMPaymentItem)-> Void)?
+    var item: ATHMPaymentItem?
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewDidLoadItem()
+    }
+    
+    func viewDidLoadItem() {
+        
+        for (index, currentTextField) in textFieds.enumerated() {
+            
+            switch index {
+                case 0:
+                    currentTextField.text = item?.name ?? ""
+                case 1:
+                    currentTextField.text = "\(item?.price ?? 0.0)"
+                case 2:
+                    currentTextField.text = "\(item?.quantity ?? 0)"
+                case 3:
+                    currentTextField.text = item?.desc ?? ""
+                case 4:
+                    currentTextField.text = item?.metadata ?? ""
+                default:
+                    return
+            }
+        }
+    }
     
     @IBAction func done(_ sender: Any) {
         
@@ -23,7 +51,7 @@ class CheckoutAddItemViewController: UITableViewController{
         var name = ""; var desc = ""; var metadata = ""
         var price = 0.0; var quantity = 0
         
-        for (index, currentTextField) in self.textFieds.enumerated() {
+        for (index, currentTextField) in textFieds.enumerated() {
             
             switch index {
                 case 0:
@@ -41,15 +69,17 @@ class CheckoutAddItemViewController: UITableViewController{
             }
         }
         
-        let paymentItem = ATHMPaymentItem(name: name, price: NSNumber(value: price), quantity: quantity)
+        let paymentItem = ATHMPaymentItem(name: name,
+                                          price: NSNumber(value: price),
+                                          quantity: quantity)
         paymentItem.desc = desc
         paymentItem.metadata = metadata
-        self.onCompleted?(paymentItem)
+        onCompleted?(paymentItem)
     }
     
     @IBAction func cancel(_ sender: Any) {
-        self.view.endEditing(true)
-        self.dismiss(animated: true)
+        view.endEditing(true)
+        dismiss(animated: true)
     }
 
 }

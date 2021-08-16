@@ -8,17 +8,15 @@
 
 import Foundation
 
-
-extension NSNumber{
+extension NSNumber {
     
-    /**
-     Method to validate if the current value is greter or igual than zero, no negative o infinite number in this case will return true otherwise false
-     */
-    var isUnexpectedAmount: Bool{
+    /// Method to validate if the current value is less than or equal to one (minimum amount to transfer),  negative or infinite number;
+    /// in that case will return true otherwise false
+    var isUnexpectedAmount: Bool {
         
         let doubleValue = self.doubleValue
         
-        return doubleValue.isNaN || doubleValue.isInfinite || doubleValue <= 0
+        return doubleValue.isNaN || doubleValue.isInfinite || doubleValue < 1
         
     }
 }

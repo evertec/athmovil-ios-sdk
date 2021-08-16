@@ -15,13 +15,13 @@ Before you begin, please review the following prerequisites:
 
 * Have the API key of your Business account at hand. You can view your API key on the settings section of the ATH Móvil Business application for iOS or Android.
 
-* Xcode 11.6 u 11.0 
+* Xcode 12.4 
 
-* Sharpie Tool de <a href="https://docs.microsoft.com/en-us/xamarin/cross-platform/macios/binding/objective-sharpie/get-started">Microsoft Version 3.4</a>.
+* Sharpie Tool de <a href="https://docs.microsoft.com/en-us/xamarin/cross-platform/macios/binding/objective-sharpie/get-started">Microsoft Version 3.5</a>.
 
-* Microsoft Visual Studio Version 8.6.7
+* Microsoft Visual Studio Version 8.9.2
 
-* Xcode Tools  xcode-select –install
+* Xcode Tools  xcode-select –install (XCodeBuild 12.4)
  
 If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form: https://forms.gle/ZSeL8DtxVNP2K2iDA.
 
@@ -44,9 +44,11 @@ To generate the APIDefinition.cs interface, we have included a script to generat
 sh Xamarin.sh
 ```
 
-* The following should be seen in the console when running the script. This indicates that the APIDefinition.cs file was generated correctly.
+* The following should be seen in the console when running the script. This indicates that the APIDefinition.cs file was generated correctly. You should see the architectures x86_64 and arm64 
 
 ```bash
+
+Architectures in the fat file: Release/athmovil_checkout.framework/athmovil_checkout are: x86_64 arm64 
 ...
 
 🏆 Creating XamarinApiDef
@@ -91,54 +93,22 @@ void AwakeFromNib ();
 
 ```
 
-* Find the definition of interface ATHMPaymentTheme and remove the Attribute Model, the definition remains as follows:
+* Find the definition of interface ATHThemeClassic, ATHThemeLight y ATHThemeNight change the definition as follows:
 
 ```csharp
-// @protocol ATHMPaymentTheme
-[Protocol]
-interface ATHMPaymentTheme
-{…
-```
-
-* Find the definition of interface ATHThemeClassic, ATHThemeLight y ATHThemeNight and remove the parent interface, their definition remains as follows:
-
-```csharp
-// @interface ATHThemeClassic : NSObject <ATHMPaymentTheme>
-[BaseType (typeof(NSObject))]
-interface ATHThemeClassic 
-{…
+[BaseType(typeof(NSObject))]
+interface ATHThemeClassic : ATHMPaymentTheme
+{...
 
 // @interface ATHThemeLight : NSObject <ATHMPaymentTheme>
-[BaseType (typeof(NSObject))]
-interface ATHThemeLight 
-{…
+[BaseType(typeof(NSObject))]
+interface ATHThemeLight : ATHMPaymentTheme
+{...
 
 // @interface ATHThemeNight : NSObject <ATHMPaymentTheme>
-[BaseType (typeof(NSObject))]
-interface ATHThemeNight 
-{…
-```
-
-* Find the definition of interface ATHMLoadingController, ATHMLoadingCustom y ATHMLoadingShimmer and remove the parent interface, their definition remains as follows:
-
-```csharp
-    // @interface ATHMLoadingController : NSObject <ATHMLoading>
-    [BaseType (typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface ATHMLoadingController
-    {…
-
-    // @interface ATHMLoadingCustom : NSObject <ATHMLoading>
-    [BaseType (typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface ATHMLoadingCustom
-    {…
-
-    // @interface ATHMLoadingShimmer : NSObject <ATHMLoading>
-    [BaseType (typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface ATHMLoadingShimmer
-    {…
+[BaseType(typeof(NSObject))]
+interface ATHThemeNight : ATHMPaymentTheme
+{...
 ```
 
 Finally save the ApiDefinitions.cs file and close. In the next step you will need the following files:
@@ -163,7 +133,7 @@ using ATHMovilPaymentButton;
 
 * Using Storyboard or Xib
 
-![xamarinios](XamarinXib.png)
+![xamarinios](ReadmeImages/XamarinXib.png)
 
 * Setting ATH Movil Payment Button to a UIKit UIButton
 
@@ -188,21 +158,22 @@ buttonByCode.ToggleATHMNight();
 ```csharp
 void sendPayment()
 {
-    ///Set your url scheme, this is the url name that ATH Movil is going to send the response after the payment
-    ///Avvoid to use this xamarinSDK, the app cliente should define custom name in the info.plist
+    /// Set your url scheme, this is the url name that ATH Movil is going to send the response after the payment
+    /// Avoid to use this xamarinSDK, the app cliente should define custom name in the info.plist
     ATHMURLScheme scheme = new ATHMURLScheme("xamarinSDK");
 
-    ///Business token, it means the business account that will receive the payment 
+    /// Business token, it means the business account that will receive the payment
+    /// You can use the public token as dummy for testing. For more information read the Readme.md 
     ATHMBusinessAccount business = new ATHMBusinessAccount("e7d8056974085111e695b5f7a99d27c206a73089");
 
-    ///Payment to send to ATH Movil, tax, subtotal and items are optional so the client can avoid them
+    /// Payment to send to ATH Movil, tax, subtotal and items are optional so the client can avoid them
     ATHMPayment payment = new ATHMPayment(2.0);
     payment.Tax = 1.0;
     payment.Subtotal = 1.0;
     payment.Items = new ATHMPaymentItem[] { new ATHMPaymentItem("Item Test", 1.0, 1) };
 
-    ///Lambda Expression to call after ATH Movil respond, it depends on the status of the transaction.
-    ///Error would call if there is an error in the request or in response
+    /// Lambda Expression to call after ATH Movil respond, it depends on the status of the transaction.
+    /// Error would call if there is an error in the request or in response
     ATHMPaymentHandler handler = new ATHMPaymentHandler(
         onCompleted => paymentResponse(onCompleted),
         onExpired => paymentResponse(onExpired),
@@ -210,7 +181,7 @@ void sendPayment()
         onExceptionrror => errorFromATHMovil(onExceptionrror));
 
 
-    ///Object that send the payment to ATH Móvil Personal
+    /// Object that send the payment to ATH Móvil Personal
     ATHMPaymentRequest request = new ATHMPaymentRequest(business, scheme, payment);
     request.Timeout = 140;
     request.PayWithHandler(handler);

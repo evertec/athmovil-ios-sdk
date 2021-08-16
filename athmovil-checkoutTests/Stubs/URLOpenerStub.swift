@@ -13,17 +13,20 @@ import XCTest
 struct URLOpenerStub: URLOpenerAdaptable {
     
     var afterOpenWebSite: ((_ url: URL, _ options:[UIApplication.OpenExternalURLOptionsKey : Any]) -> ())?
-    /**
-     Opens a scheme with the provided URL
-     
-      - Parameters:
-        - url: url that will be opened
-        - completion: called after opening is completed param is true if the scheme was opened successfully param is false if opening failed
-     */
-    func openWebsite(url: URL, alternateURL: URL,
-                     options: [UIApplication.OpenExternalURLOptionsKey : Any],
-                     completion: ((Bool) -> Void)?){
+    
+    
+    /// Opens a scheme with the provided URL
+    /// - Parameters:
+    ///   - url: url that will be opened
+    ///   - alternateURL: alternative URL when the url parameter can not be opened
+    ///   - options: options for openning the url
+    ///   - completion: closure to call after the URL have been opened
+    func open(url: URL,
+              alternateURL: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey : Any],
+              completion: ((Bool) -> Void)?) {
         
-        self.afterOpenWebSite?(url, options)
+        afterOpenWebSite?(url, options)
     }
+
 }
