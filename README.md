@@ -133,8 +133,8 @@ func payWithATHMovil() {
   | `total` | NSNumber | Yes | Total amount to be paid by the end user. |
   | `subtotal` | NSNumber | No | Optional  variable to display the payment subtotal (if applicable) |
   | `tax` | NSNumber | No | Optional variable to display the payment tax (if applicable). |
-  | `metadata1` | String | No | Optional variable to attach data to the payment object. |
-  | `metadata2` | String | No | Optional variable to attach data to the payment object. |
+  | `metadata1` | String | Yes | Optional variable to attach data to the payment object. |
+  | `metadata2` | String | Yes | Optional variable to attach data to the payment object. |
   | `items` | Array | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
   | `token` | ATHMBusinessAccount | Yes | Public token of ATH Móvil Business account. For testing set public token as "dummy" |
   | `urlScheme` | ATHMURLScheme | Yes | URL scheme defined in your project. For instructions on how to define a custom URL scheme for your application <a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>. |
