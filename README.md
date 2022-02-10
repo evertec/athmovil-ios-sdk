@@ -133,8 +133,8 @@ func payWithATHMovil() {
   | `total` | NSNumber | Yes | Total amount to be paid by the end user. |
   | `subtotal` | NSNumber | No | Optional  variable to display the payment subtotal (if applicable) |
   | `tax` | NSNumber | No | Optional variable to display the payment tax (if applicable). |
-  | `metadata1` | String | Yes | Required variable that can be left empty or filled with additional transaction information. |
-  | `metadata2` | String | Yes | Required variable that can be left empty or filled with additional transaction information. |
+  | `metadata1` | String | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+  | `metadata2` | String | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
   | `items` | Array | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
   | `token` | ATHMBusinessAccount | Yes | Public token of ATH Móvil Business account. For testing set public token as "dummy" |
   | `urlScheme` | ATHMURLScheme | Yes | URL scheme defined in your project. For instructions on how to define a custom URL scheme for your application <a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>. |
@@ -149,7 +149,7 @@ func payWithATHMovil() {
   | `desc` | String | No | Brief description of the item. |
   | `price` | NSNumber | Yes | Price of individual item. |
   | `quantity` | Int | Yes | Quantity of individual item. |
-  | `metadata` | String | No | Optional variable to attach data to the item object. |
+  | `metadata` | String | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
 
 
 ### Manage the response of payment requests sent by ATH Móvil
@@ -229,8 +229,8 @@ If unexpected data is sent on the request of the payment the SDK will call the c
   | `total` | Positive value |
   | `subtotal` | Positive value or zero |
   | `tax` | Positive value or zero |
-  | `metadata1` | A string with characters, digits or spaces  |
-  | `metadata2` | A string with characters, digits or spaces |
+  | `metadata1` | A string with characters, digits or spaces, Max length 40 |
+  | `metadata2` | A string with characters, digits or spaces, Max length 40 |
   | `token` | A string with characters |
   | `urlScheme` | A string with characters. **Do not use the urlscheme in the example❗️** |
   | `timeout` | Integer between 60 and 600 |
