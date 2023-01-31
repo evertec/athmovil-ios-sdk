@@ -15,7 +15,9 @@ protocol TargetURLRepresentable {
     
     /// Dictionary with the options to send when the SKD will open ATH Movil Personal
     var options: [UIApplication.OpenExternalURLOptionsKey : Any] { get }
-            
+    
+    var enviroment: TargetEnviroment { get }
+    
     func open<Payment, Opener>(payment: Payment,
                                application: Opener,
                                completion: @escaping (Result<URL, ATHMPaymentError>) -> Void) where Payment: Encodable,
@@ -80,6 +82,9 @@ extension TargetURLRepresentable {
                     
                     if success {
                         completion(.success(url))
+                    }else{
+                        let error = ATHMPaymentError(message: "url is invalid", source: .response)
+                        completion(.failure(error))
                     }
                 }
                 
@@ -89,10 +94,22 @@ extension TargetURLRepresentable {
     }
 }
 
-enum TargetURLScheme: TargetURLRepresentable, CaseIterable {
+enum TargetURLScheme: TargetURLRepresentable {
     
-    case athMovil
-    case athMovilSimulated
+    case athMovil(TargetEnviroment)
+    case athMovilSimulated(TargetEnviroment)
+    case athMovilSecure(TargetEnviroment)
+    
+    var enviroment: TargetEnviroment {
+        switch self {
+            case let .athMovil(selectedEnviroment):
+                return selectedEnviroment
+            case let .athMovilSimulated(selectedEnviroment):
+                return selectedEnviroment
+            case let .athMovilSecure(selectedEnviroment):
+                return selectedEnviroment
+        }
+    }
     
     var athMovilAppURL: String {
         switch self {
@@ -100,25 +117,41 @@ enum TargetURLScheme: TargetURLRepresentable, CaseIterable {
                 return "athm://payment/"
             case .athMovilSimulated:
                 return "athm://paymentSimulated/"
+            case .athMovilSecure:
+                return "athm://paymentSecure/"
         }
     }
 }
 
-enum TargetUniversalLinks: TargetURLRepresentable, CaseIterable {
-    case athMovil
-    case athMovilSimulated
+enum TargetUniversalLinks: TargetURLRepresentable {    
+    case athMovil(TargetEnviroment)
+    case athMovilSimulated(TargetEnviroment)
+    case athMovilSecure(TargetEnviroment)
     
     /// Dictionary with the options to send when the SKD will open ATH Movil Personal
     var options: [UIApplication.OpenExternalURLOptionsKey : Any] {
         [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly:  true]
     }
     
+    var enviroment: TargetEnviroment {
+        switch self {
+            case let .athMovil(selectedEnviroment):
+                return selectedEnviroment
+            case let .athMovilSimulated(selectedEnviroment):
+                return selectedEnviroment
+            case let .athMovilSecure(selectedEnviroment):
+                return selectedEnviroment
+        }
+    }
+    
     var athMovilAppURL: String {
         switch self {
-            case .athMovil:
-                return "https://athm-ulink-prod-static-website.s3.amazonaws.com/e-commerce/mobile"
-            case .athMovilSimulated:
-                return "https://athm-ulink-prod-static-website.s3.amazonaws.com/e-commerce/mobileDummy"
+            case let .athMovil(enviroment):
+                return "\(enviroment.athMovilURL)/mobile"
+            case let .athMovilSimulated(enviroment):
+                return "\(enviroment.athMovilURL)/mobileDummy"
+            case let .athMovilSecure(enviroment):
+                return "\(enviroment.athMovilURL)/mobileSecure"
         }
     }
 }

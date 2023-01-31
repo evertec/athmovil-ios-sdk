@@ -60,4 +60,20 @@ extension NSDictionary {
         
         return 0
     }
+    
+    /// Subscript for getting an double from the dictionary
+    subscript(key: String) -> Double {
+        
+        let valueDic = value(forKey: key)
+        
+        if let valueString = valueDic as? String, let doubleValue = Double(valueString) {
+            return doubleValue
+        }
+        
+        if let value = valueDic as? Double {
+            return value
+        }
+        
+        return 0.0
+    }
 }

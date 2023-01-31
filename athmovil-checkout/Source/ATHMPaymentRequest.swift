@@ -38,11 +38,13 @@ public class ATHMPaymentRequest: NSObject {
     let scheme: ATHMURLScheme
     
     /// Purchase representation to send to ATH Movil
-    let payment: ATHMPayment
+    var payment: ATHMPayment
     
     /// Current version of the payment request, it is only for ATH Movil personal
     let version = ATHMVersion.three
-        
+                
+    fileprivate var userPref = UserPreferences.shared
+    
     /// Purchase Timeout in ath movil personal
     @objc public var timeout: TimeInterval = 600.0
     
@@ -52,7 +54,7 @@ public class ATHMPaymentRequest: NSObject {
             - timeout: \(timeout)
             - App: \(scheme.description)
             - Business: \(businessAccount.description)
-            - Business: \(payment.description)
+            - Payment: \(payment.description)
         """
     }
     
@@ -68,7 +70,6 @@ public class ATHMPaymentRequest: NSObject {
         self.businessAccount = account
         self.scheme = scheme
         self.payment = payment
-        
         super.init()
     }
     
@@ -87,6 +88,7 @@ public class ATHMPaymentRequest: NSObject {
                 
         sendPayment(handler, urlopener: UIApplication.shared)
     }
+    
 }
 
 // MARK: Generic Method
@@ -99,19 +101,24 @@ extension ATHMPaymentRequest {
     ///   - urlopener: object to open the application
     func sendPayment<Handler, Opener>(_ handler: Handler, urlopener: Opener) where Handler: PaymentHandleable,
                                                                                    Opener: URLOpenerAdaptable {
+        let target = TargetEnviroment(rawValue: ATHMPaymentSession.shared.enviroment.lowercased()) ?? .production
+        TargetEnviroment.selectedEnviroment = target
         switch businessAccount.isSimulatedToken {
             case false:
                 let paymentSender = AnyPaymentSender(paymentRequest: self,
                                                      paymentHandler: handler,
                                                      paymentOpener: urlopener)
-                paymentSender.sendPayment(target: TargetUniversalLinks.athMovil, session: .shared)
+                
+                paymentSender.sendPayment(target: TargetUniversalLinks.athMovil(target),
+                                          session: .shared)
                 
             default:
                 let paymentSimulated = PaymentSimulated(paymentRequest: self)
                 let paymentSender = AnyPaymentSender(paymentRequest: paymentSimulated,
                                                      paymentHandler: handler,
                                                      paymentOpener: urlopener)
-                paymentSender.sendPayment(target: TargetUniversalLinks.athMovilSimulated, session: .shared)
+                paymentSender.sendPayment(target: TargetUniversalLinks.athMovilSimulated(target),
+                                          session: .shared)
         }
     }
 }

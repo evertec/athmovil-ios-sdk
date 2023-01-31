@@ -11,6 +11,13 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>SwiftSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>athmovil-checkout-athmovil-checkout.xcscheme</key>
 		<dict>
 			<key>isShown</key>

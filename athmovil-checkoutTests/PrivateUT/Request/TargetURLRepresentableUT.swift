@@ -11,6 +11,14 @@ import XCTest
 @testable import athmovil_checkout
 
 
+extension TargetURLScheme: CaseIterable {
+    public static var allCases: [TargetURLScheme] { [.athMovil(.production), .athMovilSimulated(.production)] }
+}
+
+extension TargetUniversalLinks: CaseIterable {
+    public static var allCases: [TargetUniversalLinks] { [.athMovil(.production), .athMovilSimulated(.production)] }
+}
+
 class TargetURLRepresentableUT: XCTestCase {
     
 

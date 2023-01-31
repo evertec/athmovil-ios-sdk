@@ -21,7 +21,7 @@ extension Request {
             
         let bodyRequest = Body(publicToken: currentPayment.businessAccount.token, paymentID: paymentId)
         
-        return Request.post(baseURL: APIPayments.baseURL,
+        return Request.post(baseURL: TargetEnviroment.selectedEnviroment.baseURL,
                             path: "eCommerceTransfer/consultTransactionStatus",
                             body: bodyRequest) { result in
             

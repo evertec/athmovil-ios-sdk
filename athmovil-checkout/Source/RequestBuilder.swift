@@ -13,7 +13,7 @@ protocol RequestBuilder {
     var baseURL: URL { get }
     var path: String { get }
     var params: [URLQueryItem]? { get }
-    var headers: [String: String] { get }
+    var headers: [String: String]? { get }
     
     func toURLRequest() -> URLRequest
     
@@ -25,7 +25,7 @@ struct BasicRequestBuilder: RequestBuilder {
     var baseURL: URL
     var path: String
     var params: [URLQueryItem]?
-    var headers: [String: String] = [:]
+    var headers: [String: String]?
 }
 
 extension RequestBuilder {
@@ -41,9 +41,7 @@ extension RequestBuilder {
         let urlFromComponents = urlComponents.url!
         var urlRequest = URLRequest(url: urlFromComponents)
         urlRequest.allHTTPHeaderFields = headers
-        
         urlRequest.httpMethod = method.rawValue.uppercased()
-        
         urlRequest.httpBody = encodeRequestBody()
         
         return urlRequest
@@ -77,15 +75,17 @@ struct Request {
 
 extension Request {
     
-    static func post<Body: Model>(baseURL: URL,
+    static func post<Body:Model>(baseURL: URL,
                                   path: String,
                                   body: Body?,
+                                  headers: [String : String]? = [:],
                                   completion: @escaping (Result<Data, NetworkError>) -> Void) -> Request {
         
         let builder = PostRequestBuilder(baseURL: baseURL,
                                          path: path,
                                          params: nil,
-                                         body: body)
+                                         body: body,
+                                         headers: headers)
         return Request(builder: builder, completion: completion)
     }
 }

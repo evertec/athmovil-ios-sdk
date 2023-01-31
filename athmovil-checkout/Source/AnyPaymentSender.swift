@@ -54,13 +54,15 @@ struct AnyPaymentSender<Payment, Handler, Opener> where Payment: PaymentRequestC
         let anyPaymentRequest = AnyPaymentRequestCoder(paymentRequest: paymentRequest,
                                                        traceId: paymentHandler.traceId.uuidString)
         
+        let apiForOnResume = target.enviroment.client(currentRequest: paymentRequest)
         target.open(payment: anyPaymentRequest, application: application) { result in
             
             switch result {
                 case .success:
                     session.currentPayment = AnyPaymentReceiver(paymentContent: paymentRequest,
                                                                 handler: paymentHandler,
-                                                                session: session)
+                                                                session: session,
+                                                                apiClient: apiForOnResume)
                 case let .failure(paymentError):
                     paymentHandler.onException(paymentError)
             }

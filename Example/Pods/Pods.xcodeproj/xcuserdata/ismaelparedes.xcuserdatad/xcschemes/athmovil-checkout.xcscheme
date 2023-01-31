@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1300"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9116B35005D4276EEF326DD8142F8742"
-               BuildableName = "athmovil-checkout.bundle"
-               BlueprintName = "athmovil-checkout-athmovil-checkout"
+               BlueprintIdentifier = "7D749667B99BD3CCBA8A8BF7EFA4A7C3"
+               BuildableName = "athmovil_checkout.framework"
+               BlueprintName = "athmovil-checkout"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

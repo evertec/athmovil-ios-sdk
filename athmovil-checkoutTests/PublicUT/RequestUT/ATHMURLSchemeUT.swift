@@ -10,11 +10,11 @@ import Foundation
 import XCTest
 @testable import athmovil_checkout
 
-class ATHMClientAppUT: XCTestCase {
+class ATHMURLSchemeUT: XCTestCase {
     
     //MARK:- Positive
     
-    func testWhenInitClientApp_GivenURLScheme_ThenHasAnURLSCheme() {
+    func testWhenInitURLScheme_GivenURLScheme_ThenHasAnURLSCheme() {
         
         let clientApp: ATHMURLScheme = "testURL"
         
@@ -22,7 +22,7 @@ class ATHMClientAppUT: XCTestCase {
         
     }
     
-    func testWhenInitClientApp_GivenADictionaryWithAURLKey_ThenHasAnURLSCheme() {
+    func testWhenInittURLScheme_GivenADictionaryWithAURLKey_ThenHasAnURLSCheme() {
         
         let dicationary = NSDictionary(dictionary: ["scheme": "URL_test"])
         let client = ATHMURLScheme(dictionary: dicationary)
@@ -40,7 +40,7 @@ class ATHMClientAppUT: XCTestCase {
 
     //MARK:- Negative
     
-    func testWhenInitClientApp_GivenEmptyURLScheme_ThenHasANURLSChemeEmpty() {
+    func testWhenInittURLScheme_GivenEmptyURLScheme_ThenHasANURLSChemeEmpty() {
         
         let client: ATHMURLScheme = "   "
         
@@ -55,7 +55,7 @@ class ATHMClientAppUT: XCTestCase {
         XCTAssertFalse(appClient.description.isEmpty)
     }
     
-    func testWhenInitClientApp_GivenADictionaryWithASchemeStringEmpty_ThenURLSchemePropertyIsEmpty() {
+    func testWhenInittURLScheme_GivenADictionaryWithASchemeStringEmpty_ThenURLSchemePropertyIsEmpty() {
         
         let dicationary = NSDictionary(dictionary: ["scheme": "     "])
         let client = ATHMURLScheme(dictionary: dicationary)
@@ -66,7 +66,7 @@ class ATHMClientAppUT: XCTestCase {
     
     //MARK:- Boundary
     
-    func testWhenInitClientApp_GivenADictionaryWithOutURLSchemeKey_ThenURLSchemePropertyIsEmpty() {
+    func testWhenInittURLScheme_GivenADictionaryWithOutURLSchemeKey_ThenURLSchemePropertyIsEmpty() {
         
         let dicationary = NSDictionary(dictionary: ["otherKey": "URL_schem"])
         let client = ATHMURLScheme(dictionary: dicationary)
@@ -75,7 +75,7 @@ class ATHMClientAppUT: XCTestCase {
         
     }
     
-    func testWhenInitClientApp_GivenADictionaryWithURLSchemeAsNumber_ThenBusinessHasAEmptyToken() {
+    func testWhenInittURLScheme_GivenADictionaryWithURLSchemeAsNumber_ThenBusinessHasAEmptyToken() {
         
         let dicationary = NSDictionary(dictionary: ["scheme": 3241312])
         let client = ATHMURLScheme(dictionary: dicationary)

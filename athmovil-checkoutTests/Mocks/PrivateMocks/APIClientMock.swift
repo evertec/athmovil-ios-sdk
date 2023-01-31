@@ -9,10 +9,17 @@
 import Foundation
 @testable import athmovil_checkout
 
-struct APIClientMocK: APIClientRequestable {
+struct APIClientMock: APIClientRequestable {
     
     let response: Data?
     let networkError: NetworkError?
+    var session: URLSession = URLSession.shared
+    var dispatchQueue: DispatchQueue = DispatchQueue.global()
+    
+    init(response: Data? = nil, error: NetworkError? = nil) {
+        self.response = response
+        self.networkError = error
+    }
     
     func send(request: Request) {
         

@@ -1,8 +1,14 @@
 PODS:
   - athmovil-checkout (4.0)
+  - SwiftSpinner (2.2.0)
 
 DEPENDENCIES:
   - athmovil-checkout (from `../`)
+  - SwiftSpinner
+
+SPEC REPOS:
+  trunk:
+    - SwiftSpinner
 
 EXTERNAL SOURCES:
   athmovil-checkout:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   athmovil-checkout: 81c0dcbd115ee8b0e50a8a67fbb87aebc781ccf2
+  SwiftSpinner: f9b59477fe107427f2b5b835497d6636fa167ede
 
-PODFILE CHECKSUM: 3bbf5ccaf28ea5577e5cfda5f763b4cec38b666d
+PODFILE CHECKSUM: 48ce263413cbabc04a43dacbbad89bb4e9a506cd
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
