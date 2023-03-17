@@ -104,14 +104,14 @@ extension ATHMPaymentRequest {
                 let paymentSender = AnyPaymentSender(paymentRequest: self,
                                                      paymentHandler: handler,
                                                      paymentOpener: urlopener)
-                paymentSender.sendPayment(target: TargetUniversalLinks.athMovil, session: .shared)
+                paymentSender.sendPayment(target: TargetURLScheme.athMovil, session: .shared)
                 
             default:
                 let paymentSimulated = PaymentSimulated(paymentRequest: self)
                 let paymentSender = AnyPaymentSender(paymentRequest: paymentSimulated,
                                                      paymentHandler: handler,
                                                      paymentOpener: urlopener)
-                paymentSender.sendPayment(target: TargetUniversalLinks.athMovilSimulated, session: .shared)
+                paymentSender.sendPayment(target: TargetURLScheme.athMovilSimulated, session: .shared)
         }
     }
 }
