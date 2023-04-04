@@ -25,7 +25,8 @@ class ATHMPaymentSessionUT: XCTestCase {
         let session = ATHMPaymentSession.shared
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentRequestMock(),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: APIClientMock())
         
         session.url = urlResponse
     }
@@ -41,7 +42,8 @@ class ATHMPaymentSessionUT: XCTestCase {
         let session = ATHMPaymentSession.shared
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentRequestMock(),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: APIClientMock())
         
         session.url = urlResponse
     }
@@ -56,9 +58,11 @@ class ATHMPaymentSessionUT: XCTestCase {
             
         let session = ATHMPaymentSession.shared
         let payment = ATHMPaymentRequest(account: "dummy", scheme: "attt://", payment: 20.0)
+        let clientDummy = APIClientSimulated(paymentRequest: PaymentSimulated(paymentRequest: payment))
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentSimulated(paymentRequest: payment),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: clientDummy)
         
         NotificationCenter.default.post(name: UIApplication.didBecomeActiveNotification, object: nil)
         wait(for: [expectation], timeout: 4)
@@ -79,7 +83,8 @@ class ATHMPaymentSessionUT: XCTestCase {
         let session = ATHMPaymentSession.shared
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentRequestMock(),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: APIClientMock())
         
         session.url = urlResponse
     }
@@ -96,7 +101,8 @@ class ATHMPaymentSessionUT: XCTestCase {
         
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentRequestMock(),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: APIClientMock())
         session.url = urlResponse
     }
         
@@ -135,9 +141,11 @@ class ATHMPaymentSessionUT: XCTestCase {
         
         let session = ATHMPaymentSession.shared
         let payment = ATHMPaymentRequest(account: "dummy", scheme: "attt://", payment: 20.0)
+        let clientDummy = APIClientSimulated(paymentRequest: PaymentSimulated(paymentRequest: payment))
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentSimulated(paymentRequest: payment),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: clientDummy)
         
         expectation.expectedFulfillmentCount = 1
         
@@ -159,7 +167,8 @@ class ATHMPaymentSessionUT: XCTestCase {
         let payment = ATHMPaymentRequest(account: "dummy", scheme: "attt://", payment: 20.0)
         session.currentPayment = AnyPaymentReceiver(paymentContent: PaymentSimulated(paymentRequest: payment),
                                                     handler: handler,
-                                                    session: session)
+                                                    session: session,
+                                                    apiClient: APIClientMock())
         
         expectation.expectedFulfillmentCount = 1
         

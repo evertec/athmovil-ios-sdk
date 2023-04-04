@@ -28,7 +28,7 @@ class AnyPaymentSenderUT: XCTestCase{
                                              paymentHandler: handlerMock,
                                              paymentOpener: urlOpener)
         
-        paymentSender.sendPayment(target: TargetURLScheme.athMovil, session: .shared)
+        paymentSender.sendPayment(target: TargetURLScheme.athMovil(.production), session: .shared)
     }
     
     //MARK:- Negative
@@ -45,7 +45,7 @@ class AnyPaymentSenderUT: XCTestCase{
                                              paymentHandler: handlerMock,
                                              paymentOpener: urlOpener)
                 
-        paymentSender.sendPayment(target: TargetURLScheme.athMovil, session: .shared)
+        paymentSender.sendPayment(target: TargetURLScheme.athMovil(.production), session: .shared)
     }
     
     //MARK:- Boundary
@@ -62,7 +62,7 @@ class AnyPaymentSenderUT: XCTestCase{
                                              paymentHandler: handlerMock,
                                              paymentOpener: urlOpener)
         
-        paymentSender.sendPayment(target: TargetURLScheme.athMovil, session: .shared)
+        paymentSender.sendPayment(target: TargetURLScheme.athMovil(.production), session: .shared)
     }
     
     

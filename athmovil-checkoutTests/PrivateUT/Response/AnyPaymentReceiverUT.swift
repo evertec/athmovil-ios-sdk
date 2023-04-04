@@ -26,7 +26,8 @@ class AnyPaymentReceiverUT: XCTestCase {
         
         let responser = AnyPaymentReceiver(paymentContent: paymentRequest,
                                            handler: paymentHandlerResponse,
-                                           session: .shared)
+                                           session: .shared,
+                                           apiClient: APIClientMock())
         
         responser.completed(by: .deepLink(mockData))
         
@@ -42,9 +43,11 @@ class AnyPaymentReceiverUT: XCTestCase {
             expectationSerive.fulfill()
         })
         
+        let clientDummy = APIClientSimulated(paymentRequest: PaymentSimulated(paymentRequest: paymentRequest))
         let responser = AnyPaymentReceiver(paymentContent: PaymentSimulated(paymentRequest: paymentRequest),
                                            handler: paymentHandlerResponse,
-                                           session: .shared)
+                                           session: .shared,
+                                           apiClient: clientDummy)
         
         responser.completed(by: .becomeActive)
         wait(for: [expectationSerive], timeout: 4)

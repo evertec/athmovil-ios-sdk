@@ -26,6 +26,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: { (_) in
             XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
+            XCTAssert(false)
         }) { (_) in
             XCTAssert(false)
         }
@@ -44,6 +48,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
         }, onExpired: {
             XCTAssertEqual($0, responseMock)
         }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
             XCTAssert(false)
         }) { _ in
             XCTAssert(false)
@@ -64,6 +72,56 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: {
             XCTAssertEqual($0, responseMock)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
+            XCTAssert(false)
+        }) { _ in
+            XCTAssert(false)
+        }
+        
+        handler.completeFrom(data: data)
+    }
+    
+    func testWhenCompleteFromData_GivenStatusPending_ThenPendingClosureIsCalled() {
+        
+        let responseMock = getMockDate(key: "status", value: "pending")
+        
+        let data = try! JSONSerialization.data(withJSONObject: responseMock, options: .prettyPrinted)
+        
+        let handler = ATHMPaymentHandlerDictionary(onCompleted: { _ in
+            XCTAssert(false)
+        }, onExpired: { _ in
+            XCTAssert(false)
+        }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending: {
+            XCTAssertEqual($0, responseMock)
+        }, onFailed: { _ in
+            XCTAssert(false)
+        }) { _ in
+            XCTAssert(false)
+        }
+        
+        handler.completeFrom(data: data)
+    }
+    
+    func testWhenCompleteFromData_GivenStatusFailed_ThenFailedClosureIsCalled() {
+        
+        let responseMock = getMockDate(key: "status", value: "failed")
+        
+        let data = try! JSONSerialization.data(withJSONObject: responseMock, options: .prettyPrinted)
+        
+        let handler = ATHMPaymentHandlerDictionary(onCompleted: { _ in
+            XCTAssert(false)
+        }, onExpired: { _ in
+            XCTAssert(false)
+        }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending:  { _ in
+            XCTAssert(false)
+        }, onFailed: { 
+            XCTAssertEqual($0, responseMock)
         }) { _ in
             XCTAssert(false)
         }
@@ -82,6 +140,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
         }, onExpired: { (_) in
             XCTAssert(false)
         }, onCancelled: { (_) in
+            XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
             XCTAssert(false)
         }) { (_) in
             XCTAssert(false)
@@ -102,6 +164,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
             XCTAssertEqual($0["status"], "expired")
         }, onCancelled: { _ in
             XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
+            XCTAssert(false)
         }) { _ in
             XCTAssert(false)
         }
@@ -121,6 +187,56 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: {
             XCTAssertEqual($0["status"], "cancelled")
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
+            XCTAssert(false)
+        }) { _ in
+            XCTAssert(false)
+        }
+        
+        handler.completeFrom(serverPayment: paymentResponse)
+    }
+    
+    func testWhenCompleteFromServer_GivenStatusPending_ThenPendingdClosureIsCalled() {
+        
+        let status = ATHMPaymentStatus(reference: "2", dayliId: 4, date: Date(), status: .pending)
+        let customer = ATHMCustomer(name: "Test", phoneNumber: "(222) 222-2222", email: "test@test.com")
+        let paymentResponse = ATHMPaymentResponse(payment: 20.0, status: status, customer: customer)
+        
+        let handler = ATHMPaymentHandlerDictionary(onCompleted: { _ in
+            XCTAssert(false)
+        }, onExpired: { (response) in
+            XCTAssert(false)
+        }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending: {
+            XCTAssertEqual($0["status"], "pending")
+        }, onFailed: { _ in
+            XCTAssert(false)
+        }) { _ in
+            XCTAssert(false)
+        }
+        
+        handler.completeFrom(serverPayment: paymentResponse)
+    }
+    
+    func testWhenCompleteFromServer_GivenStatusFailed_ThenFaileddClosureIsCalled() {
+        
+        let status = ATHMPaymentStatus(reference: "2", dayliId: 4, date: Date(), status: .failed)
+        let customer = ATHMCustomer(name: "Test", phoneNumber: "(222) 222-2222", email: "test@test.com")
+        let paymentResponse = ATHMPaymentResponse(payment: 20.0, status: status, customer: customer)
+        
+        let handler = ATHMPaymentHandlerDictionary(onCompleted: { _ in
+            XCTAssert(false)
+        }, onExpired: { (response) in
+            XCTAssert(false)
+        }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: {
+            XCTAssertEqual($0["status"], "failed")
         }) { _ in
             XCTAssert(false)
         }
@@ -142,6 +258,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: {
             XCTAssertEqual($0, responseMock)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
+            XCTAssert(false)
         }) { _ in
             XCTAssert(false)
         }
@@ -160,6 +280,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
         }, onExpired: { _ in
             XCTAssert(false)
         }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
             XCTAssert(false)
         }) { error in
             XCTAssertEqual(error.source, .response)
@@ -182,6 +306,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: {
             XCTAssertEqual($0, responseMock)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
+            XCTAssert(false)
         }) { _ in
             XCTAssert(false)
         }
@@ -201,6 +329,10 @@ class ATHMPaymentHandlerDictionaryUT: XCTestCase {
         }, onExpired: { _ in
             XCTAssert(false)
         }, onCancelled: { _ in
+            XCTAssert(false)
+        }, onPending: { _ in
+            XCTAssert(false)
+        }, onFailed: { _ in
             XCTAssert(false)
         }) { _ in
             XCTAssert(true)

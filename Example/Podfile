@@ -7,5 +7,4 @@ target 'athmovil-checkout-demo' do
 
   # Pods for athmovil-checkout-demo
   pod 'athmovil-checkout', :path => '../'
-
 end

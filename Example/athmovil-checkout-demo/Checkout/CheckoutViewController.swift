@@ -9,6 +9,11 @@
 import UIKit
 import athmovil_checkout
 
+enum NewFlow: String {
+    case SI
+    case NO
+}
+
 class CheckoutViewController: UIViewController {
 
     // MARK: Properties
@@ -18,8 +23,8 @@ class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var athmPaymentButton: ATHMButton!
         
-    let sections = [["Token", "TimeOut"],
-                   ["Subtotal", "Tax", "Total", "Metadata1", "Metadata2", "items"]]
+    let sections = [["Token", "TimeOut", "Enviroment"],
+                   ["Subtotal", "Tax", "Total", "Metadata1", "Metadata2", "items","Phone Number"]]
 
 
     // MARK: Lifecycle
@@ -27,6 +32,7 @@ class CheckoutViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        ATHMPaymentSession.shared.enviroment = userPref.enviroment
         switch UserPreferences.shared.theme {
             case 1:
                 athmPaymentButton.theme = ATHMThemeLight()
@@ -40,13 +46,6 @@ class CheckoutViewController: UIViewController {
     // MARK: Helper Methods
 
     @IBAction func payWithATHMovil(_ sender: Any) {
-        
-        /// This must be your url scheme, this scheme is going to be the url that ATH Movil will call after the payment
-        let scheme: ATHMURLScheme = "athm-checkout"
-        
-        /// Your business token
-        let businessAccount = ATHMBusinessAccount(token: userPref.publicToken)
-        
         /// Payment object
         let payment = ATHMPayment(total: NSNumber(value: userPref.paymentAmount))
         payment.subtotal = NSNumber(value: userPref.subTotal)
@@ -54,37 +53,67 @@ class CheckoutViewController: UIViewController {
         payment.metadata1 = userPref.metadata1
         payment.metadata2 = userPref.metadata2
         payment.items = userPref.items
+        /// This must be your url scheme, this scheme is going to be the url that ATH Movil will call after the payment
+        let scheme: ATHMURLScheme = "athm-checkout"
         
+        /// Your business token
+        let businessAccount = ATHMBusinessAccount(token: userPref.publicToken)
+        
+        //NEW FLOW SECURE
+        if(userPref.newFlow == NewFlow.SI.rawValue){
+            payNewFlow(scheme:scheme,businessAccount:businessAccount,payment:payment)
+        }else{
+            payOldFlow(scheme:scheme,businessAccount:businessAccount,payment:payment)
+        }
+    }
+    
+    private func payNewFlow(scheme:ATHMURLScheme,businessAccount:ATHMBusinessAccount,payment:ATHMPayment){
+        payment.phoneNumber = userPref.phoneNumber
+        let request = ATHMPaymentSecureRequest(account: businessAccount, scheme: scheme, payment:payment)
+        if(userPref.timeOut != 0.0){
+            request.timeout = userPref.timeOut
+        }
         let handler = ATHMPaymentHandler(onCompleted: { [weak self] (payment) in
-            
             self?.presentTransactionResult(payment: payment)
-            
         }, onExpired: { [weak self] (payment) in
-            
             self?.presentTransactionResult(payment: payment)
-            
         }, onCancelled: { [weak self] (payment) in
-            
             self?.presentTransactionResult(payment: payment)
-            
+        }, onFailed: { (payment) in
+            self.presentTransactionResult(payment: payment)
         }) { [weak self] (error: ATHMPaymentError) in
-            
             self?.present(messageFailure: error.failureReason, messageTitle: error.errorDescription)
         }
-        
-        let request = ATHMPaymentRequest(account: businessAccount, scheme: scheme, payment: payment)
-        request.timeout = userPref.timeOut
-                    
         request.pay(handler: handler)
-            
     }
-
+    
+    private func payOldFlow(scheme:ATHMURLScheme,businessAccount:ATHMBusinessAccount,payment:ATHMPayment){
+        let request = ATHMPaymentRequest(account: businessAccount, scheme: scheme,payment: payment)
+        if(userPref.timeOut != 0.0){
+            request.timeout = userPref.timeOut
+        }
+        let handler = ATHMPaymentHandler(onCompleted: { [weak self] (payment) in
+            self?.presentTransactionResult(payment: payment)
+        }, onExpired: { [weak self] (payment) in
+            self?.presentTransactionResult(payment: payment)
+        }, onCancelled: { [weak self] (payment) in
+            self?.presentTransactionResult(payment: payment)
+        }, onFailed: { [weak self] (payment) in
+            self?.presentTransactionResult(payment: payment)
+        }) { [weak self] (error: ATHMPaymentError) in
+            self?.present(messageFailure: error.failureReason, messageTitle: error.errorDescription)
+        }
+        request.pay(handler: handler)
+    }
+    
     func setAdditional(_ cell: UITableViewCell, indexPath: IndexPath) {
         switch indexPath.row {
             case 0:
                 cell.detailTextLabel?.text = userPref.publicToken
-            default:
+            case 1:
                 cell.detailTextLabel?.text = "\(userPref.timeOut)"
+            default:
+                cell.detailTextLabel?.text = "\(userPref.enviroment)"
         }
     }
     
@@ -103,6 +132,8 @@ class CheckoutViewController: UIViewController {
                 cell.detailTextLabel?.text = userPref.metadata2
             case 5:
                 cell.detailTextLabel?.text = "Items \(userPref.items.count)"
+            case 6:
+                cell.detailTextLabel?.text = userPref.phoneNumber
             default:
                 cell.detailTextLabel?.text = "-"
         }

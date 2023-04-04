@@ -31,7 +31,7 @@ public class ATHMPaymentError: NSObject, Error {
     @objc public var failureReason: String { message }
     
     /// Error's description in request or response
-    @objc public var errorDescription: String { "Error in \(source)" }
+    @objc public var errorDescription: String { "Something went wrong..." }
     
     /// If the error is in the request will be true otherwise will be false
     @objc public var isRequestError: Bool { return source == .request }

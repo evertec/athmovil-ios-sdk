@@ -14,6 +14,7 @@ struct TargetMock<P>: TargetURLRepresentable where P: Encodable {
     ///URL of the ath movil
     let athMovilAppURL: String
     let payment: P
+    let enviroment: TargetEnviroment = .production
     
     init(payment: P, athMovilURL: String)  {
         self.payment = payment

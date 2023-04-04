@@ -94,6 +94,18 @@ class PaymentCoderUT: XCTestCase{
         
     }
     
+    func testWhenEncodePayment_GivenExpectedLenghtMetadata1_ThenEncodeMetadata1Key() {
+        
+        let payment = ATHMPayment(total: 3)
+        payment.metadata1 = String(repeating: "A", count: 40)
+        
+        try! XCTAssertEncode(encode: payment) {
+            XCTAssertEqual($0["metadata1"] as? String, String(repeating: "A", count: 40))
+        }
+        
+    }
+    
+    
     func testWhenDecodePayment_GivenExpectedMetadata2_ThenDecodeMetadata2() {
         
         let paymentDic = getMockData(key: "metadata2", value: "This is valid metadata 2")
@@ -111,6 +123,17 @@ class PaymentCoderUT: XCTestCase{
         
         try! XCTAssertEncode(encode: payment) {
             XCTAssertEqual($0["metadata2"] as? String, "This is valid metadata 2")
+        }
+        
+    }
+    
+    func testWhenEncodePayment_GivenExpectedLenghtMetadata2_ThenEncodeMetadata2Key() {
+        
+        let payment = ATHMPayment(total: 3)
+        payment.metadata2 = String(repeating: "A", count: 40)
+        
+        try! XCTAssertEncode(encode: payment) {
+            XCTAssertEqual($0["metadata2"] as? String, String(repeating: "A", count: 40))
         }
         
     }
@@ -226,6 +249,19 @@ class PaymentCoderUT: XCTestCase{
         }
     }
     
+    func testWhenEncodePayment_GivenMetadata1GreaterThan40Characters_TheEncodeThrowsAnException() {
+        let payment = ATHMPayment(total: 10)
+        payment.metadata1 = String(repeating: "A", count: 41)
+        XCTAssertThrowsError(try XCTAssertEncode(encode: payment, assert: { _ in}), "") { error in
+            if let paymentError = error as? ATHMPaymentError {
+                XCTAssertEqual(paymentError.failureReason, "Metadata1 can not be greater than 40 characters")
+                return
+            }
+            XCTAssert(false)
+        }
+    }
+
+    
     func testWhenDecoderPayment_GivenMetadata2Key_ThenDecodeMetadata2AsEmptyString() {
         
         let paymentDic = getMockData(key: "metadata2", value: "")
@@ -244,6 +280,19 @@ class PaymentCoderUT: XCTestCase{
             XCTAssertEqual($0["metadata2"] as? String, "")
         }
     }
+    
+    func testWhenEncodePayment_GivenMetadata2GreaterThan40Characters_TheEncodeThrowsAnException() {
+        let payment = ATHMPayment(total: 10)
+        payment.metadata2 = String(repeating: "A", count: 41)
+        XCTAssertThrowsError(try XCTAssertEncode(encode: payment, assert: { _ in}), "") { error in
+            if let paymentError = error as? ATHMPaymentError {
+                XCTAssertEqual(paymentError.failureReason, "Metadata2 can not be greater than 40 characters")
+                return
+            }
+            XCTAssert(false)
+        }
+    }
+
     
     func testWhenDecodePayment_GivenEmptyItems_ThenDecodePaymentAsEmptyArray() {
         

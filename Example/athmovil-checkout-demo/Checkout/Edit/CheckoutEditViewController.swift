@@ -13,19 +13,26 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
 
     @IBOutlet weak var tableView: UITableView!
     
-    var cellRows: [[DefaultSectionCellType]] =  [[.publicToken,.timeOut,.paymentAmount,.theme],
+    let selectedNewFlow = UserPreferences.shared.newFlow
+ 
+    var cellRows: [[DefaultSectionCellType]] = [[.publicToken,.timeOut,.paymentAmount,.theme, .enviroment, .newFlow],
                                                  [.subTotal,.tax,.metadata1,.metadata2]]
     
     var titleSection = ["CONFIGURATION","OPTIONAL PARAMETERS"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(selectedNewFlow == NewFlow.SI.rawValue){
+            self.cellRows =  [[.publicToken,.timeOut,.paymentAmount,.theme, .enviroment, .newFlow],
+                              [.subTotal,.tax,.metadata1,.metadata2,.phoneNumber]]
+        }
         setupNavigationBar()
         setupTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         tableView.reloadData()
     }
 
@@ -80,7 +87,8 @@ class CheckoutEditViewController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     fileprivate func alertPresetConfig() {
-        let alert = UIAlertController(title: "Payment Configuration", message: "Do you want to restore to preset configuration?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Payment Configuration",
+                                      message: "Do you want to restore to preset configuration?", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .destructive, handler: { [unowned self] _ in
             UserPreferences.reset()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
@@ -119,12 +127,17 @@ extension CheckoutEditViewController: UITableViewDataSource {
         case .paymentAmount:
             inputCell(cell, title: row.title, value: "$\(UserPreferences.shared.paymentAmount)")
         case .theme:
-            cell.accessoryView = nil
-            cell.accessoryType = .disclosureIndicator
             cell.textLabel?.text = row.title
             cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
             cell.detailTextLabel?.text = UserPreferences.shared.nameTheme
-
+        case .enviroment:
+                cell.textLabel?.text = row.title
+                cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
+            cell.detailTextLabel?.text = UserPreferences.shared.enviroment
+        case .newFlow:
+                cell.textLabel?.text = row.title
+                cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
+            cell.detailTextLabel?.text = UserPreferences.shared.newFlow
         // OPTIONAL PARAMETERS
         case .subTotal:
             inputCell(cell, title: row.title, value: "$\(UserPreferences.shared.subTotal)")
@@ -134,6 +147,8 @@ extension CheckoutEditViewController: UITableViewDataSource {
             inputCell(cell, title: row.title, value: UserPreferences.shared.metadata1)
         case .metadata2:
             inputCell(cell, title: row.title, value: UserPreferences.shared.metadata2)
+        case .phoneNumber:
+            inputCell(cell, title: row.title, value: UserPreferences.shared.phoneNumber)
         }
         
         return cell
@@ -163,14 +178,54 @@ extension CheckoutEditViewController: UITableViewDelegate {
         return titleSection[section]
     }
     
+    fileprivate func showConfigurable(type: selectableList, completion: @escaping (selectableList) -> Void) {
+        let configViewController = ConfigurationListViewController(nibName: "ConfigurationListViewController",
+                                                                   bundle: .main,
+                                                                   typeList: type,
+                                                                   completion: completion)
+        
+        configViewController.modalPresentationStyle = .overCurrentContext
+        configViewController.modalTransitionStyle = .coverVertical
+        present(configViewController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let type = cellRows[indexPath.section][indexPath.row]
         
         switch type {
             case .theme:
-                performSegue(withIdentifier: "changeColor", sender: nil)
-            
+                let selectedTheme = UserPreferences.shared.getThemeName(index: UserPreferences.shared.theme)
+                showConfigurable(type: .theme(selectedTheme)) { selectedType in
+                    if case let .theme(newTheme) = selectedType {
+                        UserPreferences.shared.theme = UserPreferences.shared.themeList.firstIndex(of: newTheme) ?? 0
+                        tableView.reloadRows(at: [indexPath], with: .fade)
+                    }
+                }
+            case .enviroment:
+                let selectedEnv = UserPreferences.shared.enviroment
+                showConfigurable(type: .enviroment(selectedEnv)) { selectedType in
+                    if case let .enviroment(newEnv) = selectedType {
+                        UserPreferences.shared.enviroment = newEnv
+                        tableView.reloadRows(at: [indexPath], with: .fade)
+                    }
+                }
+            case .newFlow:
+                let selectedNewFlow = UserPreferences.shared.newFlow
+                showConfigurable(type: .newFlow(selectedNewFlow)) { selectedType in
+                    if case let .newFlow(newFlow) = selectedType {
+                        UserPreferences.shared.newFlow = newFlow
+                        if(newFlow == NewFlow.SI.rawValue){
+                            self.cellRows =  [[.publicToken,.timeOut,.paymentAmount,.theme, .enviroment, .newFlow],
+                                         [.subTotal,.tax,.metadata1,.metadata2,.phoneNumber]]
+                        }else{
+                            UserPreferences.shared.phoneNumber = ""
+                            self.cellRows =  [[.publicToken,.timeOut,.paymentAmount,.theme, .enviroment, .newFlow],
+                                         [.subTotal,.tax,.metadata1,.metadata2]]
+                        }
+                        tableView.reloadData()
+                    }
+                }
             default:
                 changeValue(cellType: type)
         }
@@ -200,6 +255,8 @@ extension CheckoutEditViewController: UITableViewDelegate {
                     UserPreferences.shared.metadata1 = text
                 case .metadata2:
                     UserPreferences.shared.metadata2 = text
+                case .phoneNumber:
+                    UserPreferences.shared.phoneNumber = text
                 default:
                     return
                 }

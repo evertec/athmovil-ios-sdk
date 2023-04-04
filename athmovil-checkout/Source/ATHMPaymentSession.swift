@@ -14,6 +14,9 @@ public class ATHMPaymentSession: NSObject {
     @objc
     public static let shared = ATHMPaymentSession()
     
+    @objc
+    public var enviroment: String = TargetEnviroment.production.rawValue
+    
     /// Payment API for getting the payment status in the server
     let paymentAPI = APIPayments.api
     var observerBecomeActive: NSObjectProtocol?
@@ -41,13 +44,21 @@ public class ATHMPaymentSession: NSObject {
         }
     }
     
+    /// Property to save the current, this object only allow one request at once
+    var currentSecurePayment: AnyPaymentSecureReceiver? {
+        
+        didSet {
+            addObserverForBecomeActive()
+        }
+    }
+    
     /// When the ATHMPaymentSession has pending payment this class add a observer for UIApplication.didBecomeActiveNotification in case when the user or
     /// ATH Movil Application does not completed the payment so the SDK will call a web service to get the payment status after that will response the business application
     /// as usual
     /// - Parameter notification: Notification center to use by default is default
     func addObserverForBecomeActive(notification: NotificationCenter = .default) {
         
-        guard currentPayment != nil else {
+        guard currentPayment != nil || currentSecurePayment != nil else {
             return
         }
         
@@ -58,11 +69,16 @@ public class ATHMPaymentSession: NSObject {
                 notification.removeObserver(observer)
                 self.observerBecomeActive = nil
             }
-            
-            let anyResponsePayment = self.currentPayment
-            self.currentPayment = nil
-            
-            anyResponsePayment?.completed(by: .becomeActive)
+                        
+            if(self.currentPayment == nil){
+                let anyResponsePayment = self.currentSecurePayment
+                anyResponsePayment?.completed(by: .becomeActive)
+            }else{
+                let anyResponsePayment = self.currentPayment
+                self.currentPayment = nil
+                anyResponsePayment?.completed(by: .becomeActive)
+            }
+           
         }
         
     }
@@ -75,11 +91,14 @@ public class ATHMPaymentSession: NSObject {
             guard let dataFromATHMovil = newValue?.responseFromATHM else {
                 return
             }
-
-            let anyResponsePayment = currentPayment
-            currentPayment = nil
-
-            anyResponsePayment?.completed(by: .deepLink(dataFromATHMovil))
+            if(currentPayment == nil){
+                let anyResponsePayment = currentSecurePayment
+                anyResponsePayment?.completed(by: .deepLink(dataFromATHMovil))
+            }else{
+                let anyResponsePayment = currentPayment
+                currentPayment = nil
+                anyResponsePayment?.completed(by: .deepLink(dataFromATHMovil))
+            }
         }
     }
 }

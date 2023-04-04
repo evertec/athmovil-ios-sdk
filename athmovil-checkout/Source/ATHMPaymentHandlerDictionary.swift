@@ -20,6 +20,9 @@ public class ATHMPaymentHandlerDictionary: NSObject {
     /// Closure the completed transaction, it is going to call when ath movil returns a canceled transaction
     var onCancelled: (NSDictionary) -> Void
     
+    /// Closure the completed transaction, it is going to call when ath movil returns a failed transaction
+    var onFailed: (NSDictionary) -> Void
+    
     /// it is going to call when the there is error in the request or in the response from ATH Movil
     var onException: (ATHMPaymentError) -> Void
         
@@ -31,16 +34,19 @@ public class ATHMPaymentHandlerDictionary: NSObject {
     ///   - onCompleted: Closure to call after ATH Movil completed the payment
     ///   - onExpired: Closure to call after ATH Movil expire the payment
     ///   - onCancelled: Closure to call after ATH Movil cancelled the payment
+    ///   - onFailed: Closure to call after ATH Movil failed the payment
     ///   - onException: Closure to call when there is an error in the request or response
     ///   - Returns: Returns an instance of handler
     @objc public init(onCompleted: @escaping ((NSDictionary) -> Void),
                       onExpired: @escaping (NSDictionary) -> Void,
                       onCancelled: @escaping (NSDictionary) -> Void,
+                      onFailed: @escaping (NSDictionary) -> Void,
                       onException: @escaping (ATHMPaymentError) -> Void) {
         
         self.onCompleted = onCompleted
         self.onExpired = onExpired
         self.onCancelled = onCancelled
+        self.onFailed = onFailed
         self.onException = onException
         
         super.init()
@@ -65,10 +71,9 @@ public class ATHMPaymentHandlerDictionary: NSObject {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             onException(paymentException)
             
-        } catch let exception {
+        } catch  {
             
-            let genericException = exception as NSError
-            let messageError = "There was an error while decode response. Detail: \(genericException.debugDescription)"
+            let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)
             onException(paymentException)
         }
@@ -87,6 +92,9 @@ public class ATHMPaymentHandlerDictionary: NSObject {
             
             case .expired:
                 onExpired(response ?? NSDictionary())
+            
+            case .failed:
+                onFailed(response ?? NSDictionary())
             
             default:
                 onCancelled(response ?? NSDictionary())
@@ -111,7 +119,7 @@ extension ATHMPaymentHandlerDictionary: PaymentHandleable {
             complete(paymentStatus: serverPayment.status.status,
                      response: jsonDictionary)
         } catch {
-            let paymentError = ATHMPaymentError(message: "Error getting response dictionary from server",
+            let paymentError = ATHMPaymentError(message: "Sorry for the inconvenience. Please try again later.",
                                                 source: .response)
             onException(paymentError)
         }
