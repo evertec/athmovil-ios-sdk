@@ -96,7 +96,7 @@ func payWithATHMovil() {
     let payment = ATHMPayment(total: 20.00)
 
     /// The object below will tell you the status of the payment after the end user has completed the payment process.
-    /// The code inside onCompleted, onExpired, onCancelled or onException is on the main thread.
+    /// The code inside onCompleted, onExpired, onCancelled, onFailed or onException is on the main thread.
 
     let hander = ATHMPaymentHandler(onCompleted: { [weak self] (payment: ATHMPaymentResponse) in
         /// Handle the response when the payment is completed here.
@@ -107,11 +107,14 @@ func payWithATHMovil() {
     }, onCancelled: { [weak self] (payment: ATHMPaymentResponse) in
         /// Handle the response when the payment is cancelled here.
 
+    }, onFailed: { [weak self] (payment: ATHMPaymentResponse) in
+        /// Handle the response when the payment is failed here.
+        
     }) { [weak self] (error: ATHMPaymentError) in
         /// Handle any exception regarding a request or response here. See error section for more details.
     }
 
-    let request = ATHMPaymentRequest(account: businessAccount, scheme: urlScheme, payment: payment)
+    let request = ATHMPaymentSecureRequest(account: businessAccount, scheme: urlScheme, payment: payment)
     request.pay(handler: hander)
 
     /// At this point your app will open ATH Móvil and the payment process will start.
@@ -121,6 +124,7 @@ func payWithATHMovil() {
 * The payment process is decoupled from the user interface, this means you can use those classes to make payment requests no matter if your are using a `UIButton` or the `ATHMButton`.
 * The following optional properties can be used to add additional information to the payment:
   ```swift
+      payment.phoneNumber = /// Set to empty string by default
       payment.subtotal = 1.00  /// Set to 0 by default
       payment.tax = 2.00       /// Set to 0 by default
       payment.metadata1 = "Attach data to the payment object" /// Empty String by default
@@ -131,15 +135,16 @@ func payWithATHMovil() {
   | Variable  | Data Type | Required | Description |
   | ------------- |:-------------:|:-----:| ------------- |
   | `total` | NSNumber | Yes | Total amount to be paid by the end user. |
+  | `phoneNumber` | String | No | Phone number to identify the customer. |
   | `subtotal` | NSNumber | No | Optional  variable to display the payment subtotal (if applicable) |
   | `tax` | NSNumber | No | Optional variable to display the payment tax (if applicable). |
-  | `metadata1` | String | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
-  | `metadata2` | String | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+  | `metadata1` | String | No | Optional variable to attach data to the payment object. Max length 40 characters. |
+  | `metadata2` | String | No | Optional variable to attach data to the payment object. Max length 40 characters |
   | `items` | Array | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
   | `token` | ATHMBusinessAccount | Yes | Public token of ATH Móvil Business account. For testing set public token as "dummy" |
   | `urlScheme` | ATHMURLScheme | Yes | URL scheme defined in your project. For instructions on how to define a custom URL scheme for your application <a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">click here</a>. |
   | `timeout` | Double | Yes | This optional timeout expires the payment process if the payment hasn't been completed by the user after the provided amount of time (in seconds). Countdown starts when ATH Movil Application shows the payment review. Default value is set to 600 seconds (10 mins). |
-  | `handler` | ATHMPaymentHandler | Yes | Object that handles the response of the payment. The code inside onCompleted, onExpired, onCancelled or onException is on main thread 👁❗️|
+  | `handler` | ATHMPaymentHandler | Yes | Object that handles the response of the payment. The code inside onCompleted, onExpired, onCancelled, onFailed or onException is on main thread 👁❗️|
 
   **Items Array**
 
@@ -149,7 +154,7 @@ func payWithATHMovil() {
   | `desc` | String | No | Brief description of the item. |
   | `price` | NSNumber | Yes | Price of individual item. |
   | `quantity` | Int | Yes | Quantity of individual item. |
-  | `metadata` | String | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+  | `metadata` | String | No | Optional variable to attach data to the item object. |
 
 
 ### Manage the response of payment requests sent by ATH Móvil
@@ -163,10 +168,10 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 ```
 
 * You will now receive the payment response on the object handler that you previously defined in the request.
-* It is not necessary to keep a reference of the handler, the SDK will automatically do it. After the SDK processes the URL it will call the correct request through `ATHMHandler` and use the callback `onCompleted`, `onExpired`, `onCancelled` or `onException` depending on the outcome of the payment.
+* It is not necessary to keep a reference of the handler, the SDK will automatically do it. After the SDK processes the URL it will call the correct request through `ATHMHandler` and use the callback `onCompleted`, `onExpired`, `onCancelled`, `onFailed` or `onException` depending on the outcome of the payment.
 * If your application has other deep links or other third party apps that open your application using the method `application(app:open:options:)`, the ATH Móvil SDK will automatically discard the URL so you don't need to implement additional validations for `ATHMPaymentSession.shared.url = url`.
 
-`ATHMPaymentHandler` will now receive an object with the type `ATHMPaymentResponse`. Depending on the outcome of the transaction the closures `onCompleted`, `onExpired` or `onCancelled` will be automatically called. You will receive an object with the payment information as follows:
+`ATHMPaymentHandler` will now receive an object with the type `ATHMPaymentResponse`. Depending on the outcome of the transaction the closures `onCompleted`, `onExpired`, `onFailed` or `onCancelled` will be automatically called. You will receive an object with the payment information as follows:
 
 ```swift
 /// Payment data initially configured on the request.
@@ -229,8 +234,9 @@ If unexpected data is sent on the request of the payment the SDK will call the c
   | `total` | Positive value |
   | `subtotal` | Positive value or zero |
   | `tax` | Positive value or zero |
-  | `metadata1` | A string with characters, digits or spaces, Max length 40 |
-  | `metadata2` | A string with characters, digits or spaces, Max length 40 |
+  | `phoneNumber` | A string with characters or digits |
+  | `metadata1` | A string with characters, digits or spaces  |
+  | `metadata2` | A string with characters, digits or spaces |
   | `token` | A string with characters |
   | `urlScheme` | A string with characters. **Do not use the urlscheme in the example❗️** |
   | `timeout` | Integer between 60 and 600 |
@@ -270,6 +276,7 @@ let requestDic = NSDictionary(dictionary: ["scheme": "athm-checkout",
                                             "total": 20.00,
                                             "subtotal": 1.00,
                                             "tax": "2.00",
+                                            "phoneNumber": "7879729437",
                                             "metadata1": "This is metadata1",
                                             "metadata2": "This is metadata2",
                                             "items":[
@@ -295,12 +302,14 @@ let handler = ATHMPaymentHandlerDictionary(onCompleted: { [weak self] (response:
     */
 }, onExpired: { [weak self] (response: NSDictionary) in
 
+}, onFailed: { [weak self] (response: NSDictionary) in
+
 }, onCancelled: { [weak self] (response: NSDictionary) in
 
 }) { [weak self] (error: ATHMPaymentError) in
 }
 
-let request = ATHMPaymentRequest(account: businessAccount, scheme: urlScheme, payment: payment)
+let request = ATHMPaymentSecureRequest(account: businessAccount, scheme: urlScheme, payment: payment)
 request.pay(dictionaryHandler: handler)
 ```
 * This dictionary has all the required properties. Some of these properties are optional, as indicated in the "Manage the response of payment requests sent by ATH Móvil" section above.
@@ -309,7 +318,8 @@ request.pay(dictionaryHandler: handler)
 * *Note: `ATHMPaymentSession` is required for the response of the payment.*
 
 ## User experience
-![paymentux](paymentux.png)
+![paymentconfirmux](paymentconfirmux.png)
 
 ## Legal
 The use of this API and any related documentation is governed by and must be used in accordance with the Terms and Conditions of Use of ATH Móvi Business ®, which may be found at: https://athmovilbusiness.com/terminos.
+

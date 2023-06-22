@@ -30,10 +30,9 @@ extension ATHMURLScheme {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch let exception {
+        } catch  {
             
-            let genericException = exception as NSError
-            let messageError = "There was an error while encode URLScheme. Detail: \(genericException.debugDescription)"
+            let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)
             throw paymentException
         }

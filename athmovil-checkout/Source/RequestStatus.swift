@@ -21,7 +21,7 @@ extension Request {
             
         let bodyRequest = Body(publicToken: currentPayment.businessAccount.token, paymentID: paymentId)
         
-        return Request.post(baseURL: APIPayments.baseURL,
+        return Request.post(baseURL: TargetEnviroment.selectedEnviroment.baseURL,
                             path: "eCommerceTransfer/consultTransactionStatus",
                             body: bodyRequest) { result in
             
@@ -34,7 +34,7 @@ extension Request {
                     }
                 
                 case .failure:
-                    let netWorkError = ATHMPaymentError(message: "Error getting the response from the webservice",
+                let netWorkError = ATHMPaymentError(message: "Sorry for the inconvenience. Please try again later.",
                                                         source: .response)
                     completion(.failure(netWorkError))
             }

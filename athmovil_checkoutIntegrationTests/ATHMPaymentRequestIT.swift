@@ -24,7 +24,11 @@ class ATHMPaymentRequestIT: XCTestCase {
             XCTAssert(false)
         }, onExpired: { (response) in
             XCTAssert(false)
-        }, onCancelled: { (response: ATHMPaymentResponse) in
+        }, onCancelled: { (response) in
+            XCTAssert(false)
+        }, onPending: { (response) in
+            XCTAssert(false)
+        }, onFailed: { (response) in
             XCTAssert(false)
         }) { error in
             XCTAssert(true)
@@ -42,7 +46,11 @@ class ATHMPaymentRequestIT: XCTestCase {
             XCTAssert(false)
         }, onExpired: { (response) in
             XCTAssert(false)
-        }, onCancelled: { (response: ATHMPaymentResponse) in
+        }, onCancelled: { (response) in
+            XCTAssert(false)
+        }, onPending: { (response) in
+            XCTAssert(false)
+        }, onFailed: { (response) in
             XCTAssert(false)
         }) { error in
             XCTAssert(true)
@@ -63,6 +71,10 @@ class ATHMPaymentRequestIT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: { (response: NSDictionary) in
             XCTAssert(false)
+        }, onPending: { (response: NSDictionary) in
+            XCTAssert(false)
+        }, onFailed: { (response: NSDictionary) in
+            XCTAssert(false)
         }) { error in
             XCTAssert(true)
         }
@@ -81,6 +93,10 @@ class ATHMPaymentRequestIT: XCTestCase {
         }, onExpired: { (response) in
             XCTAssert(false)
         }, onCancelled: { (response: NSDictionary) in
+            XCTAssert(false)
+        }, onPending: { (response: NSDictionary) in
+            XCTAssert(false)
+        }, onFailed: { (response: NSDictionary) in
             XCTAssert(false)
         }) { error in
             XCTAssert(true)
@@ -103,6 +119,10 @@ class ATHMPaymentRequestIT: XCTestCase {
         }, onExpired: { (response) in
             XCTAssert(false)
         }, onCancelled: { (response: NSDictionary) in
+            XCTAssert(false)
+        }, onPending: { (response: NSDictionary) in
+            XCTAssert(false)
+        }, onFailed: { (response: NSDictionary) in
             XCTAssert(false)
         }) { error in
             XCTAssert(true)

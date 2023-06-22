@@ -18,7 +18,7 @@ class RequestStatusUT: XCTestCase {
     func testWhenSendStatus_GivenADataAsCompletedResponse_ThenResponseSuccessWithTheTransactionAsCompleted() {
         
         let dataCompleteResponse = mockData()
-        let requestStatus = APIClientMocK(response: dataCompleteResponse, networkError: nil)
+        let requestStatus = APIClientMock(response: dataCompleteResponse)
         
         requestStatus.send(request: .status(paymentId: "Test",
                                             currentPayment: PaymentRequestMock(),
@@ -59,7 +59,7 @@ class RequestStatusUT: XCTestCase {
     func testWhenSendStatus_GivenADataAsUnexpectedResponseData_ThenResponseSuccessWithTheTransactionAsCancelled() {
         
         let unpextedResponseData = "Hello Word".data(using: .utf8)
-        let requestStatus = APIClientMocK(response: unpextedResponseData, networkError: nil)
+        let requestStatus = APIClientMock(response: unpextedResponseData)
         
         requestStatus.send(request: .status(paymentId: "Test",
                                             currentPayment: PaymentRequestMock(),
@@ -80,7 +80,7 @@ class RequestStatusUT: XCTestCase {
     
     func testWhenSendStatus_GivenAConnectionError_ThenResponseIsAnFailWithAnError() {
         
-        let requestStatus = APIClientMocK(response: nil, networkError: .netWorkError)
+        let requestStatus = APIClientMock(response: nil)
         
         requestStatus.send(request: .status(paymentId: "Test",
                                             currentPayment: PaymentRequestMock(),

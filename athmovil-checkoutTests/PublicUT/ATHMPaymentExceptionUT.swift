@@ -33,14 +33,14 @@ class ATHMPaymentExceptionUT: XCTestCase {
         
         let exception = ATHMPaymentError(message: "Test Error", source: .request)
         
-        XCTAssertEqual(exception.errorDescription, "Error in request")
+        XCTAssertEqual(exception.errorDescription, "Something went wrong...")
     }
     
     func testWhenInitException_GivenResponseSourceException_ThenExceptionHasDescription() {
         
         let exception = ATHMPaymentError(message: "Test Error", source: .response)
         
-        XCTAssertEqual(exception.errorDescription, "Error in response")
+        XCTAssertEqual(exception.errorDescription, "Something went wrong...")
     }
     
     func testWhenInitException_GivenRequestSourceException_ThenIsErrorInRequest() {

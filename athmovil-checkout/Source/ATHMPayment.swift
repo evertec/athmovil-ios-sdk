@@ -35,6 +35,9 @@ final public class ATHMPayment: NSObject {
     /// Purchase additional information two it could be null, if the client will send something ATH Movil Personal is going to return the information
     @objc public var metadata2: String = ""
     
+    /// NEW FLOW
+    @objc public var phoneNumber: String = ""
+    
     @objc public override var description: String {
         """
         Payment:
@@ -45,8 +48,8 @@ final public class ATHMPayment: NSObject {
             - netAmount: \(netAmount.doubleValue)
             - metadata1: \(metadata1)
             - metadata2: \(metadata1)
-            - Items:
-                \(items.description)
+            - Items: \(items.description)
+            - phoneNumber: \(phoneNumber)
         """
     }
     
@@ -66,8 +69,9 @@ final public class ATHMPayment: NSObject {
         self.metadata1 = dictionary[ATHMPayment.CodingKeys.metadata1.rawValue]
         self.metadata2 = dictionary[ATHMPayment.CodingKeys.metadata2.rawValue]
         let itemsDic: [NSDictionary] = dictionary[ATHMPayment.CodingKeys.items.rawValue]
-        
         self.items = itemsDic.map { ATHMPaymentItem(dictionary: $0) }
+        //NEW FLOW SECURE
+        self.phoneNumber = dictionary[ATHMPayment.CodingKeys.phoneNumber.rawValue]
         super.init()
     }
         
@@ -80,4 +84,8 @@ extension ATHMPayment: ExpressibleByFloatLiteral {
     public convenience init(floatLiteral value: Float) {
         self.init(total: NSNumber(value: Double(value)))
     }
+}
+
+extension ATHMPayment: Model {
+    
 }

@@ -20,18 +20,14 @@ struct AnyPaymentReceiver {
     let clientAPI: APIClientRequestable
     unowned let session: ATHMPaymentSession
     
-    init(paymentContent: PaymentRequestable, handler: PaymentHandleable, session: ATHMPaymentSession) {
+    init(paymentContent: PaymentRequestable,
+         handler: PaymentHandleable,
+         session: ATHMPaymentSession,
+         apiClient: APIClientRequestable) {
         self.handler = handler
         self.paymentRequest = paymentContent
         self.session = session
-        
-        switch paymentContent is ATHMPaymentRequest {
-            case true:
-                clientAPI = session.paymentAPI
-                
-            default:
-                clientAPI = APIClientSimulated(paymentRequest: paymentContent)
-        }
+        self.clientAPI = apiClient
     }
     
     /// Complete the payment from the DeepLink or become Active. When the response comes from the become active set ATHMPaymentSession.isWaiting as
