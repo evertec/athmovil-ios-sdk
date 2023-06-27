@@ -51,9 +51,8 @@ extension ATHMPaymentStatus {
             
             self.version = versionResponse
         
-        } catch let exception as NSError {
-            let message = exception.debugDescription
-            let castException = ATHMPaymentError(message: "There was an error while decode PaymentStatus. Detail: \(message)",
+        } catch  {
+            let castException = ATHMPaymentError(message: "Sorry for the inconvenience. Please try again later.",
                                                  source: .response)
             throw castException
         }

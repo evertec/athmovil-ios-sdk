@@ -11,6 +11,14 @@ import XCTest
 @testable import athmovil_checkout
 
 
+extension TargetURLScheme: CaseIterable {
+    public static var allCases: [TargetURLScheme] { [.athMovil(.production), .athMovilSimulated(.production), .athMovilSecure(.production)] }
+}
+
+extension TargetUniversalLinks: CaseIterable {
+    public static var allCases: [TargetUniversalLinks] { [.athMovil(.production), .athMovilSimulated(.production), .athMovilSecure(.production)] }
+}
+
 class TargetURLRepresentableUT: XCTestCase {
     
 
@@ -104,10 +112,10 @@ class TargetURLRepresentableUT: XCTestCase {
         let result = target.urlRepresentation(anyEncodable)
         
         switch result {
-            case let .success(fileURL):
-                XCTAssertTrue(fileURL.isFileURL)
-            case .failure:
+            case .success:
                 XCTAssert(true)
+            case .failure:
+                XCTAssert(false)
         }
 
     }

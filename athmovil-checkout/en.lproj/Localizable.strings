@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  athmovil-checkout
+
+  Created by Ismael Paredes on 10/02/23.
+  Copyright © 2023 Evertec. All rights reserved.
+*/
+
+"Something went wrong..." = "Something went wrong...";
+"Sorry for the inconvenience. Please try again later." = "Sorry for the inconvenience. Please try again later.";
+"The request containts invalid characters" = "The request containts invalid characters";
+"URL is invalid" = "URL is invalid";
+"Timeout data type value is invalid" = "Timeout data type value is invalid";
+"The url scheme is required" = "The url scheme is required";
+"The business's token is required" = "The business's token is required";
+"Item's price data type value is invalid" = "Item's price data type value is invalid";
+"Item's quantity data type value is invalid" = "Item's quantity data type value is invalid";
+"Item's name value is required" = "Item's name value is required";
+"Total data type value is invalid" = "Total data type value is invalid";
+"Subtotal data type value is invalid" = "Subtotal data type value is invalid";
+"Tax data type value is invalid" = "Tax data type value is invalid";
+"Metadata1 no puede tener más de 40 caracteres" = "Metadata1 no puede tener más de 40 caracteres";
+"Metadata2 no puede tener más de 40 caracteres" = "Metadata2 no puede tener más de 40 caracteres";
+"Subtotal data type value is invalid" = "Subtotal data type value is invalid";
+"EcommerceId can not be empty" = "EcommerceId can not be empty";

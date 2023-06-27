@@ -11,7 +11,9 @@ import Foundation
 enum ATHMStatus: String, Codable {
     case completed,
     cancelled,
-    expired
+    expired,
+    pending,
+    failed
 }
 
 enum ATHMVersion: String, Codable {
@@ -22,7 +24,7 @@ enum ATHMVersion: String, Codable {
 final public class ATHMPaymentStatus: NSObject {
         
     ///Status of the transacion
-    let status: ATHMStatus
+    var status: ATHMStatus
     
     ///Version of the transacion
     var version: ATHMVersion?
@@ -34,10 +36,10 @@ final public class ATHMPaymentStatus: NSObject {
     @objc public let date: Date
 
     ///Reference number of the transacction, if the transaction is completed has a value otherwise nil
-    @objc public let referenceNumber: String
+    @objc public var referenceNumber: String
     
     ///Consecutive number of the trasaction, if the transaction is completed has a value otherwise nil
-    @objc public let dailyTransactionID: Int
+    @objc public var dailyTransactionID: Int
             
     @objc override public var description: String {
         """

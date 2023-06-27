@@ -13,11 +13,14 @@ enum DefaultSectionCellType: Int {
     case timeOut
     case paymentAmount
     case theme
+    case enviroment
+    case newFlow
     // Second section
     case subTotal
     case tax
     case metadata1
     case metadata2
+    case phoneNumber
 }
 
 extension DefaultSectionCellType {
@@ -28,6 +31,10 @@ extension DefaultSectionCellType {
             return "Public token"
         case .theme:
             return "Theme"
+        case .enviroment:
+            return "Enviroment"
+        case .newFlow:
+            return "New Flow"
         case .tax:
             return "Tax"
         case .subTotal:
@@ -40,6 +47,8 @@ extension DefaultSectionCellType {
             return "Metadata1"
         case .metadata2:
             return "Metadata2"
+        case .phoneNumber:
+            return "Phone Number"
         }
     }
     
@@ -59,6 +68,8 @@ extension DefaultSectionCellType {
             return "Change Payment Metdata1"
         case .metadata2:
             return "Change Payment Metdata2"
+        case .phoneNumber:
+            return "Phone Number"
         default:
             return ""
         }
@@ -81,6 +92,8 @@ extension DefaultSectionCellType {
             return "Provide the metadata1 to process the payment for."
         case .metadata2:
             return "Provide the metadata2 to process the payment for."
+        case .phoneNumber:
+            return "Provide the phoneNumbwe to process the payment for."
         default:
             return ""
         }

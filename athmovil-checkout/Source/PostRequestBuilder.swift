@@ -13,19 +13,21 @@ struct PostRequestBuilder<Body: Model>: RequestBuilder {
     let baseURL: URL
     let path: String
     let params: [URLQueryItem]?
-    let headers: [String : String] = [:]
+    let headers: [String : String]?
     let body: Body?
     
     public init(baseURL: URL,
                 path: String,
                 params: [URLQueryItem]? = nil,
-                body: Body? = nil) {
+                body: Body? = nil,
+                headers:[String : String]? = nil) {
         
         self.method = .post
         self.baseURL = baseURL
         self.path = path
         self.params = params
         self.body = body
+        self.headers = headers ?? [:]
     }
     
     func encodeRequestBody() -> Data? {

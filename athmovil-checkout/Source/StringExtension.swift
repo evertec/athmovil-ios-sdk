@@ -11,7 +11,7 @@ import Foundation
 extension String {
     
     public static let telephoneNumberLength = 10
-        
+    
     /// Clear the string with all the characters different to number
     /// - Parameter movingMoreNumbers: true if the length string is more than 10, example 12345678912 in this case
     /// will return 1234567891

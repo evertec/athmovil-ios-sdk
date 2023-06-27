@@ -35,16 +35,15 @@ extension ATHMPaymentItem {
             try container.encodeIfPresent(price.doubleValue, forKey: .price)
             try container.encodeIfPresent(quantity, forKey: .quantity)
             try container.encodeIfPresent(desc, forKey: .desc)
-            try container.encodeIfPresent(metadata, forKey: .metadata)
-            
+            try container.encodeIfPresent(desc, forKey: .description)
+            try container.encodeIfPresent(metadata, forKey: .metadata)            
         } catch let exceptionPayment as ATHMPaymentError {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch let exception {
+        } catch  {
             
-            let genericException = exception as NSError
-            let messageError = "There was an error while encode PaymentItem Detail: \(genericException.debugDescription)"
+            let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)
             throw paymentException
         }
@@ -80,10 +79,9 @@ extension ATHMPaymentItem {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .response)
             throw paymentException
             
-        } catch let exception {
+        } catch {
             
-            let genericException = exception as NSError
-            let messageError = "There was an error while decoder PaymentItem. Detail: \(genericException.debugDescription)"
+            let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .response)
             throw paymentException
         }

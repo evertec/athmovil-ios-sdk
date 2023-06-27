@@ -21,7 +21,9 @@ extension ATHMPayment: PaymentCodable {
              netAmount,
              metadata1,
              metadata2,
-             items
+             items,
+             //NEW FLOW SECURE
+             phoneNumber
     }
 }
 
@@ -51,16 +53,18 @@ extension ATHMPayment {
             let itemsDecode = try? container.decodeIfPresent([ATHMPaymentItem].self, forKey: .items) ?? [ATHMPaymentItem]()
             self.items = itemsDecode ?? [ATHMPaymentItem]()
         
+            //NEW FLOW SECURITY
+            self.phoneNumber = container.decodeValueDefault(forKey: .phoneNumber)
+            
             try hasExceptionableProperties()
 
         } catch let exceptionPayment as ATHMPaymentError {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .response)
             throw paymentException
             
-        } catch let exception {
+        } catch {
             
-            let genericException = exception as NSError
-            let messageError = "There was an error while decode payment. Detail: \(genericException.debugDescription)"
+            let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .response)
             throw paymentException
         }
@@ -82,15 +86,16 @@ extension ATHMPayment {
             try container.encodeIfPresent(metadata1, forKey: .metadata1)
             try container.encodeIfPresent(metadata2, forKey: .metadata2)
             try container.encodeIfPresent(items, forKey: .items)
+            //NEW FLOW SECURITY
+            try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
             
         } catch let exceptionPayment as ATHMPaymentError {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch let exception {
+        } catch  {
             
-            let genericException = exception as NSError
-            let messageError = "There was an error while encode payment Detail: \(genericException.localizedDescription)"
+            let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)
             throw paymentException
         }
@@ -111,6 +116,16 @@ extension ATHMPayment: Exceptionable {
         
         if tax.doubleValue < 0 || tax.doubleValue.isNaN {
             throw ATHMPaymentError(message: "Tax data type value is invalid",
+                                   source: .request)
+        }
+        
+        if metadata1.count > 40 {
+            throw ATHMPaymentError(message: "Metadata1 can not be greater than 40 characters",
+                                   source: .request)
+        }
+        
+        if metadata2.count > 40 {
+            throw ATHMPaymentError(message: "Metadata2 can not be greater than 40 characters",
                                    source: .request)
         }
         

@@ -16,14 +16,20 @@ class UserPreferences: NSObject, NSCoding {
     var timeOut = 600.0
     var paymentAmount = 1.0
     var theme = 0
-    
+    var enviroment = "Production"
+    var newFlow = NewFlow.NO.rawValue
     // OPTIONAL PARAMETERS
     var subTotal = 0.0
     var tax = 0.0
     var metadata1 = ""
     var metadata2 = ""
     var items: [ATHMPaymentItem] = []
+    var phoneNumber = ""
     
+    let themeList: [String] = [ATHMThemeClassic.name, ATHMThemeLight.name, ATHMThemeNight.name]
+    let enviroments: [String] =  ["Quality","QualityCert","Pilot", "Production"]
+    let isNewFlow: [String] =  [NewFlow.NO.rawValue, NewFlow.SI.rawValue]
+        
     fileprivate override init() {
         super.init()
         self.save()
@@ -34,12 +40,15 @@ class UserPreferences: NSObject, NSCoding {
         aCoder.encode(timeOut, forKey: "timeOut")
         aCoder.encode(paymentAmount, forKey: "paymentAmount")
         aCoder.encode(theme, forKey: "themeIndex")
-        
+        aCoder.encode(enviroment, forKey: "enviroment")
+        aCoder.encode(newFlow, forKey: "newFlow")
         aCoder.encode(subTotal, forKey: "subTotal")
         aCoder.encode(tax, forKey: "tax")
         aCoder.encode(metadata1, forKey: "metadata1")
         aCoder.encode(metadata2, forKey: "metadata2")
         aCoder.encode(items, forKey: "items")
+        aCoder.encode(phoneNumber, forKey: "phoneNumber")
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,12 +56,14 @@ class UserPreferences: NSObject, NSCoding {
         timeOut = aDecoder.decodeDouble(forKey: "timeOut")
         paymentAmount = aDecoder.decodeDouble(forKey: "paymentAmount")
         theme = aDecoder.decodeInteger(forKey: "themeIndex")
-        
+        enviroment = (aDecoder.decodeObject(forKey: "enviroment") as? String) ?? "Production"
+        newFlow = (aDecoder.decodeObject(forKey: "newFlow") as? String) ?? NewFlow.NO.rawValue
         subTotal = aDecoder.decodeDouble(forKey: "subTotal")
         tax = aDecoder.decodeDouble(forKey: "tax")
         metadata1 = aDecoder.decodeObject(forKey: "metadata1") as? String ?? ""
         metadata2 = aDecoder.decodeObject(forKey: "metadata2") as? String ?? ""
         items = aDecoder.decodeObject(forKey: "items") as? [ATHMPaymentItem] ?? []
+        phoneNumber = aDecoder.decodeObject(forKey: "phoneNumber") as? String ?? ""
     }
 }
 
@@ -77,26 +88,34 @@ extension UserPreferences {
     }
 }
 
+fileprivate extension ATHMThemeClassic {
+    static var name: String { "Classic" }
+}
 
-extension UserPreferences{
+fileprivate extension ATHMThemeLight {
+    static var name: String { "Light" }
+}
+
+fileprivate extension ATHMThemeNight {
+    static var name: String { "Dark" }
+}
+
+extension UserPreferences {
     
-    public var nameTheme: String{
-        return self.getName(index: self.theme)
-    }
-    
-    func getName(index: Int) -> String{
+    public var nameTheme: String { getThemeName(index: theme) }
+        
+    func getThemeName(index: Int) -> String{
         switch index {
             case 0:
-            return "Original"
+                return ATHMThemeClassic.name
             case 1:
-            return "Light"
+                return ATHMThemeLight.name
             case 2:
-            return "Dark"
+                return ATHMThemeNight.name
             default:
-            return ""
+                return ""
         }
     }
-    
 }
 
 

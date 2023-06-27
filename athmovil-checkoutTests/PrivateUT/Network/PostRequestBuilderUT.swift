@@ -16,7 +16,8 @@ private struct PersonTest: Model {
 
 private struct ExceptionModel: Model {
     func encode(to encoder: Encoder) throws {
-        throw NSError()
+        let thisCrashes = NSError.init(domain: "https//:www.athmovil.com", code: 401, userInfo: nil)
+        throw thisCrashes
     }
 }
 
