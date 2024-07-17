@@ -5,11 +5,32 @@
 ATH Móvil's Payment Button SDK provides a simple, secure and fast checkout experience to customers paying on your iOS application. After integrating our Payment Button on your app you will be able to receive real time payments from more than 1.5 million ATH Móvil users.
 
 
+Disclaimer: We currently **do not** have a **Testing environment**. You need to have an active ATH Business account and a active ATH Móvil account.
+
 ## Prerequisites
-Before you begin, please review the following prerequisites:
-1. An active ATH Móvil Business account is required to continue. To sign up, download "ATH Móvil Business" on the App Store or Play Store of your iOS or Android device.
-2. Your ATH Móvil Business account needs to have a registered, verified and active ATH® card.
-3. Have the public and private API keys of your Business account at hand. **You can view your API keys on the settings section of ATH Móvil Business for iOS or Android.**
+Before using the ATH Móvil’s payment you need to have:
+
+### ATH Business
+
+1\. An active ATH Business account.
+
+2\. A card registered in your ATH Business profile. 
+
+3\. The public and private key assigned to your business.
+
+For instructions on how to open a ATH Business account please refer to: [ATHB flyer eng letter 1.pdf](https://github.com/user-attachments/files/16267504/ATHB.flyer.eng.letter.1.pdf)
+
+For more information related to ATH Business and how it works please refer to:[ATH BUSINESS_Apr2024.pptx](https://github.com/user-attachments/files/16267585/ATH.BUSINESS_Apr2024.pptx)
+
+### ATH Móvil
+
+To complete the payment for testing purposes you need to have:
+
+1\. An active ATH Móvil account.
+
+2\. A card registered in your ATH Móvil profile. It can not be the same card that is registered in ATH Business.
+
+For more information related to ATH Móvil and how it works please refer to:[ATH Móvil_Apr2024.pptx](https://github.com/user-attachments/files/16267592/ATH.Movil_Apr2024.pptx)
 
 
 ## Support
