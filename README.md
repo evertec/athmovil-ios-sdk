@@ -322,4 +322,3 @@ request.pay(dictionaryHandler: handler)
 
 ## Legal
 The use of this API and any related documentation is governed by and must be used in accordance with the Terms and Conditions of Use of ATH Móvi Business ®, which may be found at: https://athmovilbusiness.com/terminos.
-

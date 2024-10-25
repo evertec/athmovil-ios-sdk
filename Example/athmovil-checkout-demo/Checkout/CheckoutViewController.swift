@@ -79,7 +79,6 @@ class CheckoutViewController: UIViewController {
             self?.presentTransactionResult(payment: payment)
         }, onCancelled: { [weak self] (payment) in
             self?.presentTransactionResult(payment: payment)
-        }, onPending: { (payment) in
         }, onFailed: { (payment) in
             self.presentTransactionResult(payment: payment)
         }) { [weak self] (error: ATHMPaymentError) in
@@ -98,8 +97,6 @@ class CheckoutViewController: UIViewController {
         }, onExpired: { [weak self] (payment) in
             self?.presentTransactionResult(payment: payment)
         }, onCancelled: { [weak self] (payment) in
-            self?.presentTransactionResult(payment: payment)
-        }, onPending: { [weak self] (payment) in
             self?.presentTransactionResult(payment: payment)
         }, onFailed: { [weak self] (payment) in
             self?.presentTransactionResult(payment: payment)

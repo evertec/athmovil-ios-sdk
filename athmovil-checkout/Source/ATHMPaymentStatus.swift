@@ -12,7 +12,6 @@ enum ATHMStatus: String, Codable {
     case completed,
     cancelled,
     expired,
-    pending,
     failed
 }
 

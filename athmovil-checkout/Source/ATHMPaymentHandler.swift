@@ -20,9 +20,6 @@ public class ATHMPaymentHandler: NSObject {
     /// Closure the completed transaction, it is going to call when ath movil returns a canceled transaction
     var onCancelled: (ATHMPaymentResponse) -> Void
     
-    /// Closure the completed transaction, it is going to call when ath movil returns a pending transaction
-    var onPending: (ATHMPaymentResponse) -> Void
-    
     /// Closure the completed transaction, it is going to call when ath movil returns a failed transaction
     var onFailed: (ATHMPaymentResponse) -> Void
     
@@ -37,21 +34,18 @@ public class ATHMPaymentHandler: NSObject {
     ///   - onCompleted: Closure to call after ATH Movil completed the payment
     ///   - onExpired: Closure to call after ATH Movil expire the payment
     ///   - onCancelled: Closure to call after ATH Movil cancelled the payment
-    ///   - onPending: Closure to call after ATH Movil pending the payment
     ///   - onFailed: Closure to call after ATH Movil failed the payment
     ///   - onException: Closure to call when there an error en request o response
     /// - Returns: Instance of the handler
     @objc public init(onCompleted: @escaping ((ATHMPaymentResponse) -> Void),
                       onExpired: @escaping (ATHMPaymentResponse) -> Void,
                       onCancelled: @escaping (ATHMPaymentResponse) -> Void,
-                      onPending: @escaping (ATHMPaymentResponse) -> Void,
                       onFailed: @escaping (ATHMPaymentResponse) -> Void,
                       onException: @escaping (ATHMPaymentError) -> Void) {
         
         self.onCompleted = onCompleted
         self.onExpired = onExpired
         self.onCancelled = onCancelled
-        self.onPending = onPending
         self.onFailed = onFailed
         self.onException = onException
         
@@ -96,9 +90,6 @@ public class ATHMPaymentHandler: NSObject {
 
             case .expired:
                 onExpired(response)
-            
-            case .pending:
-                onPending(response)
             
             case .failed:
                 onFailed(response)
