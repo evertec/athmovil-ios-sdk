@@ -49,13 +49,6 @@ struct AnyPaymentSecureReceiver {
                 if(authorization.isEmpty){
                     session.isWaiting = true
                     getTransactionFromWebService()
-                }else{
-                    let currentSecurePayment = session.currentSecurePayment
-                    let statusPending = ATHMPaymentStatus(status: .pending)
-                    let response = ATHMPaymentResponse(payment: (currentSecurePayment?.paymentRequest.paymentOld)!,
-                                                       status: statusPending,
-                                                       customer: "")
-                    self.handler.completeFrom(serverPayment: response)
                 }
         }
     }

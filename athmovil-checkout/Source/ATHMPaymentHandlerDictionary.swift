@@ -20,9 +20,6 @@ public class ATHMPaymentHandlerDictionary: NSObject {
     /// Closure the completed transaction, it is going to call when ath movil returns a canceled transaction
     var onCancelled: (NSDictionary) -> Void
     
-    /// Closure the completed transaction, it is going to call when ath movil returns a pending transaction
-    var onPending: (NSDictionary) -> Void
-    
     /// Closure the completed transaction, it is going to call when ath movil returns a failed transaction
     var onFailed: (NSDictionary) -> Void
     
@@ -37,21 +34,18 @@ public class ATHMPaymentHandlerDictionary: NSObject {
     ///   - onCompleted: Closure to call after ATH Movil completed the payment
     ///   - onExpired: Closure to call after ATH Movil expire the payment
     ///   - onCancelled: Closure to call after ATH Movil cancelled the payment
-    ///   - onPending: Closure to call after ATH Movil pending the payment
     ///   - onFailed: Closure to call after ATH Movil failed the payment
     ///   - onException: Closure to call when there is an error in the request or response
     ///   - Returns: Returns an instance of handler
     @objc public init(onCompleted: @escaping ((NSDictionary) -> Void),
                       onExpired: @escaping (NSDictionary) -> Void,
                       onCancelled: @escaping (NSDictionary) -> Void,
-                      onPending: @escaping (NSDictionary) -> Void,
                       onFailed: @escaping (NSDictionary) -> Void,
                       onException: @escaping (ATHMPaymentError) -> Void) {
         
         self.onCompleted = onCompleted
         self.onExpired = onExpired
         self.onCancelled = onCancelled
-        self.onPending = onPending
         self.onFailed = onFailed
         self.onException = onException
         
@@ -98,9 +92,6 @@ public class ATHMPaymentHandlerDictionary: NSObject {
             
             case .expired:
                 onExpired(response ?? NSDictionary())
-            
-            case .pending:
-                onPending(response ?? NSDictionary())
             
             case .failed:
                 onFailed(response ?? NSDictionary())

@@ -9,7 +9,9 @@
 import Foundation
 
 enum TargetEnviroment: String, CaseIterable {
+    
     case production
+    
     static var selectedEnviroment: TargetEnviroment = .production
 }
 
