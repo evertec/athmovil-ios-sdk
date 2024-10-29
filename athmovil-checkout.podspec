@@ -22,8 +22,6 @@ Provides a simple, secure and fast checkout experience to customers paying on yo
   spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
-  spec.author             = { "Evertec" => "christopher.bautista@evertecinc.com" }
-
   spec.platform     = :ios
   spec.ios.deployment_target = "11.0"
   spec.source       = { :git => "https://github.com/evertec/athmovil-ios-sdk.git", :tag => "#{spec.version}" }
