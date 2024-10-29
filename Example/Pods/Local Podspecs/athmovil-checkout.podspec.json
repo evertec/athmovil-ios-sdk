@@ -8,9 +8,6 @@
     "type": "MIT",
     "file": "LICENSE"
   },
-  "authors": {
-    "Evertec": "christopher.bautista@evertecinc.com"
-  },
   "platforms": {
     "ios": "11.0"
   },
