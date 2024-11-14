@@ -19,6 +19,8 @@ Provides a simple, secure and fast checkout experience to customers paying on yo
   spec.homepage     = "https://github.com/evertec/athmovil-ios-sdk"
 
 
+  spec.author             = { "Evertec" => "" }
+
   spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
