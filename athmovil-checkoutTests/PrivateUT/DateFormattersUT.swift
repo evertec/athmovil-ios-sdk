@@ -37,6 +37,6 @@ class DateFormattersUT: XCTestCase{
         
         let dateInTimePuertoRico = DateFormatters.codable.string(from: dateFromAnotherCountry)
         
-        XCTAssertEqual(dateInTimePuertoRico, "2020/12/04 15:42:59.0")
+        XCTAssertEqual(dateInTimePuertoRico, "2020/12/04 3:42:59.0 p.m.")
     }
 }

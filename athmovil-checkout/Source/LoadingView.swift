@@ -1,9 +1,9 @@
 //
 //  LoadingView.swift
-//  Gentera Clientes
+//  athmovil-checkoutTests
 //
-//  Created by Octavio Labastida on 26/11/21.
-//  Copyright © 2021 Multiplica. All rights reserved.
+//  Created by Ismael Paredes on 12/02/23.
+//  Copyright © 2023 Evertec. All rights reserved.
 //
 
 import Foundation
