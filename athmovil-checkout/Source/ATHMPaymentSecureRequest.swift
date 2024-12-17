@@ -136,10 +136,10 @@ extension ATHMPaymentSecureRequest {
                LoadingView.removeLoadign()
                switch result {
                    case let .success(response):
-                       //DELETE AND SAVE AUTHTOKEN
+                       // DELETE AND SAVE AUTHTOKEN
                        KeychainHelper.standard.delete(service: "authToken")
                        KeychainHelper.standard.save(response.data.authToken, service: "authToken")
-                       //SET ECOMMERCEID
+                       // SET ECOMMERCEID
                        self.payment.ecommerceId = response.data.ecommerceID
                        self.sendPayment(handler, urlopener: UIApplication.shared)
                    case let .failure(error):
@@ -154,12 +154,19 @@ extension ATHMPaymentSecureRequest {
     /// - Parameters:
     ///   - handler: handler to use when the SDK completed the payment
     ///   - urlopener: object to open the application
-    func sendPayment<Handler, Opener>(_ handler: Handler, urlopener: Opener) where Handler: PaymentHandleable, Opener: URLOpenerAdaptable {
+    func sendPayment<Handler, Opener>(
+        _ handler: Handler,
+        urlopener: Opener
+    ) where Handler: PaymentHandleable, Opener: URLOpenerAdaptable {
         
-       let target = TargetEnviroment(rawValue: ATHMPaymentSession.shared.enviroment.lowercased()) ?? .production
-       let paymentSender = AnyPaymentSecureSender(paymentRequest: self,
-                                            paymentHandler: handler,
-                                            paymentOpener: urlopener)
+        let target = TargetEnviroment(
+            rawValue: ATHMPaymentSession.shared.enviroment.lowercased()
+        ) ?? .production
+        let paymentSender = AnyPaymentSecureSender(
+            paymentRequest: self,
+            paymentHandler: handler,
+            paymentOpener: urlopener
+        )
        
        paymentSender.sendPayment(target: TargetUniversalLinks.athMovilSecure(target),
                                  session: .shared)

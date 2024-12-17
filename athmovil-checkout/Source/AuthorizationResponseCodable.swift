@@ -26,4 +26,3 @@ public struct PaymentData: Codable {
         case dailyTransactionId, referenceNumber, fee, netAmount
     }
 }
-

@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "athmovil-checkout"
-  spec.version      = "4.2"
+  spec.version      = "4.2.1"
   spec.summary      = "Provides a simple, secure and fast checkout experience to customers using your iOS application."
 
   spec.description  = <<-DESC
@@ -25,7 +25,7 @@ Provides a simple, secure and fast checkout experience to customers paying on yo
 
 
   spec.platform     = :ios
-  spec.ios.deployment_target = "11.0"
+  spec.ios.deployment_target = "13.0"
   spec.source       = { :git => "https://github.com/evertec/athmovil-ios-sdk.git", :tag => "#{spec.version}" }
 
 

@@ -8,22 +8,19 @@
 
 import Foundation
 
-extension Result where Success == Data, Failure == NetworkError {
+extension Result where Success == Data, Failure == any Error {
     
-    func decoding<M: Model>(_ model: M.Type, completion: @escaping(Result<M, NetworkError>) -> Void) {
+    func decoding<M: Model>(
+        _ model: M.Type,
+        completion: @escaping(Result<M, Failure>) -> Void
+    ) {
         DispatchQueue.global().async {
             
-            let result = self.flatMap { data -> Result<M, NetworkError> in
-                
+            let result = self.flatMap { data -> Result<M, Failure> in
                 do {
-                    let modelDecode = try M.decoder.decode(M.self, from: data)
-                    
-                    return .success(modelDecode)
-                    
-                } catch let exceptionDecoding as DecodingError {
-                    return .failure(.decodingError(exceptionDecoding))
-                } catch {
-                    return .failure(.unHandledResponse)
+                    return .success(try M.decoder.decode(M.self, from: data))
+                } catch let error {
+                    return .failure(error)
                 }
             }
             completion(result)

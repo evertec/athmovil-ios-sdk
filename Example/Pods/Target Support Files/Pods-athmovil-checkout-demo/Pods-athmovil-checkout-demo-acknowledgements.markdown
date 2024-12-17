@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## athmovil-checkout
 
-Copyright (c) 2018 Evertec <christopher.bautista@evertecinc.com>
+Copyright (c) 2018 Evertec
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

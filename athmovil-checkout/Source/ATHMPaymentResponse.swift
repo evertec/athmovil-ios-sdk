@@ -19,6 +19,9 @@ final public class ATHMPaymentResponse: NSObject {
 
     /// ATH Móvil's customer
     @objc public let customer: ATHMCustomer
+    
+    /// ATH Móvil's customer
+    @objc public var error: Error?
 
     @objc public override var description: String {
         """
@@ -29,12 +32,20 @@ final public class ATHMPaymentResponse: NSObject {
             \(customer.description)
             \n
             \(status.description)
+            \n
+            \(error.debugDescription)
         """
     }
     
-    required init(payment: ATHMPayment, status: ATHMPaymentStatus, customer: ATHMCustomer) {
+    required init(
+        payment: ATHMPayment,
+        status: ATHMPaymentStatus,
+        customer: ATHMCustomer,
+        error: Error? = nil
+    ) {
         self.payment = payment
         self.customer = customer
         self.status = status
+        self.error = error
     }
 }

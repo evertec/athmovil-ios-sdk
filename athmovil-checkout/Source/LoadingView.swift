@@ -1,6 +1,6 @@
 //
 //  LoadingView.swift
-//  athmovil-checkoutTests
+//  athmovil-checkout
 //
 //  Created by Ismael Paredes on 12/02/23.
 //  Copyright © 2023 Evertec. All rights reserved.
@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-public class LoadingView{
+public class LoadingView {
     
     private static var window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
 
-    
     static func showLoading() {
         guard let onView = getViewOfCurrentlyViewController() else { return }
         let spinnerView = setSpinnerView()
@@ -24,7 +23,7 @@ public class LoadingView{
         }
     }
     
-    static func removeLoadign(){
+    static func removeLoadign() {
         guard let onView = getViewOfCurrentlyViewController() else { return }
         DispatchQueue.main.async {
             hiddenLoadingView(onView: onView)
@@ -33,20 +32,20 @@ public class LoadingView{
     
 }
 
-extension LoadingView{
+extension LoadingView {
     
-    private static func hiddenLoadingView(onView: UIView){
+    private static func hiddenLoadingView(onView: UIView) {
         onView.subviews.forEach { (view) in
-            if view.tag == 9998{
+            if view.tag == 9998 {
                 guard let activityIndicator = view as? UIActivityIndicatorView else { return }
                 activityIndicator.stopAnimating()
-            }else if view.tag == 9999{
+            } else if view.tag == 9999 {
                 view.removeFromSuperview()
             }
         }
     }
     
-    private static func setSpinnerView() -> UIView{
+    private static func setSpinnerView() -> UIView {
         guard let window = window else { return UIView() }
         let spinnerView = UIView.init(frame: window.bounds)
         spinnerView.center = window.center
@@ -55,7 +54,7 @@ extension LoadingView{
         return spinnerView
     }
     
-    private static func setActivityIndicatorView() -> UIActivityIndicatorView{
+    private static func setActivityIndicatorView() -> UIActivityIndicatorView {
         guard let window = window else { return UIActivityIndicatorView() }
         var activityView: UIActivityIndicatorView
         if #available(iOS 13.0, *) {
@@ -69,18 +68,14 @@ extension LoadingView{
         return activityView
     }
     
-    private static func getViewOfCurrentlyViewController() -> UIView?{
+    private static func getViewOfCurrentlyViewController() -> UIView? {
         if var topController = window?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
             return topController.view
-        }else{
+        } else {
             return nil
         }
     }
-    
 }
-
-    
-

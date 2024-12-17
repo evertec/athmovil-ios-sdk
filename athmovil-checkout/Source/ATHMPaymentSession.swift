@@ -70,10 +70,10 @@ public class ATHMPaymentSession: NSObject {
                 self.observerBecomeActive = nil
             }
                         
-            if(self.currentPayment == nil){
+            if(self.currentPayment == nil) {
                 let anyResponsePayment = self.currentSecurePayment
                 anyResponsePayment?.completed(by: .becomeActive)
-            }else{
+            } else {
                 let anyResponsePayment = self.currentPayment
                 self.currentPayment = nil
                 anyResponsePayment?.completed(by: .becomeActive)
@@ -91,10 +91,10 @@ public class ATHMPaymentSession: NSObject {
             guard let dataFromATHMovil = newValue?.responseFromATHM else {
                 return
             }
-            if(currentPayment == nil){
+            if(currentPayment == nil) {
                 let anyResponsePayment = currentSecurePayment
                 anyResponsePayment?.completed(by: .deepLink(dataFromATHMovil))
-            }else{
+            } else {
                 let anyResponsePayment = currentPayment
                 currentPayment = nil
                 anyResponsePayment?.completed(by: .deepLink(dataFromATHMovil))

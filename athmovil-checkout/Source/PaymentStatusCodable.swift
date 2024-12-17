@@ -51,7 +51,7 @@ extension ATHMPaymentStatus {
             
             self.version = versionResponse
         
-        } catch  {
+        } catch {
             let castException = ATHMPaymentError(message: "Sorry for the inconvenience. Please try again later.",
                                                  source: .response)
             throw castException
