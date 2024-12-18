@@ -25,4 +25,3 @@ struct DataClass: Codable {
         case authToken = "auth_token"
     }
 }
-

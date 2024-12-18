@@ -94,7 +94,7 @@ extension ATHMSendPayment {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch{
+        } catch {
             
             let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)
@@ -114,7 +114,6 @@ extension ATHMSendPayment: Exceptionable {
             throw ATHMPaymentError(message: "Total data type value is invalid",
                                    source: .request)
         }
-        
         
         if subtotal < 0 || subtotal.isNaN {
             throw ATHMPaymentError(message: "Subtotal data type value is invalid",

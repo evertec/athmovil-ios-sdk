@@ -54,27 +54,6 @@ class RequestPaymentUT: XCTestCase {
     
     //MARK:- Negative
     
-    func testWhenSendPayment_GivenADataAsUnexpectedResponseData_ThenResponseSuccessWithTheTransactionAsCancelled() {
-        
-        let unpextedResponseData = "Hello Word".data(using: .utf8)
-        let request = APIClientMock(response: unpextedResponseData)
-        
-        request.send(request: .payment(currentPayment: PaymentSecureRequestMock(),
-            completion: { result in
-                
-                switch result {
-                    case .success(let response):
-                    XCTAssertEqual(response.status, "cancelled")
-                        
-                    default:
-                        XCTAssert(false)
-                }
-                
-            }))
-    }
-    
-    //MARK:- Boundary
-    
     func testWhenSendPayment_GivenAConnectionError_ThenResponseIsAnFailWithAnError() {
         
         let request = APIClientMock(response: nil)

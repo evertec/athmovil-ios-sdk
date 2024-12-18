@@ -26,8 +26,6 @@ class ATHMPaymentRequestIT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: { (response) in
             XCTAssert(false)
-        }, onPending: { (response) in
-            XCTAssert(false)
         }, onFailed: { (response) in
             XCTAssert(false)
         }) { error in
@@ -47,8 +45,6 @@ class ATHMPaymentRequestIT: XCTestCase {
         }, onExpired: { (response) in
             XCTAssert(false)
         }, onCancelled: { (response) in
-            XCTAssert(false)
-        }, onPending: { (response) in
             XCTAssert(false)
         }, onFailed: { (response) in
             XCTAssert(false)
@@ -71,8 +67,6 @@ class ATHMPaymentRequestIT: XCTestCase {
             XCTAssert(false)
         }, onCancelled: { (response: NSDictionary) in
             XCTAssert(false)
-        }, onPending: { (response: NSDictionary) in
-            XCTAssert(false)
         }, onFailed: { (response: NSDictionary) in
             XCTAssert(false)
         }) { error in
@@ -93,8 +87,6 @@ class ATHMPaymentRequestIT: XCTestCase {
         }, onExpired: { (response) in
             XCTAssert(false)
         }, onCancelled: { (response: NSDictionary) in
-            XCTAssert(false)
-        }, onPending: { (response: NSDictionary) in
             XCTAssert(false)
         }, onFailed: { (response: NSDictionary) in
             XCTAssert(false)
@@ -119,8 +111,6 @@ class ATHMPaymentRequestIT: XCTestCase {
         }, onExpired: { (response) in
             XCTAssert(false)
         }, onCancelled: { (response: NSDictionary) in
-            XCTAssert(false)
-        }, onPending: { (response: NSDictionary) in
             XCTAssert(false)
         }, onFailed: { (response: NSDictionary) in
             XCTAssert(false)

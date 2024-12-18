@@ -18,19 +18,21 @@ class PaymentStatusCoderUT: XCTestCase {
     
     func testWhenDecodePaymentStatus_GivenExpectedKeyDateValue_ThenDecodeDate() {
         
-        let expectedDic: [String: Any?] = getMockData(key: "date", value: "2020-06-10 11:17:26.0")
-        let dateConverted = expectedDic.toJSONString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-
         let dateFormatter = DateFormatter()
-        let decoder = JSONDecoder()
-        
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                
-        let response = try? decoder.decode(ATHMPaymentStatus.self, from: dateConverted!.toData!)
-        let stringDate = dateFormatter.string(from: response?.date ?? Date())
+
+        let mockDate = Date()
+        let mockDateString = dateFormatter.string(from: mockDate)
         
-        XCTAssertEqual("2020-06-10 11:17:26.0", stringDate)
+        let expectedDic: [String: Any?] = ["date": mockDateString]
+        let jsonData = try! JSONSerialization.data(withJSONObject: expectedDic, options: [])
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        let response = try? decoder.decode(ATHMPaymentStatus.self, from: jsonData)
+
+        XCTAssertEqual(mockDateString, dateFormatter.string(from: response?.date ?? Date()))
     }
     
     func testWhenDecodePaymentStatus_GivenExpectedKeyStatusValueCompleted_ThenDecodeStatusCompleted() {

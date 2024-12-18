@@ -57,8 +57,6 @@ extension ATHMSecurePayment {
     public func encode(to encoder: Encoder) throws {
         
         do {
-            //try hasExceptionableProperties()
-            
             var container = encoder.container(keyedBy: CodingKeys.self)
             
             try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
@@ -72,7 +70,7 @@ extension ATHMSecurePayment {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch  {
+        } catch {
             
             let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)

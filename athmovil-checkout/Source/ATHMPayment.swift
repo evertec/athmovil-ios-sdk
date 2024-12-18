@@ -47,7 +47,7 @@ final public class ATHMPayment: NSObject {
             - fee: \(fee.doubleValue)
             - netAmount: \(netAmount.doubleValue)
             - metadata1: \(metadata1)
-            - metadata2: \(metadata1)
+            - metadata2: \(metadata2)
             - Items: \(items.description)
             - phoneNumber: \(phoneNumber)
         """
@@ -70,7 +70,7 @@ final public class ATHMPayment: NSObject {
         self.metadata2 = dictionary[ATHMPayment.CodingKeys.metadata2.rawValue]
         let itemsDic: [NSDictionary] = dictionary[ATHMPayment.CodingKeys.items.rawValue]
         self.items = itemsDic.map { ATHMPaymentItem(dictionary: $0) }
-        //NEW FLOW SECURE
+        // NEW FLOW SECURE
         self.phoneNumber = dictionary[ATHMPayment.CodingKeys.phoneNumber.rawValue]
         super.init()
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Double{
+extension Double {
     
     func convertToDecimal(_ numberDecimal:Int?) -> Decimal {
         var decimalAsDouble = Decimal(abs(self))

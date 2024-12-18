@@ -82,7 +82,7 @@ extension TargetURLRepresentable {
                     
                     if success {
                         completion(.success(url))
-                    }else{
+                    } else {
                         let error = ATHMPaymentError(message: "URL is invalid", source: .response)
                         completion(.failure(error))
                     }

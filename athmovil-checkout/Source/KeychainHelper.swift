@@ -31,7 +31,7 @@ final class KeychainHelper {
             kSecValueData: data,
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
-            kSecAttrAccount: "athm_checkout",
+            kSecAttrAccount: "athm_checkout"
         ] as CFDictionary
         
         // Add data in query to keychain
@@ -81,7 +81,7 @@ final class KeychainHelper {
         let query = [
             kSecAttrService: service,
             kSecAttrAccount: "athm_checkout",
-            kSecClass: kSecClassGenericPassword,
+            kSecClass: kSecClassGenericPassword
             ] as CFDictionary
         
         // Delete item from keychain

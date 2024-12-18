@@ -1,6 +1,0 @@
-framework module athmovil_checkout {
-  umbrella header "athmovil-checkout-umbrella.h"
-
-  export *
-  module * { export * }
-}

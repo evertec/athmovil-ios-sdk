@@ -12,15 +12,24 @@ final public class ATHMAuthorizationResponse: NSObject, Error {
         
     public let status: ATHMAuthorizationResponse.TypeStatus
     public let message: String
-
+    public let debugError: String
     
-    required init(status: ATHMAuthorizationResponse.TypeStatus, message: String) {
+    public override var debugDescription: String {
+        debugError
+    }
+    
+    required init(
+        status: ATHMAuthorizationResponse.TypeStatus,
+        message: String,
+        debugError: String
+    ) {
         self.status = status
         self.message = message
+        self.debugError = debugError
     }
 }
 
-extension ATHMAuthorizationResponse{
+extension ATHMAuthorizationResponse {
     public enum TypeStatus: String, Codable {
         case success
         case error

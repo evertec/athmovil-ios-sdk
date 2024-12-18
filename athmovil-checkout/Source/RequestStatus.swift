@@ -29,7 +29,6 @@ extension Request {
                 case .success:
                     
                     result.decoding(PaymentServiceCoder.self) { resultDecoding in
-                        
                         completion(map(resultDecoding, currentPayment: currentPayment))
                     }
                 
@@ -41,24 +40,27 @@ extension Request {
         }
     }
     
-    private static func map(_ result: Result<PaymentServiceCoder, NetworkError>,
+    private static func map(_ result: Result<PaymentServiceCoder, Error>,
                             currentPayment: PaymentRequestable) -> Result<ATHMPaymentResponse, ATHMPaymentError> {
         
         switch result {
             case .success(let respondeCoder):
-                
-                let response = ATHMPaymentResponse(payment: respondeCoder.payment,
-                                                   status: respondeCoder.status,
-                                                   customer: respondeCoder.customer)
-                
+                let response = ATHMPaymentResponse(
+                    payment: respondeCoder.payment,
+                    status: respondeCoder.status,
+                    customer: respondeCoder.customer
+                )
                 return .success(response)
                 
             case .failure:
-                let statusDefault = ATHMPaymentStatus(status: .cancelled)
-                
-                let paymentCancelled = ATHMPaymentResponse(payment: currentPayment.payment,
-                                                           status: statusDefault,
-                                                           customer: "")
+                let statusDefault = ATHMPaymentStatus(
+                    status: .cancelled
+                )
+                let paymentCancelled = ATHMPaymentResponse(
+                    payment: currentPayment.payment,
+                    status: statusDefault,
+                    customer: ""
+                )
                 return .success(paymentCancelled)
         }
         

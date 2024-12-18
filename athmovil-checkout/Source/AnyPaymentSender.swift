@@ -42,10 +42,12 @@ struct AnyPaymentSender<Payment, Handler, Opener> where Payment: PaymentRequestC
     ///   - target: current target to open, the target always is going to be ATH Movil but it could be open by URL Scheme o Universal Links
     ///   - session: current payment session
     ///   - application: current application
-    private func send<Target, Opener>(target: Target,
-                                      session: ATHMPaymentSession,
-                                      application: Opener) where Target: TargetURLRepresentable,
-                                                                 Opener: URLOpenerAdaptable {
+    private func send<Target>(
+        target: Target,
+        session: ATHMPaymentSession,
+        application: Opener
+    ) where Target: TargetURLRepresentable,
+            Opener: URLOpenerAdaptable {
         
         guard !session.isWaiting else {
             return

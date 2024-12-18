@@ -1193,7 +1193,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.evertecinc.athmovil-checkout";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1222,7 +1222,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.evertecinc.athmovil-checkout";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

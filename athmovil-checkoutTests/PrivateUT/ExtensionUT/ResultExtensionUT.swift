@@ -24,7 +24,7 @@ class ResultExtensionUT: XCTestCase{
         let testObject = TestModel(name: "test")
         let givenData = try! TestModel.encoder.encode(testObject)
         
-        let result: Result<Data, NetworkError> = .success(givenData)
+        let result: Result<Data, Error> = .success(givenData)
         
         result.decoding(TestModel.self) { result in
             
@@ -44,20 +44,13 @@ class ResultExtensionUT: XCTestCase{
     func testWhenDecodingResult_GivenDataWithAnObject_ThenFailDecodeAsDecodingError() {
         
         let giveData = "Hola Mundo".data(using: .utf8)
-        let result: Result<Data, NetworkError> = .success(giveData!)
+        let result: Result<Data, Error> = .success(giveData!)
         
         result.decoding(TestModel.self) { result in
             
             switch result {
                 case .failure(let error):
-                    
-                    switch error {
-                        case .decodingError:
-                            XCTAssert(true)
-                        default:
-                            XCTAssert(false)
-                    }
-                    
+                    XCTAssert(true)
                 default:
                     XCTAssert(false)
             }

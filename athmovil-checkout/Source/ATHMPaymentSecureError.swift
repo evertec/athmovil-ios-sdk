@@ -15,10 +15,10 @@ public class ATHMPaymentSecureError: NSObject, Error {
         case request, response
     }
     
-    ///Exception custom message
+    /// Exception custom message
     var message: String
     
-    ///Source of the exception it could be in request or response
+    /// Source of the exception it could be in request or response
     var source: ATHMPaymentSecureError.Source
     
     /// A localized message describing the reason for the failure.

@@ -37,11 +37,13 @@ public class ATHMPaymentHandler: NSObject {
     ///   - onFailed: Closure to call after ATH Movil failed the payment
     ///   - onException: Closure to call when there an error en request o response
     /// - Returns: Instance of the handler
-    @objc public init(onCompleted: @escaping ((ATHMPaymentResponse) -> Void),
-                      onExpired: @escaping (ATHMPaymentResponse) -> Void,
-                      onCancelled: @escaping (ATHMPaymentResponse) -> Void,
-                      onFailed: @escaping (ATHMPaymentResponse) -> Void,
-                      onException: @escaping (ATHMPaymentError) -> Void) {
+    @objc public init(
+        onCompleted: @escaping ((ATHMPaymentResponse) -> Void),
+        onExpired: @escaping (ATHMPaymentResponse) -> Void,
+        onCancelled: @escaping (ATHMPaymentResponse) -> Void,
+        onFailed: @escaping (ATHMPaymentResponse) -> Void,
+        onException: @escaping (ATHMPaymentError) -> Void
+    ) {
         
         self.onCompleted = onCompleted
         self.onExpired = onExpired
@@ -58,21 +60,32 @@ public class ATHMPaymentHandler: NSObject {
         
         do {
             
-            let responseDecodable = try Data.decoder.decode(PaymentResponseCoder.self, from: data)
-            let response = ATHMPaymentResponse(payment: responseDecodable.payment,
-                                               status: responseDecodable.status,
-                                               customer: responseDecodable.customer)
+            let responseDecodable = try Data.decoder.decode(
+                PaymentResponseCoder.self,
+                from: data
+            )
+            let response = ATHMPaymentResponse(
+                payment: responseDecodable.payment,
+                status: responseDecodable.status,
+                customer: responseDecodable.customer
+            )
             
             complete(paymentStatus: response.status.status, response: response)
             
         } catch let exceptionPayment as ATHMPaymentError {
-            let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
+            let paymentException = ATHMPaymentError(
+                message: exceptionPayment.message,
+                source: .request
+            )
             onException(paymentException)
             
-        } catch  {
+        } catch {
             
             let messageError = "Sorry for the inconvenience. Please try again later."
-            let paymentException = ATHMPaymentError(message: messageError,source: .request)
+            let paymentException = ATHMPaymentError(
+                message: messageError,
+                source: .request
+            )
             onException(paymentException)
         }
         
@@ -82,7 +95,10 @@ public class ATHMPaymentHandler: NSObject {
     /// - Parameters:
     ///   - paymentStatus: current status of the payment it could be completed, cancelled or expired
     ///   - response: dictionary which containts the keys-values of the response
-    private func complete(paymentStatus: ATHMStatus, response: ATHMPaymentResponse) {
+    private func complete(
+        paymentStatus: ATHMStatus,
+        response: ATHMPaymentResponse
+    ) {
         
         switch paymentStatus {
             case .completed:
@@ -106,6 +122,9 @@ extension ATHMPaymentHandler: PaymentHandleable {
     /// - Parameter serverPayment: current response of the web service
     func completeFrom(serverPayment: ATHMPaymentResponse) {
         
-        complete(paymentStatus: serverPayment.status.status, response: serverPayment)
+        complete(
+            paymentStatus: serverPayment.status.status,
+            response: serverPayment
+        )
     }
 }

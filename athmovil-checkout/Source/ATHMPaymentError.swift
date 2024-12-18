@@ -21,11 +21,12 @@ public class ATHMPaymentError: NSObject, Error {
         case request, response
     }
     
-    ///Exception custom message
-    var message: String
+    /// Exception custom message
+    let message: String
     
-    ///Source of the exception it could be in request or response
-    var source: ATHMPaymentError.Source
+    /// Source of the exception it could be in request or response
+    let source: ATHMPaymentError.Source
+    let debugError: String
     
     /// A localized message describing the reason for the failure.
     @objc public var failureReason: String { message }
@@ -40,9 +41,14 @@ public class ATHMPaymentError: NSObject, Error {
     /// - Parameters:
     ///   - message: Message to return to user in the exception
     ///   - source: Source of the exception it could be request or response
-    init(message: String, source: ATHMPaymentError.Source) {
+    init(
+        message: String,
+        source: ATHMPaymentError.Source,
+        debugError: String = ""
+    ) {
         self.message = message
         self.source = source
+        self.debugError = debugError
     }
     
     public override var description: String {
@@ -50,6 +56,7 @@ public class ATHMPaymentError: NSObject, Error {
         ATHMPaymentError:
             - description: \(errorDescription)
             - failureReason: \(failureReason)
+            - debugError: \(debugError)
         """
     }
     

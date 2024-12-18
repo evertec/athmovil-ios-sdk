@@ -22,7 +22,7 @@ extension ATHMPayment: PaymentCodable {
              metadata1,
              metadata2,
              items,
-             //NEW FLOW SECURE
+             // NEW FLOW SECURE
              phoneNumber
     }
 }
@@ -53,7 +53,7 @@ extension ATHMPayment {
             let itemsDecode = try? container.decodeIfPresent([ATHMPaymentItem].self, forKey: .items) ?? [ATHMPaymentItem]()
             self.items = itemsDecode ?? [ATHMPaymentItem]()
         
-            //NEW FLOW SECURITY
+            // NEW FLOW SECURITY
             self.phoneNumber = container.decodeValueDefault(forKey: .phoneNumber)
             
             try hasExceptionableProperties()
@@ -86,20 +86,19 @@ extension ATHMPayment {
             try container.encodeIfPresent(metadata1, forKey: .metadata1)
             try container.encodeIfPresent(metadata2, forKey: .metadata2)
             try container.encodeIfPresent(items, forKey: .items)
-            //NEW FLOW SECURITY
+            // NEW FLOW SECURITY
             try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
             
         } catch let exceptionPayment as ATHMPaymentError {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch  {
+        } catch {
             
             let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)
             throw paymentException
         }
-
     }
 }
 

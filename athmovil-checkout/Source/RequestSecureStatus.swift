@@ -41,27 +41,31 @@ extension Request {
         }
     }
     
-    private static func map(_ result: Result<PaymentServiceCoder, NetworkError>,
+    private static func map(_ result: Result<PaymentServiceCoder, Error>,
                             currentPayment: PaymentSecureRequestable) -> Result<ATHMPaymentResponse, ATHMPaymentError> {
         
         switch result {
             case .success(let respondeCoder):
                 
-                let response = ATHMPaymentResponse(payment: respondeCoder.payment,
-                                                   status: respondeCoder.status,
-                                                   customer: respondeCoder.customer)
+                let response = ATHMPaymentResponse(
+                    payment: respondeCoder.payment,
+                    status: respondeCoder.status,
+                    customer: respondeCoder.customer
+                )
                 
                 return .success(response)
                 
             case .failure:
-                let statusDefault = ATHMPaymentStatus(status: .cancelled)
-                
-                let paymentCancelled = ATHMPaymentResponse(payment: currentPayment.paymentOld,
-                                                           status: statusDefault,
-                                                           customer: "")
+                let statusDefault = ATHMPaymentStatus(
+                    status: .cancelled
+                )
+                let paymentCancelled = ATHMPaymentResponse(
+                    payment: currentPayment.paymentOld,
+                    status: statusDefault,
+                    customer: ""
+                )
                 return .success(paymentCancelled)
         }
-        
     }
 }
 

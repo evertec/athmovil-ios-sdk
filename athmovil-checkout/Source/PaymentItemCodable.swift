@@ -41,7 +41,7 @@ extension ATHMPaymentItem {
             let paymentException = ATHMPaymentError(message: exceptionPayment.message, source: .request)
             throw paymentException
             
-        } catch  {
+        } catch {
             
             let messageError = "Sorry for the inconvenience. Please try again later."
             let paymentException = ATHMPaymentError(message: messageError,source: .request)

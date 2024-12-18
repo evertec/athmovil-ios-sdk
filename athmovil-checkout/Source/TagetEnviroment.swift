@@ -17,6 +17,17 @@ enum TargetEnviroment: String, CaseIterable {
 
 extension TargetEnviroment {
     
+    static var trustedDomains: Set<String> = {
+        TargetEnviroment.allCases.reduce(Set<String>()) { partialResult, target in
+            var result = partialResult
+            if let host = target.baseURL.host {
+                result.insert(host)
+            }
+            result.insert(target.baseUrlAWS)
+            return result
+        }
+    }()
+    
     var baseURL: URL {
         return URL(string: "https://www.athmovil.com/rs/")!
     }
@@ -33,8 +44,7 @@ extension TargetEnviroment {
         return APIPayments.api
     }
     
-    func client(currentRequest: PaymentSecureRequestable) -> APIClientRequestable {
-        return APIPayments.apiCustom
-    }
-    
+    func client(
+        currentRequest: PaymentSecureRequestable
+    ) -> APIClientRequestable { APIPayments.apiAWS }
 }
