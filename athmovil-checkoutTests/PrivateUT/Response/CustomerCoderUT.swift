@@ -20,8 +20,12 @@ class CustomerCoderUT: XCTestCase {
         
         let dic = self.getDataMock(key: "name", value: "Damian")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertEqual(ATHMCustomer?.name, "Damian")
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertEqual(ATHMCustomer?.name, "Damian")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
     }
     
@@ -29,8 +33,12 @@ class CustomerCoderUT: XCTestCase {
        
         let dic = self.getDataMock(key: "email", value: "hola@hola.com")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertEqual(ATHMCustomer?.email, "hola@hola.com")
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertEqual(ATHMCustomer?.email, "hola@hola.com")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
         
     }
@@ -39,8 +47,12 @@ class CustomerCoderUT: XCTestCase {
         
         let dic = self.getDataMock(key: "phoneNumber", value: "7771112222")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertEqual(ATHMCustomer?.phoneNumber, "7771112222")
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertEqual(ATHMCustomer?.phoneNumber, "7771112222")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
         
     }
@@ -51,8 +63,12 @@ class CustomerCoderUT: XCTestCase {
                 
         let dic = self.getDataMock(key: "name", value: "")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertTrue(ATHMCustomer?.name.isEmpty ?? false)
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertTrue(ATHMCustomer?.name.isEmpty ?? false)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
         
     }
@@ -61,8 +77,12 @@ class CustomerCoderUT: XCTestCase {
         
         let dic = self.getDataMock(key: "email", value: "")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertTrue(ATHMCustomer?.email.isEmpty ?? false)
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertTrue(ATHMCustomer?.email.isEmpty ?? false)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
     }
     
@@ -70,8 +90,12 @@ class CustomerCoderUT: XCTestCase {
         
         let dic = self.getDataMock(key: "phoneNumber", value: "")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertEqual(ATHMCustomer?.phoneNumber, "")
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertEqual(ATHMCustomer?.phoneNumber, "")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
     }
     
@@ -84,8 +108,12 @@ class CustomerCoderUT: XCTestCase {
         var dic = self.getDataMock(key: "name", value: "")
         dic.removeValue(forKey: "name")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertTrue(ATHMCustomer?.name.isEmpty ?? false)
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertTrue(ATHMCustomer?.name.isEmpty ?? false)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
     }
     
@@ -94,8 +122,12 @@ class CustomerCoderUT: XCTestCase {
         var dic = self.getDataMock(key: "email", value: "")
         dic.removeValue(forKey: "email")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertTrue(ATHMCustomer?.email.isEmpty ?? false)
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertTrue(ATHMCustomer?.email.isEmpty ?? false)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
     }
     
@@ -104,8 +136,12 @@ class CustomerCoderUT: XCTestCase {
         var dic = self.getDataMock(key: "phoneNumber", value: "")
         dic.removeValue(forKey: "phoneNumber")
         
-        try! XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
-            XCTAssertEqual(ATHMCustomer?.phoneNumber, "")
+        do {
+            try XCTAssertDecode(codable: ATHMCustomer.self, from: dic) { (ATHMCustomer: ATHMCustomer?) in
+                XCTAssertEqual(ATHMCustomer?.phoneNumber, "")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMCustomer: \(error)")
         }
     }
     

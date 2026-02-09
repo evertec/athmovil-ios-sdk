@@ -26,7 +26,7 @@ class UserPreferences: NSObject, NSCoding {
     var phoneNumber = ""
     
     let themeList: [String] = [ATHMThemeClassic.name, ATHMThemeLight.name, ATHMThemeNight.name]
-    let enviroments: [String] =  ["Quality","QualityCert","Pilot", "Production"]
+    let enviroments: [String] =  ["Pilot", "Production"]
         
     fileprivate override init() {
         super.init()

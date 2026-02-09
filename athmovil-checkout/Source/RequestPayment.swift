@@ -23,6 +23,9 @@ extension Request {
             
             switch result {
                 case .success(let data):
+                    #if DEBUG
+                        print("Raw response data: \(String(data: data, encoding: .utf8) ?? "Unable to decode data")")
+                    #endif
                     do {
                         let decoded = try JSONDecoder().decode(PaymentSecureResponseCodable.self, from: data)
                         completion(.success(decoded))

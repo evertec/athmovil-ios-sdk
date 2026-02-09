@@ -19,8 +19,12 @@ class AnyPaymentRequestCoderUT: XCTestCase {
         
         let request = getMockData(timeOut: 120, business: "test", scheme: "test", traceId: "XXX", payment: 20.0)
         
-        try! XCTAssertEncode(encode: request) {
-            XCTAssertEqual($0["expiresIn"] as? Double, 120)
+        do {
+            try XCTAssertEncode(encode: request) {
+                XCTAssertEqual($0["expiresIn"] as? Double, 120)
+            }
+        } catch {
+            XCTFail("Error encoded request: \(error)")
         }
     }
     
@@ -28,8 +32,12 @@ class AnyPaymentRequestCoderUT: XCTestCase {
         
         let request = getMockData(timeOut: 120, business: "test", scheme: "test", traceId: "CCCC", payment: 1.0)
         
-        try! XCTAssertEncode(encode: request) {
-            XCTAssertEqual($0["version"] as? String, "3.0")
+        do {
+            try XCTAssertEncode(encode: request) {
+                XCTAssertEqual($0["version"] as? String, "3.0")
+            }
+        } catch {
+            XCTFail("Error encoded request: \(error)")
         }
     }
     
@@ -37,8 +45,12 @@ class AnyPaymentRequestCoderUT: XCTestCase {
         
         let request = getMockData(timeOut: 120, business: "test", scheme: "test", traceId: "ADSASFRER4324324324", payment: 1.0)
         
-        try! XCTAssertEncode(encode: request) {
-            XCTAssertEqual($0["traceId"] as? String, "ADSASFRER4324324324")
+        do {
+            try XCTAssertEncode(encode: request) {
+                XCTAssertEqual($0["traceId"] as? String, "ADSASFRER4324324324")
+            }
+        } catch {
+            XCTFail("Error encoded request: \(error)")
         }
     }
     

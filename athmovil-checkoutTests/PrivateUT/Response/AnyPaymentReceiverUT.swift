@@ -56,26 +56,36 @@ class AnyPaymentReceiverUT: XCTestCase {
         
     func getResponseData(key: String, value: Any?) -> Data {
         
-        var fullResponse: [String: Any] = ["name": "test",
-                                           "phoneNumber": "7871234567",
-                                           "metadata1": "test metadata1",
-                                           "tax": 1,
-                                           "version": "3.0",
-                                           "total": 2.0,
-                                           "referenceNumber": "123456",
-                                           "subtotal": 1,
-                                           "metadata2": "test metadata2",
-                                           "date": 0,
-                                           "items": [["name": "test", "price": 1, "quantity": 1, "desc": "test"]],
-                                           "email": "test@evertecinc.com",
-                                           "status": "completed",
-                                           "dailyTransactionID": 1
-        ]
-        
-        fullResponse[key] = value
-        
-        let dataResponse = try! JSONSerialization.data(withJSONObject: fullResponse, options: .prettyPrinted)
-                
-        return dataResponse
+        let baseResponse: [String: Any] = [
+                "name": "test",
+                "phoneNumber": "7871234567",
+                "metadata1": "test metadata1",
+                "tax": 1,
+                "version": "3.0",
+                "total": 2.0,
+                "referenceNumber": "123456",
+                "subtotal": 1,
+                "metadata2": "test metadata2",
+                "date": 0,
+                "items": [["name": "test", "price": 1, "quantity": 1, "desc": "test"]],
+                "email": "test@evertecinc.com",
+                "status": "completed",
+                "dailyTransactionID": 1
+            ]
+
+            let fullResponse = baseResponse.merging([key: value as Any]) { _, new in new }
+
+            let dataResponse: Data
+
+            do {
+                dataResponse = try JSONSerialization.data(
+                    withJSONObject: fullResponse,
+                    options: .prettyPrinted
+                )
+            } catch {
+                fatalError("Error al JSONSerialization fullResponse: \(error)")
+            }
+
+            return dataResponse
     }
 }

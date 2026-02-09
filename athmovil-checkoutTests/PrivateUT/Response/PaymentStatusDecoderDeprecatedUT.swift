@@ -19,8 +19,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "status", value: "Success")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.status, .completed)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.status, .completed)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -28,17 +32,26 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "status", value: "TimeOut")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.status, .expired)
+        
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.status, .expired)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
 
     func testWhenDecodePaymentStatus_GivenExpectedKeyStatusValueCanceled_ThenCovertToNewStatusCancelled() {
 
         let expectedDic = getMockData(key: "status", value: "Canceled")
-
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.status, .cancelled)
+        
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.status, .cancelled)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -46,8 +59,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "dailyTransactionId", value: "#01")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.dailyTransactionID, 1)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.dailyTransactionID, 1)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -55,8 +72,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "transactionReference", value: "123124312321")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.referenceNumber, "123124312321")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.referenceNumber, "123124312321")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -64,8 +85,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "transactionReference", value: "123124312321")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertNotNil($0?.date)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertNotNil($0?.date)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
 
@@ -75,8 +100,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "status", value: "")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.status, .cancelled)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.status, .cancelled)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
         
     }
@@ -85,8 +114,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "dailyTransactionId", value: "")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.dailyTransactionID, 0)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.dailyTransactionID, 0)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -94,8 +127,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "transactionReference", value: "")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.referenceNumber, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.referenceNumber, "")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -131,8 +168,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "dailyTransactionId", value: nil)
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.dailyTransactionID, 0)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.dailyTransactionID, 0)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -141,8 +182,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
         var expectedDic = getMockData(key: "dailyTransactionId", value: "")
         expectedDic.removeValue(forKey: "dailyTransactionId")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.dailyTransactionID, 0)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.dailyTransactionID, 0)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -151,8 +196,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
         var expectedDic = getMockData(key: "dailyTransactionId", value: "Test12Test1")
         expectedDic.removeValue(forKey: "dailyTransactionId")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.dailyTransactionID, 0)
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.dailyTransactionID, 0)
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -160,8 +209,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
 
         let expectedDic = getMockData(key: "transactionReference", value: nil)
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.referenceNumber, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.referenceNumber, "")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     
@@ -170,8 +223,12 @@ class PaymentStatusDecoderDeprecatedUT: XCTestCase {
         var expectedDic = getMockData(key: "transactionReference", value: nil)
         expectedDic.removeValue(forKey: "transactionReference")
 
-        try! XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
-            XCTAssertEqual($0?.referenceNumber, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentStatus.self, from: expectedDic) {
+                XCTAssertEqual($0?.referenceNumber, "")
+            }
+        } catch {
+            XCTFail("Error decodificando ATHMPaymentStatus: \(error)")
         }
     }
     

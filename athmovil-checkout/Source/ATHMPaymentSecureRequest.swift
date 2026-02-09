@@ -85,7 +85,7 @@ public class ATHMPaymentSecureRequest: NSObject {
     /// - Parameter handler: Closure to call after the response of the ATH Movil
     @objc
     public func pay(handler: ATHMPaymentHandler) {
-        
+    
         self.payment(handler, urlopener: UIApplication.shared)
     }
     
@@ -141,10 +141,23 @@ extension ATHMPaymentSecureRequest {
                        KeychainHelper.standard.save(response.data.authToken, service: "authToken")
                        // SET ECOMMERCEID
                        self.payment.ecommerceId = response.data.ecommerceID
+                       NewRelicConfig.sendEventToNewRelic(
+                          eventType: NewRelicEventRequest.paymentsuccess.rawValue,
+                          paymentStatus: response.status,
+                          buildType: target,
+                          paymentReference: response.data.ecommerceID
+                       )
                        self.sendPayment(handler, urlopener: UIApplication.shared)
+                       
                    case let .failure(error):
                        handler.onException(error)
-               }
+                       NewRelicConfig.sendEventToNewRelic(
+                          eventType: NewRelicEventRequest.paymentFailed.rawValue,
+                          paymentStatus: error.message,
+                          buildType: target,
+                          paymentReference: error.description
+                        )
+                 }
            }
        }))
     }
@@ -172,3 +185,10 @@ extension ATHMPaymentSecureRequest {
                                  session: .shared)
     }
 }
+
+enum NewRelicEventRequest: String {
+    case paymentsuccess = "ATHMSuccessPaymentInitEvent"
+    case paymentFailed = "ATHMFailedPaymentInitEvent"
+}
+
+  

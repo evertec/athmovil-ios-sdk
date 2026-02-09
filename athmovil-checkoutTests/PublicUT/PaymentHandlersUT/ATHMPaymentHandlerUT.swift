@@ -17,89 +17,146 @@ class ATHMPaymentHandlerUT: XCTestCase {
     func testWhenCompleteFromData_GivenStatusCompleted_ThenCompletedClosureIsCalled() {
         
         let response = getMockDate(key: "status", value: "completed")
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: {
-            XCTAssertEqual($0.status.status, ATHMStatus.completed)
-        }, onExpired: { (_) in
-            XCTAssert(false)
-        }, onCancelled: { (_) in
-            XCTAssert(false)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { (_) in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Opción 2: fallback con XCTFail
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: {
+                XCTAssertEqual($0.status.status, .completed)
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: { _ in
+                XCTFail("Cancelled")
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+        
+
     }
     
     func testWhenCompleteFromData_GivenStatusExpired_ThenExpiredClosureIsCalled() {
         
         let response = getMockDate(key: "status", value: "expired")
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: {
-            XCTAssertEqual($0.status.status, ATHMStatus.expired)
-        }, onCancelled: { _ in
-            XCTAssert(false)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { _ in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail para tests (opción 2)
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: {
+                XCTAssertEqual($0.status.status, .expired)
+            },
+            onCancelled: { _ in
+                XCTFail("Cancelled")
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+
     }
     
     func testWhenCompleteFromData_GivenStatusCancelled_ThenCancelledClosureIsCalled() {
         
         let response = getMockDate(key: "status", value: "cancelled")
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: { _ in
-            XCTAssert(false)
-        }, onCancelled: {
-            XCTAssertEqual($0.status.status, ATHMStatus.cancelled)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { _ in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: {
+                XCTAssertEqual($0.status.status, .cancelled)
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+
     }
     
     func testWhenCompleteFromData_GivenStatusFailed_ThenFailedClosureIsCalled() {
         
         let response = getMockDate(key: "status", value: "failed")
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: { _ in
-            XCTAssert(false)
-        }, onCancelled: { (_) in
-            XCTAssert(false)
-        }, onFailed: {
-            XCTAssertEqual($0.status.status, ATHMStatus.failed)
-        }) { _ in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail para tests
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: { _ in
+                XCTFail("Cancelled")
+            },
+            onFailed: {
+                XCTAssertEqual($0.status.status, .failed)
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+
     }
     
     func testWhenCompleteFromServer_GivenResponseCompleted_ThenCompletedClosureIsCalled() {
@@ -170,23 +227,38 @@ class ATHMPaymentHandlerUT: XCTestCase {
     func testWhenCompleteFromData_GivenEmptyStatus_ThenCancelledClosureAsDefault() {
         
         let response = getMockDate(key: "status", value: "")
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: { _ in
-            XCTAssert(false)
-        }, onCancelled: {
-            XCTAssertEqual($0.status.status, ATHMStatus.cancelled)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { _ in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: {
+                XCTAssertEqual($0.status.status, .cancelled)
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+
+
     }
     
     //MARK:- Boundary
@@ -194,68 +266,111 @@ class ATHMPaymentHandlerUT: XCTestCase {
     func testWhenCompleteFromData_GivenUnexpectedStatus_ThenCancelledClosureAsDefault() {
         
         let response = getMockDate(key: "status", value: "hello")
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: { _ in
-            XCTAssert(false)
-        }, onCancelled: {
-            XCTAssertEqual($0.status.status, ATHMStatus.cancelled)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { _ in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: {
+                XCTAssertEqual($0.status.status, .cancelled)
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+
+
     }
     
     func testWhenCompleteFromData_GivenNilStatus_ThenCancelledClosureAsDefault() {
         
         let response = getMockDate(key: "status", value: nil)
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: { _ in
-            XCTAssert(false)
-        }, onCancelled: {
-            XCTAssertEqual($0.status.status, ATHMStatus.cancelled)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { _ in
-            XCTAssert(false)
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: {
+                XCTAssertEqual($0.status.status, .cancelled)
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
+            XCTFail("Unexpected")
         }
-        
+
         handler.completeFrom(data: data)
+
+
     }
     
     func testWhenCompleteFromData_GivenUnexpectedResponse_ThenExceptionClasureIsCalled() {
         
-        var response = getMockDate(key: "status", value: nil)
-        response.removeAll()
-        
-        let data = try! JSONSerialization.data(withJSONObject: response,
-                                               options: JSONSerialization.WritingOptions.prettyPrinted)
-        
-        let handler = ATHMPaymentHandler(onCompleted: { _ in
-            XCTAssert(false)
-        }, onExpired: { _ in
-            XCTAssert(false)
-        }, onCancelled: { (response: ATHMPaymentResponse) in
-            XCTAssert(false)
-        }, onFailed: { (_) in
-            XCTAssert(false)
-        }) { _ in
+        let response: [String: Any] = [:]
+
+        let jsonData = try? JSONSerialization.data(
+            withJSONObject: response,
+            options: .prettyPrinted
+        )
+
+        // Fallback con XCTFail
+        let data = jsonData ?? {
+            XCTFail("Error serializando JSON")
+            return Data()
+        }()
+
+        let handler = ATHMPaymentHandler(
+            onCompleted: { _ in
+                XCTFail("Completed")
+            },
+            onExpired: { _ in
+                XCTFail("Expired")
+            },
+            onCancelled: { (_: ATHMPaymentResponse) in
+                XCTFail("Cancelled")
+            },
+            onFailed: { _ in
+                XCTFail("Failed")
+            }
+        ) { _ in
             XCTAssert(true)
         }
-        
+
         handler.completeFrom(data: data)
+
     }
     
     // Mark:- MockData

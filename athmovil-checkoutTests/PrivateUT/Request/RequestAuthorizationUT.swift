@@ -92,10 +92,29 @@ class RequestAuthorizationUT: XCTestCase {
     
     func mockData() -> Data {
         let status = ATHMAuthorizationResponse.TypeStatus.success
-        let dataclass = PaymentData(dailyTransactionId: "0013", referenceNumber: "215070682-8a36d42f859d623b0185a1a80b08009d", fee: 0.05999999865889549, netAmount: 0.95)
-        let response = AuthorizationResponseCodable(status: status, data: dataclass, message: "")
-        let data = try! AuthorizationResponseCodable.encoder.encode(response)
+
+        let paymentData = PaymentData(
+            dailyTransactionId: "0013",
+            referenceNumber: "215070682-8a36d42f859d623b0185a1a80b08009d",
+            fee: 0.05999999865889549,
+            netAmount: 0.95
+        )
+
+        let response = AuthorizationResponseCodable(
+            status: status,
+            data: paymentData,
+            message: ""
+        )
+
+        let data: Data
+        do {
+            data = try AuthorizationResponseCodable.encoder.encode(response)
+        } catch {
+            fatalError("Error al codificar AuthorizationResponse: \(error)")
+        }
+
         return data
+
     }
     
 }

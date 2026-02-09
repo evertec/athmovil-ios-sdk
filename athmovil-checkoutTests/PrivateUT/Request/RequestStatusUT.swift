@@ -102,11 +102,19 @@ class RequestStatusUT: XCTestCase {
         let customer = ATHMCustomer(name: "Test", phoneNumber: "111 111 111", email: "test@test.com")
         let payment: ATHMPayment = 20.0
         let status = ATHMPaymentStatus(reference: "3124123123", dayliId: 1, date: Date(), status: .completed)
-        
+
         let response = PaymentResponseCoder(payment: payment, customer: customer, status: status)
-        let data = try! PaymentResponseCoder.encoder.encode(response)
-        
+
+        // Primero intentamos codificar
+        let encodedData = try? PaymentResponseCoder.encoder.encode(response)
+
+        // Fallback con fatalError
+        let data: Data = encodedData ?? {
+            fatalError("Error al codificar PaymentResponseCoder")
+        }()
+
         return data
+
     }
     
 }

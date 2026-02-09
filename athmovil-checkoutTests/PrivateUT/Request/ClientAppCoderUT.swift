@@ -20,8 +20,12 @@ class ClientAppCoderUT: XCTestCase {
         
         let scheme: ATHMURLScheme = "xamarintest"
         
-        try! XCTAssertEncode(encode: scheme) { (responseDic) in
-            XCTAssertEqual(responseDic["scheme"] as? String, "xamarintest")
+        do {
+            try XCTAssertEncode(encode: scheme) { (responseDic) in
+                XCTAssertEqual(responseDic["scheme"] as? String, "xamarintest")
+            }
+        } catch {
+            XCTFail("Error encoded scheme: \(error)")
         }
     
     }

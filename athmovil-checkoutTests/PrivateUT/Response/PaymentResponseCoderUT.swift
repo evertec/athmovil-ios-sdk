@@ -18,11 +18,15 @@ class PaymentResponseCoderIT: XCTestCase {
         
         let currentDic = getMockData(key: "", value: "").current
         
-        try! XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
-            XCTAssertNotNil($0?.customer)
-            XCTAssertEqual($0?.customer.name, "test")
-            XCTAssertEqual($0?.customer.email, "test@evertecinc.com")
-            XCTAssertEqual($0?.customer.phoneNumber, "7871234567")
+        do {
+            try XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
+                XCTAssertNotNil($0?.customer)
+                XCTAssertEqual($0?.customer.name, "test")
+                XCTAssertEqual($0?.customer.email, "test@evertecinc.com")
+                XCTAssertEqual($0?.customer.phoneNumber, "7871234567")
+            }
+        } catch {
+            XCTFail("Error decodificando PaymentResponseCoder: \(error)")
         }
     }
     
@@ -30,11 +34,15 @@ class PaymentResponseCoderIT: XCTestCase {
         
         let currentDic = getMockData(key: "", value: "").deprecated
         
-        try! XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
-            XCTAssertNotNil($0?.customer)
-            XCTAssertEqual($0?.customer.name, "")
-            XCTAssertEqual($0?.customer.email, "")
-            XCTAssertEqual($0?.customer.phoneNumber, "")
+        do {
+            try XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
+                XCTAssertNotNil($0?.customer)
+                XCTAssertEqual($0?.customer.name, "")
+                XCTAssertEqual($0?.customer.email, "")
+                XCTAssertEqual($0?.customer.phoneNumber, "")
+            }
+        } catch {
+            XCTFail("Error decodificando PaymentResponseCoder: \(error)")
         }
     }
     
@@ -42,12 +50,16 @@ class PaymentResponseCoderIT: XCTestCase {
         
         let currentDic = getMockData(key: "", value: "").current
         
-        try! XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
-            XCTAssertNotNil($0?.status)
-            XCTAssertNotNil($0?.status.date)
-            XCTAssertEqual($0?.status.status, .completed)
-            XCTAssertEqual($0?.status.referenceNumber, "123456789")
-            XCTAssertEqual($0?.status.dailyTransactionID, 1)
+        do {
+            try XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
+                XCTAssertNotNil($0?.status)
+                XCTAssertNotNil($0?.status.date)
+                XCTAssertEqual($0?.status.status, .completed)
+                XCTAssertEqual($0?.status.referenceNumber, "123456789")
+                XCTAssertEqual($0?.status.dailyTransactionID, 1)
+            }
+        } catch {
+            XCTFail("Error decodificando PaymentResponseCoder: \(error)")
         }
     }
     
@@ -55,12 +67,16 @@ class PaymentResponseCoderIT: XCTestCase {
         
         let currentDic = getMockData(key: "", value: "").deprecated
         
-        try! XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
-            XCTAssertNotNil($0?.status)
-            XCTAssertNotNil($0?.status.date)
-            XCTAssertEqual($0?.status.status, .cancelled)
-            XCTAssertEqual($0?.status.referenceNumber, "1000000001")
-            XCTAssertEqual($0?.status.dailyTransactionID, 2)
+        do {
+            try XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
+                XCTAssertNotNil($0?.status)
+                XCTAssertNotNil($0?.status.date)
+                XCTAssertEqual($0?.status.status, .cancelled)
+                XCTAssertEqual($0?.status.referenceNumber, "1000000001")
+                XCTAssertEqual($0?.status.dailyTransactionID, 2)
+            }
+        } catch {
+            XCTFail("Error decodificando PaymentResponseCoder: \(error)")
         }
     }
     
@@ -68,14 +84,18 @@ class PaymentResponseCoderIT: XCTestCase {
         
         let currentDic = getMockData(key: "", value: "").current
         
-        try! XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
-            XCTAssertNotNil($0?.payment)
-            XCTAssertEqual($0?.payment.total, 1)
-            XCTAssertEqual($0?.payment.tax, 1)
-            XCTAssertEqual($0?.payment.subtotal, 1)
-            XCTAssertEqual($0?.payment.metadata1, "test 1")
-            XCTAssertEqual($0?.payment.metadata2, "test 2")
-            XCTAssertEqual($0?.payment.items.count, 1)
+        do {
+            try XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
+                XCTAssertNotNil($0?.payment)
+                XCTAssertEqual($0?.payment.total, 1)
+                XCTAssertEqual($0?.payment.tax, 1)
+                XCTAssertEqual($0?.payment.subtotal, 1)
+                XCTAssertEqual($0?.payment.metadata1, "test 1")
+                XCTAssertEqual($0?.payment.metadata2, "test 2")
+                XCTAssertEqual($0?.payment.items.count, 1)
+            }
+        } catch {
+            XCTFail("Error decodificando PaymentResponseCoder: \(error)")
         }
     }
     
@@ -83,14 +103,18 @@ class PaymentResponseCoderIT: XCTestCase {
         
         let currentDic = getMockData(key: "", value: "").deprecated
         
-        try! XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
-            XCTAssertNotNil($0?.payment)
-            XCTAssertEqual($0?.payment.total, 2.5)
-            XCTAssertEqual($0?.payment.tax, 2)
-            XCTAssertEqual($0?.payment.subtotal, 2)
-            XCTAssertEqual($0?.payment.metadata1, "Old 1")
-            XCTAssertEqual($0?.payment.metadata2, "Old 2")
-            XCTAssertEqual($0?.payment.items.count, 1)
+        do {
+            try XCTAssertDecode(codable: PaymentResponseCoder.self, from: currentDic) {
+                XCTAssertNotNil($0?.payment)
+                XCTAssertEqual($0?.payment.total, 2.5)
+                XCTAssertEqual($0?.payment.tax, 2)
+                XCTAssertEqual($0?.payment.subtotal, 2)
+                XCTAssertEqual($0?.payment.metadata1, "Old 1")
+                XCTAssertEqual($0?.payment.metadata2, "Old 2")
+                XCTAssertEqual($0?.payment.items.count, 1)
+            }
+        } catch {
+            XCTFail("Error decodificando PaymentResponseCoder: \(error)")
         }
     }
     

@@ -42,7 +42,7 @@ extension RequestBuilder {
         var urlRequest = URLRequest(
             url: urlFromComponents,
             cachePolicy: .reloadIgnoringCacheData,
-            timeoutInterval: 60
+            timeoutInterval: 180
         )
         urlRequest.allHTTPHeaderFields = headers
         urlRequest.httpMethod = method.rawValue.uppercased()

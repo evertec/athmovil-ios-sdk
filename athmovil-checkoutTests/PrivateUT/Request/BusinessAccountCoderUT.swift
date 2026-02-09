@@ -20,8 +20,12 @@ class BusinessAccountCoderUT: XCTestCase {
         
         let businessAccount: ATHMBusinessAccount = "12345"
         
-        try! XCTAssertEncode(encode: businessAccount) { (dicResponse) in
-            XCTAssertEqual(dicResponse["publicToken"] as? String, "12345")
+        do {
+            try XCTAssertEncode(encode: businessAccount) { (dicResponse) in
+                XCTAssertEqual(dicResponse["publicToken"] as? String, "12345")
+            }
+        } catch {
+            XCTFail("Error encoded businessAccount: \(error)")
         }
         
     }

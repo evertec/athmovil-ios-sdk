@@ -10,6 +10,12 @@ import Foundation
 
 struct APIPayments {
     
+    static let api: APIClient = {
+        APIClient(configuration: .defaultATHMovil(
+            httpAdditionalHeaders: .athMovilHeaders)
+        )
+    }()
+
     static let apiAWS: APIClientAWS = {
         APIClientAWS(
             configuration: .defaultATHMovil(
@@ -33,8 +39,8 @@ fileprivate extension URLSessionConfiguration {
             configuration.httpAdditionalHeaders = httpAdditionalHeaders
             configuration.waitsForConnectivity = true
             configuration.allowsCellularAccess = true
-            configuration.timeoutIntervalForRequest = 30
-            configuration.timeoutIntervalForResource = 60
+            configuration.timeoutIntervalForRequest = 120
+            configuration.timeoutIntervalForResource = 180
             return configuration
         }
 }

@@ -22,20 +22,24 @@ class ResultExtensionUT: XCTestCase{
     
     func testWhenDecodingResult_GivenData_ThenDecodeToObject() {
         let testObject = TestModel(name: "test")
-        let givenData = try! TestModel.encoder.encode(testObject)
-        
-        let result: Result<Data, Error> = .success(givenData)
-        
+
+        let givenData: Data
+        do {
+            givenData = try TestModel.encoder.encode(testObject)
+        } catch {
+            XCTFail("Error serializando JSON: \(error)")
+            return
+        }
+
+        let result = Result<Data, Error>.success(givenData)
+
         result.decoding(TestModel.self) { result in
-            
             switch result {
-                case .success(let object):
-                    XCTAssertEqual(testObject, object)
-                    
-                default:
-                    XCTAssert(false)
+            case .success(let object):
+                XCTAssertEqual(testObject, object)
+            default:
+                XCTFail("Decoding falló")
             }
-            
         }
     }
     

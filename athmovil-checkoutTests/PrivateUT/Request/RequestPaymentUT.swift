@@ -74,9 +74,24 @@ class RequestPaymentUT: XCTestCase {
     
     func mockData() -> Data {
         let status = "success"
-        let dataclass = DataClass(ecommerceID: "18a2d3fa-3dc1-11ed-a1c1-e19d31c39706", authToken: "token")
-        let response = PaymentSecureResponseCodable(status: status, data: dataclass)
-        let data = try! PaymentSecureResponseCodable.encoder.encode(response)
+
+        let dataClass = DataClass(
+            ecommerceID: "18a2d3fa-3dc1-11ed-a1c1-e19d31c39706",
+            authToken: "token"
+        )
+
+        let response = PaymentSecureResponseCodable(
+            status: status,
+            data: dataClass
+        )
+
+        let data: Data
+        do {
+            data = try PaymentSecureResponseCodable.encoder.encode(response)
+        } catch {
+            fatalError("Error al codificar PaymentSecureResponseCodable: \(error)")
+        }
+
         return data
     }
     

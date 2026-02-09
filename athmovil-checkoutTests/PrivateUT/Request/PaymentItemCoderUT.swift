@@ -18,18 +18,25 @@ class PaymentItemCoderUT: XCTestCase {
     func testWhenDecodePaymentItem_GivenExpectedName_ThenDecodeName() {
         
         let dicName = getDataMock(key: "name", value: "Mofongo")
-        
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
-            XCTAssertEqual($0?.name, "Mofongo")
-        })
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
+                XCTAssertEqual($0?.name, "Mofongo")
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
     
     func testWhenEncodePaymentItem_GivenExpectedName_ThenPaymentItemHasName() {
         
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(1), quantity: 1)
         
-        try! XCTAssertEncode(encode: item) {
-            XCTAssertEqual($0["name"] as? String, "Test")
+        do {
+            try XCTAssertEncode(encode: item) {
+                XCTAssertEqual($0["name"] as? String, "Test")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
     }
     
@@ -37,8 +44,12 @@ class PaymentItemCoderUT: XCTestCase {
         
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(10.0), quantity: 1)
         
-        try! XCTAssertEncode(encode: item) {
-            XCTAssertEqual($0["price"] as? Double, 10.0)
+        do {
+            try XCTAssertEncode(encode: item) {
+                XCTAssertEqual($0["price"] as? Double, 10.0)
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
     }
     
@@ -46,27 +57,39 @@ class PaymentItemCoderUT: XCTestCase {
 
         let dicName = getDataMock(key: "price", value: 20)
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
-            XCTAssertEqual($0?.price.doubleValue, 20.0)
-        })
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
+                XCTAssertEqual($0?.price.doubleValue, 20.0)
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenEncodePaymentItem_GivenExpectedQuantity_ThenEncodeKeyQuantity() {
 
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(10.0), quantity: 1)
         
-        try! XCTAssertEncode(encode: item, assert: { itemDic in
-            XCTAssertEqual(itemDic["quantity"] as? Int, 1)
-        })
+        do {
+            try XCTAssertEncode(encode: item, assert: { itemDic in
+                XCTAssertEqual(itemDic["quantity"] as? Int, 1)
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenDecodePaymentItem_GivenExpectedQuantity_ThenDecodeQuantity() {
         
         let dicName = getDataMock(key: "quantity", value: 1)
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
-            XCTAssertEqual($0?.quantity, 1)
-        })
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
+                XCTAssertEqual($0?.quantity, 1)
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenEncodePaymentItem_GivenExpectedDesc_ThenEncodeKeyDesc() {
@@ -74,18 +97,26 @@ class PaymentItemCoderUT: XCTestCase {
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(10.0), quantity: 1)
         item.desc = "test"
 
-        try! XCTAssertEncode(encode: item, assert: {
-            XCTAssertEqual($0["desc"] as? String, "test")
-        })
+        do {
+            try XCTAssertEncode(encode: item, assert: {
+                XCTAssertEqual($0["desc"] as? String, "test")
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenDecodePaymentItem_GivenExpectedDesc_ThenDecodeDesc() {
 
         let dicName = getDataMock(key: "desc", value: "Mofongo de pollo y camarones")
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
-            XCTAssertEqual($0?.desc, "Mofongo de pollo y camarones")
-        })
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
+                XCTAssertEqual($0?.desc, "Mofongo de pollo y camarones")
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
 
     }
 
@@ -94,18 +125,26 @@ class PaymentItemCoderUT: XCTestCase {
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(10.0), quantity: 1)
         item.metadata = "This is valid metadata"
 
-        try! XCTAssertEncode(encode: item, assert: {
-            XCTAssertEqual($0["metadata"] as? String, "This is valid metadata")
-        })
+        do {
+            try XCTAssertEncode(encode: item, assert: {
+                XCTAssertEqual($0["metadata"] as? String, "This is valid metadata")
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenDecodePaymentItem_GivenExpectedMetadata_ThenDecodeMetadata() {
 
         let dicName = getDataMock(key: "metadata", value: "This is valid metadata")
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
-            XCTAssertEqual($0?.metadata, "This is valid metadata")
-        })
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dicName, assert: {
+                XCTAssertEqual($0?.metadata, "This is valid metadata")
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenGetDescription_GivenItem_ThenPrintPaymentItem() {
@@ -206,8 +245,12 @@ class PaymentItemCoderUT: XCTestCase {
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(10.0), quantity: 1)
         item.desc = "   "
 
-        try! XCTAssertEncode(encode: item) {
-            XCTAssertEqual($0["desc"] as? String, "   ")
+        do {
+            try XCTAssertEncode(encode: item) {
+                XCTAssertEqual($0["desc"] as? String, "   ")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
     }
 
@@ -215,8 +258,12 @@ class PaymentItemCoderUT: XCTestCase {
 
         let dic = getDataMock(key: "desc", value: "")
 
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dic) {
-            XCTAssertEqual($0?.desc, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dic) {
+                XCTAssertEqual($0?.desc, "")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
     }
 
@@ -225,8 +272,12 @@ class PaymentItemCoderUT: XCTestCase {
         let item = ATHMPaymentItem(name: "Test", price: NSNumber(10.0), quantity: 1)
         item.metadata = ""
         
-        try! XCTAssertEncode(encode: item) {
-            XCTAssertEqual($0["metadata"] as? String, "")
+        do {
+            try XCTAssertEncode(encode: item) {
+                XCTAssertEqual($0["metadata"] as? String, "")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
                 
     }
@@ -235,8 +286,12 @@ class PaymentItemCoderUT: XCTestCase {
 
         let dic = getDataMock(key: "metadata", value: "")
 
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dic) {
-            XCTAssertEqual($0?.metadata, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dic) {
+                XCTAssertEqual($0?.metadata, "")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
     }
 
@@ -370,8 +425,12 @@ class PaymentItemCoderUT: XCTestCase {
 
         let dic = getDataMock(key: "desc", value: nil)
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: dic) {
-            XCTAssertEqual($0?.desc, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: dic) {
+                XCTAssertEqual($0?.desc, "")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
 
     }
@@ -381,17 +440,25 @@ class PaymentItemCoderUT: XCTestCase {
         let paymentItem = ATHMPaymentItem(name: "Name", price: NSNumber(1), quantity: 1)
         paymentItem.metadata = "Example Metadata:?@|_'\"{}^–!@#%$?:[]"
         
-        try! XCTAssertEncode(encode: paymentItem, assert: {
-            XCTAssertNotNil($0["metadata"] as? String)
-        })
+        do {
+            try XCTAssertEncode(encode: paymentItem, assert: {
+                XCTAssertNotNil($0["metadata"] as? String)
+            })
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
+        }
     }
 
     func testWhenDecodePaymentItem_GivenEspecialCharactersInMetadata_ThenCanDecodeMetadata() {
 
         let itemDic = getDataMock(key: "metadata", value: "Example Metadata:?@|_'\"{}^–!@#%$?:[]")
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: itemDic) {
-            XCTAssertEqual($0?.metadata, "Example Metadata:?@|_'\"{}^–!@#%$?:[]")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: itemDic) {
+                XCTAssertEqual($0?.metadata, "Example Metadata:?@|_'\"{}^–!@#%$?:[]")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
     }
     
@@ -399,8 +466,12 @@ class PaymentItemCoderUT: XCTestCase {
 
         let itemDic = getDataMock(key: "metadata", value: nil)
         
-        try! XCTAssertDecode(codable: ATHMPaymentItem.self, from: itemDic) {
-            XCTAssertEqual($0?.metadata, "")
+        do {
+            try XCTAssertDecode(codable: ATHMPaymentItem.self, from: itemDic) {
+                XCTAssertEqual($0?.metadata, "")
+            }
+        } catch {
+            XCTFail("Error decoded ATHMPaymentItem: \(error)")
         }
         
     }

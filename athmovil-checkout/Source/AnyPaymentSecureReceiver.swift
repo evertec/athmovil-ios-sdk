@@ -54,6 +54,7 @@ struct AnyPaymentSecureReceiver {
     }
     
     private func validateAuthorization(responseData: Data) {
+        let target = TargetEnviroment(rawValue: ATHMPaymentSession.shared.enviroment.lowercased()) ?? .production
         do {
             let responseDecodable = try Data.decoder.decode(
                 PaymentResponseCoder.self,
@@ -66,10 +67,23 @@ struct AnyPaymentSecureReceiver {
             )
             if(response.status.status == .completed) {
                 session.isWaiting = true
+                NewRelicConfig.sendEventToNewRelic(
+                   eventType: NewRelicEventReceiver.paymentBeginAuthSuccess.rawValue,
+                   paymentStatus: response.status.statusPayment,
+                   buildType: target,
+                   paymentReference:paymentRequest.payment.ecommerceId
+                )
                 self.authorization(handler: handler, response: response)
             } else {
                 ATHMPaymentSession.shared.currentSecurePayment = nil
+                NewRelicConfig.sendEventToNewRelic(
+                   eventType: NewRelicEventReceiver.paymentBeginAuthFailed.rawValue,
+                   paymentStatus: response.status.statusPayment,
+                   buildType: target,
+                   paymentReference:paymentRequest.payment.ecommerceId
+                )
                 self.handler.completeFrom(data: responseData)
+                
             }
         } catch let error {
             let statusCancel = ATHMPaymentStatus(status: .cancelled)
@@ -119,6 +133,7 @@ struct AnyPaymentSecureReceiver {
     
     private func authorization(handler: PaymentHandleable, response: ATHMPaymentResponse) {
         LoadingView.showLoading()
+        let target = TargetEnviroment(rawValue: ATHMPaymentSession.shared.enviroment.lowercased()) ?? .production
         clientAPI.send(request: .authorization(completion: { result in
             session.isWaiting = false
             DispatchQueue.main.async {
@@ -135,13 +150,33 @@ struct AnyPaymentSecureReceiver {
                         response.status.referenceNumber = responseAuthorization.data.referenceNumber
                         response.payment.fee = fee
                         response.payment.netAmount = netAmount
+                        NewRelicConfig.sendEventToNewRelic(
+                          eventType: NewRelicEventReceiver.paymentsuccess.rawValue,
+                          paymentStatus: response.status.statusPayment,
+                          buildType: target,
+                          paymentReference: self.paymentRequest.payment.ecommerceId
+                        )
                         self.handler.completeFrom(serverPayment: response)
-                    case .failure(let error):
+                        
+                        case .failure(let error):
                         response.status.status = .failed
                         response.error = error
+                        NewRelicConfig.sendEventToNewRelic(
+                          eventType: NewRelicEventReceiver.paymentFailed.rawValue,
+                          paymentStatus: error.debugDescription,
+                          buildType: target,
+                          paymentReference: self.paymentRequest.payment.ecommerceId
+                        )
                         self.handler.completeFrom(serverPayment: response)
                 }
             }
         }))
     }
+}
+
+enum NewRelicEventReceiver: String {
+    case paymentsuccess = "ATHMSuccessPaymentEvent"
+    case paymentBeginAuthSuccess = "ATHMSuccessBeginAuthEvent"
+    case paymentBeginAuthFailed = "ATHMFailedBeginAuthEvent"
+    case paymentFailed = "ATHMFailedPaymentEvent"
 }

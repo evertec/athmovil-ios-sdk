@@ -7,202 +7,198 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01AEF31626FA58BCB2FABE5362B6D46D /* AnyPaymentSecureReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E451C8F5C00E030F0170CFAD1D274A8 /* AnyPaymentSecureReceiver.swift */; };
-		05811E235A4F613B969C9C4EDE444250 /* ATHMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5AAA0DD20C109AD72F198177D2636 /* ATHMButton.swift */; };
+		049A32C68D4940DDF18A523911379D55 /* PaymentSecureResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2526AC5AB1D28B1CDD93F11A640C5 /* PaymentSecureResponseCodable.swift */; };
 		05B053232DC37C399C0EE7A489CF4DCC /* Pods-athmovil-checkout-demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF1B72531DC6C58831EEE69D4544E8E /* Pods-athmovil-checkout-demo-dummy.m */; };
-		07B6BF54A366B974C5F68D36980ECF1D /* PaymentSendCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4131C59147568407026CAE2FC3E7B /* PaymentSendCodable.swift */; };
-		1222FF7F183D1F1193FC28DD13466AC1 /* PaymentStatusCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58858BE77E2B471C8EDA8A90E80C4C8F /* PaymentStatusCodable.swift */; };
-		150601EDA20E81F9574368AAF1AE7B3B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EEDFD57A0F2B745E290BDE0F8FD2A2 /* NetworkError.swift */; };
-		1B23D2EF56D0F1C45912DD327888476E /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B2739133A0B7132113B5CE7CD63FB /* KeychainHelper.swift */; };
-		1F0CC416D6826F3B7C517EABFB06477F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663AB670026E6553DD41DDC9AADFD648 /* LoadingView.swift */; };
+		09147C6B6A6445E92ACEB00B2BA86D17 /* AnyPaymentRequestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995957B3C2662DF4FB2A5F2D05A8E7EB /* AnyPaymentRequestCodable.swift */; };
+		0ACFDE02DA32B3B7A5775C809DF15A6D /* ATHMAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E5D356EBAB3976927E239FB089B8B8 /* ATHMAuthorizationResponse.swift */; };
+		102C012CFC93E53E1D7A5BA46FCD3066 /* ATHMPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFDB1B34C8111B0FB7DCC330BF5A6F2 /* ATHMPaymentRequest.swift */; };
+		11A6C006687FE88E6F0CCB388EA270DB /* ATHMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3619717E7FBCC05E091D2501389AAB /* ATHMButton.swift */; };
+		14976FA23E742ADB085841C733A90838 /* TagetEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A10E23B1AA9224D94269ACA5D48B7C /* TagetEnviroment.swift */; };
+		14AC2045B26DF2C9E87E1614D0040D5D /* PaymentHandleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1267CCE1DF8EBC538FF5C5986183508B /* PaymentHandleable.swift */; };
+		167CC7C89A0D6E6AF8BBBE205F455F6B /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB6586074C4A77EC125B9F34CD5A992 /* LocaleExtension.swift */; };
+		1F4FB78CC3B63FEC24AF663BBF45C6C4 /* URLComponentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C3D59E62CA913B4B07F31FBA5A6176 /* URLComponentsExtension.swift */; };
+		249B2A27B066D73DA2C227BD25E682D4 /* ATHMPaymentHandlerDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022B89875E2E8F6EFCE5DA5274C50D9A /* ATHMPaymentHandlerDictionary.swift */; };
+		27B19C111F2189C0234EB8F6F15557B2 /* ATHMPaymentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95BFD2F4E39E2DCD146BEC0573B21B /* ATHMPaymentSession.swift */; };
+		27E4E20ED36DD37E6F1DE86AA8C6D9BD /* ATHMPaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8797B18F4E1BC4EC321E9B0F52182E9 /* ATHMPaymentStatus.swift */; };
 		29ADE35718429D37D39C58B77F223A2A /* Pods-athmovil-checkout-demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CEF069E7F94B1A0C96E7FBDCC326EFF1 /* Pods-athmovil-checkout-demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2A01AD9A0E36016555B1E49AB044205F /* LocaleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332B4906B79C5C16B3B7234C523FA6A /* LocaleExtension.swift */; };
-		2B711B7B8AEE062C0B66522FE301A4EC /* ATHMPaymentSecureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1319F3EA6C15A6B4A2E280E308F63D24 /* ATHMPaymentSecureRequest.swift */; };
-		2D9B0B87EAD311A1E13B090B86F08BD1 /* ATHMAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC3B3B48A88393C3CCD5868BB847FCCD /* ATHMAssets.xcassets */; };
-		2EC0B301B1736C41F030456AD3AF8A35 /* RequestPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5D165EF51DE36758FCEBDD1238827 /* RequestPayment.swift */; };
-		2FFC9E34177F7E9DBD0644067DEB9C9D /* AuthorizationResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70805770AD65D0E42959EF4526E591E /* AuthorizationResponseCodable.swift */; };
-		36B3D84B3B7DD0C16087F2C8A7FC09C2 /* NSNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6119F944DF554FD33695E3BED2CE12C /* NSNumberExtension.swift */; };
-		3A0A515C7C8C6C6B503A02ED01D3E6DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
-		3B524D268A6FFA7355E3B5DC9E951C12 /* AnyPaymentSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41DD8A443D4E76360335757F86F21B /* AnyPaymentSender.swift */; };
-		3C15670933E592890A5DCBE96A8482C9 /* ATHMCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3403CB193639A3595E0FA3C2FB45C97 /* ATHMCustomer.swift */; };
-		3D5FF2344130D152B2E3B24EA1B82865 /* ATHMPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816D2C4E5EA9A14CC89067B4D8C50FA /* ATHMPayment.swift */; };
-		3EE429CBCBC0A064F6DE842DA42B5C2D /* ATHMAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0F9669BE8CB2CF7FE886C00E3ECEA /* ATHMAuthorizationResponse.swift */; };
-		40892AFD8D8BA397DBB662FA0965BB52 /* athmovil-checkout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D91B889B6DA238484CD2E1C35101E9F8 /* athmovil-checkout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		420D04012A6F050702646639328F9622 /* PaymentSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D989E3B1ABD936BF46752E75F5B0C0 /* PaymentSimulated.swift */; };
-		4505577CEDBDB2FFA01DF1840F77CF7F /* NSRegularExpressionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB0F1059DFBCF5EBC11F34F20BC8DE /* NSRegularExpressionExtension.swift */; };
-		4508FAD7A60AC4F71E310A273B274309 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A10259B1DF5510443EA840A28D5A64 /* StringExtension.swift */; };
-		4671E425707E2E001FCFFE3F2E27EE5D /* PaymentSecureResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A69F6D9E4BF679102172018972D40 /* PaymentSecureResponseCodable.swift */; };
-		497CC527C7E1D214CD46D986D7CAAA2D /* ATHMPaymentSecureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E49B46AF5445CB698E4A493414369 /* ATHMPaymentSecureError.swift */; };
-		4C6C9A9A6A0FA9D040DECF1C20B946BE /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F79ED33A50A5CEF7B7D649B761F376 /* DoubleExtension.swift */; };
-		53C060C0CDDAA41838126782A455B016 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDB2035D6ADC45B129078BF965A39B2 /* DateFormatters.swift */; };
-		5BB370BF278BBB073C28F004DF467525 /* URLSchemeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59BDBC7E13A1C3334D6B022E4162617 /* URLSchemeCodable.swift */; };
-		61406F8007FF18E8D42FBCA40071BF97 /* ATHMURLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4D8C7D777F143AE0DF17DC690EA78 /* ATHMURLScheme.swift */; };
-		677640A7A2B0D0775F78C0FA0BFBA773 /* PostRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769024C22C2C697BD8394283CB588A4 /* PostRequestBuilder.swift */; };
-		6AF5CF13DCEADBB157872CF072C38A13 /* PaymentDefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9330D041EA082008C4FD78BB1FE2B323 /* PaymentDefaultCodable.swift */; };
-		7D1693F729C40A6A0E92AA0880088323 /* ATHMPaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D9BE5004161FC455C7EBEBA3986DF /* ATHMPaymentHandler.swift */; };
-		7ED73D13BE5309AE892593A1C6AD0A87 /* TagetEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADA7BD9E6EE98134BE5035D9FCABD72 /* TagetEnviroment.swift */; };
-		7F8DCFCCC60CBC4B8C7E08C649F01207 /* PaymentCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B11DB6B5BAA1EF48B60E25742E9118 /* PaymentCodable.swift */; };
-		8234D1A2402C9B5E666D2E42B7625E9D /* ATHMPaymentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DE352FF7F290BC0FADEA173C5405F9 /* ATHMPaymentSession.swift */; };
-		8A6A7C60743EDEAD88538CA130DD7A40 /* ResponseErrorSecurePaymentCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731FE76C78EBB5A2D850D2DB7DCBD452 /* ResponseErrorSecurePaymentCodable.swift */; };
-		8B715D4695E0D039BDC2D097139AF8FA /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F77D605C2515BE09409A8FE568CDC1 /* RequestStatus.swift */; };
-		8D0CDF3AB87D8AD614F0AB932AB23A52 /* ATHMPaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9C1DD38BB96C8897ADD4DA92BCFCF7 /* ATHMPaymentItem.swift */; };
-		8D9F09082E3C10C5BCDE03A5DB21AF75 /* ATHMSecurePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10731D0BD236825B845FCF6C6D7313B /* ATHMSecurePayment.swift */; };
-		90153C444638ED994A396349CA978B2D /* PaymentHandleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5011CD0F0347DB4356E86C31BA64F /* PaymentHandleable.swift */; };
+		2BF2784B1B8CA5D7EC17E224F8F11185 /* PostRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51F1AA102D43742CDBD478B67FCBBE /* PostRequestBuilder.swift */; };
+		2FF54205E2A73E06E2B00BCB13F7AAAD /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76B93DF93B9C9810AAA1E6F3E085E25 /* KeychainHelper.swift */; };
+		3A5CF6E5746CAE97065DA297B2AD6346 /* PaymentSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A98B85DF51E52063E76DECF41CE967 /* PaymentSimulated.swift */; };
+		3ACE22DDCAF05F00EE80A63EDAD1C146 /* ATHMPaymentSecureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8F1B270208EAE0703A2AED983A424 /* ATHMPaymentSecureRequest.swift */; };
+		3B73A2D8ED46BAF5B5DA282ED2241311 /* AuthorizationResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19F8372DA6D6349ECDA25D76BD6B9C9 /* AuthorizationResponseCodable.swift */; };
+		3E8EB0DCB7901D2CE45C31BF2702AEAB /* AnyPaymentSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3079C7B2ABA29096C14FED18E120C /* AnyPaymentSender.swift */; };
+		403CE1446955B4D817ED78D289C6324C /* PaymentResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16386E4E5BD19E71DA39E22B32DAED18 /* PaymentResponseCodable.swift */; };
+		40BC727124E6D9DA58FFDF25E63B4101 /* KeyedDecodingContainerProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A8DAC34BC97E894EB14A592632E84 /* KeyedDecodingContainerProtocolExtension.swift */; };
+		57B7A6FA9F180776AC4F93DE64C23553 /* AnyPaymentSecureRequestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFED22C33C861F3A39C974719BB1D4A1 /* AnyPaymentSecureRequestCodable.swift */; };
+		62F5700CA125457D79CD504B93012D9D /* RequestPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0016DFC8844F105E797DF5F36C9242 /* RequestPayment.swift */; };
+		6386BAE3B7D4DFC4E6ADED54316FF8A7 /* NSRegularExpressionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0230909DC137B5DB53939DE166E7777 /* NSRegularExpressionExtension.swift */; };
+		6449CCCA9314D30FD3A8D374B64F46DA /* RequestSecureStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344D3CA0CACCCBE7D164485C0716BF7E /* RequestSecureStatus.swift */; };
+		65E8FBC8A6A4302BB5A10C1E6E5D7E76 /* ATHMCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004ABDFC7C4B2BB7D44AB7AEEAD061D /* ATHMCustomer.swift */; };
+		663A179CB30E4EA3D18959F18D799F3A /* PaymentSendCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD6E45D5E4FB7874F0CAC1A5B9B63E0 /* PaymentSendCodable.swift */; };
+		66E040CEADD9F079E05ABE38D5D94352 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937D72063505873860A70BECE3A905C1 /* APIClient.swift */; };
+		678AB857485716F60CE056B4C96E1DF1 /* CustomerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A678F2E8B1E66937207616BBA9658D /* CustomerCodable.swift */; };
+		68E9353B765FBFA32724BF0A13705E73 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6847B51E9275FEB1AD20ED8DBFC98D /* DoubleExtension.swift */; };
+		6A106B75590CCEEBE186F774C3CCFB79 /* BusinessAccountCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9AB9F4C8935B922B7ECEB6BD544B47 /* BusinessAccountCodable.swift */; };
+		706C523EFAC1322CA7D62AEE1F0AFA29 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C6E0FD3954391AC07FB2B7F04A19B /* RequestBuilder.swift */; };
+		70C482DADF53DF815DC19E5FCBAB9C86 /* NewRelicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CB97435E3FAFB098473DBE5AD8C8FB /* NewRelicConfig.swift */; };
+		79FFEB82587AEDC2E3696A68E9A03112 /* NSDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D1616F3FC714C269ECCCDBB07AECC /* NSDictionaryExtension.swift */; };
+		7A8E7DDE0F027472D2C5AA9EDA3D1AC7 /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E64042A3E7B01216E1DA014CE4632 /* ResultExtension.swift */; };
+		7B719C7DBECF283B0F24D3CB90EA260D /* ATHMPaymentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171780A11F6488751B73AD296A853370 /* ATHMPaymentError.swift */; };
+		7C90AFFA46DCD237677638C05F742B64 /* ATHMResponseDeprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A68BF62E6891D97E8CAE21ED5E83F /* ATHMResponseDeprecated.swift */; };
+		851529B72648EDF495DDD70F2ED6F4E9 /* NSNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4A4DB76B0AEC0099D21E7D299EB08 /* NSNumberExtension.swift */; };
+		8DCDC592ECA1891B5B299ED05EA0562C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		8EB53EDD46438E857CC75DA34D4C4AE0 /* ATHMAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF021CE7CE7C9E8D7FDA68278BE79312 /* ATHMAssets.xcassets */; };
+		8EC0724959EE8E0553A424391C4FB344 /* ATHMPaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE4D0E24FE3F527FF7333B54846BDF8 /* ATHMPaymentItem.swift */; };
 		90833D7B6762AACA677F67236C3E65E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
-		933A002E5FD7D941AF3D90035BBC3140 /* AnyPaymentReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E071DD4FCAE8FB59EE459EF1F98D4DE9 /* AnyPaymentReceiver.swift */; };
-		A5110C2C57D5DD16E5DA2F81E97C92F7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F722E20682062817ED6152B92D47C3 /* APIClient.swift */; };
-		A5620901407B8E35829E2FAD75D071D4 /* RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110F6C0818EC705B5739B8B6A298F225 /* RequestAuthorization.swift */; };
-		ACC607A3F8D05BFAF4A7D3117AD223F2 /* ATHMPaymentHandlerDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2E0D09EED8E4A5AC8FC60118EB875 /* ATHMPaymentHandlerDictionary.swift */; };
-		AFA22D408447D4DF5A9F11A57A159071 /* NSDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6218F3314B28DD53F4A7D0A3C020EB6C /* NSDictionaryExtension.swift */; };
-		B189314408A4DD463E86B5D7EFD0FEF8 /* RequestSecureStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DA073615F838A8CD6FF35995E8B4A /* RequestSecureStatus.swift */; };
-		B2A67D1E2E20080283DB84D4BD5901D7 /* ATHMResponseDeprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A26680F83617E78A7F77ED30D657E /* ATHMResponseDeprecated.swift */; };
-		B31C941AC4DC6B0D327179C27C013CE2 /* KeyedDecodingContainerProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A22A6C50535C2F7D8AF9153EDF36C /* KeyedDecodingContainerProtocolExtension.swift */; };
-		BD08C8D9FE7D452B771DE3FEEE84D4EF /* ATHMPaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79088776F222627D58B26BA3E16D57B4 /* ATHMPaymentStatus.swift */; };
-		BEF6C85D6B554A8947CDA8613C31D47C /* PaymentSecureCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B97198C01DD4C575249D60F84F0BC32 /* PaymentSecureCodable.swift */; };
-		C15E6ACF1BD695CFE733ECC29D7F9B6F /* athmovil-checkout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6A969F8BA87117699FFCBAB40E5 /* athmovil-checkout-dummy.m */; };
-		C24E72B9B245F70ED9670D4A0BC349E3 /* ATHMSendPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7EB2ACAAD37C374405459140C088C7 /* ATHMSendPayment.swift */; };
-		C2E4010C07E6817EBC2936A2A78C92B0 /* ATHMPaymentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4A2C814E2AE158D136533B186A33CD /* ATHMPaymentTheme.swift */; };
-		C465E7722D9E07A2BFF17FEEF960247C /* AnyPaymentSecureRequestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD515D032FCD0C44A774122B6BEE6F /* AnyPaymentSecureRequestCodable.swift */; };
-		CD1C384B4D4272275D893F800F3E04BF /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989730981BF02AA7254906BA9D315EBB /* RequestBuilder.swift */; };
-		CD5B5E103D215C5BD7254CE68C3D3CAE /* PaymentResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943C5A809C7B01EB65CBCCF62E8B85F7 /* PaymentResponseCodable.swift */; };
-		CF7EC5273940F184AF4AB732ED986C3A /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6971CC42AB19C659E23A95DA9303D8C /* ResultExtension.swift */; };
-		D3B30963202EEB82DAA318669B4220C1 /* URLComponentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA71EEDFAB18BF23B4EDE3D3BF29EC /* URLComponentsExtension.swift */; };
-		D7A5F5BBE8864D9EC04C5BF2D4B9579F /* AnyPaymentSecureSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EAEDB0B5A6A2080997C74A67FD1B69 /* AnyPaymentSecureSender.swift */; };
-		DA66E7E401E99A51A9043F51D1B8BDD4 /* PaymentItemCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD111167694FA8B136F7299D8C4FA8 /* PaymentItemCodable.swift */; };
-		DFBC680806133B5D38FA3B65ADD10852 /* APIPayments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24874D278D61C3FD9D35FD36EBEB7E2B /* APIPayments.swift */; };
-		E071D8467C30C8F7ADCB3A5D845FAC47 /* BusinessAccountCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FA421A117D69B820C3756C0E872A95 /* BusinessAccountCodable.swift */; };
-		E2670968E12B6DB1F39879ACD6267CC1 /* ATHMAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC3B3B48A88393C3CCD5868BB847FCCD /* ATHMAssets.xcassets */; };
-		E30B747C8FA0DC8CE79BEDFF9B5EDAC1 /* ATHMBusinessAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E75F2BFE516A1DC22FC99B9022BAB /* ATHMBusinessAccount.swift */; };
-		E30C47D05333464B2875F8A9F9E019FE /* ATHMPaymentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50823E45BD923B80370E52F7ED24BAFB /* ATHMPaymentError.swift */; };
-		E579E880655C9D7E7BF4A2695FCD6EA9 /* AnyPaymentRequestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2306BEFE530EC01B445918347A6EF4 /* AnyPaymentRequestCodable.swift */; };
-		E7B7A9880D5D91C5E70A5B03125BC66C /* athmovil-checkout-athmovil-checkout in Resources */ = {isa = PBXBuildFile; fileRef = E25316C25620570ED4D67F26E19B89D9 /* athmovil-checkout-athmovil-checkout */; };
-		E97955604AAF2AE27960337CFB1053DE /* TargetURLRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B127FD36C245953B3FAA9C1018C6F22 /* TargetURLRepresentable.swift */; };
-		F29467DE638A0E89E18B48EE377A1598 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AA43AD4143178626D33E866F4C7E8 /* UIApplicationExtension.swift */; };
-		F7E97620FA19E9D85025FE03CFAD1E13 /* CustomerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ECFBC25CFE8732E7F5FC8708000147 /* CustomerCodable.swift */; };
-		FBCA243249A3C48544BC5F388187DE87 /* ATHMPaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6710FDFF68DFE3898EB583C55CDDE /* ATHMPaymentResponse.swift */; };
-		FDBA0925A6BAFDE88B1C708823B91A22 /* ATHMPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544C793EC5101C4E3EB861D4B4861EB /* ATHMPaymentRequest.swift */; };
+		942B5AAA96054CCD7D81F4F3C3133BC0 /* ATHMPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421136D9E11E03DE9F87F429982275BF /* ATHMPayment.swift */; };
+		9CD705648E800D84357C0692C7F8DD30 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B25C2A8B6BC6D9BD94F4411D026856 /* UIApplicationExtension.swift */; };
+		9EF1579F6EB51C9CB504FC471299E260 /* athmovil-checkout-athmovil-checkout in Resources */ = {isa = PBXBuildFile; fileRef = E25316C25620570ED4D67F26E19B89D9 /* athmovil-checkout-athmovil-checkout */; };
+		9F8F592CA0C615D4BEF0DBAFB8E222B1 /* PaymentDefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC5E4068E013B6CE55B0A6D590CBDFB /* PaymentDefaultCodable.swift */; };
+		A1EFAD3DF3C392ACB9076510106B713F /* athmovil-checkout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDA250F5E9B33E901DA68C021D23194 /* athmovil-checkout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7191E9BBD68C6FD165BFF1905F3C01C /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F640A7BED50110023A0337B332842 /* DateFormatters.swift */; };
+		A7BAB135BFC526769ADCE81F1C579061 /* ATHMURLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A9F529D66BCAE4D3AE87FD5298722 /* ATHMURLScheme.swift */; };
+		B0ADEB7E752773CEAFF35A28127327C2 /* ResponseErrorSecurePaymentCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A0C85E772738A084471272662A2F1 /* ResponseErrorSecurePaymentCodable.swift */; };
+		B35D304DB23F1F9F1A264351D8583667 /* TargetURLRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E1CD0942646399E0FBADD73EE29C31 /* TargetURLRepresentable.swift */; };
+		B5E874558CD656991F8EF65E774F8A9F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94408B42B09C928D62BC77FB91E19646 /* StringExtension.swift */; };
+		B5F79421A34739E45281C528F0C3ECC5 /* PaymentItemCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A99F913E54854CC33DB312FA2EAA2B /* PaymentItemCodable.swift */; };
+		B61909871E5690EB72E44B17F5E4CC2B /* ATHMSecurePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1D64986C3482758449FB328677AB2 /* ATHMSecurePayment.swift */; };
+		BD37C4F3A4B34C3B54EB0F38CF72C661 /* URLSchemeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BBF21E619C1621F3143214F077A625 /* URLSchemeCodable.swift */; };
+		C10CBD61557FD17E053FC311A4B90CFA /* NrConstantUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E99241C9FF355EA61313FD9EDAE94 /* NrConstantUtils.swift */; };
+		C602AC3DFF21BB06D21AAAB034BE7F3E /* ATHMSendPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148101A7EF4AD1C9DDE57698F6CD773 /* ATHMSendPayment.swift */; };
+		C7DFCD13C018C281B561C355D0B9FE7C /* RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A0A1D0804357ED435529C73FC9E74 /* RequestAuthorization.swift */; };
+		CDA6AFE8A9368EBFC19E1F99CB4243FE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6177AF2B54977B6319BAFB00460DB422 /* LoadingView.swift */; };
+		D193F0C7923E6022006F33B797997C72 /* ATHMPaymentSecureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9DBE0AA9CF922D0FDFEF2B3E483DFB /* ATHMPaymentSecureError.swift */; };
+		D23A19A472BE356971B96659FCD73621 /* PaymentStatusCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E50D6F00302161BBAE1F16DFD81D86C /* PaymentStatusCodable.swift */; };
+		D23C80B68A3B64764AA95C2066497683 /* ATHMPaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06C130720447FF93F6C43ABE08CC90 /* ATHMPaymentHandler.swift */; };
+		DA7D67409BB82E20645B464402B3FCBD /* AnyPaymentSecureSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3A2E9D7BFAD8676BE4CB6343172151 /* AnyPaymentSecureSender.swift */; };
+		E0FE82E47ECC2811482596AE1C2F632F /* ATHMPaymentTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D959B67CEB69E262764FE334A9DA7A /* ATHMPaymentTheme.swift */; };
+		EC7964BC610869F8A62AB6C1638A78F7 /* ATHMPaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD51513CA0DC59D49C23C80D6A7D03 /* ATHMPaymentResponse.swift */; };
+		EE3B0B65820EB5FE8B11B5C640BCE44F /* PaymentCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B622728FF2F96AA52E319FEC8696379 /* PaymentCodable.swift */; };
+		EF2309556988403CB3D1CA0FE8FAADAA /* PaymentSecureCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5158983D321CC068C1160C48BFDC497E /* PaymentSecureCodable.swift */; };
+		EF416B3BDD3E271E387E7182C7538E83 /* APIPayments.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C92CF52005358EC6AF92743F2F91A2 /* APIPayments.swift */; };
+		F19A2923D53A3FE0B511D1B249DE61E8 /* ATHMBusinessAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBCFEE1B9CA1919B223C104E0DE04D7 /* ATHMBusinessAccount.swift */; };
+		F20AEA57F9CC165A1604E2C5AA215BC9 /* athmovil-checkout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAD2988A4EDEC9B6A5B91293F98E3B /* athmovil-checkout-dummy.m */; };
+		F6BCCC57FF68FEF3CBF81CAB796FFCCB /* RequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A1DCD843783C1E34CFA3110AAF7455 /* RequestStatus.swift */; };
+		F83D0ED1DE3632080C87DA4924417765 /* AnyPaymentReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA86EDB6D715F8A62BEBF2EE849BE264 /* AnyPaymentReceiver.swift */; };
+		F87548561A72C71E36EEBB79519CF2EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E4F49D014AAFF25735CE8909C6D6E0 /* NetworkError.swift */; };
+		FB410E91A0876B60C60BE83F160CBF0C /* AnyPaymentSecureReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68ED9FFC5C04CAFD9B1CAB6966B278 /* AnyPaymentSecureReceiver.swift */; };
+		FD6F5AD509D00A283BB06E505AD66762 /* ATHMAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF021CE7CE7C9E8D7FDA68278BE79312 /* ATHMAssets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		39459AEC9E86668CE7741518746F6DD1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7D749667B99BD3CCBA8A8BF7EFA4A7C3;
-			remoteInfo = "athmovil-checkout";
-		};
-		9C8A74A57491386F0F8563B268F1F68E /* PBXContainerItemProxy */ = {
+		42ED3C3FE75B1B320E233FCE64CABA3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9116B35005D4276EEF326DD8142F8742;
 			remoteInfo = "athmovil-checkout-athmovil-checkout";
 		};
+		B9FD18B723453102CC8A3B10834796B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D749667B99BD3CCBA8A8BF7EFA4A7C3;
+			remoteInfo = "athmovil-checkout";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09EAEDB0B5A6A2080997C74A67FD1B69 /* AnyPaymentSecureSender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSecureSender.swift; path = "athmovil-checkout/Source/AnyPaymentSecureSender.swift"; sourceTree = "<group>"; };
+		0148101A7EF4AD1C9DDE57698F6CD773 /* ATHMSendPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMSendPayment.swift; path = "athmovil-checkout/Source/ATHMSendPayment.swift"; sourceTree = "<group>"; };
+		01A10E23B1AA9224D94269ACA5D48B7C /* TagetEnviroment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TagetEnviroment.swift; path = "athmovil-checkout/Source/TagetEnviroment.swift"; sourceTree = "<group>"; };
+		022B89875E2E8F6EFCE5DA5274C50D9A /* ATHMPaymentHandlerDictionary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentHandlerDictionary.swift; path = "athmovil-checkout/Source/ATHMPaymentHandlerDictionary.swift"; sourceTree = "<group>"; };
+		052E99241C9FF355EA61313FD9EDAE94 /* NrConstantUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NrConstantUtils.swift; path = "athmovil-checkout/Source/NrConstantUtils.swift"; sourceTree = "<group>"; };
+		06A98B85DF51E52063E76DECF41CE967 /* PaymentSimulated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSimulated.swift; path = "athmovil-checkout/Source/PaymentSimulated.swift"; sourceTree = "<group>"; };
+		08A99F913E54854CC33DB312FA2EAA2B /* PaymentItemCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentItemCodable.swift; path = "athmovil-checkout/Source/PaymentItemCodable.swift"; sourceTree = "<group>"; };
+		0B51F1AA102D43742CDBD478B67FCBBE /* PostRequestBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostRequestBuilder.swift; path = "athmovil-checkout/Source/PostRequestBuilder.swift"; sourceTree = "<group>"; };
 		0BF1B72531DC6C58831EEE69D4544E8E /* Pods-athmovil-checkout-demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-athmovil-checkout-demo-dummy.m"; sourceTree = "<group>"; };
-		0FFD515D032FCD0C44A774122B6BEE6F /* AnyPaymentSecureRequestCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSecureRequestCodable.swift; path = "athmovil-checkout/Source/AnyPaymentSecureRequestCodable.swift"; sourceTree = "<group>"; };
-		110F6C0818EC705B5739B8B6A298F225 /* RequestAuthorization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestAuthorization.swift; path = "athmovil-checkout/Source/RequestAuthorization.swift"; sourceTree = "<group>"; };
-		1319F3EA6C15A6B4A2E280E308F63D24 /* ATHMPaymentSecureRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentSecureRequest.swift; path = "athmovil-checkout/Source/ATHMPaymentSecureRequest.swift"; sourceTree = "<group>"; };
+		10C3D59E62CA913B4B07F31FBA5A6176 /* URLComponentsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLComponentsExtension.swift; path = "athmovil-checkout/Source/URLComponentsExtension.swift"; sourceTree = "<group>"; };
+		1267CCE1DF8EBC538FF5C5986183508B /* PaymentHandleable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentHandleable.swift; path = "athmovil-checkout/Source/PaymentHandleable.swift"; sourceTree = "<group>"; };
+		12A1DCD843783C1E34CFA3110AAF7455 /* RequestStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestStatus.swift; path = "athmovil-checkout/Source/RequestStatus.swift"; sourceTree = "<group>"; };
+		16386E4E5BD19E71DA39E22B32DAED18 /* PaymentResponseCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentResponseCodable.swift; path = "athmovil-checkout/Source/PaymentResponseCodable.swift"; sourceTree = "<group>"; };
+		171780A11F6488751B73AD296A853370 /* ATHMPaymentError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentError.swift; path = "athmovil-checkout/Source/ATHMPaymentError.swift"; sourceTree = "<group>"; };
 		1927018B243CB1AB674849CD815694B7 /* Pods-athmovil-checkout-demo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-athmovil-checkout-demo-Info.plist"; sourceTree = "<group>"; };
-		1B9F6DE4393C72E603E43518297BA9F3 /* athmovil-checkout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "athmovil-checkout.modulemap"; sourceTree = "<group>"; };
-		1E7EB2ACAAD37C374405459140C088C7 /* ATHMSendPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMSendPayment.swift; path = "athmovil-checkout/Source/ATHMSendPayment.swift"; sourceTree = "<group>"; };
-		22877226A2748FFE75B610B186AF2DD6 /* ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist"; sourceTree = "<group>"; };
-		24874D278D61C3FD9D35FD36EBEB7E2B /* APIPayments.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIPayments.swift; path = "athmovil-checkout/Source/APIPayments.swift"; sourceTree = "<group>"; };
-		26B5011CD0F0347DB4356E86C31BA64F /* PaymentHandleable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentHandleable.swift; path = "athmovil-checkout/Source/PaymentHandleable.swift"; sourceTree = "<group>"; };
-		27FA057FDB332CC6C4E1CDA690C65935 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		28F77D605C2515BE09409A8FE568CDC1 /* RequestStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestStatus.swift; path = "athmovil-checkout/Source/RequestStatus.swift"; sourceTree = "<group>"; };
-		2B97198C01DD4C575249D60F84F0BC32 /* PaymentSecureCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSecureCodable.swift; path = "athmovil-checkout/Source/PaymentSecureCodable.swift"; sourceTree = "<group>"; };
-		2EF5AAA0DD20C109AD72F198177D2636 /* ATHMButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMButton.swift; path = "athmovil-checkout/Source/ATHMButton.swift"; sourceTree = "<group>"; };
+		2BAAD2988A4EDEC9B6A5B91293F98E3B /* athmovil-checkout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "athmovil-checkout-dummy.m"; sourceTree = "<group>"; };
+		2F9DBE0AA9CF922D0FDFEF2B3E483DFB /* ATHMPaymentSecureError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentSecureError.swift; path = "athmovil-checkout/Source/ATHMPaymentSecureError.swift"; sourceTree = "<group>"; };
 		312396CE397F65DEBB168665178496EA /* Pods-athmovil-checkout-demo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-athmovil-checkout-demo-acknowledgements.plist"; sourceTree = "<group>"; };
-		31A10259B1DF5510443EA840A28D5A64 /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "athmovil-checkout/Source/StringExtension.swift"; sourceTree = "<group>"; };
-		3332B4906B79C5C16B3B7234C523FA6A /* LocaleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocaleExtension.swift; path = "athmovil-checkout/Source/LocaleExtension.swift"; sourceTree = "<group>"; };
+		344D3CA0CACCCBE7D164485C0716BF7E /* RequestSecureStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestSecureStatus.swift; path = "athmovil-checkout/Source/RequestSecureStatus.swift"; sourceTree = "<group>"; };
 		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3A2AA43AD4143178626D33E866F4C7E8 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIApplicationExtension.swift; path = "athmovil-checkout/Source/UIApplicationExtension.swift"; sourceTree = "<group>"; };
 		3AC53E67385597D8B787CD3D22BECF54 /* Pods-athmovil-checkout-demo */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-athmovil-checkout-demo"; path = Pods_athmovil_checkout_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B5B2739133A0B7132113B5CE7CD63FB /* KeychainHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainHelper.swift; path = "athmovil-checkout/Source/KeychainHelper.swift"; sourceTree = "<group>"; };
-		409707A1ADA859EC885E0AADBAB0CB74 /* athmovil-checkout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "athmovil-checkout-prefix.pch"; sourceTree = "<group>"; };
-		427E49B46AF5445CB698E4A493414369 /* ATHMPaymentSecureError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentSecureError.swift; path = "athmovil-checkout/Source/ATHMPaymentSecureError.swift"; sourceTree = "<group>"; };
+		3B622728FF2F96AA52E319FEC8696379 /* PaymentCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentCodable.swift; path = "athmovil-checkout/Source/PaymentCodable.swift"; sourceTree = "<group>"; };
+		3E3A2E9D7BFAD8676BE4CB6343172151 /* AnyPaymentSecureSender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSecureSender.swift; path = "athmovil-checkout/Source/AnyPaymentSecureSender.swift"; sourceTree = "<group>"; };
+		3EF1D64986C3482758449FB328677AB2 /* ATHMSecurePayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMSecurePayment.swift; path = "athmovil-checkout/Source/ATHMSecurePayment.swift"; sourceTree = "<group>"; };
+		421136D9E11E03DE9F87F429982275BF /* ATHMPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPayment.swift; path = "athmovil-checkout/Source/ATHMPayment.swift"; sourceTree = "<group>"; };
+		478AD3CDEAEAD977DA72C872B3FC2EFD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		4D8C555BA80A019F4F7F5B33709E1A9E /* Pods-athmovil-checkout-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-athmovil-checkout-demo.release.xcconfig"; sourceTree = "<group>"; };
-		4E4A2C814E2AE158D136533B186A33CD /* ATHMPaymentTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentTheme.swift; path = "athmovil-checkout/Source/ATHMPaymentTheme.swift"; sourceTree = "<group>"; };
-		50823E45BD923B80370E52F7ED24BAFB /* ATHMPaymentError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentError.swift; path = "athmovil-checkout/Source/ATHMPaymentError.swift"; sourceTree = "<group>"; };
-		50D989E3B1ABD936BF46752E75F5B0C0 /* PaymentSimulated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSimulated.swift; path = "athmovil-checkout/Source/PaymentSimulated.swift"; sourceTree = "<group>"; };
+		4EDA250F5E9B33E901DA68C021D23194 /* athmovil-checkout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "athmovil-checkout-umbrella.h"; sourceTree = "<group>"; };
+		504C6E0FD3954391AC07FB2B7F04A19B /* RequestBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestBuilder.swift; path = "athmovil-checkout/Source/RequestBuilder.swift"; sourceTree = "<group>"; };
+		5158983D321CC068C1160C48BFDC497E /* PaymentSecureCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSecureCodable.swift; path = "athmovil-checkout/Source/PaymentSecureCodable.swift"; sourceTree = "<group>"; };
 		51D5C98F7B38080958C9F8FD1CF2BA43 /* Pods-athmovil-checkout-demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-athmovil-checkout-demo.modulemap"; sourceTree = "<group>"; };
-		54A2E0D09EED8E4A5AC8FC60118EB875 /* ATHMPaymentHandlerDictionary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentHandlerDictionary.swift; path = "athmovil-checkout/Source/ATHMPaymentHandlerDictionary.swift"; sourceTree = "<group>"; };
-		58858BE77E2B471C8EDA8A90E80C4C8F /* PaymentStatusCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentStatusCodable.swift; path = "athmovil-checkout/Source/PaymentStatusCodable.swift"; sourceTree = "<group>"; };
-		59F79ED33A50A5CEF7B7D649B761F376 /* DoubleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoubleExtension.swift; path = "athmovil-checkout/Source/DoubleExtension.swift"; sourceTree = "<group>"; };
-		5C56F6A969F8BA87117699FFCBAB40E5 /* athmovil-checkout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "athmovil-checkout-dummy.m"; sourceTree = "<group>"; };
-		6218F3314B28DD53F4A7D0A3C020EB6C /* NSDictionaryExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSDictionaryExtension.swift; path = "athmovil-checkout/Source/NSDictionaryExtension.swift"; sourceTree = "<group>"; };
-		663AB670026E6553DD41DDC9AADFD648 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "athmovil-checkout/Source/LoadingView.swift"; sourceTree = "<group>"; };
-		6B41DD8A443D4E76360335757F86F21B /* AnyPaymentSender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSender.swift; path = "athmovil-checkout/Source/AnyPaymentSender.swift"; sourceTree = "<group>"; };
-		6E451C8F5C00E030F0170CFAD1D274A8 /* AnyPaymentSecureReceiver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSecureReceiver.swift; path = "athmovil-checkout/Source/AnyPaymentSecureReceiver.swift"; sourceTree = "<group>"; };
-		6E9C1DD38BB96C8897ADD4DA92BCFCF7 /* ATHMPaymentItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentItem.swift; path = "athmovil-checkout/Source/ATHMPaymentItem.swift"; sourceTree = "<group>"; };
-		6F2306BEFE530EC01B445918347A6EF4 /* AnyPaymentRequestCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentRequestCodable.swift; path = "athmovil-checkout/Source/AnyPaymentRequestCodable.swift"; sourceTree = "<group>"; };
-		731FE76C78EBB5A2D850D2DB7DCBD452 /* ResponseErrorSecurePaymentCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseErrorSecurePaymentCodable.swift; path = "athmovil-checkout/Source/ResponseErrorSecurePaymentCodable.swift"; sourceTree = "<group>"; };
-		743D9BE5004161FC455C7EBEBA3986DF /* ATHMPaymentHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentHandler.swift; path = "athmovil-checkout/Source/ATHMPaymentHandler.swift"; sourceTree = "<group>"; };
-		75FD111167694FA8B136F7299D8C4FA8 /* PaymentItemCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentItemCodable.swift; path = "athmovil-checkout/Source/PaymentItemCodable.swift"; sourceTree = "<group>"; };
-		79088776F222627D58B26BA3E16D57B4 /* ATHMPaymentStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentStatus.swift; path = "athmovil-checkout/Source/ATHMPaymentStatus.swift"; sourceTree = "<group>"; };
-		7B127FD36C245953B3FAA9C1018C6F22 /* TargetURLRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TargetURLRepresentable.swift; path = "athmovil-checkout/Source/TargetURLRepresentable.swift"; sourceTree = "<group>"; };
-		7F3DA073615F838A8CD6FF35995E8B4A /* RequestSecureStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestSecureStatus.swift; path = "athmovil-checkout/Source/RequestSecureStatus.swift"; sourceTree = "<group>"; };
+		5C5F640A7BED50110023A0337B332842 /* DateFormatters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateFormatters.swift; path = "athmovil-checkout/Source/DateFormatters.swift"; sourceTree = "<group>"; };
+		5DFDB1B34C8111B0FB7DCC330BF5A6F2 /* ATHMPaymentRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentRequest.swift; path = "athmovil-checkout/Source/ATHMPaymentRequest.swift"; sourceTree = "<group>"; };
+		5E50D6F00302161BBAE1F16DFD81D86C /* PaymentStatusCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentStatusCodable.swift; path = "athmovil-checkout/Source/PaymentStatusCodable.swift"; sourceTree = "<group>"; };
+		5F6847B51E9275FEB1AD20ED8DBFC98D /* DoubleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoubleExtension.swift; path = "athmovil-checkout/Source/DoubleExtension.swift"; sourceTree = "<group>"; };
+		6177AF2B54977B6319BAFB00460DB422 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = "athmovil-checkout/Source/LoadingView.swift"; sourceTree = "<group>"; };
+		651A68BF62E6891D97E8CAE21ED5E83F /* ATHMResponseDeprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMResponseDeprecated.swift; path = "athmovil-checkout/Source/ATHMResponseDeprecated.swift"; sourceTree = "<group>"; };
+		71E5D356EBAB3976927E239FB089B8B8 /* ATHMAuthorizationResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMAuthorizationResponse.swift; path = "athmovil-checkout/Source/ATHMAuthorizationResponse.swift"; sourceTree = "<group>"; };
+		731A0A1D0804357ED435529C73FC9E74 /* RequestAuthorization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestAuthorization.swift; path = "athmovil-checkout/Source/RequestAuthorization.swift"; sourceTree = "<group>"; };
+		774DB21DE619AE8A44DD56F180AB4402 /* athmovil-checkout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "athmovil-checkout.modulemap"; sourceTree = "<group>"; };
+		7B4E4FCB24A77FCE57A1AAE0C357D3DE /* ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist"; sourceTree = "<group>"; };
+		7B68ED9FFC5C04CAFD9B1CAB6966B278 /* AnyPaymentSecureReceiver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSecureReceiver.swift; path = "athmovil-checkout/Source/AnyPaymentSecureReceiver.swift"; sourceTree = "<group>"; };
+		7C3F2E590921761AE41AC9BF863F9DF2 /* athmovil-checkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "athmovil-checkout.release.xcconfig"; sourceTree = "<group>"; };
+		7DB6586074C4A77EC125B9F34CD5A992 /* LocaleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocaleExtension.swift; path = "athmovil-checkout/Source/LocaleExtension.swift"; sourceTree = "<group>"; };
 		8330A61D40453ABAB38F762EA1EA28BD /* athmovil-checkout */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "athmovil-checkout"; path = athmovil_checkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9330D041EA082008C4FD78BB1FE2B323 /* PaymentDefaultCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentDefaultCodable.swift; path = "athmovil-checkout/Source/PaymentDefaultCodable.swift"; sourceTree = "<group>"; };
-		943C5A809C7B01EB65CBCCF62E8B85F7 /* PaymentResponseCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentResponseCodable.swift; path = "athmovil-checkout/Source/PaymentResponseCodable.swift"; sourceTree = "<group>"; };
-		9544C793EC5101C4E3EB861D4B4861EB /* ATHMPaymentRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentRequest.swift; path = "athmovil-checkout/Source/ATHMPaymentRequest.swift"; sourceTree = "<group>"; };
-		989730981BF02AA7254906BA9D315EBB /* RequestBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestBuilder.swift; path = "athmovil-checkout/Source/RequestBuilder.swift"; sourceTree = "<group>"; };
+		90B25C2A8B6BC6D9BD94F4411D026856 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIApplicationExtension.swift; path = "athmovil-checkout/Source/UIApplicationExtension.swift"; sourceTree = "<group>"; };
+		937D72063505873860A70BECE3A905C1 /* APIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = "athmovil-checkout/Source/APIClient.swift"; sourceTree = "<group>"; };
+		94408B42B09C928D62BC77FB91E19646 /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = "athmovil-checkout/Source/StringExtension.swift"; sourceTree = "<group>"; };
+		983E0C99F957D29017C59B1F664C4610 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		995957B3C2662DF4FB2A5F2D05A8E7EB /* AnyPaymentRequestCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentRequestCodable.swift; path = "athmovil-checkout/Source/AnyPaymentRequestCodable.swift"; sourceTree = "<group>"; };
+		9B0016DFC8844F105E797DF5F36C9242 /* RequestPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestPayment.swift; path = "athmovil-checkout/Source/RequestPayment.swift"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0B11DB6B5BAA1EF48B60E25742E9118 /* PaymentCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentCodable.swift; path = "athmovil-checkout/Source/PaymentCodable.swift"; sourceTree = "<group>"; };
-		A59BDBC7E13A1C3334D6B022E4162617 /* URLSchemeCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLSchemeCodable.swift; path = "athmovil-checkout/Source/URLSchemeCodable.swift"; sourceTree = "<group>"; };
-		A6119F944DF554FD33695E3BED2CE12C /* NSNumberExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSNumberExtension.swift; path = "athmovil-checkout/Source/NSNumberExtension.swift"; sourceTree = "<group>"; };
-		A70805770AD65D0E42959EF4526E591E /* AuthorizationResponseCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthorizationResponseCodable.swift; path = "athmovil-checkout/Source/AuthorizationResponseCodable.swift"; sourceTree = "<group>"; };
-		A7FA421A117D69B820C3756C0E872A95 /* BusinessAccountCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BusinessAccountCodable.swift; path = "athmovil-checkout/Source/BusinessAccountCodable.swift"; sourceTree = "<group>"; };
-		AADA7BD9E6EE98134BE5035D9FCABD72 /* TagetEnviroment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TagetEnviroment.swift; path = "athmovil-checkout/Source/TagetEnviroment.swift"; sourceTree = "<group>"; };
-		ABB0F9669BE8CB2CF7FE886C00E3ECEA /* ATHMAuthorizationResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMAuthorizationResponse.swift; path = "athmovil-checkout/Source/ATHMAuthorizationResponse.swift"; sourceTree = "<group>"; };
-		B409DC4450A64E5C004FAEC70AA9EBE4 /* athmovil-checkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "athmovil-checkout.release.xcconfig"; sourceTree = "<group>"; };
+		A4CD51513CA0DC59D49C23C80D6A7D03 /* ATHMPaymentResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentResponse.swift; path = "athmovil-checkout/Source/ATHMPaymentResponse.swift"; sourceTree = "<group>"; };
+		A8C92CF52005358EC6AF92743F2F91A2 /* APIPayments.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIPayments.swift; path = "athmovil-checkout/Source/APIPayments.swift"; sourceTree = "<group>"; };
+		A9DB994DDF997C08F7D2D740237A18EA /* athmovil-checkout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "athmovil-checkout.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		ADD6E45D5E4FB7874F0CAC1A5B9B63E0 /* PaymentSendCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSendCodable.swift; path = "athmovil-checkout/Source/PaymentSendCodable.swift"; sourceTree = "<group>"; };
+		AFA4A4DB76B0AEC0099D21E7D299EB08 /* NSNumberExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSNumberExtension.swift; path = "athmovil-checkout/Source/NSNumberExtension.swift"; sourceTree = "<group>"; };
+		B3A678F2E8B1E66937207616BBA9658D /* CustomerCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomerCodable.swift; path = "athmovil-checkout/Source/CustomerCodable.swift"; sourceTree = "<group>"; };
+		B4B1921DBAFD2FED66563795198B5764 /* athmovil-checkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "athmovil-checkout.debug.xcconfig"; sourceTree = "<group>"; };
 		B571CF1214D6A82B74BCF0A75E5E0E4A /* Pods-athmovil-checkout-demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-athmovil-checkout-demo-frameworks.sh"; sourceTree = "<group>"; };
-		BC3B3B48A88393C3CCD5868BB847FCCD /* ATHMAssets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = ATHMAssets.xcassets; path = "athmovil-checkout/ATHMAssets.xcassets"; sourceTree = "<group>"; };
-		C3403CB193639A3595E0FA3C2FB45C97 /* ATHMCustomer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMCustomer.swift; path = "athmovil-checkout/Source/ATHMCustomer.swift"; sourceTree = "<group>"; };
-		C56E75F2BFE516A1DC22FC99B9022BAB /* ATHMBusinessAccount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMBusinessAccount.swift; path = "athmovil-checkout/Source/ATHMBusinessAccount.swift"; sourceTree = "<group>"; };
-		C5DE352FF7F290BC0FADEA173C5405F9 /* ATHMPaymentSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentSession.swift; path = "athmovil-checkout/Source/ATHMPaymentSession.swift"; sourceTree = "<group>"; };
-		C5ECFBC25CFE8732E7F5FC8708000147 /* CustomerCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomerCodable.swift; path = "athmovil-checkout/Source/CustomerCodable.swift"; sourceTree = "<group>"; };
-		C6971CC42AB19C659E23A95DA9303D8C /* ResultExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResultExtension.swift; path = "athmovil-checkout/Source/ResultExtension.swift"; sourceTree = "<group>"; };
-		C6F6710FDFF68DFE3898EB583C55CDDE /* ATHMPaymentResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentResponse.swift; path = "athmovil-checkout/Source/ATHMPaymentResponse.swift"; sourceTree = "<group>"; };
-		C816D2C4E5EA9A14CC89067B4D8C50FA /* ATHMPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPayment.swift; path = "athmovil-checkout/Source/ATHMPayment.swift"; sourceTree = "<group>"; };
-		C9EEDFD57A0F2B745E290BDE0F8FD2A2 /* NetworkError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = "athmovil-checkout/Source/NetworkError.swift"; sourceTree = "<group>"; };
+		BAA1939D38131975C456BBCDBE3220FF /* athmovil-checkout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "athmovil-checkout-Info.plist"; sourceTree = "<group>"; };
+		BBBCFEE1B9CA1919B223C104E0DE04D7 /* ATHMBusinessAccount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMBusinessAccount.swift; path = "athmovil-checkout/Source/ATHMBusinessAccount.swift"; sourceTree = "<group>"; };
+		BF021CE7CE7C9E8D7FDA68278BE79312 /* ATHMAssets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = ATHMAssets.xcassets; path = "athmovil-checkout/ATHMAssets.xcassets"; sourceTree = "<group>"; };
+		BF9AB9F4C8935B922B7ECEB6BD544B47 /* BusinessAccountCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BusinessAccountCodable.swift; path = "athmovil-checkout/Source/BusinessAccountCodable.swift"; sourceTree = "<group>"; };
+		C004ABDFC7C4B2BB7D44AB7AEEAD061D /* ATHMCustomer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMCustomer.swift; path = "athmovil-checkout/Source/ATHMCustomer.swift"; sourceTree = "<group>"; };
+		C0230909DC137B5DB53939DE166E7777 /* NSRegularExpressionExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRegularExpressionExtension.swift; path = "athmovil-checkout/Source/NSRegularExpressionExtension.swift"; sourceTree = "<group>"; };
+		C13A0C85E772738A084471272662A2F1 /* ResponseErrorSecurePaymentCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseErrorSecurePaymentCodable.swift; path = "athmovil-checkout/Source/ResponseErrorSecurePaymentCodable.swift"; sourceTree = "<group>"; };
+		C2CB97435E3FAFB098473DBE5AD8C8FB /* NewRelicConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NewRelicConfig.swift; path = "athmovil-checkout/Source/NewRelicConfig.swift"; sourceTree = "<group>"; };
+		CB3A8DAC34BC97E894EB14A592632E84 /* KeyedDecodingContainerProtocolExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyedDecodingContainerProtocolExtension.swift; path = "athmovil-checkout/Source/KeyedDecodingContainerProtocolExtension.swift"; sourceTree = "<group>"; };
+		CD95BFD2F4E39E2DCD146BEC0573B21B /* ATHMPaymentSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentSession.swift; path = "athmovil-checkout/Source/ATHMPaymentSession.swift"; sourceTree = "<group>"; };
 		CEF069E7F94B1A0C96E7FBDCC326EFF1 /* Pods-athmovil-checkout-demo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-athmovil-checkout-demo-umbrella.h"; sourceTree = "<group>"; };
+		CFED22C33C861F3A39C974719BB1D4A1 /* AnyPaymentSecureRequestCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSecureRequestCodable.swift; path = "athmovil-checkout/Source/AnyPaymentSecureRequestCodable.swift"; sourceTree = "<group>"; };
+		D19F8372DA6D6349ECDA25D76BD6B9C9 /* AuthorizationResponseCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthorizationResponseCodable.swift; path = "athmovil-checkout/Source/AuthorizationResponseCodable.swift"; sourceTree = "<group>"; };
+		D27D1616F3FC714C269ECCCDBB07AECC /* NSDictionaryExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSDictionaryExtension.swift; path = "athmovil-checkout/Source/NSDictionaryExtension.swift"; sourceTree = "<group>"; };
 		D2885814D884DECD9F6EC240B58B027D /* Pods-athmovil-checkout-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-athmovil-checkout-demo.debug.xcconfig"; sourceTree = "<group>"; };
-		D3A4D8C7D777F143AE0DF17DC690EA78 /* ATHMURLScheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMURLScheme.swift; path = "athmovil-checkout/Source/ATHMURLScheme.swift"; sourceTree = "<group>"; };
-		D40090641E7429D4778912D6633E00E0 /* athmovil-checkout-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "athmovil-checkout-Info.plist"; sourceTree = "<group>"; };
-		D4F722E20682062817ED6152B92D47C3 /* APIClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = "athmovil-checkout/Source/APIClient.swift"; sourceTree = "<group>"; };
-		D769024C22C2C697BD8394283CB588A4 /* PostRequestBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostRequestBuilder.swift; path = "athmovil-checkout/Source/PostRequestBuilder.swift"; sourceTree = "<group>"; };
-		D7AB0F1059DFBCF5EBC11F34F20BC8DE /* NSRegularExpressionExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRegularExpressionExtension.swift; path = "athmovil-checkout/Source/NSRegularExpressionExtension.swift"; sourceTree = "<group>"; };
-		D91B889B6DA238484CD2E1C35101E9F8 /* athmovil-checkout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "athmovil-checkout-umbrella.h"; sourceTree = "<group>"; };
-		E071DD4FCAE8FB59EE459EF1F98D4DE9 /* AnyPaymentReceiver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentReceiver.swift; path = "athmovil-checkout/Source/AnyPaymentReceiver.swift"; sourceTree = "<group>"; };
-		E10731D0BD236825B845FCF6C6D7313B /* ATHMSecurePayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMSecurePayment.swift; path = "athmovil-checkout/Source/ATHMSecurePayment.swift"; sourceTree = "<group>"; };
+		D4E1CD0942646399E0FBADD73EE29C31 /* TargetURLRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TargetURLRepresentable.swift; path = "athmovil-checkout/Source/TargetURLRepresentable.swift"; sourceTree = "<group>"; };
+		D8797B18F4E1BC4EC321E9B0F52182E9 /* ATHMPaymentStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentStatus.swift; path = "athmovil-checkout/Source/ATHMPaymentStatus.swift"; sourceTree = "<group>"; };
+		DA06C130720447FF93F6C43ABE08CC90 /* ATHMPaymentHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentHandler.swift; path = "athmovil-checkout/Source/ATHMPaymentHandler.swift"; sourceTree = "<group>"; };
+		DFC5E4068E013B6CE55B0A6D590CBDFB /* PaymentDefaultCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentDefaultCodable.swift; path = "athmovil-checkout/Source/PaymentDefaultCodable.swift"; sourceTree = "<group>"; };
+		DFD8F1B270208EAE0703A2AED983A424 /* ATHMPaymentSecureRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentSecureRequest.swift; path = "athmovil-checkout/Source/ATHMPaymentSecureRequest.swift"; sourceTree = "<group>"; };
+		E1B3079C7B2ABA29096C14FED18E120C /* AnyPaymentSender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentSender.swift; path = "athmovil-checkout/Source/AnyPaymentSender.swift"; sourceTree = "<group>"; };
 		E25316C25620570ED4D67F26E19B89D9 /* athmovil-checkout-athmovil-checkout */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "athmovil-checkout-athmovil-checkout"; path = "athmovil-checkout.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E40A69F6D9E4BF679102172018972D40 /* PaymentSecureResponseCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSecureResponseCodable.swift; path = "athmovil-checkout/Source/PaymentSecureResponseCodable.swift"; sourceTree = "<group>"; };
-		E92A22A6C50535C2F7D8AF9153EDF36C /* KeyedDecodingContainerProtocolExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyedDecodingContainerProtocolExtension.swift; path = "athmovil-checkout/Source/KeyedDecodingContainerProtocolExtension.swift"; sourceTree = "<group>"; };
-		E9E5D165EF51DE36758FCEBDD1238827 /* RequestPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestPayment.swift; path = "athmovil-checkout/Source/RequestPayment.swift"; sourceTree = "<group>"; };
-		EEDB2035D6ADC45B129078BF965A39B2 /* DateFormatters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateFormatters.swift; path = "athmovil-checkout/Source/DateFormatters.swift"; sourceTree = "<group>"; };
-		F089F77F0297DB1CF55A5EA1882E2269 /* athmovil-checkout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "athmovil-checkout.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		F1D4131C59147568407026CAE2FC3E7B /* PaymentSendCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSendCodable.swift; path = "athmovil-checkout/Source/PaymentSendCodable.swift"; sourceTree = "<group>"; };
+		E28E64042A3E7B01216E1DA014CE4632 /* ResultExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResultExtension.swift; path = "athmovil-checkout/Source/ResultExtension.swift"; sourceTree = "<group>"; };
+		E5D959B67CEB69E262764FE334A9DA7A /* ATHMPaymentTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentTheme.swift; path = "athmovil-checkout/Source/ATHMPaymentTheme.swift"; sourceTree = "<group>"; };
+		EA2A9F529D66BCAE4D3AE87FD5298722 /* ATHMURLScheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMURLScheme.swift; path = "athmovil-checkout/Source/ATHMURLScheme.swift"; sourceTree = "<group>"; };
+		EA86EDB6D715F8A62BEBF2EE849BE264 /* AnyPaymentReceiver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPaymentReceiver.swift; path = "athmovil-checkout/Source/AnyPaymentReceiver.swift"; sourceTree = "<group>"; };
+		EE3619717E7FBCC05E091D2501389AAB /* ATHMButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMButton.swift; path = "athmovil-checkout/Source/ATHMButton.swift"; sourceTree = "<group>"; };
+		F1BBF21E619C1621F3143214F077A625 /* URLSchemeCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLSchemeCodable.swift; path = "athmovil-checkout/Source/URLSchemeCodable.swift"; sourceTree = "<group>"; };
 		F1D77AF3BB142FAB8E43F665602F58CB /* Pods-athmovil-checkout-demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-athmovil-checkout-demo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F1DA71EEDFAB18BF23B4EDE3D3BF29EC /* URLComponentsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLComponentsExtension.swift; path = "athmovil-checkout/Source/URLComponentsExtension.swift"; sourceTree = "<group>"; };
-		F347FADC99A28D67925D609F6D134DC8 /* athmovil-checkout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "athmovil-checkout.debug.xcconfig"; sourceTree = "<group>"; };
-		F89CD1926844FF3A2BC5B2AE9527577F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		FA8A26680F83617E78A7F77ED30D657E /* ATHMResponseDeprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMResponseDeprecated.swift; path = "athmovil-checkout/Source/ATHMResponseDeprecated.swift"; sourceTree = "<group>"; };
+		F3AFF40F9F27A2D9930F66C1E3BB1B6C /* athmovil-checkout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "athmovil-checkout-prefix.pch"; sourceTree = "<group>"; };
+		F6E2526AC5AB1D28B1CDD93F11A640C5 /* PaymentSecureResponseCodable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentSecureResponseCodable.swift; path = "athmovil-checkout/Source/PaymentSecureResponseCodable.swift"; sourceTree = "<group>"; };
+		F6E4F49D014AAFF25735CE8909C6D6E0 /* NetworkError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = "athmovil-checkout/Source/NetworkError.swift"; sourceTree = "<group>"; };
+		F76B93DF93B9C9810AAA1E6F3E085E25 /* KeychainHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainHelper.swift; path = "athmovil-checkout/Source/KeychainHelper.swift"; sourceTree = "<group>"; };
+		FFE4D0E24FE3F527FF7333B54846BDF8 /* ATHMPaymentItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ATHMPaymentItem.swift; path = "athmovil-checkout/Source/ATHMPaymentItem.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2DE02A2943909881ABB05F98FB606A15 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A0A515C7C8C6C6B503A02ED01D3E6DF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		35F0E71A53AA8DE082BA47CFE5AE3233 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,10 +207,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB3FA159136F3FECE2548CD9D2DBB6C9 /* Frameworks */ = {
+		D24B99ACA97EA115C1901AFEF868CF2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED1D0660E6287EE3A08DD54CAE135C61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DCDC592ECA1891B5B299ED05EA0562C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,82 +233,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		0CC26633794FDB189B5B44A728E3A1AA /* athmovil-checkout */ = {
-			isa = PBXGroup;
-			children = (
-				E071DD4FCAE8FB59EE459EF1F98D4DE9 /* AnyPaymentReceiver.swift */,
-				6F2306BEFE530EC01B445918347A6EF4 /* AnyPaymentRequestCodable.swift */,
-				6E451C8F5C00E030F0170CFAD1D274A8 /* AnyPaymentSecureReceiver.swift */,
-				0FFD515D032FCD0C44A774122B6BEE6F /* AnyPaymentSecureRequestCodable.swift */,
-				09EAEDB0B5A6A2080997C74A67FD1B69 /* AnyPaymentSecureSender.swift */,
-				6B41DD8A443D4E76360335757F86F21B /* AnyPaymentSender.swift */,
-				D4F722E20682062817ED6152B92D47C3 /* APIClient.swift */,
-				24874D278D61C3FD9D35FD36EBEB7E2B /* APIPayments.swift */,
-				BC3B3B48A88393C3CCD5868BB847FCCD /* ATHMAssets.xcassets */,
-				ABB0F9669BE8CB2CF7FE886C00E3ECEA /* ATHMAuthorizationResponse.swift */,
-				C56E75F2BFE516A1DC22FC99B9022BAB /* ATHMBusinessAccount.swift */,
-				2EF5AAA0DD20C109AD72F198177D2636 /* ATHMButton.swift */,
-				C3403CB193639A3595E0FA3C2FB45C97 /* ATHMCustomer.swift */,
-				C816D2C4E5EA9A14CC89067B4D8C50FA /* ATHMPayment.swift */,
-				50823E45BD923B80370E52F7ED24BAFB /* ATHMPaymentError.swift */,
-				743D9BE5004161FC455C7EBEBA3986DF /* ATHMPaymentHandler.swift */,
-				54A2E0D09EED8E4A5AC8FC60118EB875 /* ATHMPaymentHandlerDictionary.swift */,
-				6E9C1DD38BB96C8897ADD4DA92BCFCF7 /* ATHMPaymentItem.swift */,
-				9544C793EC5101C4E3EB861D4B4861EB /* ATHMPaymentRequest.swift */,
-				C6F6710FDFF68DFE3898EB583C55CDDE /* ATHMPaymentResponse.swift */,
-				427E49B46AF5445CB698E4A493414369 /* ATHMPaymentSecureError.swift */,
-				1319F3EA6C15A6B4A2E280E308F63D24 /* ATHMPaymentSecureRequest.swift */,
-				C5DE352FF7F290BC0FADEA173C5405F9 /* ATHMPaymentSession.swift */,
-				79088776F222627D58B26BA3E16D57B4 /* ATHMPaymentStatus.swift */,
-				4E4A2C814E2AE158D136533B186A33CD /* ATHMPaymentTheme.swift */,
-				FA8A26680F83617E78A7F77ED30D657E /* ATHMResponseDeprecated.swift */,
-				E10731D0BD236825B845FCF6C6D7313B /* ATHMSecurePayment.swift */,
-				1E7EB2ACAAD37C374405459140C088C7 /* ATHMSendPayment.swift */,
-				D3A4D8C7D777F143AE0DF17DC690EA78 /* ATHMURLScheme.swift */,
-				A70805770AD65D0E42959EF4526E591E /* AuthorizationResponseCodable.swift */,
-				A7FA421A117D69B820C3756C0E872A95 /* BusinessAccountCodable.swift */,
-				C5ECFBC25CFE8732E7F5FC8708000147 /* CustomerCodable.swift */,
-				EEDB2035D6ADC45B129078BF965A39B2 /* DateFormatters.swift */,
-				59F79ED33A50A5CEF7B7D649B761F376 /* DoubleExtension.swift */,
-				3B5B2739133A0B7132113B5CE7CD63FB /* KeychainHelper.swift */,
-				E92A22A6C50535C2F7D8AF9153EDF36C /* KeyedDecodingContainerProtocolExtension.swift */,
-				663AB670026E6553DD41DDC9AADFD648 /* LoadingView.swift */,
-				3332B4906B79C5C16B3B7234C523FA6A /* LocaleExtension.swift */,
-				C9EEDFD57A0F2B745E290BDE0F8FD2A2 /* NetworkError.swift */,
-				6218F3314B28DD53F4A7D0A3C020EB6C /* NSDictionaryExtension.swift */,
-				A6119F944DF554FD33695E3BED2CE12C /* NSNumberExtension.swift */,
-				D7AB0F1059DFBCF5EBC11F34F20BC8DE /* NSRegularExpressionExtension.swift */,
-				A0B11DB6B5BAA1EF48B60E25742E9118 /* PaymentCodable.swift */,
-				9330D041EA082008C4FD78BB1FE2B323 /* PaymentDefaultCodable.swift */,
-				26B5011CD0F0347DB4356E86C31BA64F /* PaymentHandleable.swift */,
-				75FD111167694FA8B136F7299D8C4FA8 /* PaymentItemCodable.swift */,
-				943C5A809C7B01EB65CBCCF62E8B85F7 /* PaymentResponseCodable.swift */,
-				2B97198C01DD4C575249D60F84F0BC32 /* PaymentSecureCodable.swift */,
-				E40A69F6D9E4BF679102172018972D40 /* PaymentSecureResponseCodable.swift */,
-				F1D4131C59147568407026CAE2FC3E7B /* PaymentSendCodable.swift */,
-				50D989E3B1ABD936BF46752E75F5B0C0 /* PaymentSimulated.swift */,
-				58858BE77E2B471C8EDA8A90E80C4C8F /* PaymentStatusCodable.swift */,
-				D769024C22C2C697BD8394283CB588A4 /* PostRequestBuilder.swift */,
-				110F6C0818EC705B5739B8B6A298F225 /* RequestAuthorization.swift */,
-				989730981BF02AA7254906BA9D315EBB /* RequestBuilder.swift */,
-				E9E5D165EF51DE36758FCEBDD1238827 /* RequestPayment.swift */,
-				7F3DA073615F838A8CD6FF35995E8B4A /* RequestSecureStatus.swift */,
-				28F77D605C2515BE09409A8FE568CDC1 /* RequestStatus.swift */,
-				731FE76C78EBB5A2D850D2DB7DCBD452 /* ResponseErrorSecurePaymentCodable.swift */,
-				C6971CC42AB19C659E23A95DA9303D8C /* ResultExtension.swift */,
-				31A10259B1DF5510443EA840A28D5A64 /* StringExtension.swift */,
-				AADA7BD9E6EE98134BE5035D9FCABD72 /* TagetEnviroment.swift */,
-				7B127FD36C245953B3FAA9C1018C6F22 /* TargetURLRepresentable.swift */,
-				3A2AA43AD4143178626D33E866F4C7E8 /* UIApplicationExtension.swift */,
-				F1DA71EEDFAB18BF23B4EDE3D3BF29EC /* URLComponentsExtension.swift */,
-				A59BDBC7E13A1C3334D6B022E4162617 /* URLSchemeCodable.swift */,
-				5587EB6DDE3ABDE56B6DDCFB092B5FF6 /* Pod */,
-				CFF7DA913028F45B9668806245FE2BBC /* Support Files */,
-			);
-			name = "athmovil-checkout";
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		16CE866366D500921B623A49ED255B38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,20 +243,90 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3E24C7A7A095FCB96738FA359A4A7BB3 /* Development Pods */ = {
+		3BC3E1BB5F9773333BD0EDE0661E5132 /* athmovil-checkout */ = {
 			isa = PBXGroup;
 			children = (
-				0CC26633794FDB189B5B44A728E3A1AA /* athmovil-checkout */,
+				EA86EDB6D715F8A62BEBF2EE849BE264 /* AnyPaymentReceiver.swift */,
+				995957B3C2662DF4FB2A5F2D05A8E7EB /* AnyPaymentRequestCodable.swift */,
+				7B68ED9FFC5C04CAFD9B1CAB6966B278 /* AnyPaymentSecureReceiver.swift */,
+				CFED22C33C861F3A39C974719BB1D4A1 /* AnyPaymentSecureRequestCodable.swift */,
+				3E3A2E9D7BFAD8676BE4CB6343172151 /* AnyPaymentSecureSender.swift */,
+				E1B3079C7B2ABA29096C14FED18E120C /* AnyPaymentSender.swift */,
+				937D72063505873860A70BECE3A905C1 /* APIClient.swift */,
+				A8C92CF52005358EC6AF92743F2F91A2 /* APIPayments.swift */,
+				BF021CE7CE7C9E8D7FDA68278BE79312 /* ATHMAssets.xcassets */,
+				71E5D356EBAB3976927E239FB089B8B8 /* ATHMAuthorizationResponse.swift */,
+				BBBCFEE1B9CA1919B223C104E0DE04D7 /* ATHMBusinessAccount.swift */,
+				EE3619717E7FBCC05E091D2501389AAB /* ATHMButton.swift */,
+				C004ABDFC7C4B2BB7D44AB7AEEAD061D /* ATHMCustomer.swift */,
+				421136D9E11E03DE9F87F429982275BF /* ATHMPayment.swift */,
+				171780A11F6488751B73AD296A853370 /* ATHMPaymentError.swift */,
+				DA06C130720447FF93F6C43ABE08CC90 /* ATHMPaymentHandler.swift */,
+				022B89875E2E8F6EFCE5DA5274C50D9A /* ATHMPaymentHandlerDictionary.swift */,
+				FFE4D0E24FE3F527FF7333B54846BDF8 /* ATHMPaymentItem.swift */,
+				5DFDB1B34C8111B0FB7DCC330BF5A6F2 /* ATHMPaymentRequest.swift */,
+				A4CD51513CA0DC59D49C23C80D6A7D03 /* ATHMPaymentResponse.swift */,
+				2F9DBE0AA9CF922D0FDFEF2B3E483DFB /* ATHMPaymentSecureError.swift */,
+				DFD8F1B270208EAE0703A2AED983A424 /* ATHMPaymentSecureRequest.swift */,
+				CD95BFD2F4E39E2DCD146BEC0573B21B /* ATHMPaymentSession.swift */,
+				D8797B18F4E1BC4EC321E9B0F52182E9 /* ATHMPaymentStatus.swift */,
+				E5D959B67CEB69E262764FE334A9DA7A /* ATHMPaymentTheme.swift */,
+				651A68BF62E6891D97E8CAE21ED5E83F /* ATHMResponseDeprecated.swift */,
+				3EF1D64986C3482758449FB328677AB2 /* ATHMSecurePayment.swift */,
+				0148101A7EF4AD1C9DDE57698F6CD773 /* ATHMSendPayment.swift */,
+				EA2A9F529D66BCAE4D3AE87FD5298722 /* ATHMURLScheme.swift */,
+				D19F8372DA6D6349ECDA25D76BD6B9C9 /* AuthorizationResponseCodable.swift */,
+				BF9AB9F4C8935B922B7ECEB6BD544B47 /* BusinessAccountCodable.swift */,
+				B3A678F2E8B1E66937207616BBA9658D /* CustomerCodable.swift */,
+				5C5F640A7BED50110023A0337B332842 /* DateFormatters.swift */,
+				5F6847B51E9275FEB1AD20ED8DBFC98D /* DoubleExtension.swift */,
+				F76B93DF93B9C9810AAA1E6F3E085E25 /* KeychainHelper.swift */,
+				CB3A8DAC34BC97E894EB14A592632E84 /* KeyedDecodingContainerProtocolExtension.swift */,
+				6177AF2B54977B6319BAFB00460DB422 /* LoadingView.swift */,
+				7DB6586074C4A77EC125B9F34CD5A992 /* LocaleExtension.swift */,
+				F6E4F49D014AAFF25735CE8909C6D6E0 /* NetworkError.swift */,
+				C2CB97435E3FAFB098473DBE5AD8C8FB /* NewRelicConfig.swift */,
+				052E99241C9FF355EA61313FD9EDAE94 /* NrConstantUtils.swift */,
+				D27D1616F3FC714C269ECCCDBB07AECC /* NSDictionaryExtension.swift */,
+				AFA4A4DB76B0AEC0099D21E7D299EB08 /* NSNumberExtension.swift */,
+				C0230909DC137B5DB53939DE166E7777 /* NSRegularExpressionExtension.swift */,
+				3B622728FF2F96AA52E319FEC8696379 /* PaymentCodable.swift */,
+				DFC5E4068E013B6CE55B0A6D590CBDFB /* PaymentDefaultCodable.swift */,
+				1267CCE1DF8EBC538FF5C5986183508B /* PaymentHandleable.swift */,
+				08A99F913E54854CC33DB312FA2EAA2B /* PaymentItemCodable.swift */,
+				16386E4E5BD19E71DA39E22B32DAED18 /* PaymentResponseCodable.swift */,
+				5158983D321CC068C1160C48BFDC497E /* PaymentSecureCodable.swift */,
+				F6E2526AC5AB1D28B1CDD93F11A640C5 /* PaymentSecureResponseCodable.swift */,
+				ADD6E45D5E4FB7874F0CAC1A5B9B63E0 /* PaymentSendCodable.swift */,
+				06A98B85DF51E52063E76DECF41CE967 /* PaymentSimulated.swift */,
+				5E50D6F00302161BBAE1F16DFD81D86C /* PaymentStatusCodable.swift */,
+				0B51F1AA102D43742CDBD478B67FCBBE /* PostRequestBuilder.swift */,
+				731A0A1D0804357ED435529C73FC9E74 /* RequestAuthorization.swift */,
+				504C6E0FD3954391AC07FB2B7F04A19B /* RequestBuilder.swift */,
+				9B0016DFC8844F105E797DF5F36C9242 /* RequestPayment.swift */,
+				344D3CA0CACCCBE7D164485C0716BF7E /* RequestSecureStatus.swift */,
+				12A1DCD843783C1E34CFA3110AAF7455 /* RequestStatus.swift */,
+				C13A0C85E772738A084471272662A2F1 /* ResponseErrorSecurePaymentCodable.swift */,
+				E28E64042A3E7B01216E1DA014CE4632 /* ResultExtension.swift */,
+				94408B42B09C928D62BC77FB91E19646 /* StringExtension.swift */,
+				01A10E23B1AA9224D94269ACA5D48B7C /* TagetEnviroment.swift */,
+				D4E1CD0942646399E0FBADD73EE29C31 /* TargetURLRepresentable.swift */,
+				90B25C2A8B6BC6D9BD94F4411D026856 /* UIApplicationExtension.swift */,
+				10C3D59E62CA913B4B07F31FBA5A6176 /* URLComponentsExtension.swift */,
+				F1BBF21E619C1621F3143214F077A625 /* URLSchemeCodable.swift */,
+				4EBE78953AA4126572043F769DF7C0BD /* Pod */,
+				DBECBDA995EB68B0B1378EA93458BCE9 /* Support Files */,
 			);
-			name = "Development Pods";
+			name = "athmovil-checkout";
+			path = ../..;
 			sourceTree = "<group>";
 		};
-		5587EB6DDE3ABDE56B6DDCFB092B5FF6 /* Pod */ = {
+		4EBE78953AA4126572043F769DF7C0BD /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				F089F77F0297DB1CF55A5EA1882E2269 /* athmovil-checkout.podspec */,
-				F89CD1926844FF3A2BC5B2AE9527577F /* LICENSE */,
-				27FA057FDB332CC6C4E1CDA690C65935 /* README.md */,
+				A9DB994DDF997C08F7D2D740237A18EA /* athmovil-checkout.podspec */,
+				478AD3CDEAEAD977DA72C872B3FC2EFD /* LICENSE */,
+				983E0C99F957D29017C59B1F664C4610 /* README.md */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
@@ -350,31 +348,23 @@
 			path = "Target Support Files/Pods-athmovil-checkout-demo";
 			sourceTree = "<group>";
 		};
+		CCF36962A620B770B0BDFD1384DE9D7D /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BC3E1BB5F9773333BD0EDE0661E5132 /* athmovil-checkout */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				3E24C7A7A095FCB96738FA359A4A7BB3 /* Development Pods */,
+				CCF36962A620B770B0BDFD1384DE9D7D /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				16CE866366D500921B623A49ED255B38 /* Products */,
 				06A1E996F7652ABD5D09157B14059ADD /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		CFF7DA913028F45B9668806245FE2BBC /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1B9F6DE4393C72E603E43518297BA9F3 /* athmovil-checkout.modulemap */,
-				5C56F6A969F8BA87117699FFCBAB40E5 /* athmovil-checkout-dummy.m */,
-				D40090641E7429D4778912D6633E00E0 /* athmovil-checkout-Info.plist */,
-				409707A1ADA859EC885E0AADBAB0CB74 /* athmovil-checkout-prefix.pch */,
-				D91B889B6DA238484CD2E1C35101E9F8 /* athmovil-checkout-umbrella.h */,
-				F347FADC99A28D67925D609F6D134DC8 /* athmovil-checkout.debug.xcconfig */,
-				B409DC4450A64E5C004FAEC70AA9EBE4 /* athmovil-checkout.release.xcconfig */,
-				22877226A2748FFE75B610B186AF2DD6 /* ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/athmovil-checkout";
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -383,6 +373,22 @@
 				E4801F62A6B08CD9B5410329F1A18FDE /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DBECBDA995EB68B0B1378EA93458BCE9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				774DB21DE619AE8A44DD56F180AB4402 /* athmovil-checkout.modulemap */,
+				2BAAD2988A4EDEC9B6A5B91293F98E3B /* athmovil-checkout-dummy.m */,
+				BAA1939D38131975C456BBCDBE3220FF /* athmovil-checkout-Info.plist */,
+				F3AFF40F9F27A2D9930F66C1E3BB1B6C /* athmovil-checkout-prefix.pch */,
+				4EDA250F5E9B33E901DA68C021D23194 /* athmovil-checkout-umbrella.h */,
+				B4B1921DBAFD2FED66563795198B5764 /* athmovil-checkout.debug.xcconfig */,
+				7C3F2E590921761AE41AC9BF863F9DF2 /* athmovil-checkout.release.xcconfig */,
+				7B4E4FCB24A77FCE57A1AAE0C357D3DE /* ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/athmovil-checkout";
 			sourceTree = "<group>";
 		};
 		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
@@ -404,11 +410,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D311F60049E5D5ECBAB7EC09B8AFDD40 /* Headers */ = {
+		A9935846FE9DDF6D3DD5AA8D3ACC876A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40892AFD8D8BA397DBB662FA0965BB52 /* athmovil-checkout-umbrella.h in Headers */,
+				A1EFAD3DF3C392ACB9076510106B713F /* athmovil-checkout-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +433,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				5C066D6362C722B81B133CE221C31709 /* PBXTargetDependency */,
+				B655CF48C21450949EF1A14E7F81CA6F /* PBXTargetDependency */,
 			);
 			name = "Pods-athmovil-checkout-demo";
 			productName = Pods_athmovil_checkout_demo;
@@ -436,17 +442,17 @@
 		};
 		7D749667B99BD3CCBA8A8BF7EFA4A7C3 /* athmovil-checkout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2EB4158C7F938F4393367EE40B11FC67 /* Build configuration list for PBXNativeTarget "athmovil-checkout" */;
+			buildConfigurationList = 3B88122E89E59A6C42A5CD275E734387 /* Build configuration list for PBXNativeTarget "athmovil-checkout" */;
 			buildPhases = (
-				D311F60049E5D5ECBAB7EC09B8AFDD40 /* Headers */,
-				73076CC2F5E3B87B78389A3A7872145E /* Sources */,
-				2DE02A2943909881ABB05F98FB606A15 /* Frameworks */,
-				7508C20E812F4AD85BD9CE58FA53CF90 /* Resources */,
+				A9935846FE9DDF6D3DD5AA8D3ACC876A /* Headers */,
+				4BCEC591006E9DBE05842C5CF6834E2B /* Sources */,
+				ED1D0660E6287EE3A08DD54CAE135C61 /* Frameworks */,
+				30C9D3EAC9986319E1D5B35A1A94F006 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				48DB35AD005F4B7DC929B79F85DD2F1A /* PBXTargetDependency */,
+				3B39923300E4B5E568AE460451F99D88 /* PBXTargetDependency */,
 			);
 			name = "athmovil-checkout";
 			productName = athmovil_checkout;
@@ -455,11 +461,11 @@
 		};
 		9116B35005D4276EEF326DD8142F8742 /* athmovil-checkout-athmovil-checkout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F0842C9AEAA5764B2521A8E4E66BEB2 /* Build configuration list for PBXNativeTarget "athmovil-checkout-athmovil-checkout" */;
+			buildConfigurationList = 2648C8DD05EF29EF37D6C87E36F049CA /* Build configuration list for PBXNativeTarget "athmovil-checkout-athmovil-checkout" */;
 			buildPhases = (
-				60088A2F37D2CE8E0EAEB20F84D627B3 /* Sources */,
-				FB3FA159136F3FECE2548CD9D2DBB6C9 /* Frameworks */,
-				5C5F209EBCC36F26AF1BD25E417402B6 /* Resources */,
+				05350F004E755DEE04B21BB674A161DE /* Sources */,
+				D24B99ACA97EA115C1901AFEF868CF2F /* Frameworks */,
+				BE804B650B23D9525B95635A5DE1744F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -509,103 +515,105 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C5F209EBCC36F26AF1BD25E417402B6 /* Resources */ = {
+		30C9D3EAC9986319E1D5B35A1A94F006 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2670968E12B6DB1F39879ACD6267CC1 /* ATHMAssets.xcassets in Resources */,
+				FD6F5AD509D00A283BB06E505AD66762 /* ATHMAssets.xcassets in Resources */,
+				9EF1579F6EB51C9CB504FC471299E260 /* athmovil-checkout-athmovil-checkout in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7508C20E812F4AD85BD9CE58FA53CF90 /* Resources */ = {
+		BE804B650B23D9525B95635A5DE1744F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D9B0B87EAD311A1E13B090B86F08BD1 /* ATHMAssets.xcassets in Resources */,
-				E7B7A9880D5D91C5E70A5B03125BC66C /* athmovil-checkout-athmovil-checkout in Resources */,
+				8EB53EDD46438E857CC75DA34D4C4AE0 /* ATHMAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		60088A2F37D2CE8E0EAEB20F84D627B3 /* Sources */ = {
+		05350F004E755DEE04B21BB674A161DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73076CC2F5E3B87B78389A3A7872145E /* Sources */ = {
+		4BCEC591006E9DBE05842C5CF6834E2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933A002E5FD7D941AF3D90035BBC3140 /* AnyPaymentReceiver.swift in Sources */,
-				E579E880655C9D7E7BF4A2695FCD6EA9 /* AnyPaymentRequestCodable.swift in Sources */,
-				01AEF31626FA58BCB2FABE5362B6D46D /* AnyPaymentSecureReceiver.swift in Sources */,
-				C465E7722D9E07A2BFF17FEEF960247C /* AnyPaymentSecureRequestCodable.swift in Sources */,
-				D7A5F5BBE8864D9EC04C5BF2D4B9579F /* AnyPaymentSecureSender.swift in Sources */,
-				3B524D268A6FFA7355E3B5DC9E951C12 /* AnyPaymentSender.swift in Sources */,
-				A5110C2C57D5DD16E5DA2F81E97C92F7 /* APIClient.swift in Sources */,
-				DFBC680806133B5D38FA3B65ADD10852 /* APIPayments.swift in Sources */,
-				3EE429CBCBC0A064F6DE842DA42B5C2D /* ATHMAuthorizationResponse.swift in Sources */,
-				E30B747C8FA0DC8CE79BEDFF9B5EDAC1 /* ATHMBusinessAccount.swift in Sources */,
-				05811E235A4F613B969C9C4EDE444250 /* ATHMButton.swift in Sources */,
-				3C15670933E592890A5DCBE96A8482C9 /* ATHMCustomer.swift in Sources */,
-				C15E6ACF1BD695CFE733ECC29D7F9B6F /* athmovil-checkout-dummy.m in Sources */,
-				3D5FF2344130D152B2E3B24EA1B82865 /* ATHMPayment.swift in Sources */,
-				E30C47D05333464B2875F8A9F9E019FE /* ATHMPaymentError.swift in Sources */,
-				7D1693F729C40A6A0E92AA0880088323 /* ATHMPaymentHandler.swift in Sources */,
-				ACC607A3F8D05BFAF4A7D3117AD223F2 /* ATHMPaymentHandlerDictionary.swift in Sources */,
-				8D0CDF3AB87D8AD614F0AB932AB23A52 /* ATHMPaymentItem.swift in Sources */,
-				FDBA0925A6BAFDE88B1C708823B91A22 /* ATHMPaymentRequest.swift in Sources */,
-				FBCA243249A3C48544BC5F388187DE87 /* ATHMPaymentResponse.swift in Sources */,
-				497CC527C7E1D214CD46D986D7CAAA2D /* ATHMPaymentSecureError.swift in Sources */,
-				2B711B7B8AEE062C0B66522FE301A4EC /* ATHMPaymentSecureRequest.swift in Sources */,
-				8234D1A2402C9B5E666D2E42B7625E9D /* ATHMPaymentSession.swift in Sources */,
-				BD08C8D9FE7D452B771DE3FEEE84D4EF /* ATHMPaymentStatus.swift in Sources */,
-				C2E4010C07E6817EBC2936A2A78C92B0 /* ATHMPaymentTheme.swift in Sources */,
-				B2A67D1E2E20080283DB84D4BD5901D7 /* ATHMResponseDeprecated.swift in Sources */,
-				8D9F09082E3C10C5BCDE03A5DB21AF75 /* ATHMSecurePayment.swift in Sources */,
-				C24E72B9B245F70ED9670D4A0BC349E3 /* ATHMSendPayment.swift in Sources */,
-				61406F8007FF18E8D42FBCA40071BF97 /* ATHMURLScheme.swift in Sources */,
-				2FFC9E34177F7E9DBD0644067DEB9C9D /* AuthorizationResponseCodable.swift in Sources */,
-				E071D8467C30C8F7ADCB3A5D845FAC47 /* BusinessAccountCodable.swift in Sources */,
-				F7E97620FA19E9D85025FE03CFAD1E13 /* CustomerCodable.swift in Sources */,
-				53C060C0CDDAA41838126782A455B016 /* DateFormatters.swift in Sources */,
-				4C6C9A9A6A0FA9D040DECF1C20B946BE /* DoubleExtension.swift in Sources */,
-				1B23D2EF56D0F1C45912DD327888476E /* KeychainHelper.swift in Sources */,
-				B31C941AC4DC6B0D327179C27C013CE2 /* KeyedDecodingContainerProtocolExtension.swift in Sources */,
-				1F0CC416D6826F3B7C517EABFB06477F /* LoadingView.swift in Sources */,
-				2A01AD9A0E36016555B1E49AB044205F /* LocaleExtension.swift in Sources */,
-				150601EDA20E81F9574368AAF1AE7B3B /* NetworkError.swift in Sources */,
-				AFA22D408447D4DF5A9F11A57A159071 /* NSDictionaryExtension.swift in Sources */,
-				36B3D84B3B7DD0C16087F2C8A7FC09C2 /* NSNumberExtension.swift in Sources */,
-				4505577CEDBDB2FFA01DF1840F77CF7F /* NSRegularExpressionExtension.swift in Sources */,
-				7F8DCFCCC60CBC4B8C7E08C649F01207 /* PaymentCodable.swift in Sources */,
-				6AF5CF13DCEADBB157872CF072C38A13 /* PaymentDefaultCodable.swift in Sources */,
-				90153C444638ED994A396349CA978B2D /* PaymentHandleable.swift in Sources */,
-				DA66E7E401E99A51A9043F51D1B8BDD4 /* PaymentItemCodable.swift in Sources */,
-				CD5B5E103D215C5BD7254CE68C3D3CAE /* PaymentResponseCodable.swift in Sources */,
-				BEF6C85D6B554A8947CDA8613C31D47C /* PaymentSecureCodable.swift in Sources */,
-				4671E425707E2E001FCFFE3F2E27EE5D /* PaymentSecureResponseCodable.swift in Sources */,
-				07B6BF54A366B974C5F68D36980ECF1D /* PaymentSendCodable.swift in Sources */,
-				420D04012A6F050702646639328F9622 /* PaymentSimulated.swift in Sources */,
-				1222FF7F183D1F1193FC28DD13466AC1 /* PaymentStatusCodable.swift in Sources */,
-				677640A7A2B0D0775F78C0FA0BFBA773 /* PostRequestBuilder.swift in Sources */,
-				A5620901407B8E35829E2FAD75D071D4 /* RequestAuthorization.swift in Sources */,
-				CD1C384B4D4272275D893F800F3E04BF /* RequestBuilder.swift in Sources */,
-				2EC0B301B1736C41F030456AD3AF8A35 /* RequestPayment.swift in Sources */,
-				B189314408A4DD463E86B5D7EFD0FEF8 /* RequestSecureStatus.swift in Sources */,
-				8B715D4695E0D039BDC2D097139AF8FA /* RequestStatus.swift in Sources */,
-				8A6A7C60743EDEAD88538CA130DD7A40 /* ResponseErrorSecurePaymentCodable.swift in Sources */,
-				CF7EC5273940F184AF4AB732ED986C3A /* ResultExtension.swift in Sources */,
-				4508FAD7A60AC4F71E310A273B274309 /* StringExtension.swift in Sources */,
-				7ED73D13BE5309AE892593A1C6AD0A87 /* TagetEnviroment.swift in Sources */,
-				E97955604AAF2AE27960337CFB1053DE /* TargetURLRepresentable.swift in Sources */,
-				F29467DE638A0E89E18B48EE377A1598 /* UIApplicationExtension.swift in Sources */,
-				D3B30963202EEB82DAA318669B4220C1 /* URLComponentsExtension.swift in Sources */,
-				5BB370BF278BBB073C28F004DF467525 /* URLSchemeCodable.swift in Sources */,
+				F83D0ED1DE3632080C87DA4924417765 /* AnyPaymentReceiver.swift in Sources */,
+				09147C6B6A6445E92ACEB00B2BA86D17 /* AnyPaymentRequestCodable.swift in Sources */,
+				FB410E91A0876B60C60BE83F160CBF0C /* AnyPaymentSecureReceiver.swift in Sources */,
+				57B7A6FA9F180776AC4F93DE64C23553 /* AnyPaymentSecureRequestCodable.swift in Sources */,
+				DA7D67409BB82E20645B464402B3FCBD /* AnyPaymentSecureSender.swift in Sources */,
+				3E8EB0DCB7901D2CE45C31BF2702AEAB /* AnyPaymentSender.swift in Sources */,
+				66E040CEADD9F079E05ABE38D5D94352 /* APIClient.swift in Sources */,
+				EF416B3BDD3E271E387E7182C7538E83 /* APIPayments.swift in Sources */,
+				0ACFDE02DA32B3B7A5775C809DF15A6D /* ATHMAuthorizationResponse.swift in Sources */,
+				F19A2923D53A3FE0B511D1B249DE61E8 /* ATHMBusinessAccount.swift in Sources */,
+				11A6C006687FE88E6F0CCB388EA270DB /* ATHMButton.swift in Sources */,
+				65E8FBC8A6A4302BB5A10C1E6E5D7E76 /* ATHMCustomer.swift in Sources */,
+				F20AEA57F9CC165A1604E2C5AA215BC9 /* athmovil-checkout-dummy.m in Sources */,
+				942B5AAA96054CCD7D81F4F3C3133BC0 /* ATHMPayment.swift in Sources */,
+				7B719C7DBECF283B0F24D3CB90EA260D /* ATHMPaymentError.swift in Sources */,
+				D23C80B68A3B64764AA95C2066497683 /* ATHMPaymentHandler.swift in Sources */,
+				249B2A27B066D73DA2C227BD25E682D4 /* ATHMPaymentHandlerDictionary.swift in Sources */,
+				8EC0724959EE8E0553A424391C4FB344 /* ATHMPaymentItem.swift in Sources */,
+				102C012CFC93E53E1D7A5BA46FCD3066 /* ATHMPaymentRequest.swift in Sources */,
+				EC7964BC610869F8A62AB6C1638A78F7 /* ATHMPaymentResponse.swift in Sources */,
+				D193F0C7923E6022006F33B797997C72 /* ATHMPaymentSecureError.swift in Sources */,
+				3ACE22DDCAF05F00EE80A63EDAD1C146 /* ATHMPaymentSecureRequest.swift in Sources */,
+				27B19C111F2189C0234EB8F6F15557B2 /* ATHMPaymentSession.swift in Sources */,
+				27E4E20ED36DD37E6F1DE86AA8C6D9BD /* ATHMPaymentStatus.swift in Sources */,
+				E0FE82E47ECC2811482596AE1C2F632F /* ATHMPaymentTheme.swift in Sources */,
+				7C90AFFA46DCD237677638C05F742B64 /* ATHMResponseDeprecated.swift in Sources */,
+				B61909871E5690EB72E44B17F5E4CC2B /* ATHMSecurePayment.swift in Sources */,
+				C602AC3DFF21BB06D21AAAB034BE7F3E /* ATHMSendPayment.swift in Sources */,
+				A7BAB135BFC526769ADCE81F1C579061 /* ATHMURLScheme.swift in Sources */,
+				3B73A2D8ED46BAF5B5DA282ED2241311 /* AuthorizationResponseCodable.swift in Sources */,
+				6A106B75590CCEEBE186F774C3CCFB79 /* BusinessAccountCodable.swift in Sources */,
+				678AB857485716F60CE056B4C96E1DF1 /* CustomerCodable.swift in Sources */,
+				A7191E9BBD68C6FD165BFF1905F3C01C /* DateFormatters.swift in Sources */,
+				68E9353B765FBFA32724BF0A13705E73 /* DoubleExtension.swift in Sources */,
+				2FF54205E2A73E06E2B00BCB13F7AAAD /* KeychainHelper.swift in Sources */,
+				40BC727124E6D9DA58FFDF25E63B4101 /* KeyedDecodingContainerProtocolExtension.swift in Sources */,
+				CDA6AFE8A9368EBFC19E1F99CB4243FE /* LoadingView.swift in Sources */,
+				167CC7C89A0D6E6AF8BBBE205F455F6B /* LocaleExtension.swift in Sources */,
+				F87548561A72C71E36EEBB79519CF2EF /* NetworkError.swift in Sources */,
+				70C482DADF53DF815DC19E5FCBAB9C86 /* NewRelicConfig.swift in Sources */,
+				C10CBD61557FD17E053FC311A4B90CFA /* NrConstantUtils.swift in Sources */,
+				79FFEB82587AEDC2E3696A68E9A03112 /* NSDictionaryExtension.swift in Sources */,
+				851529B72648EDF495DDD70F2ED6F4E9 /* NSNumberExtension.swift in Sources */,
+				6386BAE3B7D4DFC4E6ADED54316FF8A7 /* NSRegularExpressionExtension.swift in Sources */,
+				EE3B0B65820EB5FE8B11B5C640BCE44F /* PaymentCodable.swift in Sources */,
+				9F8F592CA0C615D4BEF0DBAFB8E222B1 /* PaymentDefaultCodable.swift in Sources */,
+				14AC2045B26DF2C9E87E1614D0040D5D /* PaymentHandleable.swift in Sources */,
+				B5F79421A34739E45281C528F0C3ECC5 /* PaymentItemCodable.swift in Sources */,
+				403CE1446955B4D817ED78D289C6324C /* PaymentResponseCodable.swift in Sources */,
+				EF2309556988403CB3D1CA0FE8FAADAA /* PaymentSecureCodable.swift in Sources */,
+				049A32C68D4940DDF18A523911379D55 /* PaymentSecureResponseCodable.swift in Sources */,
+				663A179CB30E4EA3D18959F18D799F3A /* PaymentSendCodable.swift in Sources */,
+				3A5CF6E5746CAE97065DA297B2AD6346 /* PaymentSimulated.swift in Sources */,
+				D23A19A472BE356971B96659FCD73621 /* PaymentStatusCodable.swift in Sources */,
+				2BF2784B1B8CA5D7EC17E224F8F11185 /* PostRequestBuilder.swift in Sources */,
+				C7DFCD13C018C281B561C355D0B9FE7C /* RequestAuthorization.swift in Sources */,
+				706C523EFAC1322CA7D62AEE1F0AFA29 /* RequestBuilder.swift in Sources */,
+				62F5700CA125457D79CD504B93012D9D /* RequestPayment.swift in Sources */,
+				6449CCCA9314D30FD3A8D374B64F46DA /* RequestSecureStatus.swift in Sources */,
+				F6BCCC57FF68FEF3CBF81CAB796FFCCB /* RequestStatus.swift in Sources */,
+				B0ADEB7E752773CEAFF35A28127327C2 /* ResponseErrorSecurePaymentCodable.swift in Sources */,
+				7A8E7DDE0F027472D2C5AA9EDA3D1AC7 /* ResultExtension.swift in Sources */,
+				B5E874558CD656991F8EF65E774F8A9F /* StringExtension.swift in Sources */,
+				14976FA23E742ADB085841C733A90838 /* TagetEnviroment.swift in Sources */,
+				B35D304DB23F1F9F1A264351D8583667 /* TargetURLRepresentable.swift in Sources */,
+				9CD705648E800D84357C0692C7F8DD30 /* UIApplicationExtension.swift in Sources */,
+				1F4FB78CC3B63FEC24AF663BBF45C6C4 /* URLComponentsExtension.swift in Sources */,
+				BD37C4F3A4B34C3B54EB0F38CF72C661 /* URLSchemeCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,21 +628,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		48DB35AD005F4B7DC929B79F85DD2F1A /* PBXTargetDependency */ = {
+		3B39923300E4B5E568AE460451F99D88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "athmovil-checkout-athmovil-checkout";
 			target = 9116B35005D4276EEF326DD8142F8742 /* athmovil-checkout-athmovil-checkout */;
-			targetProxy = 9C8A74A57491386F0F8563B268F1F68E /* PBXContainerItemProxy */;
+			targetProxy = 42ED3C3FE75B1B320E233FCE64CABA3B /* PBXContainerItemProxy */;
 		};
-		5C066D6362C722B81B133CE221C31709 /* PBXTargetDependency */ = {
+		B655CF48C21450949EF1A14E7F81CA6F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "athmovil-checkout";
 			target = 7D749667B99BD3CCBA8A8BF7EFA4A7C3 /* athmovil-checkout */;
-			targetProxy = 39459AEC9E86668CE7741518746F6DD1 /* PBXContainerItemProxy */;
+			targetProxy = B9FD18B723453102CC8A3B10834796B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		467F2722BC2F05187140CA34D01DFCEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4B1921DBAFD2FED66563795198B5764 /* athmovil-checkout.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/athmovil-checkout";
+				IBSC_MODULE = athmovil_checkout;
+				INFOPLIST_FILE = "Target Support Files/athmovil-checkout/ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = "athmovil-checkout";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		67E1F86FC215859012BBAC3FA28713D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4D8C555BA80A019F4F7F5B33709E1A9E /* Pods-athmovil-checkout-demo.release.xcconfig */;
@@ -674,23 +699,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		8781E94F21B88D5F9DBF0C57B2FD5D77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F347FADC99A28D67925D609F6D134DC8 /* athmovil-checkout.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/athmovil-checkout";
-				IBSC_MODULE = athmovil_checkout;
-				INFOPLIST_FILE = "Target Support Files/athmovil-checkout/ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_NAME = "athmovil-checkout";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
 		};
 		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -757,23 +765,6 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
-		};
-		9BEC88EA119FBDFB36E1655D63DC92A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B409DC4450A64E5C004FAEC70AA9EBE4 /* athmovil-checkout.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/athmovil-checkout";
-				IBSC_MODULE = athmovil_checkout;
-				INFOPLIST_FILE = "Target Support Files/athmovil-checkout/ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_NAME = "athmovil-checkout";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
 		};
 		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -876,9 +867,65 @@
 			};
 			name = Debug;
 		};
-		BF15144BA63C96FBC04554D870BBAD55 /* Release */ = {
+		ADA94BDAA7E9025E3C3936CFEECC0786 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B409DC4450A64E5C004FAEC70AA9EBE4 /* athmovil-checkout.release.xcconfig */;
+			baseConfigurationReference = B4B1921DBAFD2FED66563795198B5764 /* athmovil-checkout.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/athmovil-checkout/athmovil-checkout-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/athmovil-checkout/athmovil-checkout-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/athmovil-checkout/athmovil-checkout.modulemap";
+				PRODUCT_MODULE_NAME = athmovil_checkout;
+				PRODUCT_NAME = athmovil_checkout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B81BFEBB54EB0B5D1592C14A8D791F7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C3F2E590921761AE41AC9BF863F9DF2 /* athmovil-checkout.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/athmovil-checkout";
+				IBSC_MODULE = athmovil_checkout;
+				INFOPLIST_FILE = "Target Support Files/athmovil-checkout/ResourceBundle-athmovil-checkout-athmovil-checkout-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = "athmovil-checkout";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		C98C2FAFFEAFAFE46D64BC457A8970F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C3F2E590921761AE41AC9BF863F9DF2 /* athmovil-checkout.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -916,53 +963,14 @@
 			};
 			name = Release;
 		};
-		D180EDE7B8802F96A1726DA7648E258B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F347FADC99A28D67925D609F6D134DC8 /* athmovil-checkout.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/athmovil-checkout/athmovil-checkout-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/athmovil-checkout/athmovil-checkout-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/athmovil-checkout/athmovil-checkout.modulemap";
-				PRODUCT_MODULE_NAME = athmovil_checkout;
-				PRODUCT_NAME = athmovil_checkout;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2EB4158C7F938F4393367EE40B11FC67 /* Build configuration list for PBXNativeTarget "athmovil-checkout" */ = {
+		2648C8DD05EF29EF37D6C87E36F049CA /* Build configuration list for PBXNativeTarget "athmovil-checkout-athmovil-checkout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D180EDE7B8802F96A1726DA7648E258B /* Debug */,
-				BF15144BA63C96FBC04554D870BBAD55 /* Release */,
+				467F2722BC2F05187140CA34D01DFCEF /* Debug */,
+				B81BFEBB54EB0B5D1592C14A8D791F7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -976,20 +984,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3B88122E89E59A6C42A5CD275E734387 /* Build configuration list for PBXNativeTarget "athmovil-checkout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADA94BDAA7E9025E3C3936CFEECC0786 /* Debug */,
+				C98C2FAFFEAFAFE46D64BC457A8970F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
 				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F0842C9AEAA5764B2521A8E4E66BEB2 /* Build configuration list for PBXNativeTarget "athmovil-checkout-athmovil-checkout" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8781E94F21B88D5F9DBF0C57B2FD5D77 /* Debug */,
-				9BEC88EA119FBDFB36E1655D63DC92A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

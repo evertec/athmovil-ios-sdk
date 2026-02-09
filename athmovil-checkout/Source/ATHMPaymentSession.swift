@@ -18,7 +18,7 @@ public class ATHMPaymentSession: NSObject {
     public var enviroment: String = TargetEnviroment.production.rawValue
     
     /// Payment API for getting the payment status in the server
-    let paymentAPI = APIPayments.apiAWS
+    let paymentAPI = APIPayments.api
     var observerBecomeActive: NSObjectProtocol?
 
     /// Queue for processing the responses of ATH Movil

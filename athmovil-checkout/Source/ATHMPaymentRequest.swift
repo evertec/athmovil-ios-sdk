@@ -75,7 +75,6 @@ public class ATHMPaymentRequest: NSObject {
     /// - Parameter handler: Closure to call after the response of the ATH Movil
     @objc
     public func pay(handler: ATHMPaymentHandler) {
-                
         sendPayment(handler, urlopener: UIApplication.shared)
     }
     
@@ -85,6 +84,7 @@ public class ATHMPaymentRequest: NSObject {
     public func pay(dictionaryHandler handler: ATHMPaymentHandlerDictionary) {
                 
         sendPayment(handler, urlopener: UIApplication.shared)
+        
     }
     
 }
@@ -98,6 +98,8 @@ extension ATHMPaymentRequest {
     ///   - handler: handler to use when the SDK completed the payment
     ///   - urlopener: object to open the application
     func sendPayment<Handler, Opener>(_ handler: Handler, urlopener: Opener) where Handler: PaymentHandleable,
+        
+   
                                                                                    Opener: URLOpenerAdaptable {
         let target = TargetEnviroment(rawValue: ATHMPaymentSession.shared.enviroment.lowercased()) ?? .production
         TargetEnviroment.selectedEnviroment = target
@@ -109,6 +111,13 @@ extension ATHMPaymentRequest {
                 
                 paymentSender.sendPayment(target: TargetUniversalLinks.athMovil(target),
                                           session: .shared)
+            
+            //NewRelicConfig.sendEventToNewRelic(
+                //       eventType: "ATHMPaymentInitEvent",
+                //        error: "N/A",
+                 //       buildType: "buildType",
+                 //       publicToken: "a"
+          // )
                 
             default:
                 let paymentSimulated = PaymentSimulated(paymentRequest: self)
