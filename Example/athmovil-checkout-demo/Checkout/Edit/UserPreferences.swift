@@ -6,13 +6,13 @@
 //  Copyright © 2019 Evertec, Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import athmovil_checkout
 
 class UserPreferences: NSObject, NSCoding {
     static var shared = UserPreferences.read()
     // CONFIGURATION
-    var publicToken = "dummy"
+    var publicToken = "a66ce73d04f2087615f6320b724defc5b4eedc55"
     var timeOut = 600.0
     var paymentAmount = 1.0
     var theme = 0
@@ -26,7 +26,7 @@ class UserPreferences: NSObject, NSCoding {
     var phoneNumber = ""
     
     let themeList: [String] = [ATHMThemeClassic.name, ATHMThemeLight.name, ATHMThemeNight.name]
-    let enviroments: [String] =  ["Pilot", "Production"]
+    let enviroments: [String] =  ["Production"]
         
     fileprivate override init() {
         super.init()
@@ -76,10 +76,19 @@ extension UserPreferences {
     }
     
     fileprivate static func read() -> UserPreferences {
-        if let data = UserDefaults.standard.data(forKey: "settings"),
-            let settings = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) {
-            return (settings as! UserPreferences)
+        guard let data = UserDefaults.standard.data(forKey: "settings") else {
+            return UserPreferences()
         }
+        
+        do {
+            // Intentamos deserializar especificando que esperamos la clase UserPreferences
+            if let settings = try NSKeyedUnarchiver.unarchivedObject(ofClass: UserPreferences.self, from: data) {
+                return settings
+            }
+        } catch {
+            print("Error al leer UserPreferences: \(error)")
+        }
+        
         return UserPreferences()
     }
 }
@@ -115,7 +124,7 @@ extension UserPreferences {
 }
 
 
-extension ATHMPaymentItem: NSCoding {
+extension ATHMPaymentItem: @retroactive NSCoding {
     
     public func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "name")

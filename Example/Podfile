@@ -8,3 +8,7 @@ target 'athmovil-checkout-demo' do
   # Pods for athmovil-checkout-demo
   pod 'athmovil-checkout', :path => '../'
 end
+
+target 'athmovil-checkout-demo-spm' do
+  # Only use SPM
+end

@@ -54,11 +54,10 @@ class CheckoutViewController: UIViewController {
         /// Your business token
         let businessAccount = ATHMBusinessAccount(token: userPref.publicToken)
         
-        //NEW FLOW SECURE
-        payNewFlow(scheme:scheme,businessAccount:businessAccount,payment:payment)
+        pay(scheme:scheme,businessAccount:businessAccount,payment:payment)
     }
     
-    private func payNewFlow(scheme:ATHMURLScheme,businessAccount:ATHMBusinessAccount,payment:ATHMPayment){
+    private func pay(scheme:ATHMURLScheme,businessAccount:ATHMBusinessAccount,payment:ATHMPayment){
         payment.phoneNumber = userPref.phoneNumber
         let request = ATHMPaymentSecureRequest(account: businessAccount, scheme: scheme, payment:payment)
         if(userPref.timeOut != 0.0){
