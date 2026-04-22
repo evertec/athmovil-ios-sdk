@@ -20,7 +20,7 @@ class PaymentRequestCoderIT: XCTestCase{
         
         let request = getMockData(timeOut: 120,
                                   business: ATHMBusinessAccount(token: "test"),
-                                  client: ATHMClientApp(urlScheme: "test"),
+                                  client: ATHMURLScheme(urlScheme: "test"),
                                   payment: ATHMPayment(total: 1))
         
         try! XCTAssertEncode(encode: request) {
@@ -32,7 +32,7 @@ class PaymentRequestCoderIT: XCTestCase{
         
         let request = getMockData(timeOut: 120,
                                   business: ATHMBusinessAccount(token: "test"),
-                                  client: ATHMClientApp(urlScheme: "test"),
+                                  client: ATHMURLScheme(urlScheme: "test"),
                                   payment: ATHMPayment(total: 1))
         
         try! XCTAssertEncode(encode: request) {
@@ -41,13 +41,11 @@ class PaymentRequestCoderIT: XCTestCase{
     }
     
     func testWhenGetCurrentVersion_GivenPaymentRequest_ThenTheVersionIsThree(){
-        
         let request = getMockData(timeOut: 120,
                                   business: ATHMBusinessAccount(token: "test"),
-                                  client: ATHMClientApp(urlScheme: "test"),
+                                  client: ATHMURLScheme(urlScheme: "test"),
                                   payment: ATHMPayment(total: 2))
-        
-        XCTAssertEqual(request.version, ATHMVersion.three)
+        XCTAssertEqual(request.paymentRequest.version, ATHMVersion.three)
     }
        
     //MARK:- Negative
@@ -56,7 +54,7 @@ class PaymentRequestCoderIT: XCTestCase{
         
         let request = getMockData(timeOut: 20,
                                   business: ATHMBusinessAccount(token: "test"),
-                                  client: ATHMClientApp(urlScheme: "test"),
+                                  client: ATHMURLScheme(urlScheme: "test"),
                                   payment: ATHMPayment(total: 2))
         
         XCTAssertThrowsError(try XCTAssertEncode(encode: request, assert: { _ in
@@ -76,7 +74,7 @@ class PaymentRequestCoderIT: XCTestCase{
         
         let request = getMockData(timeOut: 120,
                                   business: ATHMBusinessAccount(token: ""),
-                                  client: ATHMClientApp(urlScheme: "xamarintest"),
+                                  client: ATHMURLScheme(urlScheme: "xamarintest"),
                                   payment: ATHMPayment(total: 2))
         
         XCTAssertThrowsError(try XCTAssertEncode(encode: request, assert: { _ in
@@ -93,7 +91,7 @@ class PaymentRequestCoderIT: XCTestCase{
         
         let request = getMockData(timeOut: 120,
                                   business: ATHMBusinessAccount(token: "12313"),
-                                  client: ATHMClientApp(urlScheme: ""),
+                                  client: ATHMURLScheme(urlScheme: ""),
                                   payment: ATHMPayment(total: 2))
                 
         XCTAssertThrowsError(try XCTAssertEncode(encode: request, assert: { _ in
@@ -112,7 +110,7 @@ class PaymentRequestCoderIT: XCTestCase{
         
         let request = getMockData(timeOut: 120,
                                   business: ATHMBusinessAccount(token: "test"),
-                                  client: ATHMClientApp(urlScheme: "test"),
+                                  client: ATHMURLScheme(urlScheme: "test"),
                                   payment: ATHMPayment(total: -2))
         
         XCTAssertThrowsError(try XCTAssertEncode(encode: request, assert: { _ in
@@ -127,16 +125,13 @@ class PaymentRequestCoderIT: XCTestCase{
     }
     
     //MARK:- MockData
-    
     func getMockData(timeOut: Double,
                      business: ATHMBusinessAccount,
-                     client: ATHMClientApp,
-                     payment: ATHMPayment) -> AnyPaymentRequestCoder<BusinessAccountCoder, ClientAppCoder, PaymentCoder>{
-        
-        return AnyPaymentRequestCoder(business: BusinessAccountCoder(business: business),
-                                      client: ClientAppCoder(clientAPP: client),
-                                      payment: PaymentCoder(payment: payment),
-                                      timeout: timeOut)
+                     client: ATHMURLScheme,
+                     payment: ATHMPayment) -> AnyPaymentRequestCoder<ATHMPaymentRequest> {
+        let paymentRequest = ATHMPaymentRequest(account: business, scheme: client, payment: payment)
+        paymentRequest.timeout = timeOut
+        return AnyPaymentRequestCoder(paymentRequest: paymentRequest, traceId: UUID().uuidString)
     }
 }
 

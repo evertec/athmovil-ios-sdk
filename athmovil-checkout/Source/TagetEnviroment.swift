@@ -30,30 +30,15 @@ extension TargetEnviroment {
     }()
     
     var baseURL: URL {
-        switch self {
-            case .pilot:
-                return URL(string: "https://piloto.athmovil.com/rs/")!
-            default:
-                return URL(string: "https://www.athmovil.com/rs/")!
-        }
+        return URL(string: "https://www.athmovil.com/rs/")!
     }
     
     var baseUrlAWS: String {
-        switch self {
-            case .pilot:
-                return  "payments.athmovil.com"
-            default:
-                return "payments.athmovil.com"
-        }
+        return "payments.athmovil.com"
     }
     
     var athMovilURL: String {
-        switch self {
-            case .pilot:
-                return "https://athmovil-ios-pilot.web.app/e-commerce"
-            default:
-                return "https://athmovil-ios.web.app/e-commerce"
-        }
+        return "https://athmovil-ios.web.app/e-commerce"
     }
     
     func client(

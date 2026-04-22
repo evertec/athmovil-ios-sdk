@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "athmovil_checkout.h"
 
 FOUNDATION_EXPORT double athmovil_checkoutVersionNumber;
 FOUNDATION_EXPORT const unsigned char athmovil_checkoutVersionString[];

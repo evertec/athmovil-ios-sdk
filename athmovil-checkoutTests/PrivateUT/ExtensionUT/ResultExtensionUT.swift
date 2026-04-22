@@ -53,7 +53,7 @@ class ResultExtensionUT: XCTestCase{
         result.decoding(TestModel.self) { result in
             
             switch result {
-                case .failure(let error):
+            case .failure(_):
                     XCTAssert(true)
                 default:
                     XCTAssert(false)

@@ -1,11 +1,11 @@
 {
   "name": "athmovil-checkout",
-  "version": "5.0.0",
+  "version": "6.1.0",
   "summary": "Provides a simple, secure and fast checkout experience to customers using your iOS application.",
   "description": "Provides a simple, secure and fast checkout experience to customers paying on your iOS application. After integrating our Payment Button on your app you will be able to receive instant payments from more than a million ATH Movil users.",
   "homepage": "https://github.com/evertec/athmovil-ios-sdk",
   "authors": {
-    "Evertec": ""
+    "Evertec": "joel.martinez@evertecinc.com"
   },
   "license": {
     "type": "MIT",
@@ -16,18 +16,27 @@
   },
   "source": {
     "git": "https://github.com/evertec/athmovil-ios-sdk.git",
-    "tag": "5.0.0"
-  },
-  "source_files": "athmovil-checkout/Source/*.{swift}",
-  "resources": "athmovil-checkout/*.{pdf,png,jpeg,jpg,storyboard,xib,xcassets}",
-  "resource_bundles": {
-    "athmovil-checkout": [
-      "athmovil-checkout/ATHMAssets.xcassets"
-    ]
+    "tag": "6.1.0"
   },
   "swift_versions": [
-    "5.1",
-    "5.2"
+    "5.9"
   ],
-  "swift_version": "5.2"
+  "source_files": [
+    "Sources/AthmovilCheckout/**/*.swift",
+    "Sources/AthmovilCheckout/include/**/*.h"
+  ],
+  "public_header_files": "Sources/AthmovilCheckout/include/**/*.h",
+  "resources": [
+    "Sources/AthmovilCheckout/Resources/**/*.xib",
+    "Sources/AthmovilCheckout/Resources/**/*.storyboard",
+    "Sources/AthmovilCheckout/Resources/**/*.lproj",
+    "Sources/AthmovilCheckout/Resources/**/*.strings"
+  ],
+  "resource_bundles": {
+    "athmovil-checkout-assets": [
+      "Sources/AthmovilCheckout/Resources/**/*.xcassets",
+      "Sources/AthmovilCheckout/Resources/**/*.{pdf,png,jpeg,jpg}"
+    ]
+  },
+  "swift_version": "5.9"
 }

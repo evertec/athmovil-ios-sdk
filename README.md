@@ -16,7 +16,10 @@ Before you begin, please review the following prerequisites:
 If you need help signing up, adding a card or have any other question please refer to https://athmovilbusiness.com/preguntas or contact our support team at (787) 773-5466. For technical support please complete the following form:  https://forms.gle/ZSeL8DtxVNP2K2iDA.
 
 
-## Installation
+### ⚠️ Importante: Migración a SPM
+Aviso: El soporte para **CocoaPods** finalizará en diciembre de 2026. Se recomienda encarecidamente utilizar **Swift Package Manager (SPM)** para nuevas integraciones, ya que será el único método de distribución soportado en el futuro cercano.
+
+## Installation via Cocoa Pods
 Before we get started, let's configure your project:
 
 * Install CocoaPods (<a href="https://cocoapods.org">click here</a> for detailed instructions). After installing it use `pod init` to initiate Podfile.
@@ -31,6 +34,19 @@ end
 * Execute `pod install` to complete the installation of the SDK pod.
 * Open the Cocoapods workspace and make sure your project still compiles.
 * You can now start using the ATH Móvil Payment Button.
+
+## Installation via Swift Package Manager (SPM)
+
+You can now integrate the ATH Móvil Payment Button SDK using Swift Package Manager:
+
+1. Open your Xcode project.
+2. Go to **File > Add Packages...**
+3. Enter the repository URL for the SDK:  https://github.com/evertec/athmovil-ios-sdk/
+4. Select the version you want to use (we recommend using the latest release).
+5. Add `athmovil-checkout` to your project target.
+6. Xcode will automatically download and integrate the SDK.
+
+After this, you can start using the SDK exactly the same way as described in the **Usage** section above.
 
 ## Usage
 To implement ATH Móvil’s Payment Button on your iOS application you will need to complete the step by step guide below. By following this guide you will be able to:
