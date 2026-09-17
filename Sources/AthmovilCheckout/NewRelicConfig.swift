@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 class NewRelicConfig {
-
+    private static let versionSDK: String = "6.1.1"
+    
     static func sendEventToNewRelic(
     eventType: String,
     paymentStatus: String?,
@@ -21,7 +22,7 @@ class NewRelicConfig {
             "build_type": buildType?.rawValue,
             "payment_status":paymentStatus ?? nil,
             "merchant_app_id":Bundle.main.infoDictionary?["CFBundleName"],
-            "sdk_version": Bundle(for: Self.self).infoDictionary?["CFBundleShortVersionString"],
+            "sdk_version": versionSDK,
             "device_os_version": UIDevice.current.systemVersion,
             "device_os_model": UIDevice.current.model        ]
 
