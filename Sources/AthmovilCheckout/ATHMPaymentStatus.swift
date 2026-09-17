@@ -8,11 +8,20 @@
 
 import Foundation
 
-enum ATHMStatus: String, Codable {
+enum ATHMStatus: String, Codable, CaseIterable {
     case completed,
     cancelled,
     expired,
     failed
+    
+    init?(
+        rawValue: String
+    ) {
+        guard let value = ATHMStatus.allCases.first(where: { $0.rawValue.lowercased() == rawValue.lowercased() }) else {
+            return nil
+        }
+        self = value
+    }
 }
 
 enum ATHMVersion: String, Codable {

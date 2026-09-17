@@ -148,6 +148,7 @@ struct AnyPaymentSecureReceiver {
                         let dailyTransactionId = Int(responseAuthorization.data.dailyTransactionId) ?? 0
                         let fee = NSNumber(value: responseAuthorization.data.fee )
                         let netAmount = NSNumber(value: responseAuthorization.data.netAmount )
+                        response.status.status = responseAuthorization.data.ecommerceStatus
                         response.status.dailyTransactionID = dailyTransactionId
                         response.status.referenceNumber = responseAuthorization.data.referenceNumber
                         response.payment.fee = fee
@@ -190,8 +191,9 @@ struct AnyPaymentSecureReceiver {
                         ATHMPaymentSession.shared.currentSecurePayment = nil
                         // SET PARAMS RESPONSE AUTHORIZATION
                         let dailyTransactionId = Int(responseAuthorization.data.dailyTransactionId) ?? 0
-                        let fee = NSNumber(value: responseAuthorization.data.fee )
-                        let netAmount = NSNumber(value: responseAuthorization.data.netAmount )
+                        let fee = NSNumber(value: responseAuthorization.data.fee)
+                        let netAmount = NSNumber(value: responseAuthorization.data.netAmount)
+                        response.status.status = responseAuthorization.data.ecommerceStatus
                         response.status.dailyTransactionID = dailyTransactionId
                         response.status.referenceNumber = responseAuthorization.data.referenceNumber
                         response.payment.fee = fee

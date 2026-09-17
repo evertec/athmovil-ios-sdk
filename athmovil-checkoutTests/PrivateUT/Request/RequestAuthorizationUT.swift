@@ -97,7 +97,8 @@ class RequestAuthorizationUT: XCTestCase {
             dailyTransactionId: "0013",
             referenceNumber: "215070682-8a36d42f859d623b0185a1a80b08009d",
             fee: 0.05999999865889549,
-            netAmount: 0.95
+            netAmount: 0.95,
+            ecommerceStatus: .completed
         )
 
         let response = AuthorizationResponseCodable(

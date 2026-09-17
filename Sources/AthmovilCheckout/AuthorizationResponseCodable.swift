@@ -21,8 +21,9 @@ struct AuthorizationResponseCodable: AuthorizationResponse {
 public struct PaymentData: Codable {
     let dailyTransactionId, referenceNumber: String
     let fee, netAmount: Double
+    let ecommerceStatus: ATHMStatus
 
     enum CodingKeys: String, CodingKey {
-        case dailyTransactionId, referenceNumber, fee, netAmount
+        case dailyTransactionId, referenceNumber, fee, netAmount, ecommerceStatus
     }
 }
