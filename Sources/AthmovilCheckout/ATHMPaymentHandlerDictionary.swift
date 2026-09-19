@@ -11,19 +11,19 @@ import Foundation
 @objc(ATHMPaymentHandlerDictionary)
 public class ATHMPaymentHandlerDictionary: NSObject {
 
-    /// Closure the completed transaction, it is going to call when ath movil returns a completed transaction
+    /// Closure for the completed transaction, it is going to call when ath movil returns a completed transaction
     var onCompleted: (NSDictionary) -> Void
     
-    /// Closure the completed transaction, it is going to call when ath movil returns a expired transaction
+    /// Closure for the completed transaction, it is going to call when ath movil returns an expired transaction
     var onExpired: (NSDictionary) -> Void
     
-    /// Closure the completed transaction, it is going to call when ath movil returns a canceled transaction
+    /// Closure for the completed transaction, it is going to call when ath movil returns a canceled transaction
     var onCancelled: (NSDictionary) -> Void
     
-    /// Closure the completed transaction, it is going to call when ath movil returns a failed transaction
+    /// Closure for the completed transaction, it is going to call when ath movil returns a failed transaction
     var onFailed: (NSDictionary) -> Void
     
-    /// it is going to call when the there is error in the request or in the response from ATH Movil
+    /// it is going to call when there is error in the request or in the response from ATH Movil
     var onException: (ATHMPaymentError) -> Void
         
     /// Unique identifier for each request
@@ -55,7 +55,7 @@ public class ATHMPaymentHandlerDictionary: NSObject {
     }
     
     /// Method to confirm the payment to ATH Movil when the response becomes from url scheme
-    /// - Parameter data: data from the URL, it must containts the required properties otherwise will call onexception closure
+    /// - Parameter data: data from the URL, it must contains the required properties otherwise will call onexception closure
     func completeFrom(data: Data) {
 
         do {
@@ -99,7 +99,7 @@ public class ATHMPaymentHandlerDictionary: NSObject {
     /// Complete the payment base on the paymentStatus that could be completed, expired or cancelled
     /// - Parameters:
     ///   - paymentStatus: current status of the payment it could be completed, cancelled or expired
-    ///   - response: dictionary which containts the keys-values of the response
+    ///   - response: dictionary which contains the keys-values of the response
     private func complete(paymentStatus: ATHMStatus, response: NSDictionary?) {
         
         switch paymentStatus {

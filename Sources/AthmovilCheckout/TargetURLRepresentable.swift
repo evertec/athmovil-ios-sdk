@@ -14,7 +14,7 @@ protocol TargetURLRepresentable {
     /// URL of ATH Movil for ATH Movil application it is in ATHMovilTarget, simulated request it is in SimulatedTarget
     var athMovilAppURL: String { get }
     
-    /// Dictionary with the options to send when the SKD will open ATH Movil Personal
+    /// Dictionary with the options to send when the SDK will open ATH Movil Personal
     var options: [UIApplication.OpenExternalURLOptionsKey : Any] { get }
     
     var enviroment: TargetEnviroment { get }
@@ -30,12 +30,12 @@ extension TargetURLRepresentable {
     /// URL of the app store
    var appStoreURL: URL { URL(string: "itms://itunes.apple.com/sg/app/ath-movil/id658539297?l=zh&mt=8")! }
     
-    /// Dictionary with the options to send when the SKD will open ATH Movil Personal
+    /// Dictionary with the options to send when the SDK will open ATH Movil Personal
     var options: [UIApplication.OpenExternalURLOptionsKey : Any] { [:] }
            
     /// Convert the parameter payment an URL with all parameters using JSONEncoder
     /// - Parameter payment: current payment of the button in this case always it is going to be AnyPaymentRequestCoder
-    /// - Returns: Returns .failure in case the encode has errors or some property has invalid data otherwise return .success wirh the URL
+    /// - Returns: Returns .failure in case the encode has errors or some property has invalid data otherwise return .success with the URL
     func urlRepresentation<T>(_ payment: T) -> Result<URL, ATHMPaymentError> where T: Encodable {
         
         do {
@@ -46,7 +46,7 @@ extension TargetURLRepresentable {
             guard let params = String(data: paymentData,
                                       encoding: .utf8) else {
                 
-                let paymentError = ATHMPaymentError(message: "The request containts invalid characters",
+                let paymentError = ATHMPaymentError(message: "The request contains invalid characters",
                                                     source: .request)
                 return .failure(paymentError)
             }
@@ -129,7 +129,7 @@ enum TargetUniversalLinks: TargetURLRepresentable {
     case athMovilSimulated(TargetEnviroment)
     case athMovilSecure(TargetEnviroment)
     
-    /// Dictionary with the options to send when the SKD will open ATH Movil Personal
+    /// Dictionary with the options to send when the SDK will open ATH Movil Personal
     var options: [UIApplication.OpenExternalURLOptionsKey : Any] {
         [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly:  true]
     }

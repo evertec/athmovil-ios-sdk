@@ -189,7 +189,7 @@ extension UITableView {
     
         backgroundView = UIView(frame: frame)
         let label = UILabel(frame: frame)
-        label.text = "There are not items"
+        label.text = "There are no items"
         label.textAlignment = .center
         label.textColor = UIColor.lightGray
         backgroundView?.addSubview(label)
