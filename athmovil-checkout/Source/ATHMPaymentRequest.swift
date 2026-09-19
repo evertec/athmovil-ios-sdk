@@ -57,7 +57,7 @@ public class ATHMPaymentRequest: NSObject {
     }
     
     /// Creates an instance of the representation of the request, it is needed the total and the business account and the appclient from comes the request, this constructor
-    /// it is for make the request without the button, in this case the buttons is the classic with the languaje english by default
+    /// it is for making the request without the button, in this case the buttons is the classic with the language english by default
     /// - Parameters:
     ///   - account: Business account, it is needed the token
     ///   - scheme: URL Scheme to response after ATH Movil processed the payment
