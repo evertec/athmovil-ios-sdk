@@ -52,6 +52,8 @@
 		209A49EE24D8B73500882C85 /* CheckoutAddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209A49ED24D8B73500882C85 /* CheckoutAddItemViewController.swift */; };
 		5BD4D053E723595DD492D395 /* libPods-athmovil-checkout-demo-spm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E76AC0E70E4D0D5AA833285A /* libPods-athmovil-checkout-demo-spm.a */; };
 		821B170DF9C58F4C22FCB09A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		8F29C834303515EC00315A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F29C833303515EC00315A14 /* SceneDelegate.swift */; };
+		8F29C835303515EC00315A14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F29C833303515EC00315A14 /* SceneDelegate.swift */; };
 		BBA146FE26BD9B7E00AD8012 /* ConfigurationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA146FD26BD9B7E00AD8012 /* ConfigurationListViewController.swift */; };
 		BBA1470026BDA66100AD8012 /* ConfigurationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA146FF26BDA66100AD8012 /* ConfigurationListViewController.xib */; };
 		DAB5AE0E8E20D86AF4C6E3AE /* Pods_athmovil_checkout_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E1F3E1377509800D52AF2C /* Pods_athmovil_checkout_demo.framework */; };
@@ -81,6 +83,7 @@
 		1CA0C4ED2F7DB3420072C72F /* athmovil-checkout-demo-spm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "athmovil-checkout-demo-spm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		209A49ED24D8B73500882C85 /* CheckoutAddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutAddItemViewController.swift; sourceTree = "<group>"; };
 		675FAC1B284B49A09597868C /* Pods-athmovil-checkout-demo-spm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demo-spm.debug.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demo-spm/Pods-athmovil-checkout-demo-spm.debug.xcconfig"; sourceTree = "<group>"; };
+		8F29C833303515EC00315A14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AA202A380934BE823F97B1EE /* Pods-athmovil-checkout-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-athmovil-checkout-demo.debug.xcconfig"; path = "Target Support Files/Pods-athmovil-checkout-demo/Pods-athmovil-checkout-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		BBA146FD26BD9B7E00AD8012 /* ConfigurationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationListViewController.swift; sourceTree = "<group>"; };
 		BBA146FF26BDA66100AD8012 /* ConfigurationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationListViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 			children = (
 				1BE9EDC423356371001D153D /* Checkout */,
 				1BE9ED9623355A05001D153D /* AppDelegate.swift */,
+				8F29C833303515EC00315A14 /* SceneDelegate.swift */,
 				1BE9ED9D23355A05001D153D /* Assets.xcassets */,
 				1BE9ED9F23355A05001D153D /* LaunchScreen.storyboard */,
 				1BE9EDA223355A05001D153D /* Info.plist */,
@@ -389,6 +393,7 @@
 				1BE9EDF023356371001D153D /* CheckoutEditCell.swift in Sources */,
 				1BE9EDEA23356371001D153D /* UserPreferences.swift in Sources */,
 				1BE9EDEC23356371001D153D /* CheckoutEditViewController.swift in Sources */,
+				8F29C835303515EC00315A14 /* SceneDelegate.swift in Sources */,
 				1BE9EDEB23356371001D153D /* CheckoutEditFooterTableViewCell.swift in Sources */,
 				1BE9EDF523356371001D153D /* TransactionConfirmationViewController.swift in Sources */,
 				1BE9EDE423356371001D153D /* CheckoutViewController.swift in Sources */,
@@ -408,6 +413,7 @@
 				1CA0C4D72F7DB3420072C72F /* CheckoutEditCell.swift in Sources */,
 				1CA0C4D82F7DB3420072C72F /* UserPreferences.swift in Sources */,
 				1CA0C4D92F7DB3420072C72F /* CheckoutEditViewController.swift in Sources */,
+				8F29C834303515EC00315A14 /* SceneDelegate.swift in Sources */,
 				1CA0C4DA2F7DB3420072C72F /* CheckoutEditFooterTableViewCell.swift in Sources */,
 				1CA0C4DB2F7DB3420072C72F /* TransactionConfirmationViewController.swift in Sources */,
 				1CA0C4DC2F7DB3420072C72F /* CheckoutViewController.swift in Sources */,
@@ -604,7 +610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.1.0;
+				MARKETING_VERSION = 6.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.evertecinc.athm-checkout-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -625,7 +631,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.1.0;
+				MARKETING_VERSION = 6.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.evertecinc.athm-checkout-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

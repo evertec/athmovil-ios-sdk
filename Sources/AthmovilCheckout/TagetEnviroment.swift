@@ -9,10 +9,6 @@
 import Foundation
 
 enum TargetEnviroment: String, CaseIterable {
-    case custom
-    case quality
-    case qualitycert
-    case pilot
     case production
     
     static var selectedEnviroment: TargetEnviroment = .production
@@ -32,30 +28,21 @@ extension TargetEnviroment {
     }()
     
     var baseURL: URL {
-        return URL(string: "https://www.athmovil.com/rs/")!
+        URL(string: "https://www.athmovil.com/rs/")!
     }
     
     var baseUrlAWS: String {
-        return "payments.athmovil.com"
+        "payments.athmovil.com"
     }
     
     var athMovilURL: String {
-        return "https://athmovil-ios.web.app/e-commerce"
+        "https://athmovil-ios.web.app/e-commerce"
     }
     
     func client(
         currentRequest: PaymentRequestable
     ) -> APIClientRequestable {
-        switch (self, currentRequest.businessAccount.isSimulatedToken) {
-            case (_, true):
-                return APIClientSimulated(paymentRequest: currentRequest)
-            case (.quality, _):
-                return APIPayments.apiAWS
-            case (.qualitycert, _):
-                return APIPayments.apiAWS
-            default:
-                return APIPayments.api
-        }
+        APIPayments.api
     }
     
     func client(

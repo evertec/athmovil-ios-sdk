@@ -9,7 +9,9 @@
 import UIKit
 import athmovil_checkout
 
-class UserPreferences: NSObject, NSCoding {
+class UserPreferences: NSObject, Codable {
+    
+    
     static var shared = UserPreferences.read()
     // CONFIGURATION
     var publicToken = "a66ce73d04f2087615f6320b724defc5b4eedc55"
@@ -70,25 +72,25 @@ extension UserPreferences {
     }
     
     func save(){
-        if let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false) {
-            UserDefaults.standard.set(encodedData, forKey: "settings")
+        do {
+            let userPreferencesData = try JSONEncoder().encode(self)
+            UserDefaults.standard.set(userPreferencesData, forKey: "CheckOutSettings")
+        } catch {
+            print("Error saving UserPreferences: \(error)")
         }
     }
     
     fileprivate static func read() -> UserPreferences {
-        guard let data = UserDefaults.standard.data(forKey: "settings") else {
+        guard let data = UserDefaults.standard.data(forKey: "CheckOutSettings") else {
             return UserPreferences()
         }
         
         do {
-            // Intentamos deserializar especificando que esperamos la clase UserPreferences
-            if let settings = try NSKeyedUnarchiver.unarchivedObject(ofClass: UserPreferences.self, from: data) {
-                return settings
-            }
+            let userPreferencesData = try JSONDecoder().decode(UserPreferences.self, from: data)
+            return userPreferencesData
         } catch {
-            print("Error al leer UserPreferences: \(error)")
+            print("Error saving UserPreferences: \(error)")
         }
-        
         return UserPreferences()
     }
 }
@@ -124,8 +126,8 @@ extension UserPreferences {
 }
 
 
-extension ATHMPaymentItem: @retroactive NSCoding {
-    
+extension ATHMPaymentItem {
+
     public func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "name")
         coder.encode(price.doubleValue, forKey: "price")
